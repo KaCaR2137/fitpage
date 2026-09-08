@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umów konsultację — FitPage</title>
+  <meta name="description" content="Umów bezpłatną konsultację z FitPage — opisz swoją wizję strony dla działalności trenerskiej, a odezwiemy się z propozycją zakresu i wyceną.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo"><span>Fit</span>Page</a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+        <a href="index.html#o-nas">O nas</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Umów konsultację</h1>
+        <p class="hero__subtitle reveal">
+          Wypełnij krótki brief — potrzebujemy kilku informacji, żeby przygotować propozycję
+          zakresu prac i wycenę. Konsultacja jest bezpłatna i niezobowiązująca.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ FORMULARZ ============================ -->
+    <section class="section brief">
+      <div class="container">
+
+        <form class="form reveal" action="#" method="post" novalidate>
+
+          <div class="form__row">
+            <label for="imie-nazwisko">Imię i nazwisko</label>
+            <input type="text" id="imie-nazwisko" name="imie_nazwisko" required autocomplete="name">
+          </div>
+
+          <div class="form__row">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+
+          <div class="form__row">
+            <label for="telefon">Numer telefonu</label>
+            <input type="tel" id="telefon" name="telefon" required autocomplete="tel"
+                   inputmode="tel" placeholder="+48 000 000 000">
+          </div>
+
+          <div class="form__row">
+            <label for="wizja">Twoja wizja strony</label>
+            <textarea id="wizja" name="wizja" rows="6" required
+              placeholder="Kogo trenujesz i dla kogo ma być strona? Co strona ma osiągać (więcej zapytań, zapisy na zajęcia, budowanie marki)? Podlinkuj strony, które Ci się podobają."></textarea>
+            <small class="form__hint">Kilka zdań w zupełności wystarczy — resztę doprecyzujemy na konsultacji.</small>
+          </div>
+
+          <!-- ================================================================
+               RODO — klauzula informacyjna. WYMAGANE przy każdym formularzu.
+               TODO przed publikacją: uzupełnić realnymi danymi FitPage:
+                 - administrator danych (nazwa, adres, kontakt)
+                 - cel i podstawa prawna przetwarzania
+                 - OKRES PRZECHOWYWANIA danych (ustalić wprost — nie zostawiać pusto)
+                 - prawa osoby, której dane dotyczą, prawo skargi do PUODO
+               =============================================================== -->
+          <details class="form__rodo">
+            <summary>Informacja o przetwarzaniu danych osobowych (RODO)</summary>
+            <p>
+              <strong>[Placeholder klauzuli — do uzupełnienia przed publikacją]</strong>
+              Administratorem danych podanych w formularzu jest [nazwa i dane FitPage].
+              Dane (imię i nazwisko, e-mail, telefon, opis wizji strony) przetwarzane są
+              w celu obsługi zapytania, przygotowania oferty i kontaktu, na podstawie
+              art. 6 ust. 1 lit. b oraz f RODO. Dane będą przechowywane przez
+              [okres do ustalenia — np. czas prowadzenia korespondencji i [X] miesięcy po jej zakończeniu].
+              Przysługuje Ci prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia
+              przetwarzania oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do
+              Prezesa Urzędu Ochrony Danych Osobowych. Podanie danych jest dobrowolne, ale
+              niezbędne do udzielenia odpowiedzi. Kontakt w sprawie danych: [adres e-mail].
+            </p>
+          </details>
+
+          <fieldset class="form__consents">
+            <legend>Zgody</legend>
+
+            <!-- TODO: dopracować treść zgody spójnie z klauzulą RODO powyżej -->
+            <label class="form__consent">
+              <input type="checkbox" name="zgoda_kontakt" required>
+              <span class="form__consent-box" aria-hidden="true"></span>
+              <span class="form__consent-text">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu obsługi zapytania i przygotowania oferty. <span class="req">*</span></span>
+            </label>
+
+            <!-- TODO: doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt) -->
+            <label class="form__consent">
+              <input type="checkbox" name="zgoda_marketing">
+              <span class="form__consent-box" aria-hidden="true"></span>
+              <span class="form__consent-text">(Opcjonalnie) Chcę otrzymać ofertę handlową na podany adres e-mail lub telefon.</span>
+            </label>
+
+            <p class="form__required-note"><span class="req">*</span> pole wymagane</p>
+          </fieldset>
+
+          <button type="submit" class="btn btn--primary">Wyślij brief</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

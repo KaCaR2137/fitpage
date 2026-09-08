@@ -1,0 +1,565 @@
+/* ===================================================================
+   FitPage — style.css
+   Mobile-first. Breakpointy: 480px / 700px / 900px.
+   Sekcje: zmienne, podstawy, layout, komponenty, animacje, media queries.
+   =================================================================== */
+
+/* ----------------------------- Zmienne ----------------------------- */
+:root {
+  /* tło całej strony: czerń przechodząca w żółć (pion, góra -> dół) */
+  --page-grad: linear-gradient(180deg,
+      #000000 0%,
+      #050505 30%,
+      #1c1700 50%,
+      #4a3d00 70%,
+      #b58f00 87%,
+      #f5c518 100%);
+
+  /* akcent — żółty */
+  --accent:        #f5c518;
+  --accent-strong: #ffd23f;
+  --ink:           #1a1a1a;   /* tekst na żółtym tle (przyciski) */
+
+  /* tekst (jasny — motyw ciemny) */
+  --text:        #f2f2f2;
+  --muted:       #c4c4c4;
+  --text-invert: #f6f6f6;
+
+  /* powierzchnie — półprzezroczyste, gradient tła prześwituje */
+  --panel:  rgba(16, 16, 16, 0.70);    /* panel sekcji */
+  --bg:     rgba(255, 255, 255, 0.05); /* karty wewnątrz paneli */
+  --bg-alt: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.14);
+
+  --maxw: 1080px;
+  --radius: 14px;
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ----------------------------- Podstawy ----------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: #000; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--page-grad) no-repeat;
+  min-height: 100vh;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+p { margin: 0 0 1em; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* ----------------------------- Sekcje ----------------------------- */
+/* Treść każdej sekcji siedzi na półprzezroczystym panelu, żeby była
+   czytelna niezależnie od tego, w którym miejscu gradientu tła wypada. */
+.section { padding: 52px 0; }
+.section > .container {
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding-top: 40px;
+  padding-bottom: 44px;
+}
+.section__title { font-size: 1.6rem; margin-bottom: 1rem; }
+
+/* żeby sticky nav nie zasłaniał nagłówka po kliknięciu w link kotwicy */
+[id] { scroll-margin-top: 84px; }
+
+/* ----------------------------- Przyciski ----------------------------- */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease),
+              box-shadow 0.18s var(--ease),
+              background-color 0.18s var(--ease);
+}
+.btn--primary { background: var(--accent); color: var(--ink); }
+.btn--primary:hover {
+  background: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(245, 197, 24, 0.35);
+}
+
+/* ============================== NAV ============================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-invert);
+}
+.nav__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+}
+.nav__logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  color: #fff;
+}
+.nav__logo span { color: var(--accent); }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.nav__links a {
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--text-invert);
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.nav__links a:hover { opacity: 1; }
+.nav__cta {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink) !important;
+  font-weight: 600;
+  opacity: 1 !important;
+}
+
+.nav__toggle {
+  display: none;              /* widoczny tylko na mobile (media query) */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* ============================== HERO ============================== */
+/* Bez własnego tła — prześwituje gradient strony (u góry: czerń). */
+.hero {
+  background: transparent;
+  color: var(--text-invert);
+  text-align: center;
+  padding: 96px 20px 104px;
+}
+.hero__inner { max-width: 760px; margin-inline: auto; }
+.hero__title {
+  font-size: clamp(1.9rem, 6vw, 3.1rem);
+  margin-bottom: 0.4em;
+}
+.hero__subtitle {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  color: rgba(246, 246, 246, 0.78);
+  margin-bottom: 2em;
+}
+
+/* wariant kompaktowy — nagłówek podstrony (np. kontakt.html) */
+.hero--compact { padding: 72px 20px 60px; }
+.hero--compact .hero__subtitle { margin-bottom: 0; }
+
+/* ============================== O NAS ============================== */
+.o-nas p { max-width: 680px; color: var(--muted); }
+.o-nas strong { color: var(--text); }
+
+/* ============================== PORTFOLIO ============================== */
+.portfolio__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 400px));
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.card__body { padding: 24px; }
+.card__title { font-size: 1.15rem; margin-bottom: 0.4em; }
+.card__text { color: var(--muted); font-size: 0.95rem; }
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent-strong);
+  transition: gap 0.18s var(--ease);
+}
+.card__link:hover { gap: 12px; }
+.card__link svg { width: 16px; height: 16px; }
+
+/* ============================== JAK TO DZIAŁA ============================== */
+.kroki__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+.krok {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+.krok__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 700;
+}
+.krok__title { font-size: 1.1rem; margin-bottom: 0.3em; }
+.krok p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* ============================== FORMULARZ ============================== */
+.form { max-width: 560px; }
+.form__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.form__row label { font-weight: 600; font-size: 0.9rem; }
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.form input:focus,
+.form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.form textarea { resize: vertical; }
+/* autouzupełnianie w Chrome nie wymusza białego tła w ciemnym motywie */
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px #1c1c1c inset;
+  caret-color: var(--text);
+}
+
+.form__rodo {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.form__rodo summary { cursor: pointer; font-weight: 600; color: var(--text); }
+.form__rodo p { margin: 10px 0 0; }
+
+/* --- Sekcja zgód (RODO) --- */
+.form__consents {
+  margin: 0 0 22px;
+  padding: 0;
+  border: 0;
+}
+.form__consents legend {
+  padding: 0;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.form__consent {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* natywny checkbox — niewidoczny, ale klikalny i dostępny z klawiatury */
+.form__consent > input {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* rysowany kwadracik */
+.form__consent-box {
+  grid-column: 1;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.04);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0 0;
+  transition: background-color 0.18s var(--ease),
+              border-color 0.18s var(--ease),
+              background-size 0.2s var(--ease);
+}
+.form__consent-text { grid-column: 2; }
+
+.form__consent:hover .form__consent-box { border-color: var(--accent); }
+.form__consent > input:focus-visible ~ .form__consent-box {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* stan zaznaczony + animacja „pop” przy kliknięciu */
+.form__consent > input:checked ~ .form__consent-box {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  background-size: 14px 14px;
+  animation: consent-pop 0.28s var(--ease);
+}
+.form__consent:has(> input:checked) .form__consent-text { color: var(--text); }
+
+/* nie zaznaczona zgoda wymagana po próbie wysłania */
+.form__consent > input.is-touched:invalid ~ .form__consent-box { border-color: #d64545; }
+
+@keyframes consent-pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.22); }
+  70%  { transform: scale(0.94); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form__consent-box { transition: none; }
+  .form__consent > input:checked ~ .form__consent-box { animation: none; }
+}
+
+.req { color: var(--accent); font-weight: 700; }
+
+.form__status {
+  min-height: 1.2em;
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.form__status.is-ok  { color: var(--accent-strong); }
+.form__status.is-err { color: #d64545; }
+.form .is-touched:invalid { border-color: #d64545; }
+
+.form__hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.form__required-note {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* podstrona briefu */
+.brief__back { margin-top: 28px; font-size: 0.9rem; }
+.brief__back a { color: var(--accent-strong); text-decoration: none; }
+.brief__back a:hover { text-decoration: underline; }
+
+/* ============================== FAQ ============================== */
+.faq__list {
+  display: grid;
+  gap: 12px;
+  max-width: 760px;
+}
+.faq__item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--accent-strong);
+}
+.faq__item[open] summary::after { content: "\2013"; } /* – */
+.faq__item p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.faq__cta { margin-top: 32px; }
+.faq__cta p { margin-bottom: 12px; color: var(--muted); }
+
+/* ============================== KONTAKT (skrót na index) ============================== */
+.kontakt__direct {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  color: var(--muted);
+}
+.kontakt__direct li { margin-bottom: 6px; }
+.kontakt__direct a { color: var(--accent-strong); text-decoration: none; }
+.kontakt__direct a:hover { text-decoration: underline; }
+
+/* ============================== FOOTER ============================== */
+.footer {
+  padding: 32px 0;
+  font-size: 0.9rem;
+  color: rgba(246, 246, 246, 0.72);
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.footer__logo { font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+.footer p { margin: 0; }
+
+/* ===================================================================
+   ANIMACJE PRZY SCROLLU — scaffolding pod przyszłą rozbudowę
+   Zasada: CSS mówi JAK, JS mówi KIEDY (dodaje klasę .widoczna).
+   Aby animować kolejny element — dodaj mu w HTML klasę .reveal.
+   Kaskada (stagger) dla rodzeństwa .reveal liczona jest w script.js.
+   Bez JS elementy są normalnie widoczne (gate przez klasę .js).
+   =================================================================== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  will-change: opacity, transform;
+}
+.js .reveal.widoczna {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn { transition: none; }
+}
+
+/* ===================================================================
+   MEDIA QUERIES
+   =================================================================== */
+
+/* --- >= 480px --- */
+@media (min-width: 480px) {
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* --- < 700px : menu mobilne --- */
+@media (max-width: 699px) {
+  .nav__toggle { display: flex; }
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 20px 16px;
+    background: rgba(0, 0, 0, 0.96);
+  }
+  .nav.is-open .nav__links { display: flex; }
+  .nav__links a {
+    padding: 12px 0;
+    opacity: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .nav__cta { margin-top: 10px; text-align: center; }
+}
+
+/* --- >= 700px --- */
+@media (min-width: 700px) {
+  .section { padding: 88px 0; }
+  .section__title { font-size: 2rem; }
+  .kroki__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- >= 900px --- */
+@media (min-width: 900px) {
+  .hero:not(.hero--compact) { padding: 120px 20px 130px; }
+  .hero--compact { padding: 96px 20px 76px; }
+}

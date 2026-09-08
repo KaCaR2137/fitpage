@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitPage — strony internetowe dla trenerów personalnych</title>
+  <meta name="description" content="Projektujemy strony internetowe dla trenerów personalnych — czytelne, szybkie i pomagające zdobywać nowych klientów.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="#hero" class="nav__logo"><span>Fit</span>Page</a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+        <a href="#o-nas">O nas</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#jak-to-dziala">Jak to działa</a>
+        <a href="#faq">FAQ</a>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ HERO ============================ -->
+    <section id="hero" class="hero">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Strony internetowe dla trenerów personalnych</h1>
+        <p class="hero__subtitle reveal">
+          Projektujemy strony, które pomagają trenerom personalnym zdobywać nowych klientów —
+          dopasowane do Twojej specjalizacji, szybkie i czytelne na telefonie.
+        </p>
+        <a href="kontakt.html" class="btn btn--primary reveal">Umów konsultację</a>
+      </div>
+    </section>
+
+    <!-- ============================ O NAS ============================ -->
+    <section id="o-nas" class="section o-nas">
+      <div class="container">
+        <h2 class="section__title reveal">O nas</h2>
+        <!-- TODO: zastąpić realną treścią — konkretne lata doświadczenia,
+             liczba zrealizowanych stron, czym się wyróżniacie na tle innych -->
+        <p class="reveal">
+          <strong>[Placeholder — do uzupełnienia]</strong> Od kilku lat tworzymy strony internetowe
+          dla branży fitness: trenerów personalnych, instruktorów i małych studiów treningowych.
+          Znamy specyfikę tej branży — wiemy, które sekcje przekonują odwiedzającego do kontaktu,
+          jak pokazać ofertę i doświadczenie trenera oraz jak zadbać o zgodność formularza z RODO.
+        </p>
+        <p class="reveal">
+          <strong>[Placeholder — do uzupełnienia]</strong> Każdy projekt zaczynamy od rozmowy
+          o Twojej niszy i grupie docelowej, a kończymy na wdrożeniu gotowej strony pod Twoją domeną.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ PORTFOLIO ============================ -->
+    <section id="portfolio" class="section portfolio">
+      <div class="container">
+        <h2 class="section__title reveal">Portfolio</h2>
+        <div class="portfolio__grid">
+
+          <article class="card reveal">
+            <div class="card__body">
+              <h3 class="card__title">Marta Dominikowska — trener personalny</h3>
+              <p class="card__text">
+                Strona wizytówkowa dla trenerki personalnej: prezentacja oferty,
+                sekcja „o mnie” oparta na osobistej historii oraz formularz kontaktowy zgodny z RODO.
+              </p>
+              <a href="https://marta-strona-trener.netlify.app" class="card__link" target="_blank" rel="noopener">
+                Zobacz realizację
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- TODO: kolejne realizacje — kopiuj <article class="card reveal"> ... </article> -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ JAK TO DZIAŁA ============================ -->
+    <section id="jak-to-dziala" class="section kroki">
+      <div class="container">
+        <h2 class="section__title reveal">Jak to działa</h2>
+        <ol class="kroki__grid">
+
+          <li class="krok reveal">
+            <span class="krok__num">1</span>
+            <h3 class="krok__title">Rozmowa</h3>
+            <p>Poznajemy Twoją specjalizację, grupę docelową i cel strony. Ustalamy zakres, treści i termin realizacji.</p>
+          </li>
+
+          <li class="krok reveal">
+            <span class="krok__num">2</span>
+            <h3 class="krok__title">Projekt</h3>
+            <p>Przygotowujemy projekt strony — układ sekcji, kolorystykę i teksty. Nanosimy poprawki, aż całość będzie dopięta.</p>
+          </li>
+
+          <li class="krok reveal">
+            <span class="krok__num">3</span>
+            <h3 class="krok__title">Wdrożenie</h3>
+            <p>Publikujemy gotową stronę pod Twoją domeną, konfigurujemy formularz kontaktowy i przekazujemy krótką instrukcję obsługi.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================ KONTAKT ============================ -->
+    <section id="kontakt" class="section kontakt">
+      <div class="container">
+        <h2 class="section__title reveal">Kontakt</h2>
+        <p class="reveal">
+          Chcesz stronę dla swojej działalności trenerskiej? Umów bezpłatną konsultację —
+          wypełnij krótki brief, a odezwiemy się z propozycją zakresu prac i wyceną.
+        </p>
+        <p class="reveal">
+          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        </p>
+
+        <ul class="kontakt__direct reveal">
+          <!-- TODO: wstawić realne dane kontaktowe FitPage -->
+          <li>E-mail: <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></li>
+          <li>Telefon: <a href="tel:+48000000000">+48 000 000 000</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ ============================ -->
+    <!-- TODO: przejrzeć i doprecyzować odpowiedzi wg realnej oferty FitPage -->
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2 class="section__title reveal">Najczęściej zadawane pytania</h2>
+
+        <div class="faq__list">
+
+          <details class="faq__item reveal">
+            <summary>Ile kosztuje strona?</summary>
+            <p>Wycena jest indywidualna — zależy od zakresu (liczba sekcji, podstron, dodatkowe funkcje). Orientacyjne widełki podajemy po konsultacji i wypełnieniu briefu.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Ile trwa realizacja?</summary>
+            <p>To zależy od zakresu strony i tempa dostarczania treści z Twojej strony. Konkretny termin ustalamy na konsultacji i zapisujemy w ustaleniach.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy muszę mieć gotowe teksty i zdjęcia?</summary>
+            <p>Nie musisz mieć wszystkiego na start. Pomagamy uporządkować treści i podpowiadamy, co warto pokazać. Zdjęcia możesz dostarczyć w trakcie prac.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy strona będzie działać na telefonie?</summary>
+            <p>Tak. Wszystkie strony projektujemy responsywnie (mobile-first) i testujemy na małych ekranach — większość odwiedzających trafi na stronę z telefonu.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy pomagacie z domeną i publikacją?</summary>
+            <p>Tak. Pomagamy skonfigurować domenę, opublikować stronę i przekazujemy krótką instrukcję, żebyś mógł samodzielnie wprowadzać drobne zmiany.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy formularz kontaktowy będzie zgodny z RODO?</summary>
+            <p>Tak. Każdy formularz dostaje klauzulę informacyjną i odpowiednie zgody, a okres przechowywania danych ustalamy wprost przed publikacją.</p>
+          </details>
+
+        </div>
+
+        <div class="faq__cta reveal">
+          <p>Nie znalazłeś odpowiedzi na swoje pytanie?</p>
+          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
