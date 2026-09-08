@@ -233,7 +233,7 @@ a { color: inherit; }
 .card__link:hover { gap: 12px; }
 .card__link svg { width: 16px; height: 16px; }
 
-/* ============================== JAK TO DZIAŁA ============================== */
+/* ============================== PROCES / KROKI ============================== */
 .kroki__grid {
   list-style: none;
   margin: 0;
@@ -262,6 +262,44 @@ a { color: inherit; }
 }
 .krok__title { font-size: 1.1rem; margin-bottom: 0.3em; }
 .krok p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* podświetlenie etapu, do którego prowadzi odnośnik */
+.krok:target {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* --- sekcja Proces --- */
+.proces__lead {
+  max-width: 620px;
+  margin-top: -0.3rem;
+  color: var(--muted);
+}
+.proces__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+.proces__nav a {
+  display: inline-block;
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease);
+}
+.proces__nav a:hover {
+  border-color: var(--accent);
+  background: rgba(245, 197, 24, 0.12);
+}
+.proces__cta { margin-top: 32px; }
 
 /* ============================== FORMULARZ ============================== */
 .form { max-width: 560px; }

@@ -23,8 +23,12 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
 2. Hero — „Strony internetowe dla trenerów personalnych” + podtytuł + CTA „Umów konsultację”
 3. O nas — doświadczenie w stronach dla branży fitness (id `#o-nas`, klasa `.o-nas`)
 4. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
-5. Jak to działa — 3 kroki: Rozmowa / Projekt / Wdrożenie
-6. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail / telefon (placeholdery)
+5. Proces (`#proces`) — „Proces tworzenia strony”, 6 etapów (Analiza / Struktura /
+   Projekt / Development / Testy / Wdrożenie) wg wzoru leadpage.pl/strony-internetowe/;
+   każdy etap ma `id` (`#proces-analiza` …), na górze lista odnośników `.proces__nav`,
+   pod spodem CTA „Umów bezpłatną konsultację”. Reużywa `.kroki__grid` / `.krok`.
+6. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail (placeholder) i
+   telefon **535 721 592** (`tel:+48535721592`)
 7. FAQ — akordeon `<details>`/`<summary>` (bez JS) + dodatkowy CTA „Umów konsultację” → `kontakt.html`
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
@@ -54,7 +58,7 @@ Bez JS treść jest normalnie widoczna (gate klasą `.js`). Respektuje
 ## TODO przed publikacją
 - [ ] Treść „O nas” — realna (lata doświadczenia, liczba stron, wyróżnik zespołu)
 - [ ] FAQ — przejrzeć i doprecyzować odpowiedzi wg realnej oferty (bez wymyślonych cen/terminów)
-- [ ] Bezpośredni e-mail i telefon w sekcji Kontakt na `index.html` (placeholdery)
+- [ ] Bezpośredni e-mail w sekcji Kontakt na `index.html` (placeholder; telefon 535 721 592 już wstawiony)
 - [ ] Klauzula RODO w `kontakt.html` — dane administratora, cel, podstawa prawna,
       **okres przechowywania** (ustalić wprost), prawa osoby, e-mail kontaktowy,
       prawo skargi do PUODO
