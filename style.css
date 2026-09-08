@@ -269,12 +269,7 @@ a { color: inherit; }
   box-shadow: 0 0 0 1px var(--accent);
 }
 
-/* --- sekcja Proces --- */
-.proces__lead {
-  max-width: 620px;
-  margin-top: -0.3rem;
-  color: var(--muted);
-}
+/* --- sekcja Proces (podstrona proces.html) --- */
 .proces__nav {
   display: flex;
   flex-wrap: wrap;
@@ -299,7 +294,6 @@ a { color: inherit; }
   border-color: var(--accent);
   background: rgba(245, 197, 24, 0.12);
 }
-.proces__cta { margin-top: 32px; }
 
 /* ============================== FORMULARZ ============================== */
 .form { max-width: 560px; }
@@ -527,6 +521,19 @@ a { color: inherit; }
 }
 .footer__logo { font-weight: 800; letter-spacing: -0.03em; color: #fff; }
 .footer p { margin: 0; }
+
+/* link do podstrony „Proces tworzenia strony” — na samym dole strony */
+.footer .footer__link {
+  margin: 0 auto 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  font-weight: 600;
+}
+.footer__link a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+.footer__link a:hover { text-decoration: underline; }
 
 /* ===================================================================
    ANIMACJE PRZY SCROLLU — scaffolding pod przyszłą rozbudowę

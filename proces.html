@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proces tworzenia strony — FitPage</title>
+  <meta name="description" content="Jak powstaje strona w FitPage — od analizy przez strukturę, projekt i development, po testy i wdrożenie. Pracujemy zdalnie z trenerami z całej Polski.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo"><span>Fit</span>Page</a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+        <a href="index.html#o-nas">O nas</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="proces.html">Proces</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Proces tworzenia strony</h1>
+        <p class="hero__subtitle reveal">
+          Od rozmowy do wdrożenia. Pracujemy zdalnie z trenerami z całej Polski.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ ETAPY ============================ -->
+    <section class="section proces">
+      <div class="container">
+
+        <!-- odnośniki do poszczególnych etapów -->
+        <ul class="proces__nav reveal">
+          <li><a href="#proces-analiza">1. Analiza</a></li>
+          <li><a href="#proces-struktura">2. Struktura</a></li>
+          <li><a href="#proces-projekt">3. Projekt</a></li>
+          <li><a href="#proces-development">4. Development</a></li>
+          <li><a href="#proces-testy">5. Testy</a></li>
+          <li><a href="#proces-wdrozenie">6. Wdrożenie</a></li>
+        </ul>
+
+        <ol class="kroki__grid">
+
+          <li id="proces-analiza" class="krok reveal">
+            <span class="krok__num">1</span>
+            <h2 class="krok__title">Analiza</h2>
+            <p>Poznajemy Twoją działalność, ofertę i cel strony — kogo trenujesz i kogo chcesz przyciągnąć.</p>
+          </li>
+
+          <li id="proces-struktura" class="krok reveal">
+            <span class="krok__num">2</span>
+            <h2 class="krok__title">Struktura</h2>
+            <p>Układamy sekcje, argumenty i treść tak, żeby prowadziły odwiedzającego do kontaktu.</p>
+          </li>
+
+          <li id="proces-projekt" class="krok reveal">
+            <span class="krok__num">3</span>
+            <h2 class="krok__title">Projekt</h2>
+            <p>Przygotowujemy wygląd zgodny z Twoją marką — kolory, typografia, układ, zdjęcia.</p>
+          </li>
+
+          <li id="proces-development" class="krok reveal">
+            <span class="krok__num">4</span>
+            <h2 class="krok__title">Development</h2>
+            <p>Budujemy stronę, podłączamy formularz kontaktowy oraz potrzebne integracje.</p>
+          </li>
+
+          <li id="proces-testy" class="krok reveal">
+            <span class="krok__num">5</span>
+            <h2 class="krok__title">Testy</h2>
+            <p>Sprawdzamy działanie na telefonach, tabletach i komputerach oraz zgodność formularza z RODO.</p>
+          </li>
+
+          <li id="proces-wdrozenie" class="krok reveal">
+            <span class="krok__num">6</span>
+            <h2 class="krok__title">Wdrożenie</h2>
+            <p>Publikujemy stronę pod Twoją domeną i przekazujemy dostępy oraz krótką instrukcję obsługi.</p>
+          </li>
+
+        </ol>
+
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <p class="footer__link container">
+      <a href="proces.html">Proces tworzenia strony</a>
+    </p>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

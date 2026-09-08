@@ -23,19 +23,24 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
 2. Hero — „Strony internetowe dla trenerów personalnych” + podtytuł + CTA „Umów konsultację”
 3. O nas — doświadczenie w stronach dla branży fitness (id `#o-nas`, klasa `.o-nas`)
 4. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
-5. Proces (`#proces`) — „Proces tworzenia strony”, 6 etapów (Analiza / Struktura /
-   Projekt / Development / Testy / Wdrożenie) wg wzoru leadpage.pl/strony-internetowe/;
-   każdy etap ma `id` (`#proces-analiza` …), na górze lista odnośników `.proces__nav`,
-   pod spodem CTA „Umów bezpłatną konsultację”. Reużywa `.kroki__grid` / `.krok`.
-6. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail (placeholder) i
+5. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail (placeholder) i
    telefon **535 721 592** (`tel:+48535721592`)
-7. FAQ — akordeon `<details>`/`<summary>` (bez JS) + dodatkowy CTA „Umów konsultację” → `kontakt.html`
+6. FAQ — akordeon `<details>`/`<summary>` (bez JS) + dodatkowy CTA „Umów konsultację” → `kontakt.html`
+7. Footer — link **„Proces tworzenia strony”** (`.footer__link`) → `proces.html`,
+   pod nim logo + copyright. Ten sam footer na wszystkich stronach.
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
 osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,
 opis wizji strony (textarea) + klauzula RODO (rozwijana) + zgoda wymagana
 + zgoda marketingowa opcjonalna. Wszystkie CTA „Umów konsultację” (nav + hero
 + sekcja kontakt na index) prowadzą tutaj.
+
+**`proces.html`** — podstrona „Proces tworzenia strony” (wzór:
+leadpage.pl/strony-internetowe/). Kompaktowy hero + 6 etapów (Analiza / Struktura /
+Projekt / Development / Testy / Wdrożenie), każdy z `id` (`#proces-analiza` …),
+na górze lista odnośników `.proces__nav`, pod spodem link „Wróć na stronę główną”.
+**Bez przycisków CTA.** Reużywa `.kroki__grid` / `.krok`. Wejście: link w stopce
+oraz „Proces” w nav (obie prowadzą do `proces.html`).
 
 ## Paleta — motyw ciemny
 Tło całej strony: pionowy gradient **czerń → żółć** (`--page-grad` na `body`,
