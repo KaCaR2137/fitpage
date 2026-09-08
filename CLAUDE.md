@@ -37,10 +37,10 @@ opis wizji strony (textarea) + klauzula RODO (rozwijana) + zgoda wymagana
 
 **`proces.html`** — podstrona „Proces tworzenia strony” (wzór:
 leadpage.pl/strony-internetowe/). Kompaktowy hero + 6 etapów (Analiza / Struktura /
-Projekt / Development / Testy / Wdrożenie), każdy z `id` (`#proces-analiza` …),
-na górze lista odnośników `.proces__nav`, pod spodem link „Wróć na stronę główną”.
-**Bez przycisków CTA.** Reużywa `.kroki__grid` / `.krok`. Wejście: link w stopce
-oraz „Proces” w nav (obie prowadzą do `proces.html`).
+Projekt / Development / Testy / Wdrożenie) w `.kroki__grid` / `.krok`. Każdy etap
+ma krótki opis + rozwijane `<details class="krok__more">` („Więcej”) z dodatkowymi
+informacjami. **Bez przycisków CTA i bez listy odnośników** — tylko link „Wróć na
+stronę główną”. Wejście: link w stopce oraz „Proces” w nav (obie → `proces.html`).
 
 ## Paleta — motyw ciemny
 Tło całej strony: pionowy gradient **czerń → żółć** (`--page-grad` na `body`,

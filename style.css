@@ -241,6 +241,7 @@ a { color: inherit; }
   display: grid;
   gap: 24px;
   grid-template-columns: 1fr;
+  align-items: start;          /* rozwinięty krok rośnie, nie rozciąga sąsiadów */
 }
 .krok {
   background: var(--bg);
@@ -261,38 +262,41 @@ a { color: inherit; }
   font-weight: 700;
 }
 .krok__title { font-size: 1.1rem; margin-bottom: 0.3em; }
-.krok p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.krok > p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
-/* podświetlenie etapu, do którego prowadzi odnośnik */
 .krok:target {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
 }
 
-/* --- sekcja Proces (podstrona proces.html) --- */
-.proces__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* --- rozwijane „Więcej” w każdym kroku --- */
+.krok__more { margin-top: 14px; }
+.krok__more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
   list-style: none;
-  margin: 0 0 28px;
-  padding: 0;
-}
-.proces__nav a {
-  display: inline-block;
-  padding: 7px 12px;
   font-size: 0.82rem;
   font-weight: 600;
-  text-decoration: none;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease);
+  color: var(--accent-strong);
 }
-.proces__nav a:hover {
-  border-color: var(--accent);
-  background: rgba(245, 197, 24, 0.12);
+.krok__more > summary::-webkit-details-marker { display: none; }
+.krok__more > summary::after {
+  content: "+";
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.krok__more[open] > summary::after { content: "\2013"; } /* – */
+.krok__more-body { margin-top: 10px; }
+.krok__more-body p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.krok__more[open] .krok__more-body { animation: krok-more-in 0.25s var(--ease); }
+@keyframes krok-more-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .krok__more[open] .krok__more-body { animation: none; }
 }
 
 /* ============================== FORMULARZ ============================== */
