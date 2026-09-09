@@ -21,7 +21,11 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
 1. Nav — logo `FitPage` + linki do sekcji + CTA „Umów konsultację” → `kontakt.html`
    (sticky, menu mobilne < 700px)
 2. Hero — „Strony internetowe dla trenerów personalnych” + podtytuł + CTA „Umów konsultację”
-3. O nas — doświadczenie w stronach dla branży fitness (id `#o-nas`, klasa `.o-nas`)
+3. O nas — tekst + grafika `mockup1.png` (telefon z ekranem strony) obok, po prawej.
+   Układ `.o-nas__grid` (flex): mobile = kolumna (telefon pod tekstem, max 220px),
+   od 900px = wiersz tekst | telefon (max 250px). Poświata w kolorze akcentu pod
+   telefonem (`.o-nas__visual::before`). id `#o-nas`, klasa `.o-nas`.
+   TODO: `mockup1.png` waży ~2,3 MB (1857×3096) — skompresować / zmniejszyć do ~600px szer.
 4. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
 5. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail (placeholder) i
    telefon **535 721 592** (`tel:+48535721592`)

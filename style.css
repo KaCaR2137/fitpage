@@ -205,6 +205,41 @@ a { color: inherit; }
 .o-nas p { max-width: 680px; color: var(--muted); }
 .o-nas strong { color: var(--text); }
 
+/* układ: tekst + telefon obok (mobile-first: kolumna) */
+.o-nas__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.o-nas__text { min-width: 0; }
+.o-nas__text p:last-child { margin-bottom: 0; }
+
+.o-nas__visual {
+  position: relative;
+  margin: 0;
+  flex-shrink: 0;
+  max-width: 220px;            /* rozmiar telefonu na mobile */
+  width: 100%;
+}
+/* ciepła poświata pod telefonem — spójna z gradientem strony */
+.o-nas__visual::before {
+  content: "";
+  position: absolute;
+  inset: -12% -24%;
+  background: radial-gradient(closest-side, rgba(245, 197, 24, 0.16), transparent 72%);
+  z-index: 0;
+  pointer-events: none;
+}
+.o-nas__visual img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 22px 46px rgba(0, 0, 0, 0.5));
+}
+
 /* ============================== PORTFOLIO ============================== */
 .portfolio__grid {
   display: grid;
@@ -611,4 +646,13 @@ a { color: inherit; }
 @media (min-width: 900px) {
   .hero:not(.hero--compact) { padding: 120px 20px 130px; }
   .hero--compact { padding: 96px 20px 76px; }
+
+  /* O nas: tekst z lewej, telefon z prawej */
+  .o-nas__grid {
+    flex-direction: row;
+    align-items: center;
+    gap: 52px;
+  }
+  .o-nas__text { flex: 1 1 auto; }
+  .o-nas__visual { max-width: 250px; }
 }
