@@ -25,7 +25,8 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
    Układ `.o-nas__grid` (flex): mobile = kolumna (telefon pod tekstem, max 220px),
    od 900px = wiersz tekst | telefon (max 250px). Poświata w kolorze akcentu pod
    telefonem (`.o-nas__visual::before`). id `#o-nas`, klasa `.o-nas`.
-   TODO: `mockup1.png` waży ~2,3 MB (1857×3096) — skompresować / zmniejszyć do ~600px szer.
+   `mockup1.png` zmniejszony do 500×833 (~307 KB, alpha zachowana) — oryginał
+   1857×3096 (~2,3 MB) w kopii poza repo. `<img>` ma `width/height` 500×833, bez `loading="lazy"`.
 4. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
 5. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail (placeholder) i
    telefon **535 721 592** (`tel:+48535721592`)
