@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-09T00:00:00Z",
+  "title": "Design System: FitPage",
+  "extensions": {
+    "colorMeta": {
+      "stadium-amber": {
+        "role": "primary",
+        "displayName": "Stadium Amber",
+        "canonical": "#f5c518",
+        "tonalRamp": ["#241d00", "#3d3200", "#5c4b00", "#806800", "#a98a00", "#d0aa00", "#f5c518", "#ffe88f"]
+      },
+      "stadium-amber-bright": {
+        "role": "primary",
+        "displayName": "Stadium Amber Bright",
+        "canonical": "#ffd23f",
+        "tonalRamp": ["#2a2200", "#463900", "#665200", "#8c7100", "#b89400", "#e0b520", "#ffd23f", "#ffe9a3"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1a1a1a",
+        "tonalRamp": ["#0a0a0a", "#1a1a1a", "#2b2b2b", "#3d3d3d", "#525252", "#6b6b6b", "#8a8a8a", "#adadad"]
+      },
+      "near-black": {
+        "role": "neutral",
+        "displayName": "Near Black",
+        "canonical": "#0a0a0a",
+        "tonalRamp": ["#000000", "#0a0a0a", "#161616", "#242424", "#373737", "#4f4f4f", "#6e6e6e", "#909090"]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Text Primary",
+        "canonical": "#f2f2f2",
+        "tonalRamp": ["#1a1a1a", "#2e2e2e", "#474747", "#666666", "#8a8a8a", "#b0b0b0", "#d4d4d4", "#f2f2f2"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Text Muted",
+        "canonical": "#c4c4c4",
+        "tonalRamp": ["#1c1c1c", "#313131", "#4a4a4a", "#676767", "#888888", "#a5a5a5", "#c4c4c4", "#e4e4e4"]
+      },
+      "panel-glass": {
+        "role": "neutral",
+        "displayName": "Panel Glass",
+        "canonical": "rgba(16, 16, 16, 0.70)",
+        "note": "Translucent charcoal over a 3px backdrop blur; the page gradient shows through.",
+        "tonalRamp": ["#0a0a0a", "#101010", "#1c1c1c", "#2c2c2c", "#3f3f3f", "#575757", "#767676", "#989898"]
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Error Red",
+        "canonical": "#d64545",
+        "note": "State color only — invalid inputs and error status. Never an accent.",
+        "tonalRamp": ["#2b0e0e", "#471717", "#682121", "#8c2d2d", "#b03a3a", "#d64545", "#e57272", "#f2a9a9"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only — one per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles — one per section." },
+      "title": { "displayName": "Title", "purpose": "Card titles, step titles, accordion summaries." },
+      "body": { "displayName": "Body", "purpose": "Running copy, ~680px max width, Text Muted with Text Primary emphasis." },
+      "label": { "displayName": "Label / Micro", "purpose": "Field labels (600), hints and captions (400 / 0.8rem)." }
+    },
+    "shadows": [
+      { "name": "card-rest", "value": "0 14px 40px rgba(0, 0, 0, 0.45)", "purpose": "The only resting shadow. Portfolio cards, to anchor them on the gradient." },
+      { "name": "button-lift", "value": "0 12px 28px rgba(245, 197, 24, 0.35)", "purpose": "Amber-tinted rise on primary button :hover, paired with translateY(-2px)." },
+      { "name": "phone-drop", "value": "drop-shadow(0 22px 46px rgba(0, 0, 0, 0.5))", "purpose": "Grounds the floating phone mockup in 'O nas'." },
+      { "name": "step-target-ring", "value": "0 0 0 1px #f5c518", "purpose": "Amber ring on a :target process step linked from the nav." },
+      { "name": "focus-ring", "value": "outline: 2px solid #f5c518; outline-offset: 1px", "purpose": "Keyboard focus on every interactive element (outline, not box-shadow)." }
+    ],
+    "motion": [
+      { "name": "ease-glide", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for every transition and keyframe animation (the --ease token)." },
+      { "name": "micro", "value": "0.15s\u20130.2s", "purpose": "Nav link opacity, card-link gap, checkbox box transitions." },
+      { "name": "reveal", "value": "0.6s opacity + translateY(24px\u21920), 90ms stagger per .reveal sibling", "purpose": "Shared IntersectionObserver scroll-in for content blocks." },
+      { "name": "phone-reveal", "value": "0.8s\u20131s", "purpose": "The longer glide on the 'O nas' phone figure as it slides in from lower-right." },
+      { "name": "ambient-loop", "value": "4s ease-in-out infinite", "purpose": "phone-float (img) and phone-glow (::before) idle loops, in sync." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "480px" },
+      { "name": "md", "value": "700px" },
+      { "name": "lg", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single next action on a screen. Full pill, amber fill, lifts and glows on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Um\u00f3w konsultacj\u0119</a>",
+      "css": ".ds-btn-primary { display: inline-block; background: #f5c518; color: #1a1a1a; font: inherit; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 0; border-radius: 999px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.18s cubic-bezier(0.22,1,0.36,1), background-color 0.18s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #ffd23f; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(245,197,24,0.35); } .ds-btn-primary:focus-visible { outline: 2px solid #f5c518; outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { .ds-btn-primary { transition: none; } }"
+    },
+    {
+      "name": "Nav CTA",
+      "kind": "nav",
+      "refersTo": "nav-cta",
+      "description": "Persistent 'Um\u00f3w konsultacj\u0119' pill in the header \u2014 smaller than the primary button, always full opacity.",
+      "html": "<a class=\"ds-nav-cta\" href=\"#\">Um\u00f3w konsultacj\u0119</a>",
+      "css": ".ds-nav-cta { display: inline-block; padding: 9px 18px; border-radius: 999px; background: #f5c518; color: #1a1a1a; font: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; } .ds-nav-cta:hover { background: #ffd23f; } .ds-nav-cta:focus-visible { outline: 2px solid #f5c518; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Brief-form field on a dark glass panel. Faint fill, hairline border, amber focus outline.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">E-mail</span><input class=\"ds-input\" type=\"email\" autocomplete=\"email\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-weight: 600; font-size: 0.9rem; color: #f2f2f2; } .ds-input { width: 100%; padding: 12px 14px; font: inherit; color: #f2f2f2; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; } .ds-input:focus { outline: 2px solid #f5c518; outline-offset: 1px; border-color: transparent; } .ds-input.is-invalid { border-color: #d64545; }"
+    },
+    {
+      "name": "Consent Checkbox",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "RODO consent row \u2014 native checkbox hidden but focusable; a drawn 22px box with an SVG tick that scales in on check.",
+      "html": "<label class=\"ds-consent\"><input type=\"checkbox\" checked><span class=\"ds-consent-box\" aria-hidden=\"true\"></span><span class=\"ds-consent-text\">Wyra\u017cam zgod\u0119 na przetwarzanie moich danych w celu obs\u0142ugi zapytania.</span></label>",
+      "css": ".ds-consent { position: relative; display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; font-size: 0.9rem; line-height: 1.5; color: #c4c4c4; cursor: pointer; } .ds-consent > input { position: absolute; top: 2px; left: 0; width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; } .ds-consent-box { grid-column: 1; width: 22px; height: 22px; margin-top: 2px; border: 2px solid rgba(255,255,255,0.14); border-radius: 6px; background-color: rgba(255,255,255,0.04); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: center; background-size: 0 0; transition: background-color 0.18s cubic-bezier(0.22,1,0.36,1), border-color 0.18s cubic-bezier(0.22,1,0.36,1), background-size 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-consent-text { grid-column: 2; } .ds-consent:hover .ds-consent-box { border-color: #f5c518; } .ds-consent > input:focus-visible ~ .ds-consent-box { outline: 2px solid #f5c518; outline-offset: 2px; } .ds-consent > input:checked ~ .ds-consent-box { background-color: #f5c518; border-color: #f5c518; background-size: 14px 14px; } .ds-consent:has(> input:checked) .ds-consent-text { color: #f2f2f2; } @media (prefers-reduced-motion: reduce) { .ds-consent-box { transition: none; } }"
+    },
+    {
+      "name": "Portfolio Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A single delivered site. The only surface with a resting shadow. Amber link with a widening gap on hover.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Marta Dominikowska \u2014 trener personalny</h3><p class=\"ds-card-text\">Strona wizyt\u00f3wkowa: prezentacja oferty, sekcja \u201eo mnie\u201d oparta na osobistej historii, formularz kontaktowy zgodny z RODO.</p><a class=\"ds-card-link\" href=\"#\">Zobacz realizacj\u0119 <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a></div></article>",
+      "css": ".ds-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; box-shadow: 0 14px 40px rgba(0,0,0,0.45); overflow: hidden; } .ds-card-body { padding: 24px; } .ds-card-title { font-size: 1.15rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #f2f2f2; } .ds-card-text { color: #c4c4c4; font-size: 0.95rem; margin: 0 0 1em; } .ds-card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; color: #ffd23f; transition: gap 0.18s cubic-bezier(0.22,1,0.36,1); } .ds-card-link:hover { gap: 12px; } .ds-card-link svg { width: 16px; height: 16px; }"
+    },
+    {
+      "name": "Process Step",
+      "kind": "card",
+      "refersTo": "step-card",
+      "description": "One of six numbered stages on the process page. Circular amber badge; expandable 'Wi\u0119cej' detail; amber ring when linked as :target.",
+      "html": "<li class=\"ds-step\"><span class=\"ds-step-num\">1</span><h2 class=\"ds-step-title\">Analiza</h2><p class=\"ds-step-lead\">Poznajemy Twoj\u0105 dzia\u0142alno\u015b\u0107, ofert\u0119 i cel strony \u2014 kogo trenujesz i kogo chcesz przyci\u0105gn\u0105\u0107.</p><details class=\"ds-step-more\"><summary>Wi\u0119cej</summary><div class=\"ds-step-more-body\"><p>Przegl\u0105damy Twoje obecne kana\u0142y i konkurencj\u0119 w niszy. Ustalamy jedn\u0105 g\u0142\u00f3wn\u0105 akcj\u0119, do kt\u00f3rej ma prowadzi\u0107 strona.</p></div></details></li>",
+      "css": ".ds-step { list-style: none; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 28px 24px; } .ds-step:target { border-color: #f5c518; box-shadow: 0 0 0 1px #f5c518; } .ds-step-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: 12px; border-radius: 50%; background: #f5c518; color: #1a1a1a; font-weight: 700; } .ds-step-title { font-size: 1.1rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.3em; color: #f2f2f2; } .ds-step-lead { margin: 0; color: #c4c4c4; font-size: 0.95rem; } .ds-step-more { margin-top: 14px; } .ds-step-more > summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none; font-size: 0.82rem; font-weight: 600; color: #ffd23f; } .ds-step-more > summary::-webkit-details-marker { display: none; } .ds-step-more > summary::after { content: \"+\"; font-size: 1.1rem; line-height: 1; } .ds-step-more[open] > summary::after { content: \"\\2013\"; } .ds-step-more-body { margin-top: 10px; } .ds-step-more-body p { margin: 0; color: #c4c4c4; font-size: 0.9rem; }"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "JS-free accordion built on <details>/<summary>. Amber +/\u2013 marker, hairline card, faint fill.",
+      "html": "<details class=\"ds-faq\"><summary>Ile kosztuje strona?<span class=\"ds-faq-mark\" aria-hidden=\"true\"></span></summary><p>Wycena jest indywidualna \u2014 zale\u017cy od zakresu. Orientacyjne wide\u0142ki podajemy po konsultacji i wype\u0142nieniu briefu.</p></details>",
+      "css": ".ds-faq { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 16px 18px; } .ds-faq > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; font-weight: 600; list-style: none; color: #f2f2f2; } .ds-faq > summary::-webkit-details-marker { display: none; } .ds-faq > summary::after { content: \"+\"; flex-shrink: 0; font-size: 1.35rem; line-height: 1; color: #ffd23f; } .ds-faq[open] > summary::after { content: \"\\2013\"; } .ds-faq p { margin: 12px 0 0; color: #c4c4c4; font-size: 0.95rem; }"
+    },
+    {
+      "name": "Floating Phone",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The 'O nas' showpiece and the only place motion is decorative rather than functional. Three independent layers: the <figure> carries the scroll-reveal (a 1s glide in from the lower-right with a 3.5deg rotate + 0.92 scale); the device runs a 4s 'float' loop (translateY -14px + -1.4deg); the ::before amber glow pulses on the same 4s beat (opacity 0.7->1, scale 1->1.07). Shown here in its resting (revealed) state with the idle loops live. Production swaps the CSS device for mockup1.png (500x833); the screen fill reuses the page's black->gold gradient on purpose.",
+      "html": "<figure class=\"ds-phone\"><div class=\"ds-phone__device\"><div class=\"ds-phone__screen\"></div></div></figure>",
+      "css": ".ds-phone { position: relative; width: 220px; max-width: 100%; margin: 40px auto; } .ds-phone::before { content: \"\"; position: absolute; inset: -12% -24%; background: radial-gradient(closest-side, rgba(245,197,24,0.16), transparent 72%); z-index: 0; pointer-events: none; animation: ds-phone-glow 4s ease-in-out 0.9s infinite; } .ds-phone__device { position: relative; z-index: 1; aspect-ratio: 500 / 833; border-radius: 30px; background: #0c0c0c; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 22px 46px rgba(0,0,0,0.5); overflow: hidden; animation: ds-phone-float 4s ease-in-out 0.9s infinite; } .ds-phone__device::after { content: \"\"; position: absolute; top: 10px; left: 50%; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: rgba(255,255,255,0.18); } .ds-phone__screen { position: absolute; inset: 22px 10px 10px; border-radius: 20px; background: linear-gradient(180deg, #000 0%, #1c1700 55%, #b58f00 88%, #f5c518 100%); } @keyframes ds-phone-float { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(-1.4deg); } 100% { transform: translateY(0) rotate(0deg); } } @keyframes ds-phone-glow { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.07); } } @media (prefers-reduced-motion: reduce) { .ds-phone::before, .ds-phone__device { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Late-Night Session",
+    "overview": "FitPage looks like a training studio after hours: the room is black, and a single warm lamp picks out only what matters. That lamp is Stadium Amber (#f5c518) \u2014 floodlight yellow, light rather than paint \u2014 and it touches almost nothing: the button to press, the link to follow, the number of the step you are on, the glow under the phone. Everything else is dark glass. The register is focused and disciplined, never loud \u2014 discipline shown, not shouted.\n\nThe page itself carries the only real drama: one vertical gradient from pure black at the top, through ember, to full gold at the very bottom, spanning the whole document rather than any single section. Content rides above it on translucent charcoal panels (rgba(16,16,16,0.70) plus a 3px blur), so the gradient shows through every gutter and the page reads as one continuous surface with panels floating on it. Depth is mostly this glass layering; shadows stay off resting surfaces and appear when something lifts \u2014 a button on hover, the phone mockup drifting in 'O nas.'\n\nType is deliberately un-styled: the native system font stack, no web fonts, hierarchy built from weight (700\u2013800) and tight tracking. The restraint is the point \u2014 the interface should feel engineered and calm so the trainer's own words and image are the loudest thing on screen.",
+    "keyCharacteristics": [
+      "One accent (Stadium Amber), on roughly 10% or less of any screen.",
+      "A single document-length black\u2192gold gradient; sections never repaint it.",
+      "Translucent charcoal glass panels with hairline borders as the depth model.",
+      "Full 999px pills for actions; a 6 / 10 / 14 / 20px radius ladder for everything else.",
+      "System-font typography; weight and tracking do the work.",
+      "Dark-only; no light theme exists or is planned.",
+      "Motion gated behind .js and prefers-reduced-motion, always with a static fallback."
+    ],
+    "rules": [
+      { "name": "The One Lamp Rule", "body": "Stadium Amber appears on ~10% or less of any screen. It is for the single next action, links, focus, step numbers, and the phone glow \u2014 never a large fill and never a run of text. Its scarcity is the signal.", "section": "colors" },
+      { "name": "The Single Gradient Rule", "body": "The black\u2192gold gradient (linear-gradient(180deg, #000 0%, #050505 30%, #1c1700 50%, #4a3d00 70%, #b58f00 87%, #f5c518 100%)) is painted once, on body, across the full document height. Sections do not get their own background; they float translucent panels so the gradient shows through the gutters. Never repaint a section opaque (the footer is the sole deliberate exception).", "section": "colors" },
+      { "name": "The System-Font Rule", "body": "Do not load a web font to 'improve' the type. Hierarchy is built from weight and tracking on the system stack; a custom face would fight the engineered, get-out-of-the-way character of the system.", "section": "typography" },
+      { "name": "The Lift-Means-Interactive Rule", "body": "With the single exception of the portfolio card's resting shadow, a shadow means the element is hovered, targeted, or the animated phone. Resting surfaces read as flat glass.", "section": "elevation" },
+      { "name": "The Full Pill Rule", "body": "Action elements (buttons, nav CTA) are full 999px pills. Everything else uses the 6 / 10 / 14 / 20px ladder. Do not mix radii within one component and do not give an action a boxy radius.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do let the page gradient show through \u2014 keep section gutters open and panels translucent (rgba(16,16,16,0.70) + blur(3px)).",
+      "Do keep Stadium Amber rare: the next action, links, focus rings, step numbers, the phone glow. Running copy stays Text Muted / Text Primary.",
+      "Do use full 999px pills for actions and the 6 / 10 / 14 / 20px ladder for every other corner.",
+      "Do gate every animation behind the .js class and prefers-reduced-motion, with the content fully visible and usable when both are off.",
+      "Do put a 2px Stadium Amber focus outline (outline-offset: 1\u20132px) on every interactive element.",
+      "Do draw custom controls (checkbox, <details> markers, icons) from scratch in the dark palette instead of styling native chrome.",
+      "Do define shapes with the hairline border \u2014 fills are almost invisible on their own."
+    ],
+    "donts": [
+      "Don't ship the template look: no stock hero photo, no grid of identical rounded cards, no gradient-filled buttons. This is the one confirmed anti-reference.",
+      "Don't give a section its own opaque background or a hard edge \u2014 it breaks the single-gradient illusion. (The footer, #0a0a0a, is the sole exception.)",
+      "Don't use amber for large fills or runs of text; its scarcity is the point.",
+      "Don't add a second accent hue. Amber + neutral only; Error red (#d64545) is a state color, not an accent.",
+      "Don't introduce or assume a light theme. The system is dark-only \u2014 html is #000 and only dark tokens exist.",
+      "Don't load a web font to 'fix' the typography; weight and tracking carry the hierarchy.",
+      "Don't let a shadow sit on a resting surface (portfolio card excepted) \u2014 shadows mean hover, :target, or the animated phone."
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-09T18:07:58.443Z",
+        "reason": "author decided: amber-as-light-source is the committed visual world (DESIGN.md North Star 'The Late-Night Session', 'The One Lamp Rule'). The two glows in this file - the phone .o-nas__visual::before radial glow (documented signature component) and the .btn--primary:hover amber lift shadow (has 12px offset + 28px blur, hover-only) - are pre-existing, documented, and outside the scope of this headline-text edit."
+      }
+    ]
+  }
+}
