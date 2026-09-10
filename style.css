@@ -22,11 +22,11 @@
 
   /* tekst (jasny — motyw ciemny) */
   --text:        #f2f2f2;
-  --muted:       #c4c4c4;
+  --muted:       #d6d6d6;   /* podniesione z #c4c4c4 — kontrast AA przez półprzezroczysty panel na ciepłej dolnej części gradientu */
   --text-invert: #f6f6f6;
 
   /* powierzchnie — półprzezroczyste, gradient tła prześwituje */
-  --panel:  rgba(16, 16, 16, 0.70);    /* panel sekcji */
+  --panel:  rgba(16, 16, 16, 0.80);    /* panel sekcji — krycie podniesione z .70, żeby gradient nie rozjaśniał tekstu poniżej progu AA */
   --bg:     rgba(255, 255, 255, 0.05); /* karty wewnątrz paneli */
   --bg-alt: rgba(255, 255, 255, 0.05);
   --border: rgba(255, 255, 255, 0.14);

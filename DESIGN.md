@@ -9,8 +9,8 @@ colors:
   near-black: "#0a0a0a"
   text-primary: "#f2f2f2"
   text-invert: "#f6f6f6"
-  text-muted: "#c4c4c4"
-  panel-glass: "rgba(16, 16, 16, 0.70)"
+  text-muted: "#d6d6d6"
+  panel-glass: "rgba(16, 16, 16, 0.80)"
   surface-card: "rgba(255, 255, 255, 0.05)"
   hairline: "rgba(255, 255, 255, 0.14)"
   hairline-faint: "rgba(255, 255, 255, 0.08)"
@@ -112,7 +112,7 @@ disciplined, never loud — discipline shown, not shouted.
 The page itself carries the only real drama: one vertical gradient from pure black
 at the top, through ember, to full gold at the very bottom, spanning the whole
 document rather than any single section. Content rides above it on translucent
-charcoal panels (`rgba(16,16,16,0.70)` plus a 3px blur), so the gradient shows
+charcoal panels (`rgba(16,16,16,0.80)` plus a 3px blur), so the gradient shows
 through every gutter and the page reads as one continuous surface with panels
 floating on it. Depth is mostly this glass layering; shadows stay off resting
 surfaces and appear when something lifts — a button on hover, the phone mockup
@@ -149,8 +149,9 @@ document-wide black→gold gradient behind everything.
 - **Pure Black** (`#000000`): the `html` background and the top of the page
   gradient. The floor the whole system sits on.
 - **Near Black** (`#0a0a0a`): the one opaque surface — the footer.
-- **Panel Glass** (`rgba(16,16,16,0.70)`): every section's content panel, over a
+- **Panel Glass** (`rgba(16,16,16,0.80)`): every section's content panel, over a
   3px backdrop blur. Not a color so much as a tint the gradient shows through.
+  Raised from `0.70` so body text over the warm lower gradient clears WCAG AA.
 - **Surface Card** (`rgba(255,255,255,0.05)`): cards, step cards, inputs, the RODO
   box, FAQ items — the faint lift above a panel.
 - **Hairline** (`rgba(255,255,255,0.14)`) / **Hairline Faint**
@@ -161,8 +162,9 @@ document-wide black→gold gradient behind everything.
   color for `<strong>` inside muted copy.
 - **Text Invert** (`#f6f6f6`): hero and nav text (functionally identical to Text
   Primary; kept as a separate token for hero/nav context).
-- **Text Muted** (`#c4c4c4`): body copy inside sections, card and step text, form
-  hints, FAQ answers — most running prose.
+- **Text Muted** (`#d6d6d6`): body copy inside sections, card and step text, form
+  hints, FAQ answers — most running prose. Lifted from `#c4c4c4` to clear WCAG AA
+  (4.5:1) through the translucent panel over the warm lower part of the gradient.
 
 ### State
 - **Error** (`#d64545`): invalid input borders after a submit attempt and the
@@ -344,7 +346,10 @@ motion is decorative rather than functional. Three independent layers:
 
 ### Do:
 - **Do** let the page gradient show through — keep section gutters open and panels
-  translucent (`rgba(16,16,16,0.70)` + `blur(3px)`).
+  translucent (`rgba(16,16,16,0.80)` + `blur(3px)`).
+- **Do** verify body and secondary text clears 4.5:1 *through* the panel at every
+  scroll position — check at the FAQ and the footer approach, where the gradient
+  is warmest behind the glass.
 - **Do** keep Stadium Amber rare: the next action, links, focus rings, step
   numbers, the phone glow. Running copy stays Text Muted / Text Primary.
 - **Do** use full `999px` pills for actions and the `6 / 10 / 14 / 20px` ladder
