@@ -17,9 +17,23 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
 `kontakt.html`, `proces.html`, `dziekujemy.html`, `style.css`, `script.js`
 (CSS i JS współdzielone przez wszystkie strony).
 
+## Logo, favicon, splash
+`images/logo-fitpage.png` — dostarczony przez klienta, 2000×2000, kanał alfa
+zachowany, oryginalny rozmiar (~90 KB), NIE pomniejszony (użyty wprost w nav
+i splashu, skalowany przez CSS). Z niego wygenerowane (`sips`) dwa favicony:
+`images/favicon-32.png` i `images/favicon-512.png` — podpięte na wszystkich
+5 stronach (`<link rel="icon">` ×2 + `apple-touch-icon`).
+
+Splash: `.splash` — pełnoekranowa nakładka z logo (96px), pierwsza rzecz w
+`<body>` na każdej stronie, odtwarza się przy każdym wejściu (nie zapamiętuje
+sesji). Czysty CSS, `animation-fill-mode: forwards` — nie wymaga JS do
+zniknięcia, więc działa też bez niego. `prefers-reduced-motion`: nakładka
+w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do treści.
+
 ## Strony
 **`index.html`** — sekcje w kolejności:
-1. Nav — logo `FitPage` + linki do sekcji + CTA „Umów konsultację” → `kontakt.html`
+1. Nav — logo-obrazek `images/logo-fitpage.png` (`.nav__logo-img`, 36px,
+   `alt="FitPage"`) + linki do sekcji + CTA „Umów konsultację” → `kontakt.html`
    (sticky, menu mobilne < 700px)
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami

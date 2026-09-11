@@ -206,8 +206,11 @@ The type should feel engineered, not expressive.
   -0.02em): the hero headline only — one per page.
 - **Headline** (700, `1.6rem`, rising to `2rem` at ≥700px, line-height 1.2,
   tracking -0.02em): section titles (`.section__title`). One per section.
-- **Logo** (800, `1.25rem`, tracking -0.03em): "Fit" in Bottle Green, "Page" in
-  Text Primary. Repeated in the footer as a plain 800-weight wordmark in Ivory.
+- **Logo:** in the nav, the wordmark is now the image logo (`images/logo-fitpage.png`,
+  a rounded-square "FP" badge, `36px` tall, alt text "FitPage"), not styled text.
+  The footer keeps a plain 800-weight text wordmark ("FitPage", tracking -0.03em)
+  in Ivory — the two don't need to match, since one is a mark and the other a
+  small label.
 - **Title** (600–700, `1.1rem`–`1.15rem`, line-height 1.2): card titles, step
   titles, FAQ and "Więcej" summaries.
 - **Body** (400, `1rem`, line-height 1.65): running copy in Text Muted, with
@@ -352,6 +355,8 @@ component and do not give an action a boxy radius.
   Animations drop under reduced motion.
 
 ### Navigation
+- **Logo:** `images/logo-fitpage.png` (rounded-square "FP" mark), `36px` tall,
+  `height: auto` width, `alt="FitPage"` — the accessible name, not decorative.
 - **Style:** sticky, `64px` min-height, Nav Scrim (canvas-tinted) + `blur(8px)`,
   hairline-faint bottom border.
 - **Links:** Text Primary at `0.85` opacity → `1` on hover, `0.95rem`. The CTA is
@@ -402,6 +407,17 @@ motion is decorative rather than functional. Three independent layers:
   (opacity `0.7 → 1`, scale `1 → 1.07`) — a quiet pulse now, not a glow.
 - Grounded by `drop-shadow(0 22px 46px rgba(31,45,36,0.22))`. All three layers
   freeze static under `prefers-reduced-motion`.
+
+### Splash intro
+A full-screen overlay, first thing in `<body>` on every page, that plays once
+per page load: the logo (`images/logo-fitpage.png`, `96px`) fades and scales
+in (`0.6 → 1`), grows a little further (`→ 1.15`), then fades and scales out
+(`→ 1.4`) as the overlay itself becomes invisible and non-interactive
+(`visibility: hidden`, `pointer-events: none`) — `1.2s` total, pure CSS
+(`animation-fill-mode: forwards`), no JS required for it to disappear, so it
+degrades safely with JavaScript off. `prefers-reduced-motion` removes the
+overlay outright (`display: none`) rather than freezing it mid-animation —
+the content is instantly available, never gated behind a decorative intro.
 
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note

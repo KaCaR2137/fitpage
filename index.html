@@ -5,14 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FitPage — strony internetowe dla trenerów personalnych</title>
   <meta name="description" content="Projektujemy strony internetowe dla trenerów personalnych — czytelne, szybkie i pomagające zdobywać nowych klientów.">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash" aria-hidden="true">
+    <img src="images/logo-fitpage.png" alt="" class="splash__logo">
+  </div>
+
   <!-- ============================ NAV ============================ -->
   <header class="nav">
     <div class="nav__inner container">
-      <a href="#hero" class="nav__logo"><span>Fit</span>Page</a>
+      <a href="#hero" class="nav__logo">
+        <img src="images/logo-fitpage.png" alt="FitPage" class="nav__logo-img">
+      </a>
 
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
         <span></span><span></span><span></span>
