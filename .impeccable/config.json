@@ -11,6 +11,33 @@
         ],
         "createdAt": "2026-09-09T18:07:58.443Z",
         "reason": "author decided: amber-as-light-source is the committed visual world (DESIGN.md North Star 'The Late-Night Session', 'The One Lamp Rule'). The two glows in this file - the phone .o-nas__visual::before radial glow (documented signature component) and the .btn--primary:hover amber lift shadow (has 12px offset + 28px blur, hover-only) - are pre-existing, documented, and outside the scope of this headline-text edit."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "kontakt.html"
+        ],
+        "createdAt": "2026-09-11T15:05:29.857Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned for index.html under DESIGN.md 'The One Lamp Rule' - extending to kontakt.html per audit P2 finding, not a new page-specific choice"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "proces.html"
+        ],
+        "createdAt": "2026-09-11T15:05:29.879Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned for index.html under DESIGN.md 'The One Lamp Rule' - extending to proces.html per audit P2 finding, not a new page-specific choice"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "dziekujemy.html"
+        ],
+        "createdAt": "2026-09-11T15:06:51.290Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned on index/kontakt/proces.html under DESIGN.md 'The One Lamp Rule'; new page shares the same stylesheet"
       }
     ]
   }

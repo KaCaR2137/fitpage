@@ -45,29 +45,44 @@
     <section class="section brief">
       <div class="container">
 
-        <form class="form reveal" action="#" method="post" novalidate>
+        <form class="form reveal" name="brief" method="post" data-netlify="true"
+              netlify-honeypot="bot-field" action="/dziekujemy.html" novalidate>
+
+          <input type="hidden" name="form-name" value="brief">
+          <p class="form__honeypot" aria-hidden="true">
+            <label>Nie wypełniaj tego pola
+              <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+            </label>
+          </p>
 
           <div class="form__row">
             <label for="imie-nazwisko">Imię i nazwisko</label>
-            <input type="text" id="imie-nazwisko" name="imie_nazwisko" required autocomplete="name">
+            <input type="text" id="imie-nazwisko" name="imie_nazwisko" required autocomplete="name"
+                   aria-describedby="imie-nazwisko-error">
+            <small class="form__error" id="imie-nazwisko-error" aria-live="polite"></small>
           </div>
 
           <div class="form__row">
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
+            <input type="email" id="email" name="email" required autocomplete="email"
+                   aria-describedby="email-error">
+            <small class="form__error" id="email-error" aria-live="polite"></small>
           </div>
 
           <div class="form__row">
             <label for="telefon">Numer telefonu</label>
             <input type="tel" id="telefon" name="telefon" required autocomplete="tel"
-                   inputmode="tel" placeholder="+48 000 000 000">
+                   inputmode="tel" placeholder="+48 000 000 000" aria-describedby="telefon-error">
+            <small class="form__error" id="telefon-error" aria-live="polite"></small>
           </div>
 
           <div class="form__row">
             <label for="wizja">Twoja wizja strony</label>
             <textarea id="wizja" name="wizja" rows="6" required
-              placeholder="Kogo trenujesz i dla kogo ma być strona? Co strona ma osiągać (więcej zapytań, zapisy na zajęcia, budowanie marki)? Podlinkuj strony, które Ci się podobają."></textarea>
-            <small class="form__hint">Kilka zdań w zupełności wystarczy — resztę doprecyzujemy na konsultacji.</small>
+              placeholder="Kogo trenujesz i dla kogo ma być strona? Co strona ma osiągać (więcej zapytań, zapisy na zajęcia, budowanie marki)? Podlinkuj strony, które Ci się podobają."
+              aria-describedby="wizja-hint wizja-error"></textarea>
+            <small class="form__hint" id="wizja-hint">Kilka zdań w zupełności wystarczy — resztę doprecyzujemy na konsultacji.</small>
+            <small class="form__error" id="wizja-error" aria-live="polite"></small>
           </div>
 
           <!-- ================================================================
@@ -99,10 +114,11 @@
 
             <!-- TODO: dopracować treść zgody spójnie z klauzulą RODO powyżej -->
             <label class="form__consent">
-              <input type="checkbox" name="zgoda_kontakt" required>
+              <input type="checkbox" id="zgoda-kontakt" name="zgoda_kontakt" required aria-describedby="zgoda-kontakt-error">
               <span class="form__consent-box" aria-hidden="true"></span>
               <span class="form__consent-text">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu obsługi zapytania i przygotowania oferty. <span class="req">*</span></span>
             </label>
+            <small class="form__error" id="zgoda-kontakt-error" aria-live="polite"></small>
 
             <!-- TODO: doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt) -->
             <label class="form__consent">

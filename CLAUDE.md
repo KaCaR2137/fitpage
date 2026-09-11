@@ -14,7 +14,8 @@ Sekcja „O nas”. Wyjątek: treść zgód w formularzu (mówi w nich odwiedzaj
 
 ## Stack
 Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
-`kontakt.html`, `style.css`, `script.js` (CSS i JS współdzielone przez obie strony).
+`kontakt.html`, `proces.html`, `dziekujemy.html`, `style.css`, `script.js`
+(CSS i JS współdzielone przez wszystkie strony).
 
 ## Strony
 **`index.html`** — sekcje w kolejności:
@@ -39,6 +40,18 @@ osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,
 opis wizji strony (textarea) + klauzula RODO (rozwijana) + zgoda wymagana
 + zgoda marketingowa opcjonalna. Wszystkie CTA „Umów konsultację” (nav + hero
 + sekcja kontakt na index) prowadzą tutaj.
+
+Wysyłka: **Netlify Forms** (`data-netlify=”true”`, `netlify-honeypot`, ukryty
+`form-name`). Bez JS formularz działa natywnym POST-em na
+`action=”/dziekujemy.html”`; z JS — walidacja per-pole (komunikaty +
+`aria-invalid`/`aria-describedby`) i wysyłka przez `fetch` z inline
+potwierdzeniem, bez przeładowania. Błąd wysyłki kieruje na telefon
+(535 721 592). Wymaga wdrożenia na Netlify, żeby formularz faktycznie
+zaczął cokolwiek dostarczać — do tego czasu POST-y nikną.
+
+**`dziekujemy.html`** — strona potwierdzenia po wysłaniu briefu (cel `action`
+formularza na `kontakt.html`, no-JS fallback). `<meta name=”robots” content=”noindex”>`,
+bez wpisu w nav/stopce — trafia się tam tylko po submit.
 
 **`proces.html`** — podstrona „Proces tworzenia strony” (wzór:
 leadpage.pl/strony-internetowe/). Kompaktowy hero + 6 etapów (Analiza / Struktura /
@@ -73,7 +86,9 @@ Bez JS treść jest normalnie widoczna (gate klasą `.js`). Respektuje
       **okres przechowywania** (ustalić wprost), prawa osoby, e-mail kontaktowy,
       prawo skargi do PUODO
 - [ ] Zgoda marketingowa — doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt)
-- [ ] Podłączyć wysyłkę formularza z `kontakt.html` (Formspree / Netlify Forms / backend)
+- [x] Podłączyć wysyłkę formularza z `kontakt.html` — Netlify Forms; zadziała
+      dopiero po wdrożeniu na Netlify (dopóki nie ma deployu, submit i tak nic
+      nie dostarcza)
 - [ ] `<title>` + meta description na obu stronach — sprawdzić, zero placeholderów
 - [ ] Portfolio — opisy realizacji, ewentualnie miniatury (`object-fit: cover` + tło fallback)
 - [ ] Test na 375px, test w incognito (obie strony)

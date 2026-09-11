@@ -24,6 +24,7 @@
   --text:        #f2f2f2;
   --muted:       #d6d6d6;   /* podniesione z #c4c4c4 — kontrast AA przez półprzezroczysty panel na ciepłej dolnej części gradientu */
   --text-invert: #f6f6f6;
+  --error:       #d64545;
 
   /* powierzchnie — półprzezroczyste, gradient tła prześwituje */
   --panel:  rgba(16, 16, 16, 0.80);    /* panel sekcji — krycie podniesione z .70, żeby gradient nie rozjaśniał tekstu poniżej progu AA */
@@ -106,6 +107,11 @@ a { color: inherit; }
   background: var(--accent-strong);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(245, 197, 24, 0.35);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none; /* blokuje :hover, żeby przycisk nie "ożywał" wizualnie podczas wysyłki */
 }
 
 /* ============================== NAV ============================== */
@@ -200,6 +206,53 @@ a { color: inherit; }
 /* wariant kompaktowy — nagłówek podstrony (np. kontakt.html) */
 .hero--compact { padding: 72px 20px 60px; }
 .hero--compact .hero__subtitle { margin-bottom: 0; }
+
+/* ============================== ATUTY ============================== */
+/* Pasek zaufania pod hero — bez własnego panelu, na gradiencie (jak hero/nav),
+   oddzielony włoskowatym borderem. Bursztyn punktowo: tylko pierścień ikony
+   „Bezpłatna konsultacja" jest akcentowy, reszta neutralna (--text-invert). */
+.atuty {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px 0;
+}
+.atuty__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 20px;
+}
+.atuty__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.atuty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text-invert);
+}
+.atuty__icon svg { width: 22px; height: 22px; }
+.atuty__icon--accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.atuty__text {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(246, 246, 246, 0.78);
+}
 
 /* ============================== O NAS ============================== */
 .o-nas p { max-width: 680px; color: var(--muted); }
@@ -494,7 +547,7 @@ a { color: inherit; }
 .form__consent:has(> input:checked) .form__consent-text { color: var(--text); }
 
 /* nie zaznaczona zgoda wymagana po próbie wysłania */
-.form__consent > input.is-touched:invalid ~ .form__consent-box { border-color: #d64545; }
+.form__consent > input.is-touched:invalid ~ .form__consent-box { border-color: var(--error); }
 
 @keyframes consent-pop {
   0%   { transform: scale(1); }
@@ -516,17 +569,37 @@ a { color: inherit; }
   font-weight: 600;
 }
 .form__status.is-ok  { color: var(--accent-strong); }
-.form__status.is-err { color: #d64545; }
-.form .is-touched:invalid { border-color: #d64545; }
+.form__status.is-err { color: var(--error); }
+.form .is-touched:invalid { border-color: var(--error); }
 
 .form__hint {
   font-size: 0.8rem;
   color: var(--muted);
 }
+.form__error {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--error);
+}
+.form__error:empty { display: none; }
+
 .form__required-note {
   margin: 4px 0 0;
   font-size: 0.8rem;
   color: var(--muted);
+}
+
+/* honeypot antyspam — wizualnie i w drzewie A11y niewidoczny (aria-hidden na <p>),
+   bez left:-9999px, żeby nie poszerzać obszaru przewijania strony */
+.form__honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* podstrona briefu */
@@ -680,6 +753,7 @@ a { color: inherit; }
   .section { padding: 88px 0; }
   .section__title { font-size: 2rem; }
   .kroki__grid { grid-template-columns: repeat(3, 1fr); }
+  .atuty__grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* --- >= 900px --- */
