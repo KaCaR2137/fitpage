@@ -83,6 +83,33 @@
         ],
         "createdAt": "2026-09-11T21:00:10.795Z",
         "reason": "user confirmed: explicit request for an infinite CSS translateX marquee of training-type icons above 'O nas', modeled on a named reference site's 'Dla kogo' section, with specified mechanics (duplicated list, CSS animation) and explicit prefers-reduced-motion handling — not a reflexive AI pattern"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "kontakt.html"
+        ],
+        "createdAt": "2026-09-11T21:04:17.487Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "dziekujemy.html"
+        ],
+        "createdAt": "2026-09-11T21:04:17.512Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "proces.html"
+        ],
+        "createdAt": "2026-09-11T21:06:50.540Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
       }
     ]
   }
