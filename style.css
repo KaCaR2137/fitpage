@@ -6,13 +6,18 @@
 
 /* ----------------------------- Zmienne ----------------------------- */
 :root {
-  /* tło całej strony: czerń przechodząca w żółć (pion, góra -> dół) */
+  /* tło całej strony: czerń przechodząca w żółć (pion, góra -> dół).
+     Stopnie ściśnięte tak, żeby jasna końcówka spadała na ostatnie ~4%
+     wysokości dokumentu (stopka jest kryjąca, więc tam kontrast tekstu
+     jej nie dotyczy) — reszta zostaje wystarczająco ciemna dla tekstu,
+     który teraz siedzi bezpośrednio na gradiencie, bez panelu. */
   --page-grad: linear-gradient(180deg,
       #000000 0%,
-      #050505 30%,
-      #1c1700 50%,
-      #4a3d00 70%,
-      #b58f00 87%,
+      #050505 25%,
+      #1c1700 45%,
+      #2e2400 62%,
+      #3d3000 78%,
+      #523f00 96%,
       #f5c518 100%);
 
   /* akcent — żółty */
@@ -27,8 +32,7 @@
   --error:       #d64545;
 
   /* powierzchnie — półprzezroczyste, gradient tła prześwituje */
-  --panel:  rgba(16, 16, 16, 0.80);    /* panel sekcji — krycie podniesione z .70, żeby gradient nie rozjaśniał tekstu poniżej progu AA */
-  --bg:     rgba(255, 255, 255, 0.05); /* karty wewnątrz paneli */
+  --bg:     rgba(255, 255, 255, 0.05); /* karty (portfolio, kroki, FAQ, pola formularza) */
   --bg-alt: rgba(255, 255, 255, 0.05);
   --border: rgba(255, 255, 255, 0.14);
 
@@ -71,15 +75,11 @@ a { color: inherit; }
 }
 
 /* ----------------------------- Sekcje ----------------------------- */
-/* Treść każdej sekcji siedzi na półprzezroczystym panelu, żeby była
-   czytelna niezależnie od tego, w którym miejscu gradientu tła wypada. */
+/* Bez paneli — treść siedzi bezpośrednio na gradiencie tła. Odstęp między
+   sekcjami idzie wyłącznie przez padding/margin (--section + wewnętrzny
+   padding kontenera), nie przez wizualne pudełka. */
 .section { padding: 52px 0; }
 .section > .container {
-  background: var(--panel);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
   padding-top: 40px;
   padding-bottom: 44px;
 }
@@ -208,11 +208,11 @@ a { color: inherit; }
 .hero--compact .hero__subtitle { margin-bottom: 0; }
 
 /* ============================== ATUTY ============================== */
-/* Pasek zaufania pod hero — bez własnego panelu, na gradiencie (jak hero/nav),
-   oddzielony włoskowatym borderem. Bursztyn punktowo: tylko pierścień ikony
-   „Bezpłatna konsultacja" jest akcentowy, reszta neutralna (--text-invert). */
+/* Pasek 4 atutów — bez panelu, jak wszystkie sekcje teraz. Odstęp od
+   sąsiadów przez sam padding, bez linii/obramowania. Bursztyn punktowo:
+   tylko pierścień ikony „Bezpłatna konsultacja" jest akcentowy, reszta
+   neutralna (--text-invert). */
 .atuty {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 40px 0;
 }
 .atuty__grid {

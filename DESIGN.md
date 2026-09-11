@@ -10,7 +10,6 @@ colors:
   text-primary: "#f2f2f2"
   text-invert: "#f6f6f6"
   text-muted: "#d6d6d6"
-  panel-glass: "rgba(16, 16, 16, 0.80)"
   surface-card: "rgba(255, 255, 255, 0.05)"
   hairline: "rgba(255, 255, 255, 0.14)"
   hairline-faint: "rgba(255, 255, 255, 0.08)"
@@ -51,7 +50,6 @@ rounded:
   xs: "6px"
   sm: "10px"
   md: "14px"
-  lg: "20px"
   pill: "999px"
   circle: "50%"
 spacing:
@@ -75,10 +73,6 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.pill}"
     padding: "9px 18px"
-  section-panel:
-    backgroundColor: "{colors.panel-glass}"
-    rounded: "{rounded.lg}"
-    padding: "40px 20px 44px"
   card:
     backgroundColor: "{colors.surface-card}"
     textColor: "{colors.text-muted}"
@@ -111,12 +105,12 @@ disciplined, never loud — discipline shown, not shouted.
 
 The page itself carries the only real drama: one vertical gradient from pure black
 at the top, through ember, to full gold at the very bottom, spanning the whole
-document rather than any single section. Content rides above it on translucent
-charcoal panels (`rgba(16,16,16,0.80)` plus a 3px blur), so the gradient shows
-through every gutter and the page reads as one continuous surface with panels
-floating on it. Depth is mostly this glass layering; shadows stay off resting
-surfaces and appear when something lifts — a button on hover, the phone mockup
-drifting in "O nas."
+document rather than any single section. Content sits directly on it — no card,
+no panel, nothing between the words and the light. Section rhythm comes entirely
+from padding, not boxes: the room has no furniture, just distance. Depth is
+almost entirely absent at rest; shadows appear only when something lifts — a
+button on hover, the phone mockup drifting in "O nas," a handful of small
+component cards (portfolio, steps, form fields) that keep their own faint fill.
 
 Type is deliberately un-styled: the native system font stack, no web fonts,
 hierarchy built from weight (700–800) and tight tracking. The restraint is the
@@ -125,9 +119,11 @@ and image are the loudest thing on screen.
 
 **Key Characteristics:**
 - One accent (Stadium Amber), on roughly 10% or less of any screen.
-- A single document-length black→gold gradient; sections never repaint it.
-- Translucent charcoal glass panels with hairline borders as the depth model.
-- Full 999px pills for actions; a 6 / 10 / 14 / 20px radius ladder for everything else.
+- A single document-length black→gold gradient; sections never repaint it, and
+  none of them carry a background of their own — content sits directly on it.
+- Section rhythm is padding/margin only; no card, border, or box ever separates
+  one section from the next.
+- Full 999px pills for actions; a 6 / 10 / 14px radius ladder for everything else.
 - System-font typography; weight and tracking do the work.
 - Dark-only; no light theme exists or is planned.
 - Motion gated behind `.js` and `prefers-reduced-motion`, always with a static fallback.
@@ -149,11 +145,9 @@ document-wide black→gold gradient behind everything.
 - **Pure Black** (`#000000`): the `html` background and the top of the page
   gradient. The floor the whole system sits on.
 - **Near Black** (`#0a0a0a`): the one opaque surface — the footer.
-- **Panel Glass** (`rgba(16,16,16,0.80)`): every section's content panel, over a
-  3px backdrop blur. Not a color so much as a tint the gradient shows through.
-  Raised from `0.70` so body text over the warm lower gradient clears WCAG AA.
 - **Surface Card** (`rgba(255,255,255,0.05)`): cards, step cards, inputs, the RODO
-  box, FAQ items — the faint lift above a panel.
+  box, FAQ items — small component-level surfaces. The only "lift" left in the
+  system now that sections themselves carry no background at all.
 - **Hairline** (`rgba(255,255,255,0.14)`) / **Hairline Faint**
   (`rgba(255,255,255,0.08)`): borders and dividers. Because fills are nearly
   invisible, the border is what defines a shape.
@@ -164,7 +158,9 @@ document-wide black→gold gradient behind everything.
   Primary; kept as a separate token for hero/nav context).
 - **Text Muted** (`#d6d6d6`): body copy inside sections, card and step text, form
   hints, FAQ answers — most running prose. Lifted from `#c4c4c4` to clear WCAG AA
-  (4.5:1) through the translucent panel over the warm lower part of the gradient.
+  (4.5:1) against the gradient itself — the gradient's bright stops are now
+  compressed to the very bottom (see The Single Gradient Rule) precisely so this
+  token stays legible with no panel behind it to dim the background first.
 
 ### State
 - **Error** (`#d64545`): invalid input borders after a submit attempt and the
@@ -176,11 +172,15 @@ for the single next action, links, focus, step numbers, and the phone glow — n
 a large fill and never a run of text. Its scarcity is the signal.
 
 **The Single Gradient Rule.** The black→gold gradient
-(`linear-gradient(180deg, #000 0%, #050505 30%, #1c1700 50%, #4a3d00 70%,
-#b58f00 87%, #f5c518 100%)`) is painted once, on `body`, across the full document
-height. Sections do not get their own background; they float translucent panels so
-the gradient shows through the gutters. Never repaint a section opaque (the footer
-is the sole deliberate exception).
+(`linear-gradient(180deg, #000 0%, #050505 25%, #1c1700 45%, #2e2400 62%,
+#3d3000 78%, #523f00 96%, #f5c518 100%)`) is painted once, on `body`, across the
+full document height. No section carries a background of its own — content sits
+directly on the gradient, separated from its neighbours by padding alone. Never
+repaint a section opaque (the footer is the sole deliberate exception). The bright
+stops are compressed into the final ~4% on purpose: body text now sits straight on
+the gradient with nothing dimming it, so the ramp must stay dark everywhere real
+content can reach and only bloom into full gold in the margin the opaque footer
+covers.
 
 ## Typography
 
@@ -217,7 +217,8 @@ the engineered, get-out-of-the-way character of the system.
 - **Container:** `max-width: 1080px`, centered, `20px` inline padding. One width
   for all content.
 - **Section rhythm:** `52px` vertical padding per section on mobile, `88px` from
-  700px up. The content panel adds `40px` / `44px` internal top / bottom padding.
+  700px up. The container adds a further `40px` / `44px` internal top / bottom
+  padding — no panel wraps it, this is pure spacing.
 - **Breakpoints:** `480px` (footer switches to a justified row), `700px` (mobile
   hamburger menu boundary; section rhythm and section-title size step up; process
   steps go 1-col → 3-col), `900px` (hero gains more vertical air; "O nas" flips
@@ -232,17 +233,21 @@ the engineered, get-out-of-the-way character of the system.
   8px blur, hairline-faint bottom border. Below 700px it collapses to a hamburger
   that opens a full-width stacked dropdown on `rgba(0,0,0,0.96)` with hairline
   dividers between links.
-- **Density:** roomy. Body line-height 1.65, sizeable panel padding, 12–28px gaps
-  between siblings.
+- **Density:** roomy. Body line-height 1.65, generous section padding, 12–28px
+  gaps between siblings.
 
 ## Elevation & Depth
 
-Hybrid: a **glass ground** with **shadow-on-lift**. Section panels and step cards
-are flat glass at rest — translucent fill, a 3px (`8px` for the nav) backdrop
-blur, and a hairline border, with the page gradient showing through. There is one
-deliberate exception: portfolio cards carry a single soft ambient shadow at rest
-to anchor them on the gradient. Every other shadow on screen means the element is
-being hovered, is `:target`, or is the animated phone.
+Flat ground with shadow-on-lift. Sections carry no surface at all — no fill, no
+blur, no border — so there is no "ground" to speak of below the small component
+cards. Those cards (portfolio, steps, FAQ, form fields) are the only remaining
+surfaces, and they stay flat at rest too: faint fill, hairline border, nothing
+else. There is one deliberate exception: portfolio cards carry a single soft
+ambient shadow at rest to anchor them on the bare gradient. Every other shadow on
+screen means the element is being hovered, is `:target`, or is the animated
+phone. The nav keeps its own scrim + blur — that one surface predates and sits
+outside this rule, since it exists to stay legible while sticky over scrolling
+content.
 
 ### Shadow Vocabulary
 - **Card rest** (`box-shadow: 0 14px 40px rgba(0,0,0,0.45)` — the `--shadow`
@@ -266,9 +271,10 @@ animated phone. Resting surfaces read as flat glass.
 ## Shapes
 
 - **Radius ladder:** `6px` (consent checkbox) · `10px` (inputs, FAQ items, RODO
-  box) · `14px` (`--radius`; portfolio and step cards) · `20px` (section panels) ·
-  `999px` pills (primary button, nav CTA) · `50%` (the 40px circular step-number
-  badge). Corners are always soft; no sharp edges anywhere.
+  box) · `14px` (`--radius`; portfolio and step cards) · `999px` pills (primary
+  button, nav CTA) · `50%` (the 40px circular step-number badge, the 44px atuty
+  icon circles). Corners are always soft; no sharp edges anywhere. Sections
+  themselves have no radius — nothing to round, there's no box.
 - **Borders:** a `1px` hairline (`rgba(255,255,255,0.08–0.14)`) on nearly every
   surface. Since fills are near-transparent, the border is the shape.
 - **Custom-drawn controls:** native form chrome is never shown. The checkbox is a
@@ -279,7 +285,7 @@ animated phone. Resting surfaces read as flat glass.
 
 ### Named Rules
 **The Full Pill Rule.** Action elements (buttons, nav CTA) are full `999px` pills.
-Everything else uses the 6 / 10 / 14 / 20px ladder. Do not mix radii within one
+Everything else uses the 6 / 10 / 14px ladder. Do not mix radii within one
 component and do not give an action a boxy radius.
 
 ## Components
@@ -298,8 +304,9 @@ component and do not give an action a boxy radius.
 - **Secondary / Ghost:** none. Amber-bright text links fill that role.
 
 ### Cards / Containers
-- **Section panel:** Panel Glass fill + `blur(3px)`, hairline-faint border, `20px`
-  radius, `40px` / `44px` internal padding. The ground layer for section content.
+- **Sections themselves are not containers.** `.section > .container` carries no
+  fill, border, blur, or radius — only the internal padding that spaces its
+  content from the section edge. It is a spacing wrapper, not a surface.
 - **Portfolio card:** Surface Card fill, hairline border, `14px` radius, resting
   shadow `0 14px 40px rgba(0,0,0,0.45)`, `overflow: hidden`, `24px` body padding.
 - **Step card (`.krok`):** Surface Card fill, hairline border, `14px` radius,
@@ -330,6 +337,22 @@ component and do not give an action a boxy radius.
   and `aria-expanded`; links become a full-width stacked dropdown on
   `rgba(0,0,0,0.96)` with hairline dividers; the menu closes on link click.
 
+### Trust icons (atuty)
+Four short facts in a row — Bezpłatna konsultacja / Cała Polska, zdalnie / 2 rundy
+poprawek w cenie / Wyłącznie trenerzy personalni — near the bottom of the
+homepage, after Kontakt and before FAQ. No panel; the block sits directly on the
+gradient, like the hero.
+- **Icon:** `44px` circle, `1px` hairline border, a custom-drawn `24px`-viewBox
+  stroke SVG (same stroke system as the portfolio card's arrow) rendered at
+  `22px`, centered.
+- **Color:** neutral (Text Invert) on three of four icons; exactly one — the most
+  action-adjacent fact — gets Stadium Amber on both border and stroke. The One
+  Lamp Rule applied at component scale: amber marks a single item, never all four
+  at once.
+- **Label:** `0.9rem`, weight 600, `rgba(246,246,246,0.78)` — the same treatment
+  as the hero subtitle.
+- **Grid:** 2 columns on mobile, 4 from 700px.
+
 ### Floating phone (signature)
 The "O nas" mockup (`mockup1.png`, 500×833) is the one showpiece and the only place
 motion is decorative rather than functional. Three independent layers:
@@ -345,14 +368,15 @@ motion is decorative rather than functional. Three independent layers:
 ## Do's and Don'ts
 
 ### Do:
-- **Do** let the page gradient show through — keep section gutters open and panels
-  translucent (`rgba(16,16,16,0.80)` + `blur(3px)`).
-- **Do** verify body and secondary text clears 4.5:1 *through* the panel at every
-  scroll position — check at the FAQ and the footer approach, where the gradient
-  is warmest behind the glass.
+- **Do** let the page gradient show fully — no section carries a background of
+  its own; separate sections with padding/margin only, never a box.
+- **Do** verify body and secondary text clears 4.5:1 *against the bare gradient*
+  at every scroll position — there is no panel dimming it anymore, so the
+  gradient's own stops are the only thing keeping contrast safe. Check at the
+  FAQ, the atuty strip, and the footer approach, where the gradient is warmest.
 - **Do** keep Stadium Amber rare: the next action, links, focus rings, step
   numbers, the phone glow. Running copy stays Text Muted / Text Primary.
-- **Do** use full `999px` pills for actions and the `6 / 10 / 14 / 20px` ladder
+- **Do** use full `999px` pills for actions and the `6 / 10 / 14px` ladder
   for every other corner.
 - **Do** gate every animation behind the `.js` class and `prefers-reduced-motion`,
   with the content fully visible and usable when both are off.
@@ -367,8 +391,11 @@ motion is decorative rather than functional. Three independent layers:
 - **Don't** ship the template look: no stock hero photo, no grid of identical
   rounded cards, no gradient-filled buttons. This is the one confirmed
   anti-reference.
-- **Don't** give a section its own opaque background or a hard edge — it breaks
-  the single-gradient illusion. (The footer, `#0a0a0a`, is the sole exception.)
+- **Don't** give a section its own background, border, blur, or radius of any
+  kind — no panel, no card, no translucent fill. Sections are pure spacing.
+  (The footer, `#0a0a0a`, is the sole opaque exception, and the small
+  component-level cards — portfolio, steps, FAQ, form fields — keep their own
+  faint fill; neither is a section-level panel.)
 - **Don't** use amber for large fills or runs of text; its scarcity is the point.
 - **Don't** add a second accent hue. Amber + neutral only; Error red (`#d64545`)
   is a state color, not an accent.
