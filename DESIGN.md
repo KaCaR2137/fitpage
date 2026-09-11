@@ -216,11 +216,14 @@ The type should feel engineered, not expressive.
   notes and captions at `0.8rem`; 600 for "Więcej" toggles at `0.82rem`): Text
   Muted, except labels and legends which use Text Primary.
 
-**Depth:** headings (H1/H2 only — `.hero__title`, `.section__title`,
-`.krok__title`) carry a subtle `text-shadow: 0 1px 3px rgba(31,45,36,0.14)` —
-neutral, green-tinted like the rest of the system's shadows, not the accent
-hue. A quiet lift, not a decorative glow. H3-level titles (`.card__title` and
-similar) stay flat.
+**Depth:** headings (`.hero__title`, `.section__title`, `.krok__title` — H1/H2
+only, H3 titles like `.card__title` stay flat) plus the body text in the hero,
+"O nas," and the on-page Kontakt blurb (`.hero__subtitle`, `.o-nas p`,
+`.kontakt p`, `.kontakt__direct`) carry a subtle `text-shadow: 0 1px 3px
+rgba(31,45,36,0.14)` — neutral, green-tinted like the rest of the system's
+shadows, not the accent hue. A quiet lift, not a decorative glow. Elsewhere
+(FAQ, portfolio cards, process steps, the form) body text stays flat; this is
+a first pass scoped to the top of the page, not a blanket rule yet.
 
 ### Named Rules
 **The System-Font Rule.** Do not load a web font to "improve" the type. Hierarchy
