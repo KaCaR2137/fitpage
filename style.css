@@ -55,6 +55,15 @@ h1, h2, h3 {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
+/* subtelna, neutralna poświata pod nagłówkami H1/H2 (nie H3 — tytuły
+   komponentów typu .card__title zostają płaskie). Zazieleniona jak reszta
+   cieni w systemie (spójna z --shadow), nie kolor akcentu — to głębia,
+   nie ozdoba. */
+.hero__title,
+.section__title,
+.krok__title {
+  text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14);
+}
 p { margin: 0 0 1em; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }

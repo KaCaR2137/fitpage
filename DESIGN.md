@@ -216,6 +216,12 @@ The type should feel engineered, not expressive.
   notes and captions at `0.8rem`; 600 for "Więcej" toggles at `0.82rem`): Text
   Muted, except labels and legends which use Text Primary.
 
+**Depth:** headings (H1/H2 only — `.hero__title`, `.section__title`,
+`.krok__title`) carry a subtle `text-shadow: 0 1px 3px rgba(31,45,36,0.14)` —
+neutral, green-tinted like the rest of the system's shadows, not the accent
+hue. A quiet lift, not a decorative glow. H3-level titles (`.card__title` and
+similar) stay flat.
+
 ### Named Rules
 **The System-Font Rule.** Do not load a web font to "improve" the type. Hierarchy
 is built from weight and tracking on the system stack; a custom face would fight
