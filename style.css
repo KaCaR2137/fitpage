@@ -6,52 +6,44 @@
 
 /* ----------------------------- Zmienne ----------------------------- */
 :root {
-  /* tło całej strony: czerń przechodząca w żółć (pion, góra -> dół).
-     Stopnie ściśnięte tak, żeby jasna końcówka spadała na ostatnie ~4%
-     wysokości dokumentu (stopka jest kryjąca, więc tam kontrast tekstu
-     jej nie dotyczy) — reszta zostaje wystarczająco ciemna dla tekstu,
-     który teraz siedzi bezpośrednio na gradiencie, bez panelu. */
-  --page-grad: linear-gradient(180deg,
-      #000000 0%,
-      #050505 25%,
-      #1c1700 45%,
-      #2e2400 62%,
-      #3d3000 78%,
-      #523f00 96%,
-      #f5c518 100%);
+  /* tło całej strony — jasny, kremowy canvas. Świadomy wybór jasnego
+     motywu (patrz DESIGN.md), nie gradient — jedna płaska płaszczyzna,
+     na której siedzi cała treść. */
+  --canvas: #F7F3EA;
 
-  /* akcent — żółty */
-  --accent:        #f5c518;
-  --accent-strong: #ffd23f;
-  --ink:           #1a1a1a;   /* tekst na żółtym tle (przyciski) */
+  /* akcent — głęboka zieleń butelkowa (zastępuje Stadium Amber) */
+  --accent:        #1F3D2B;
+  --accent-strong: #2C6B47;   /* hover/active — jaśniejsza, bardziej nasycona zieleń */
+  --on-accent:     #FBF8F0;   /* tekst/znaki NA wypełnieniu akcentu (przyciski, plakietki, haczyk checkboxa) —
+                                  akcent jest teraz ciemny, więc to co dawniej robił --ink (ciemny tekst na
+                                  jasnym akcencie) musi się odwrócić na jasny tekst na ciemnym akcencie */
 
-  /* tekst (jasny — motyw ciemny) */
-  --text:        #f2f2f2;
-  --muted:       #d6d6d6;   /* podniesione z #c4c4c4 — kontrast AA przez półprzezroczysty panel na ciepłej dolnej części gradientu */
-  --text-invert: #f6f6f6;
-  --error:       #d64545;
+  /* tekst (ciemny — motyw jasny) */
+  --text:  #202821;   /* główny tekst/nagłówki — ciemna, lekko zielonkawa czerń */
+  --muted: #52594F;   /* tekst pomocniczy */
+  --error: #A13333;   /* pogłębione względem starego #d64545 — na jasnym tle płytszy czerwony spadał poniżej 4.5:1 */
 
-  /* powierzchnie — półprzezroczyste, gradient tła prześwituje */
-  --bg:     rgba(255, 255, 255, 0.05); /* karty (portfolio, kroki, FAQ, pola formularza) */
-  --bg-alt: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.14);
+  /* powierzchnie — lekko przyciemnione zielenią zamiast rozjaśnione bielą */
+  --bg:     rgba(31, 61, 43, 0.05); /* karty (portfolio, kroki, FAQ, pola formularza) */
+  --bg-alt: rgba(31, 61, 43, 0.05);
+  --border: rgba(31, 61, 43, 0.16);
 
   --maxw: 1080px;
   --radius: 14px;
-  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --shadow: 0 14px 40px rgba(31, 45, 36, 0.16); /* miękki, zazieleniony — czarny 45% byłby na jasnym tle zbyt ciężki */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ----------------------------- Podstawy ----------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; background: #000; }
+html { scroll-behavior: smooth; background: var(--canvas); color-scheme: light; }
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
-  background: var(--page-grad) no-repeat;
+  background: var(--canvas);
   min-height: 100vh;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -75,7 +67,7 @@ a { color: inherit; }
 }
 
 /* ----------------------------- Sekcje ----------------------------- */
-/* Bez paneli — treść siedzi bezpośrednio na gradiencie tła. Odstęp między
+/* Bez paneli — treść siedzi bezpośrednio na canvasie. Odstęp między
    sekcjami idzie wyłącznie przez padding/margin (--section + wewnętrzny
    padding kontenera), nie przez wizualne pudełka. */
 .section { padding: 52px 0; }
@@ -102,11 +94,11 @@ a { color: inherit; }
               box-shadow 0.18s var(--ease),
               background-color 0.18s var(--ease);
 }
-.btn--primary { background: var(--accent); color: var(--ink); }
+.btn--primary { background: var(--accent); color: var(--on-accent); }
 .btn--primary:hover {
   background: var(--accent-strong);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(245, 197, 24, 0.35);
+  box-shadow: 0 12px 28px rgba(31, 61, 43, 0.28);
 }
 .btn:disabled {
   opacity: 0.6;
@@ -119,11 +111,11 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.72);
+  background: rgba(247, 243, 234, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-invert);
+  border-bottom: 1px solid rgba(31, 61, 43, 0.10);
+  color: var(--text);
 }
 .nav__inner {
   position: relative;
@@ -138,7 +130,7 @@ a { color: inherit; }
   font-size: 1.25rem;
   letter-spacing: -0.03em;
   text-decoration: none;
-  color: #fff;
+  color: var(--text);
 }
 .nav__logo span { color: var(--accent); }
 
@@ -150,7 +142,7 @@ a { color: inherit; }
 .nav__links a {
   font-size: 0.95rem;
   text-decoration: none;
-  color: var(--text-invert);
+  color: var(--text);
   opacity: 0.85;
   transition: opacity 0.15s;
 }
@@ -159,7 +151,7 @@ a { color: inherit; }
   padding: 9px 18px;
   border-radius: 999px;
   background: var(--accent);
-  color: var(--ink) !important;
+  color: var(--on-accent) !important;
   font-weight: 600;
   opacity: 1 !important;
 }
@@ -180,15 +172,15 @@ a { color: inherit; }
   display: block;
   width: 100%;
   height: 2px;
-  background: #fff;
+  background: var(--text);
   border-radius: 2px;
 }
 
 /* ============================== HERO ============================== */
-/* Bez własnego tła — prześwituje gradient strony (u góry: czerń). */
+/* Bez własnego tła — ten sam kremowy canvas co reszta strony. */
 .hero {
   background: transparent;
-  color: var(--text-invert);
+  color: var(--text);
   text-align: center;
   padding: 96px 20px 104px;
 }
@@ -199,7 +191,7 @@ a { color: inherit; }
 }
 .hero__subtitle {
   font-size: clamp(1rem, 2.4vw, 1.2rem);
-  color: rgba(246, 246, 246, 0.78);
+  color: var(--muted);
   margin-bottom: 2em;
 }
 
@@ -209,9 +201,9 @@ a { color: inherit; }
 
 /* ============================== ATUTY ============================== */
 /* Pasek 4 atutów — bez panelu, jak wszystkie sekcje teraz. Odstęp od
-   sąsiadów przez sam padding, bez linii/obramowania. Bursztyn punktowo:
+   sąsiadów przez sam padding, bez linii/obramowania. Zieleń punktowo:
    tylko pierścień ikony „Bezpłatna konsultacja" jest akcentowy, reszta
-   neutralna (--text-invert). */
+   neutralna (--text). */
 .atuty {
   padding: 40px 0;
 }
@@ -239,7 +231,7 @@ a { color: inherit; }
   flex-shrink: 0;
   border-radius: 50%;
   border: 1px solid var(--border);
-  color: var(--text-invert);
+  color: var(--text);
 }
 .atuty__icon svg { width: 22px; height: 22px; }
 .atuty__icon--accent {
@@ -251,7 +243,7 @@ a { color: inherit; }
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.35;
-  color: rgba(246, 246, 246, 0.78);
+  color: var(--muted);
 }
 
 /* ============================== O NAS ============================== */
@@ -275,12 +267,13 @@ a { color: inherit; }
   max-width: 220px;            /* rozmiar telefonu na mobile */
   width: 100%;
 }
-/* ciepła poświata pod telefonem — spójna z gradientem strony */
+/* miękka poświata pod telefonem — na jasnym tle to już nie "światło w
+   ciemności", tylko cichy akcentowy cień/winieta spójna z zielenią */
 .o-nas__visual::before {
   content: "";
   position: absolute;
   inset: -12% -24%;
-  background: radial-gradient(closest-side, rgba(245, 197, 24, 0.16), transparent 72%);
+  background: radial-gradient(closest-side, rgba(31, 61, 43, 0.10), transparent 72%);
   z-index: 0;
   pointer-events: none;
 }
@@ -290,7 +283,7 @@ a { color: inherit; }
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 22px 46px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 22px 46px rgba(31, 45, 36, 0.22)); /* miększy niż czarny 50% — na jasnym tle wyglądał ciężko */
 }
 
 /* --- Animacja telefonu (mockup1.png) ---
@@ -386,7 +379,7 @@ a { color: inherit; }
   margin-bottom: 12px;
   border-radius: 50%;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   font-weight: 700;
 }
 .krok__title { font-size: 1.1rem; margin-bottom: 0.3em; }
@@ -453,11 +446,11 @@ a { color: inherit; }
   border-color: transparent;
 }
 .form textarea { resize: vertical; }
-/* autouzupełnianie w Chrome nie wymusza białego tła w ciemnym motywie */
+/* autouzupełnianie w Chrome nie wymusza własnego (żółtawego) tła w jasnym motywie */
 .form input:-webkit-autofill,
 .form input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--text);
-  -webkit-box-shadow: 0 0 0 1000px #1c1c1c inset;
+  -webkit-box-shadow: 0 0 0 1000px #F1EEE2 inset;
   caret-color: var(--text);
 }
 
@@ -520,8 +513,8 @@ a { color: inherit; }
   margin-top: 2px;
   border: 2px solid var(--border);
   border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.04);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-color: rgba(31, 61, 43, 0.04);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FBF8F0' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0 0;
@@ -657,12 +650,18 @@ a { color: inherit; }
 .kontakt__direct a:hover { text-decoration: underline; }
 
 /* ============================== FOOTER ============================== */
+/* Jedyna świadomie ciemna powierzchnia w jasnym motywie — ten sam
+   strukturalny "kotwiczący" akcent, co czarna stopka w starym motywie,
+   tylko przełożony na rodzinę nowej palety (bardzo ciemna, stonowana
+   zieleń, nie sam akcent — akcent ma zostawać rzadki, nie zalewać dużej
+   powierzchni). Linki na stopce dostają jasny --on-accent, bo
+   --accent-strong (średnia zieleń) na tak ciemnym tle traci kontrast. */
 .footer {
   padding: 32px 0;
   font-size: 0.9rem;
-  color: rgba(246, 246, 246, 0.72);
-  background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(251, 248, 240, 0.72);
+  background: #16211B;
+  border-top: 1px solid rgba(251, 248, 240, 0.10);
 }
 .footer__inner {
   display: flex;
@@ -671,18 +670,18 @@ a { color: inherit; }
   gap: 8px;
   text-align: center;
 }
-.footer__logo { font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+.footer__logo { font-weight: 800; letter-spacing: -0.03em; color: var(--on-accent); }
 .footer p { margin: 0; }
 
 /* link do podstrony „Proces tworzenia strony” — na samym dole strony */
 .footer .footer__link {
   margin: 0 auto 18px;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(251, 248, 240, 0.14);
   font-weight: 600;
 }
 .footer__link a {
-  color: var(--accent-strong);
+  color: var(--on-accent);
   text-decoration: none;
 }
 .footer__link a:hover { text-decoration: underline; }
@@ -737,13 +736,13 @@ a { color: inherit; }
     align-items: stretch;
     gap: 0;
     padding: 8px 20px 16px;
-    background: rgba(0, 0, 0, 0.96);
+    background: rgba(247, 243, 234, 0.98);
   }
   .nav.is-open .nav__links { display: flex; }
   .nav__links a {
     padding: 12px 0;
     opacity: 1;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(31, 61, 43, 0.12);
   }
   .nav__cta { margin-top: 10px; text-align: center; }
 }

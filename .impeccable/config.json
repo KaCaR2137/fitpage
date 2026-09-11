@@ -38,6 +38,42 @@
         ],
         "createdAt": "2026-09-11T15:06:51.290Z",
         "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned on index/kontakt/proces.html under DESIGN.md 'The One Lamp Rule'; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-11T16:12:21.054Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "kontakt.html"
+        ],
+        "createdAt": "2026-09-11T16:12:21.074Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "proces.html"
+        ],
+        "createdAt": "2026-09-11T16:12:21.090Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "dziekujemy.html"
+        ],
+        "createdAt": "2026-09-11T16:12:21.107Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default"
       }
     ]
   }

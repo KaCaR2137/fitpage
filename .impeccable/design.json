@@ -1,51 +1,62 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T00:00:00Z",
+  "generatedAt": "2026-09-11T00:00:00Z",
   "title": "Design System: FitPage",
   "extensions": {
     "colorMeta": {
-      "stadium-amber": {
+      "bottle-green": {
         "role": "primary",
-        "displayName": "Stadium Amber",
-        "canonical": "#f5c518",
-        "tonalRamp": ["#241d00", "#3d3200", "#5c4b00", "#806800", "#a98a00", "#d0aa00", "#f5c518", "#ffe88f"]
+        "displayName": "Bottle Green",
+        "canonical": "#1F3D2B",
+        "note": "The accent, replacing Stadium Amber. Reads as a mark (ink, a stamp) rather than a light source.",
+        "tonalRamp": ["#0C1811", "#153021", "#1F3D2B", "#2C6B47", "#5C9A78", "#96C4A9", "#C9E4D5", "#EDF6F0"]
       },
-      "stadium-amber-bright": {
+      "leaf-green": {
         "role": "primary",
-        "displayName": "Stadium Amber Bright",
-        "canonical": "#ffd23f",
-        "tonalRamp": ["#2a2200", "#463900", "#665200", "#8c7100", "#b89400", "#e0b520", "#ffd23f", "#ffe9a3"]
+        "displayName": "Leaf Green",
+        "canonical": "#2C6B47",
+        "note": "Hover/active shift of the accent; resting color of text links outside the footer.",
+        "tonalRamp": ["#0E2318", "#194030", "#245943", "#2C6B47", "#4B8F68", "#7FB897", "#B7DCC5", "#E6F5EC"]
       },
-      "ink": {
+      "ivory": {
         "role": "neutral",
-        "displayName": "Ink",
-        "canonical": "#1a1a1a",
-        "tonalRamp": ["#0a0a0a", "#1a1a1a", "#2b2b2b", "#3d3d3d", "#525252", "#6b6b6b", "#8a8a8a", "#adadad"]
+        "displayName": "Ivory",
+        "canonical": "#FBF8F0",
+        "note": "Text/marks that sit ON the accent fill (buttons, badges, checkbox tick, footer text). Inverse of the old dark-theme 'Ink' token.",
+        "tonalRamp": ["#3A362C", "#5C564A", "#847C6B", "#AFA791", "#D3CBB5", "#EDE8DA", "#F6F2E7", "#FBF8F0"]
       },
-      "near-black": {
+      "canvas": {
         "role": "neutral",
-        "displayName": "Near Black",
-        "canonical": "#0a0a0a",
-        "tonalRamp": ["#000000", "#0a0a0a", "#161616", "#242424", "#373737", "#4f4f4f", "#6e6e6e", "#909090"]
+        "displayName": "Canvas",
+        "canonical": "#F7F3EA",
+        "note": "Flat page background, painted once on body/html. No gradient.",
+        "tonalRamp": ["#37332A", "#59534A", "#807A6C", "#ABA494", "#CFC8B9", "#E9E4D6", "#F3EFE4", "#F7F3EA"]
+      },
+      "pine-black": {
+        "role": "neutral",
+        "displayName": "Pine Black",
+        "canonical": "#16211B",
+        "note": "The one deliberately dark surface — the footer. Structural equivalent of the old dark-theme Near Black.",
+        "tonalRamp": ["#050805", "#0B120D", "#16211B", "#243528", "#3E5647", "#658172", "#96AEA2", "#CBDAD3"]
       },
       "text-primary": {
         "role": "neutral",
         "displayName": "Text Primary",
-        "canonical": "#f2f2f2",
-        "tonalRamp": ["#1a1a1a", "#2e2e2e", "#474747", "#666666", "#8a8a8a", "#b0b0b0", "#d4d4d4", "#f2f2f2"]
+        "canonical": "#202821",
+        "tonalRamp": ["#0A0D0A", "#141914", "#202821", "#3B453A", "#5E6A5C", "#8A9488", "#BAC2B8", "#E5E8E3"]
       },
       "text-muted": {
         "role": "neutral",
         "displayName": "Text Muted",
-        "canonical": "#d6d6d6",
-        "tonalRamp": ["#1c1c1c", "#333333", "#4d4d4d", "#6b6b6b", "#8f8f8f", "#b4b4b4", "#d6d6d6", "#ededed"]
+        "canonical": "#52594F",
+        "tonalRamp": ["#1A1D18", "#2E332B", "#484E43", "#52594F", "#7A8175", "#A5AB9F", "#CDD1C8", "#EEEFEC"]
       },
       "error": {
         "role": "tertiary",
         "displayName": "Error Red",
-        "canonical": "#d64545",
-        "note": "State color only — invalid inputs and error status. Never an accent.",
-        "tonalRamp": ["#2b0e0e", "#471717", "#682121", "#8c2d2d", "#b03a3a", "#d64545", "#e57272", "#f2a9a9"]
+        "canonical": "#A13333",
+        "note": "Deepened from the old dark-theme #d64545 — that value reads ~4:1 on Canvas (below AA); this holds ~6.3:1. State color only, never an accent.",
+        "tonalRamp": ["#2B0E0E", "#471717", "#682121", "#A13333", "#C25353", "#DA8484", "#EEB8B8", "#F8E0E0"]
       }
     },
     "typographyMeta": {
@@ -56,16 +67,17 @@
       "label": { "displayName": "Label / Micro", "purpose": "Field labels (600), hints and captions (400 / 0.8rem)." }
     },
     "shadows": [
-      { "name": "card-rest", "value": "0 14px 40px rgba(0, 0, 0, 0.45)", "purpose": "The only resting shadow. Portfolio cards, to anchor them on the gradient." },
-      { "name": "button-lift", "value": "0 12px 28px rgba(245, 197, 24, 0.35)", "purpose": "Amber-tinted rise on primary button :hover, paired with translateY(-2px)." },
-      { "name": "phone-drop", "value": "drop-shadow(0 22px 46px rgba(0, 0, 0, 0.5))", "purpose": "Grounds the floating phone mockup in 'O nas'." },
-      { "name": "step-target-ring", "value": "0 0 0 1px #f5c518", "purpose": "Amber ring on a :target process step linked from the nav." },
-      { "name": "focus-ring", "value": "outline: 2px solid #f5c518; outline-offset: 1px", "purpose": "Keyboard focus on every interactive element (outline, not box-shadow)." }
+      { "name": "card-rest", "value": "0 14px 40px rgba(31, 45, 36, 0.16)", "purpose": "The only resting shadow. Portfolio cards, to anchor them on the canvas. Green-tinted and soft — a flat black shadow reads harsh on light, paper-like ground." },
+      { "name": "button-lift", "value": "0 12px 28px rgba(31, 61, 43, 0.28)", "purpose": "Green-tinted rise on primary button :hover, paired with translateY(-2px)." },
+      { "name": "phone-drop", "value": "drop-shadow(0 22px 46px rgba(31, 45, 36, 0.22))", "purpose": "Grounds the floating phone mockup in 'O nas'." },
+      { "name": "step-target-ring", "value": "0 0 0 1px #1F3D2B", "purpose": "Bottle Green ring on a :target process step linked from the nav." },
+      { "name": "focus-ring", "value": "outline: 2px solid #1F3D2B; outline-offset: 1px", "purpose": "Keyboard focus on every interactive element (outline, not box-shadow)." }
     ],
     "motion": [
       { "name": "ease-glide", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for every transition and keyframe animation (the --ease token)." },
       { "name": "micro", "value": "0.15s\u20130.2s", "purpose": "Nav link opacity, card-link gap, checkbox box transitions." },
-      { "name": "reveal", "value": "0.6s opacity + translateY(24px\u21920), 90ms stagger per .reveal sibling", "purpose": "Shared IntersectionObserver scroll-in for content blocks." },
+      { "name": "reveal", "value": "0.6s opacity + translateY(24px\u21920), 90ms stagger per .reveal sibling", "purpose": "Shared IntersectionObserver scroll-in for content blocks (hero excluded — see hero-reveal)." },
+      { "name": "hero-reveal", "value": "double requestAnimationFrame, then the standard 0.6s reveal transition with the same 90ms stagger", "purpose": "Hero (and hero--compact) content is always in the initial viewport, so it reveals on load rather than via IntersectionObserver, which fires too early for already-visible elements to animate reliably." },
       { "name": "phone-reveal", "value": "0.8s\u20131s", "purpose": "The longer glide on the 'O nas' phone figure as it slides in from lower-right." },
       { "name": "ambient-loop", "value": "4s ease-in-out infinite", "purpose": "phone-float (img) and phone-glow (::before) idle loops, in sync." }
     ],
@@ -80,9 +92,9 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The single next action on a screen. Full pill, amber fill, lifts and glows on hover.",
+      "description": "The single next action on a screen. Full pill, Bottle Green fill, lifts on hover.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Um\u00f3w konsultacj\u0119</a>",
-      "css": ".ds-btn-primary { display: inline-block; background: #f5c518; color: #1a1a1a; font: inherit; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 0; border-radius: 999px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.18s cubic-bezier(0.22,1,0.36,1), background-color 0.18s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #ffd23f; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(245,197,24,0.35); } .ds-btn-primary:focus-visible { outline: 2px solid #f5c518; outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { .ds-btn-primary { transition: none; } }"
+      "css": ".ds-btn-primary { display: inline-block; background: #1F3D2B; color: #FBF8F0; font: inherit; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 0; border-radius: 999px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.18s cubic-bezier(0.22,1,0.36,1), background-color 0.18s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #2C6B47; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(31,61,43,0.28); } .ds-btn-primary:focus-visible { outline: 2px solid #1F3D2B; outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { .ds-btn-primary { transition: none; } }"
     },
     {
       "name": "Nav CTA",
@@ -90,102 +102,104 @@
       "refersTo": "nav-cta",
       "description": "Persistent 'Um\u00f3w konsultacj\u0119' pill in the header \u2014 smaller than the primary button, always full opacity.",
       "html": "<a class=\"ds-nav-cta\" href=\"#\">Um\u00f3w konsultacj\u0119</a>",
-      "css": ".ds-nav-cta { display: inline-block; padding: 9px 18px; border-radius: 999px; background: #f5c518; color: #1a1a1a; font: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; } .ds-nav-cta:hover { background: #ffd23f; } .ds-nav-cta:focus-visible { outline: 2px solid #f5c518; outline-offset: 2px; }"
+      "css": ".ds-nav-cta { display: inline-block; padding: 9px 18px; border-radius: 999px; background: #1F3D2B; color: #FBF8F0; font: inherit; font-weight: 600; font-size: 0.95rem; text-decoration: none; } .ds-nav-cta:hover { background: #2C6B47; } .ds-nav-cta:focus-visible { outline: 2px solid #1F3D2B; outline-offset: 2px; }"
     },
     {
       "name": "Text Input",
       "kind": "input",
       "refersTo": "input",
-      "description": "Brief-form field, sitting directly on the bare gradient (no section panel). Faint fill, hairline border, amber focus outline.",
+      "description": "Brief-form field, sitting directly on the flat canvas (no section panel). Faint tinted fill, hairline border, Bottle Green focus outline.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">E-mail</span><input class=\"ds-input\" type=\"email\" autocomplete=\"email\"></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-weight: 600; font-size: 0.9rem; color: #f2f2f2; } .ds-input { width: 100%; padding: 12px 14px; font: inherit; color: #f2f2f2; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; } .ds-input:focus { outline: 2px solid #f5c518; outline-offset: 1px; border-color: transparent; } .ds-input.is-invalid { border-color: #d64545; }"
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-weight: 600; font-size: 0.9rem; color: #202821; } .ds-input { width: 100%; padding: 12px 14px; font: inherit; color: #202821; background: rgba(31,61,43,0.05); border: 1px solid rgba(31,61,43,0.16); border-radius: 10px; } .ds-input:focus { outline: 2px solid #1F3D2B; outline-offset: 1px; border-color: transparent; } .ds-input.is-invalid { border-color: #A13333; }"
     },
     {
       "name": "Consent Checkbox",
       "kind": "custom",
       "refersTo": null,
-      "description": "RODO consent row \u2014 native checkbox hidden but focusable; a drawn 22px box with an SVG tick that scales in on check.",
+      "description": "RODO consent row \u2014 native checkbox hidden but focusable; a drawn 22px box with an Ivory SVG tick that scales in on check.",
       "html": "<label class=\"ds-consent\"><input type=\"checkbox\" checked><span class=\"ds-consent-box\" aria-hidden=\"true\"></span><span class=\"ds-consent-text\">Wyra\u017cam zgod\u0119 na przetwarzanie moich danych w celu obs\u0142ugi zapytania.</span></label>",
-      "css": ".ds-consent { position: relative; display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; font-size: 0.9rem; line-height: 1.5; color: #d6d6d6; cursor: pointer; } .ds-consent > input { position: absolute; top: 2px; left: 0; width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; } .ds-consent-box { grid-column: 1; width: 22px; height: 22px; margin-top: 2px; border: 2px solid rgba(255,255,255,0.14); border-radius: 6px; background-color: rgba(255,255,255,0.04); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: center; background-size: 0 0; transition: background-color 0.18s cubic-bezier(0.22,1,0.36,1), border-color 0.18s cubic-bezier(0.22,1,0.36,1), background-size 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-consent-text { grid-column: 2; } .ds-consent:hover .ds-consent-box { border-color: #f5c518; } .ds-consent > input:focus-visible ~ .ds-consent-box { outline: 2px solid #f5c518; outline-offset: 2px; } .ds-consent > input:checked ~ .ds-consent-box { background-color: #f5c518; border-color: #f5c518; background-size: 14px 14px; } .ds-consent:has(> input:checked) .ds-consent-text { color: #f2f2f2; } @media (prefers-reduced-motion: reduce) { .ds-consent-box { transition: none; } }"
+      "css": ".ds-consent { position: relative; display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; font-size: 0.9rem; line-height: 1.5; color: #52594F; cursor: pointer; } .ds-consent > input { position: absolute; top: 2px; left: 0; width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; } .ds-consent-box { grid-column: 1; width: 22px; height: 22px; margin-top: 2px; border: 2px solid rgba(31,61,43,0.16); border-radius: 6px; background-color: rgba(31,61,43,0.04); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FBF8F0' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: center; background-size: 0 0; transition: background-color 0.18s cubic-bezier(0.22,1,0.36,1), border-color 0.18s cubic-bezier(0.22,1,0.36,1), background-size 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-consent-text { grid-column: 2; } .ds-consent:hover .ds-consent-box { border-color: #1F3D2B; } .ds-consent > input:focus-visible ~ .ds-consent-box { outline: 2px solid #1F3D2B; outline-offset: 2px; } .ds-consent > input:checked ~ .ds-consent-box { background-color: #1F3D2B; border-color: #1F3D2B; background-size: 14px 14px; } .ds-consent:has(> input:checked) .ds-consent-text { color: #202821; } @media (prefers-reduced-motion: reduce) { .ds-consent-box { transition: none; } }"
     },
     {
       "name": "Portfolio Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "A single delivered site. The only surface with a resting shadow. Amber link with a widening gap on hover.",
+      "description": "A single delivered site. The only surface with a resting shadow. Leaf Green link with a widening gap on hover.",
       "html": "<article class=\"ds-card\"><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Marta Dominikowska \u2014 trener personalny</h3><p class=\"ds-card-text\">Strona wizyt\u00f3wkowa: prezentacja oferty, sekcja \u201eo mnie\u201d oparta na osobistej historii, formularz kontaktowy zgodny z RODO.</p><a class=\"ds-card-link\" href=\"#\">Zobacz realizacj\u0119 <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a></div></article>",
-      "css": ".ds-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; box-shadow: 0 14px 40px rgba(0,0,0,0.45); overflow: hidden; } .ds-card-body { padding: 24px; } .ds-card-title { font-size: 1.15rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #f2f2f2; } .ds-card-text { color: #d6d6d6; font-size: 0.95rem; margin: 0 0 1em; } .ds-card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; color: #ffd23f; transition: gap 0.18s cubic-bezier(0.22,1,0.36,1); } .ds-card-link:hover { gap: 12px; } .ds-card-link svg { width: 16px; height: 16px; }"
+      "css": ".ds-card { background: rgba(31,61,43,0.05); border: 1px solid rgba(31,61,43,0.16); border-radius: 14px; box-shadow: 0 14px 40px rgba(31,45,36,0.16); overflow: hidden; } .ds-card-body { padding: 24px; } .ds-card-title { font-size: 1.15rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.4em; color: #202821; } .ds-card-text { color: #52594F; font-size: 0.95rem; margin: 0 0 1em; } .ds-card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; color: #2C6B47; transition: gap 0.18s cubic-bezier(0.22,1,0.36,1); } .ds-card-link:hover { gap: 12px; } .ds-card-link svg { width: 16px; height: 16px; }"
     },
     {
       "name": "Process Step",
       "kind": "card",
       "refersTo": "step-card",
-      "description": "One of six numbered stages on the process page. Circular amber badge; expandable 'Wi\u0119cej' detail; amber ring when linked as :target.",
+      "description": "One of six numbered stages on the process page. Circular Bottle Green badge; expandable 'Wi\u0119cej' detail; Bottle Green ring when linked as :target.",
       "html": "<li class=\"ds-step\"><span class=\"ds-step-num\">1</span><h2 class=\"ds-step-title\">Analiza</h2><p class=\"ds-step-lead\">Poznajemy Twoj\u0105 dzia\u0142alno\u015b\u0107, ofert\u0119 i cel strony \u2014 kogo trenujesz i kogo chcesz przyci\u0105gn\u0105\u0107.</p><details class=\"ds-step-more\"><summary>Wi\u0119cej</summary><div class=\"ds-step-more-body\"><p>Przegl\u0105damy Twoje obecne kana\u0142y i konkurencj\u0119 w niszy. Ustalamy jedn\u0105 g\u0142\u00f3wn\u0105 akcj\u0119, do kt\u00f3rej ma prowadzi\u0107 strona.</p></div></details></li>",
-      "css": ".ds-step { list-style: none; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 28px 24px; } .ds-step:target { border-color: #f5c518; box-shadow: 0 0 0 1px #f5c518; } .ds-step-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: 12px; border-radius: 50%; background: #f5c518; color: #1a1a1a; font-weight: 700; } .ds-step-title { font-size: 1.1rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.3em; color: #f2f2f2; } .ds-step-lead { margin: 0; color: #d6d6d6; font-size: 0.95rem; } .ds-step-more { margin-top: 14px; } .ds-step-more > summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none; font-size: 0.82rem; font-weight: 600; color: #ffd23f; } .ds-step-more > summary::-webkit-details-marker { display: none; } .ds-step-more > summary::after { content: \"+\"; font-size: 1.1rem; line-height: 1; } .ds-step-more[open] > summary::after { content: \"\\2013\"; } .ds-step-more-body { margin-top: 10px; } .ds-step-more-body p { margin: 0; color: #d6d6d6; font-size: 0.9rem; }"
+      "css": ".ds-step { list-style: none; background: rgba(31,61,43,0.05); border: 1px solid rgba(31,61,43,0.16); border-radius: 14px; padding: 28px 24px; } .ds-step:target { border-color: #1F3D2B; box-shadow: 0 0 0 1px #1F3D2B; } .ds-step-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: 12px; border-radius: 50%; background: #1F3D2B; color: #FBF8F0; font-weight: 700; } .ds-step-title { font-size: 1.1rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.3em; color: #202821; } .ds-step-lead { margin: 0; color: #52594F; font-size: 0.95rem; } .ds-step-more { margin-top: 14px; } .ds-step-more > summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none; font-size: 0.82rem; font-weight: 600; color: #2C6B47; } .ds-step-more > summary::-webkit-details-marker { display: none; } .ds-step-more > summary::after { content: \"+\"; font-size: 1.1rem; line-height: 1; } .ds-step-more[open] > summary::after { content: \"\\2013\"; } .ds-step-more-body { margin-top: 10px; } .ds-step-more-body p { margin: 0; color: #52594F; font-size: 0.9rem; }"
     },
     {
       "name": "FAQ Item",
       "kind": "custom",
       "refersTo": null,
-      "description": "JS-free accordion built on <details>/<summary>. Amber +/\u2013 marker, hairline card, faint fill.",
+      "description": "JS-free accordion built on <details>/<summary>. Leaf Green +/\u2013 marker, hairline card, faint tinted fill.",
       "html": "<details class=\"ds-faq\"><summary>Ile kosztuje strona?<span class=\"ds-faq-mark\" aria-hidden=\"true\"></span></summary><p>Wycena jest indywidualna \u2014 zale\u017cy od zakresu. Orientacyjne wide\u0142ki podajemy po konsultacji i wype\u0142nieniu briefu.</p></details>",
-      "css": ".ds-faq { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 16px 18px; } .ds-faq > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; font-weight: 600; list-style: none; color: #f2f2f2; } .ds-faq > summary::-webkit-details-marker { display: none; } .ds-faq > summary::after { content: \"+\"; flex-shrink: 0; font-size: 1.35rem; line-height: 1; color: #ffd23f; } .ds-faq[open] > summary::after { content: \"\\2013\"; } .ds-faq p { margin: 12px 0 0; color: #d6d6d6; font-size: 0.95rem; }"
-    },
-    {
-      "name": "Trust Icon Row",
-      "kind": "custom",
-      "refersTo": null,
-      "description": "Two of the four 'atuty' items (Bezpłatna konsultacja / Cała Polska, zdalnie), near the bottom of the homepage after Kontakt. No panel — sits directly on the gradient like the hero. Exactly one icon carries Stadium Amber (border + stroke); the rest stay neutral — the One Lamp Rule applied at component scale.",
-      "html": "<div class=\"ds-atuty\"><div class=\"ds-atuty__item\"><span class=\"ds-atuty__icon ds-atuty__icon--accent\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"12\" rx=\"3\"/><path d=\"M8 17v3l4-3\"/></svg></span><p class=\"ds-atuty__text\">Bezpłatna konsultacja</p></div><div class=\"ds-atuty__item\"><span class=\"ds-atuty__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z\"/><circle cx=\"12\" cy=\"9\" r=\"2.5\"/></svg></span><p class=\"ds-atuty__text\">Cała Polska, zdalnie</p></div></div>",
-      "css": ".ds-atuty { display: flex; gap: 28px; flex-wrap: wrap; } .ds-atuty__item { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; width: 140px; } .ds-atuty__icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); color: #f6f6f6; } .ds-atuty__icon svg { width: 22px; height: 22px; } .ds-atuty__icon--accent { border-color: #f5c518; color: #f5c518; } .ds-atuty__text { margin: 0; font-size: 0.9rem; font-weight: 600; line-height: 1.35; color: rgba(246,246,246,0.78); }"
+      "css": ".ds-faq { background: rgba(31,61,43,0.05); border: 1px solid rgba(31,61,43,0.16); border-radius: 10px; padding: 16px 18px; } .ds-faq > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; font-weight: 600; list-style: none; color: #202821; } .ds-faq > summary::-webkit-details-marker { display: none; } .ds-faq > summary::after { content: \"+\"; flex-shrink: 0; font-size: 1.35rem; line-height: 1; color: #2C6B47; } .ds-faq[open] > summary::after { content: \"\\2013\"; } .ds-faq p { margin: 12px 0 0; color: #52594F; font-size: 0.95rem; }"
     },
     {
       "name": "Floating Phone",
       "kind": "custom",
       "refersTo": null,
-      "description": "The 'O nas' showpiece and the only place motion is decorative rather than functional. Three independent layers: the <figure> carries the scroll-reveal (a 1s glide in from the lower-right with a 3.5deg rotate + 0.92 scale); the device runs a 4s 'float' loop (translateY -14px + -1.4deg); the ::before amber glow pulses on the same 4s beat (opacity 0.7->1, scale 1->1.07). Shown here in its resting (revealed) state with the idle loops live. Production swaps the CSS device for mockup1.png (500x833); the screen fill reuses the page's black->gold gradient on purpose.",
+      "description": "The 'O nas' showpiece and the only place motion is decorative rather than functional. Three independent layers: the <figure> carries the scroll-reveal (a 1s glide in from the lower-right with a 3.5deg rotate + 0.92 scale); the device runs a 4s 'float' loop (translateY -14px + -1.4deg); the ::before green vignette pulses on the same 4s beat (opacity 0.7->1, scale 1->1.07) \u2014 a quiet pulse now rather than a glow, since the canvas is light. Shown here in its resting (revealed) state with the idle loops live. Production swaps the CSS device for mockup1.png (500x833); the screen fill here is a soft cream-to-green placeholder gradient, evocative of the real system without claiming to be the actual screenshot.",
       "html": "<figure class=\"ds-phone\"><div class=\"ds-phone__device\"><div class=\"ds-phone__screen\"></div></div></figure>",
-      "css": ".ds-phone { position: relative; width: 220px; max-width: 100%; margin: 40px auto; } .ds-phone::before { content: \"\"; position: absolute; inset: -12% -24%; background: radial-gradient(closest-side, rgba(245,197,24,0.16), transparent 72%); z-index: 0; pointer-events: none; animation: ds-phone-glow 4s ease-in-out 0.9s infinite; } .ds-phone__device { position: relative; z-index: 1; aspect-ratio: 500 / 833; border-radius: 30px; background: #0c0c0c; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 22px 46px rgba(0,0,0,0.5); overflow: hidden; animation: ds-phone-float 4s ease-in-out 0.9s infinite; } .ds-phone__device::after { content: \"\"; position: absolute; top: 10px; left: 50%; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: rgba(255,255,255,0.18); } .ds-phone__screen { position: absolute; inset: 22px 10px 10px; border-radius: 20px; background: linear-gradient(180deg, #000 0%, #1c1700 60%, #3d3000 85%, #f5c518 100%); } @keyframes ds-phone-float { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(-1.4deg); } 100% { transform: translateY(0) rotate(0deg); } } @keyframes ds-phone-glow { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.07); } } @media (prefers-reduced-motion: reduce) { .ds-phone::before, .ds-phone__device { animation: none; } }"
+      "css": ".ds-phone { position: relative; width: 220px; max-width: 100%; margin: 40px auto; } .ds-phone::before { content: \"\"; position: absolute; inset: -12% -24%; background: radial-gradient(closest-side, rgba(31,61,43,0.10), transparent 72%); z-index: 0; pointer-events: none; animation: ds-phone-glow 4s ease-in-out 0.9s infinite; } .ds-phone__device { position: relative; z-index: 1; aspect-ratio: 500 / 833; border-radius: 30px; background: #0c0c0c; border: 1px solid rgba(31,61,43,0.16); box-shadow: 0 22px 46px rgba(31,45,36,0.22); overflow: hidden; animation: ds-phone-float 4s ease-in-out 0.9s infinite; } .ds-phone__device::after { content: \"\"; position: absolute; top: 10px; left: 50%; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: rgba(251,248,240,0.18); } .ds-phone__screen { position: absolute; inset: 22px 10px 10px; border-radius: 20px; background: linear-gradient(180deg, #F7F3EA 0%, #CFE0D4 55%, #1F3D2B 100%); } @keyframes ds-phone-float { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(-1.4deg); } 100% { transform: translateY(0) rotate(0deg); } } @keyframes ds-phone-glow { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.07); } } @media (prefers-reduced-motion: reduce) { .ds-phone::before, .ds-phone__device { animation: none; } }"
+    },
+    {
+      "name": "Trust Icon Row",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Two of the four 'atuty' items (Bezpłatna konsultacja / Cała Polska, zdalnie), near the bottom of the homepage after Kontakt. No panel — sits directly on the canvas like the hero. Exactly one icon carries Bottle Green (border + stroke); the rest stay neutral — the One Mark Rule applied at component scale.",
+      "html": "<div class=\"ds-atuty\"><div class=\"ds-atuty__item\"><span class=\"ds-atuty__icon ds-atuty__icon--accent\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"12\" rx=\"3\"/><path d=\"M8 17v3l4-3\"/></svg></span><p class=\"ds-atuty__text\">Bezpłatna konsultacja</p></div><div class=\"ds-atuty__item\"><span class=\"ds-atuty__icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z\"/><circle cx=\"12\" cy=\"9\" r=\"2.5\"/></svg></span><p class=\"ds-atuty__text\">Cała Polska, zdalnie</p></div></div>",
+      "css": ".ds-atuty { display: flex; gap: 28px; flex-wrap: wrap; } .ds-atuty__item { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; width: 140px; } .ds-atuty__icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; border: 1px solid rgba(31,61,43,0.16); color: #202821; } .ds-atuty__icon svg { width: 22px; height: 22px; } .ds-atuty__icon--accent { border-color: #1F3D2B; color: #1F3D2B; } .ds-atuty__text { margin: 0; font-size: 0.9rem; font-weight: 600; line-height: 1.35; color: #52594F; }"
     }
   ],
   "narrative": {
-    "northStar": "The Late-Night Session",
-    "overview": "FitPage looks like a training studio after hours: the room is black, and a single warm lamp picks out only what matters. That lamp is Stadium Amber (#f5c518) \u2014 floodlight yellow, light rather than paint \u2014 and it touches almost nothing: the button to press, the link to follow, the number of the step you are on, the glow under the phone. Everything else is dark glass. The register is focused and disciplined, never loud \u2014 discipline shown, not shouted.\n\nThe page itself carries the only real drama: one vertical gradient from pure black at the top, through ember, to full gold at the very bottom, spanning the whole document rather than any single section. Content sits directly on it \u2014 no card, no panel, nothing between the words and the light. Section rhythm comes entirely from padding, not boxes: the room has no furniture, just distance. Depth is almost entirely absent at rest; shadows appear only when something lifts \u2014 a button on hover, the phone mockup drifting in 'O nas,' a handful of small component cards (portfolio, steps, form fields) that keep their own faint fill.\n\nType is deliberately un-styled: the native system font stack, no web fonts, hierarchy built from weight (700\u2013800) and tight tracking. The restraint is the point \u2014 the interface should feel engineered and calm so the trainer's own words and image are the loudest thing on screen.",
+    "northStar": "The Morning Session",
+    "overview": "FitPage now looks like a training space at first light: pale cream walls, the calm of early morning before the noise starts. The one deep note is Bottle Green (#1F3D2B) \u2014 not a light source anymore, but a mark: ink, a stamp, the color of a well-kept mat \u2014 and it touches almost nothing: the button to press, the link to follow, the number of the step you're on. Everything else is quiet, warm off-white. The register is exactly what it always was \u2014 focused and disciplined, never loud \u2014 just relit.\n\nThe page itself is one flat canvas (#F7F3EA), painted once on body. No gradient, no variation by scroll position \u2014 the same tone from the first pixel to the last. There is no card, no panel: content sits directly on the canvas, section rhythm built entirely from padding, not boxes. Depth is almost entirely absent at rest; shadows appear only when something lifts \u2014 a button on hover, the phone mockup drifting in 'O nas,' a handful of small component cards (portfolio, steps, form fields) that keep their own faint tinted fill. The one deliberately dark note left anywhere in the system is the footer \u2014 a near-black forest green, the single anchor at the bottom of an otherwise light page.\n\nType is unchanged: the native system font stack, no web fonts, hierarchy built from weight (700\u2013800) and tight tracking. The restraint is still the point \u2014 the interface should feel engineered and calm so the trainer's own words and image are the loudest thing on screen.",
     "keyCharacteristics": [
-      "One accent (Stadium Amber), on roughly 10% or less of any screen.",
-      "A single document-length black\u2192gold gradient; sections never repaint it, and none of them carry a background of their own \u2014 content sits directly on it.",
+      "One accent (Bottle Green), on roughly 10% or less of any screen.",
+      "A flat cream canvas (#F7F3EA), painted once on body \u2014 no gradient, no per-section repaint.",
       "Section rhythm is padding/margin only; no card, border, or box ever separates one section from the next.",
       "Full 999px pills for actions; a 6 / 10 / 14px radius ladder for everything else.",
       "System-font typography; weight and tracking do the work.",
-      "Dark-only; no light theme exists or is planned.",
+      "Light-only, by deliberate choice \u2014 not a default light/dark pairing, a single committed direction.",
       "Motion gated behind .js and prefers-reduced-motion, always with a static fallback."
     ],
     "rules": [
-      { "name": "The One Lamp Rule", "body": "Stadium Amber appears on ~10% or less of any screen. It is for the single next action, links, focus, step numbers, and the phone glow \u2014 never a large fill and never a run of text. Its scarcity is the signal.", "section": "colors" },
-      { "name": "The Single Gradient Rule", "body": "The black\u2192gold gradient (linear-gradient(180deg, #000 0%, #050505 25%, #1c1700 45%, #2e2400 62%, #3d3000 78%, #523f00 96%, #f5c518 100%)) is painted once, on body, across the full document height. No section carries a background of its own \u2014 content sits directly on the gradient, separated from its neighbours by padding alone. Never repaint a section opaque (the footer is the sole deliberate exception). The bright stops are compressed into the final ~4% on purpose: body text now sits straight on the gradient with nothing dimming it, so the ramp must stay dark everywhere real content can reach and only bloom into full gold in the margin the opaque footer covers.", "section": "colors" },
+      { "name": "The One Mark Rule", "body": "Bottle Green appears on ~10% or less of any screen. It is for the single next action, links, focus, and step numbers \u2014 never a large fill and never a run of text. Its scarcity is the signal; it reads as ink, not illumination. Renamed from 'The One Lamp Rule' \u2014 the old dark world's accent was a light source, this one is a mark.", "section": "colors" },
+      { "name": "The Flat Canvas Rule", "body": "One solid color (#F7F3EA) is painted once, on body, and never varies by scroll position. No section carries a background of its own; content sits directly on the canvas, separated from its neighbours by padding alone. Never repaint a section opaque \u2014 the footer (Pine Black) is the sole deliberate exception. Replaces 'The Single Gradient Rule': the gradient is gone, but the underlying discipline \u2014 one background, painted once, sections never repaint it \u2014 survives intact.", "section": "colors" },
       { "name": "The System-Font Rule", "body": "Do not load a web font to 'improve' the type. Hierarchy is built from weight and tracking on the system stack; a custom face would fight the engineered, get-out-of-the-way character of the system.", "section": "typography" },
-      { "name": "The Lift-Means-Interactive Rule", "body": "With the single exception of the portfolio card's resting shadow, a shadow means the element is hovered, targeted, or the animated phone. Sections carry no surface at all; only the small component cards (portfolio, steps, FAQ, form fields) stay flat at rest.", "section": "elevation" },
+      { "name": "The Lift-Means-Interactive Rule", "body": "With the single exception of the portfolio card's resting shadow, a shadow means the element is hovered, targeted, or the animated phone. Resting surfaces read as flat, tinted paper.", "section": "elevation" },
       { "name": "The Full Pill Rule", "body": "Action elements (buttons, nav CTA) are full 999px pills. Everything else uses the 6 / 10 / 14px ladder. Do not mix radii within one component and do not give an action a boxy radius.", "section": "elevation" }
     ],
     "dos": [
-      "Do let the page gradient show fully \u2014 no section carries a background of its own; separate sections with padding/margin only, never a box.",
-      "Do verify body and secondary text clears 4.5:1 against the bare gradient at every scroll position \u2014 there is no panel dimming it anymore. Check at the FAQ, the atuty strip, and the footer approach, where the gradient is warmest.",
-      "Do keep Stadium Amber rare: the next action, links, focus rings, step numbers, the phone glow. Running copy stays Text Muted / Text Primary.",
+      "Do keep the canvas flat \u2014 one solid color on body, no gradient, no per-section repaint.",
+      "Do separate sections with padding/margin only, never a box.",
+      "Do verify body and secondary text clears 4.5:1 on Canvas \u2014 and re-check independently anywhere a color sits on a different surface (the footer, the accent fill, a hover state); a pair that passes on Canvas can still fail elsewhere.",
+      "Do keep Bottle Green rare: the next action, links, focus rings, step numbers. Running copy stays Text Muted / Text Primary.",
       "Do use full 999px pills for actions and the 6 / 10 / 14px ladder for every other corner.",
       "Do gate every animation behind the .js class and prefers-reduced-motion, with the content fully visible and usable when both are off.",
-      "Do put a 2px Stadium Amber focus outline (outline-offset: 1\u20132px) on every interactive element.",
-      "Do draw custom controls (checkbox, <details> markers, icons) from scratch in the dark palette instead of styling native chrome.",
+      "Do put a 2px Bottle Green focus outline (outline-offset: 1\u20132px) on every interactive element.",
+      "Do draw custom controls (checkbox, <details> markers, icons) from scratch in the light palette instead of styling native chrome.",
       "Do define shapes with the hairline border \u2014 fills are almost invisible on their own."
     ],
     "donts": [
       "Don't ship the template look: no stock hero photo, no grid of identical rounded cards, no gradient-filled buttons. This is the one confirmed anti-reference.",
-      "Don't give a section its own background, border, blur, or radius of any kind \u2014 no panel, no card, no translucent fill. Sections are pure spacing. (The footer, #0a0a0a, is the sole opaque exception, and the small component-level cards keep their own faint fill \u2014 neither is a section-level panel.)",
-      "Don't use amber for large fills or runs of text; its scarcity is the point.",
-      "Don't add a second accent hue. Amber + neutral only; Error red (#d64545) is a state color, not an accent.",
-      "Don't introduce or assume a light theme. The system is dark-only \u2014 html is #000 and only dark tokens exist.",
+      "Don't give a section its own background, border, blur, or radius of any kind \u2014 no panel, no card, no translucent fill. Sections are pure spacing. (The footer, #16211B, is the sole opaque exception, and the small component-level cards keep their own faint fill \u2014 neither is a section-level panel.)",
+      "Don't use Bottle Green for large fills or runs of text; its scarcity is the point.",
+      "Don't add a second accent hue. Green + neutral only; Error red (#A13333) is a state color, not an accent.",
+      "Don't introduce or assume a dark theme. The system is light-only, by deliberate choice.",
       "Don't load a web font to 'fix' the typography; weight and tracking carry the hierarchy.",
-      "Don't let a shadow sit on a resting surface (portfolio card excepted) \u2014 shadows mean hover, :target, or the animated phone."
+      "Don't let a shadow sit on a resting surface (portfolio card excepted) \u2014 shadows mean hover, :target, or the animated phone.",
+      "Don't reuse the standard Leaf Green link color inside the footer \u2014 it fails contrast there (~2.6:1). Use Ivory."
     ]
   }
 }
