@@ -405,10 +405,11 @@ motion is decorative rather than functional. Three independent layers:
 
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note
-on an otherwise light page. Text is Ivory at `0.72` opacity; links (`.footer__link
-a`) are full-opacity Ivory, **not** Leaf Green — Leaf Green's contrast against
-Pine Black falls to ~2.6:1, well under AA, so the footer is the one place that
-does not reuse the standard link color.
+on an otherwise light page. Text is Ivory at `0.72` opacity. The footer carries a
+`.footer__links` row (O nas / Proces tworzenia strony / FAQ / Kontakt) — every
+link there is full-opacity Ivory, **not** Leaf Green — Leaf Green's contrast
+against Pine Black falls to ~2.6:1, well under AA, so the footer is the one
+place that does not reuse the standard link color.
 
 ## Do's and Don'ts
 

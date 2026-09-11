@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Najczęściej zadawane pytania — FitPage</title>
+  <meta name="description" content="Odpowiedzi na najczęściej zadawane pytania o strony internetowe dla trenerów personalnych — cena, czas realizacji, treści, telefon, domena i RODO.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo"><span>Fit</span>Page</a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+        <a href="index.html#o-nas">O nas</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="proces.html">Proces</a>
+        <a href="faq.html">FAQ</a>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Najczęściej zadawane pytania</h1>
+        <p class="hero__subtitle reveal">
+          Odpowiedzi na pytania, które najczęściej pojawiają się przed rozpoczęciem współpracy.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ ============================ -->
+    <!-- TODO: przejrzeć i doprecyzować odpowiedzi wg realnej oferty FitPage -->
+    <section class="section faq">
+      <div class="container reveal">
+
+        <div class="faq__list">
+
+          <details class="faq__item reveal">
+            <summary>Ile kosztuje strona?</summary>
+            <p>Wycena jest indywidualna — zależy od zakresu (liczba sekcji, podstron, dodatkowe funkcje). Orientacyjne widełki podajemy po konsultacji i wypełnieniu briefu.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Ile trwa realizacja?</summary>
+            <p>To zależy od zakresu strony i tempa dostarczania treści z Twojej strony. Konkretny termin ustalamy na konsultacji i zapisujemy w ustaleniach.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy muszę mieć gotowe teksty i zdjęcia?</summary>
+            <p>Nie musisz mieć wszystkiego na start. Pomagamy uporządkować treści i podpowiadamy, co warto pokazać. Zdjęcia możesz dostarczyć w trakcie prac.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy strona będzie działać na telefonie?</summary>
+            <p>Tak. Wszystkie strony projektujemy responsywnie (mobile-first) i testujemy na małych ekranach — większość odwiedzających trafi na stronę z telefonu.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy pomagacie z domeną i publikacją?</summary>
+            <p>Tak. Pomagamy skonfigurować domenę, opublikować stronę i przekazujemy krótką instrukcję, żebyś mógł samodzielnie wprowadzać drobne zmiany.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy formularz kontaktowy będzie zgodny z RODO?</summary>
+            <p>Tak. Każdy formularz dostaje klauzulę informacyjną i odpowiednie zgody, a okres przechowywania danych ustalamy wprost przed publikacją.</p>
+          </details>
+
+        </div>
+
+        <div class="faq__cta reveal">
+          <p>Nie znalazłeś odpowiedzi na swoje pytanie?</p>
+          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        </div>
+
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="index.html#o-nas">O nas</a>
+      <a href="proces.html">Proces tworzenia strony</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

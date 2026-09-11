@@ -752,18 +752,22 @@ a { color: inherit; }
 .footer__logo { font-weight: 800; letter-spacing: -0.03em; color: var(--on-accent); }
 .footer p { margin: 0; }
 
-/* link do podstrony „Proces tworzenia strony” — na samym dole strony */
-.footer .footer__link {
+/* rząd skrótów (O nas / Proces / FAQ / Kontakt) — na samym dole strony */
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
   margin: 0 auto 18px;
   padding-bottom: 18px;
   border-bottom: 1px solid rgba(251, 248, 240, 0.14);
   font-weight: 600;
 }
-.footer__link a {
+.footer__links a {
   color: var(--on-accent);
   text-decoration: none;
 }
-.footer__link a:hover { text-decoration: underline; }
+.footer__links a:hover { text-decoration: underline; }
 
 /* ===================================================================
    ANIMACJE PRZY SCROLLU — scaffolding pod przyszłą rozbudowę

@@ -21,19 +21,32 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
 **`index.html`** — sekcje w kolejności:
 1. Nav — logo `FitPage` + linki do sekcji + CTA „Umów konsultację” → `kontakt.html`
    (sticky, menu mobilne < 700px)
-2. Hero — „Strony internetowe dla trenerów personalnych” + podtytuł + CTA „Umów konsultację”
-3. O nas — tekst + grafika `mockup1.png` (telefon z ekranem strony) obok, po prawej.
+2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
+3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
+   rodzajów treningu (wyciskanie na ławce, bieganie, pilates, balet, joga, boks,
+   kolarstwo, pływanie), wzorowany na sekcji „Dla kogo” z marta-strona-trener.netlify.app.
+   CSS-owa pętla bez JS: dwie kopie listy w jednym torze, `translateX(0 → -50%)`,
+   `32s linear infinite`; druga kopia `aria-hidden`. Zatrzymuje się pod
+   `prefers-reduced-motion`. Ikony neutralne, zielona kropka-separator jako jedyny akcent.
+4. O nas — tekst + grafika `mockup1.png` (telefon z ekranem strony) obok, po prawej.
    Układ `.o-nas__grid` (flex): mobile = kolumna (telefon pod tekstem, max 220px),
-   od 900px = wiersz tekst | telefon (max 250px). Poświata w kolorze akcentu pod
-   telefonem (`.o-nas__visual::before`). id `#o-nas`, klasa `.o-nas`.
+   od 900px = wiersz tekst | telefon (max 250px). id `#o-nas`, klasa `.o-nas`.
    `mockup1.png` zmniejszony do 500×833 (~307 KB, alpha zachowana) — oryginał
    1857×3096 (~2,3 MB) w kopii poza repo. `<img>` ma `width/height` 500×833, bez `loading="lazy"`.
-4. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
-5. Kontakt (skrót) — CTA „Umów konsultację” + bezpośredni e-mail (placeholder) i
-   telefon **535 721 592** (`tel:+48535721592`)
-6. FAQ — akordeon `<details>`/`<summary>` (bez JS) + dodatkowy CTA „Umów konsultację” → `kontakt.html`
-7. Footer — link **„Proces tworzenia strony”** (`.footer__link`) → `proces.html`,
-   pod nim logo + copyright. Ten sam footer na wszystkich stronach.
+5. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
+6. Kontakt (skrót) — CTA „Umów konsultację” + telefon **535 721 592**
+   (`tel:+48535721592`; bezpośredni e-mail — patrz TODO)
+7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
+   2 rundy poprawek w cenie / Wyłącznie trenerzy personalni), bez panelu, akcent
+   punktowo tylko na pierwszej ikonie.
+8. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” / „Kontakt”
+   (`.footer__links`), pod nim logo + copyright. Ten sam footer (z tymi samymi
+   4 linkami) na wszystkich stronach.
+
+**`faq.html`** — najczęściej zadawane pytania, wydzielone z `index.html` na osobną
+podstronę (dawniej sekcja `#faq` na stronie głównej). Kompaktowy hero + ten sam
+akordeon `<details>`/`<summary>` (bez JS) co wcześniej + CTA „Umów konsultację” +
+link „Wróć na stronę główną”. Wejście: „FAQ” w nav i w stopce (obie → `faq.html`).
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
 osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,
@@ -60,17 +73,24 @@ ma krótki opis + rozwijane `<details class="krok__more">` („Więcej”) z dod
 informacjami. **Bez przycisków CTA i bez listy odnośników** — tylko link „Wróć na
 stronę główną”. Wejście: link w stopce oraz „Proces” w nav (obie → `proces.html`).
 
-## Paleta — motyw ciemny
-Tło całej strony: pionowy gradient **czerń → żółć** (`--page-grad` na `body`,
-góra `#000` → dół `#f5c518`), rozciągnięty na całą wysokość dokumentu.
-Akcent: żółty `#f5c518` (hover `#ffd23f`), tekst na żółtym: `--ink` `#1a1a1a`.
-Tekst jasny (`--text #f2f2f2`, `--muted #c4c4c4`).
+## Paleta — motyw jasny
+Świadomy wybór (nie domyślny jasny/ciemny wariant) — patrz `DESIGN.md`,
+Creative North Star „The Morning Session”. Tło: płaski kremowy canvas
+`--canvas #F7F3EA` na `body`/`html`, bez gradientu. Akcent: głęboka zieleń
+butelkowa `--accent #1F3D2B` (hover `--accent-strong #2C6B47`) — używana
+punktowo (guzik, linki, focus, numery kroków), nigdy jako duże wypełnienie.
+Tekst na akcencie: jasny `--on-accent #FBF8F0` (odwrotność starego `--ink` —
+akcent jest teraz ciemny, więc tekst na nim musi być jasny). Tekst ciemny
+`--text #202821`, pomocniczy `--muted #52594F`. Błąd `--error #A13333`
+(pogłębiony względem generycznego czerwonego — na jasnym tle płytszy
+czerwony spada poniżej WCAG AA).
 
-Czytelność mimo gradientu: treść każdej sekcji siedzi na półprzezroczystym
-panelu `.section > .container` (`--panel rgba(16,16,16,.70)` + blur). Gradient
-prześwituje w hero (u góry czerń), w odstępach między panelami i mocno na dole
-(żółć) wokół FAQ / stopki. Hero i nav bez własnego koloru tła (nav: czarny
-półprzezroczysty). Stopka: lity `#0a0a0a`. Zmienne w `:root` w `style.css`.
+Sekcje nie mają własnego tła/obramowania/panelu — treść siedzi bezpośrednio
+na canvasie, odstępy tylko przez padding. Jedyna świadomie ciemna
+powierzchnia: stopka (`#16211B`, „Pine Black”) — linki w niej używają
+`--on-accent`, bo `--accent-strong` traci tam kontrast. Nagłówki H1/H2 oraz
+tekst hero/O nas/Kontakt mają subtelną, zazielenioną poświatę
+(`text-shadow`, `rgba(31,45,36,.14)`). Zmienne w `:root` w `style.css`.
 
 ## Animacje przy scrollu
 Scaffolding gotowy: klasa `.reveal` w HTML + współdzielony `IntersectionObserver`

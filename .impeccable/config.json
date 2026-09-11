@@ -110,6 +110,33 @@
         ],
         "createdAt": "2026-09-11T21:06:50.540Z",
         "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "faq.html"
+        ],
+        "createdAt": "2026-09-11T21:50:00.737Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover) already sanctioned on index/kontakt/proces/dziekujemy.html under DESIGN.md; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "faq.html"
+        ],
+        "createdAt": "2026-09-11T21:52:13.408Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the light-theme canvas color, not a reflexive AI default (same as index/kontakt/proces/dziekujemy.html)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "faq.html"
+        ],
+        "createdAt": "2026-09-11T21:52:13.431Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
       }
     ]
   }
