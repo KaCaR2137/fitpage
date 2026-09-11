@@ -3,9 +3,10 @@
    1. Flaga .js (żeby bez JS treść była normalnie widoczna)
    2. Menu mobilne (hamburger)
    3. Rok w stopce
-   4. Animacje przy scrollu — jeden współdzielony IntersectionObserver
+   4. Animacje przy scrollu — hero odsłania się od razu (poza IO, patrz
+      komentarz przy sekcji), reszta przez współdzielony IntersectionObserver
       + klasa .widoczna, ze staggered transitionDelay dla rodzeństwa.
-   5. Formularz kontaktowy — walidacja + komunikat (wersja demo).
+   5. Formularz kontaktowy — walidacja per-pole + wysyłka (Netlify Forms).
    =================================================================== */
 (function () {
   'use strict';
@@ -37,12 +38,45 @@
   var yearEl = document.getElementById('year');
   if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
 
-  /* ---------------------- 4. Animacje przy scrollu ---------------------- */
-  var revealEls = document.querySelectorAll('.reveal');
+  /* ---------------------- 4. Animacje przy scrollu ----------------------
+     Hero (i hero--compact na podstronach) jest zawsze w widocznym obszarze
+     już przy pierwszym renderze — nie obserwujemy go IntersectionObserverem.
+     Dla elementu, który jest w viewport od startu, obserwator odpala swój
+     pierwszy callback niemal natychmiast, często zanim przeglądarka zdąży
+     w ogóle wymalować stan początkowy `.reveal` (opacity:0). Bez osobnej
+     klatki z tym stanem przejście CSS nie ma z czego animować — stąd
+     martwe/śladowe hero mimo że nikt nie scrolluje. Reszta sekcji (poniżej
+     zakładki) faktycznie czeka na scroll, więc tam ten wyścig nie występuje. */
+  var allReveals = document.querySelectorAll('.reveal');
+  var heroReveals = [];
+  var scrollReveals = [];
+  allReveals.forEach(function (el) {
+    (el.closest('.hero') ? heroReveals : scrollReveals).push(el);
+  });
 
-  if (reduceMotion || !('IntersectionObserver' in window)) {
+  var noAnimation = reduceMotion || !('IntersectionObserver' in window);
+
+  function revealWithStagger(elements) {
+    elements.forEach(function (el, index) {
+      if (index > 0) { el.style.transitionDelay = (index * 90) + 'ms'; }
+      el.classList.add('widoczna');
+    });
+  }
+
+  if (noAnimation) {
+    revealWithStagger(heroReveals);
+  } else {
+    // podwójny requestAnimationFrame: pierwszy domyka bieżącą klatkę,
+    // drugi gwarantuje, że przeglądarka zdążyła wymalować stan opacity:0,
+    // zanim dodamy klasę wyzwalającą przejście.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { revealWithStagger(heroReveals); });
+    });
+  }
+
+  if (noAnimation) {
     // brak animacji — po prostu pokaż wszystko
-    revealEls.forEach(function (el) { el.classList.add('widoczna'); });
+    scrollReveals.forEach(function (el) { el.classList.add('widoczna'); });
   } else {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -68,7 +102,7 @@
       rootMargin: '0px 0px -40px 0px'
     });
 
-    revealEls.forEach(function (el) { observer.observe(el); });
+    scrollReveals.forEach(function (el) { observer.observe(el); });
   }
 
   /* ---------------------- 5. Formularz kontaktowy ----------------------
