@@ -209,6 +209,67 @@ a { color: inherit; }
 .hero--compact { padding: 72px 20px 60px; }
 .hero--compact .hero__subtitle { margin-bottom: 0; }
 
+/* ============================== TRENINGI (pasek) ============================== */
+/* Poziomy, zapętlony pasek nad "O nas" — dwie identyczne kopie listy obok
+   siebie, animacja przesuwa cały tor o -50% jego własnej szerokości, czyli
+   dokładnie o szerokość jednej kopii -> pętla bez szwu. Druga kopia ma
+   aria-hidden, żeby czytnik ekranu nie usłyszał każdej nazwy dwa razy.
+   Ikony neutralne (--text); zieleń akcentowa tylko jako kropka-separator
+   między pozycjami — zgodnie z The One Mark Rule (akcent rzadko, nie jako
+   wypełnienie całego paska). */
+.trainings {
+  overflow: hidden;
+  padding: 28px 0;
+}
+.trainings__track {
+  display: flex;
+  width: max-content;
+  animation: trainings-scroll 32s linear infinite;
+}
+.trainings__list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0 14px;
+  flex-shrink: 0;
+}
+.trainings__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.trainings__item svg {
+  width: 22px;
+  height: 22px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.trainings__item::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  margin-left: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@keyframes trainings-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trainings__track { animation: none; }
+  .trainings__list[aria-hidden="true"] { display: none; }
+}
+
 /* ============================== ATUTY ============================== */
 /* Pasek 4 atutów — bez panelu, jak wszystkie sekcje teraz. Odstęp od
    sąsiadów przez sam padding, bez linii/obramowania. Zieleń punktowo:

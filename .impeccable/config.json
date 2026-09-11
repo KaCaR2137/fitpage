@@ -74,6 +74,15 @@
         ],
         "createdAt": "2026-09-11T16:12:21.107Z",
         "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-11T21:00:10.795Z",
+        "reason": "user confirmed: explicit request for an infinite CSS translateX marquee of training-type icons above 'O nas', modeled on a named reference site's 'Dla kogo' section, with specified mechanics (duplicated list, CSS animation) and explicit prefers-reduced-motion handling — not a reflexive AI pattern"
       }
     ]
   }

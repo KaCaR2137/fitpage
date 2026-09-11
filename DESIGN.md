@@ -360,6 +360,21 @@ component and do not give an action a boxy radius.
   `.is-open` and `aria-expanded`; links become a full-width stacked dropdown on
   `rgba(247,243,234,0.98)` with hairline dividers; the menu closes on link click.
 
+### Trainings marquee
+A horizontal, infinitely-looping strip of 8 training-type icons + labels
+(wyciskanie na ławce, bieganie, pilates, balet, joga, boks, kolarstwo,
+pływanie), between the hero and "O nas" on the homepage. Two identical
+`<ul>` copies sit side by side in a flex track; the track animates
+`translateX(0) → translateX(-50%)` on a `32s linear infinite` loop — exactly
+one copy's width, so the wrap is seamless. The second copy is `aria-hidden`
+so screen readers hear each label once. Icons are neutral (Text Primary,
+same stroke system as elsewhere); a small Bottle Green dot after each label
+is the only accent — a full row of solid-green icons would spend the One
+Mark Rule's scarcity on decoration. `prefers-reduced-motion` stops the
+animation and drops the hidden duplicate; the strip becomes a static row.
+This is the one exception to "reserve motion for content that changes" —
+kept deliberately, on explicit direction, modeled on a named reference site.
+
 ### Trust icons (atuty)
 Four short facts in a row — Bezpłatna konsultacja / Cała Polska, zdalnie / 2 rundy
 poprawek w cenie / Wyłącznie trenerzy personalni — near the bottom of the
