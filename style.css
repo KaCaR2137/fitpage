@@ -594,11 +594,16 @@ summary:focus-visible {
 
 /* podstrona pojedynczego artykułu — typografia jak .polityka (tryb "Read"):
    tekst ograniczony do ~65ch, żeby nie powtórzyć problemu z długością linii */
+/* Cała treść artykułu (nagłówek h2/h3, akapity, CTA, link powrotny) w jednej
+   wyśrodkowanej kolumnie czytelniczej — .container ma 1080px, a sam tekst
+   ograniczony do ~65ch (żeby linia nie była za długa) zostawiał dotąd puste
+   miejsce WYŁĄCZNIE po prawej stronie, bo kolumna była przyklejona do
+   lewej krawędzi kontenera zamiast wyśrodkowana. */
+.artykul { max-width: 65ch; margin-inline: auto; }
 .artykul__body { margin-top: 32px; }
 .artykul__body p,
 .artykul__body ul,
 .artykul__body ol {
-  max-width: 65ch;
   color: var(--muted);
 }
 .artykul__body h2 { font-size: 1.3rem; margin: 1.6em 0 0.5em; }

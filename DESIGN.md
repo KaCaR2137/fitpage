@@ -217,7 +217,13 @@ The type should feel engineered, not expressive.
   `<strong>` promoted to Text Primary. Prose blocks capped near 680px wide,
   except long-form "Read" mode content (`.polityka`, `.artykul__body`), which
   narrows to ~65ch — measured against the site's own line-length findings
-  rather than the general 680px figure.
+  rather than the general 680px figure. On an article page the narrowed
+  column (`.artykul`, wrapping heading/body/CTA/back-link together) is
+  centered (`margin-inline: auto`) inside the wider `.container`, not left-
+  pinned to it — a left-pinned narrow column inside a much wider container
+  reads as a lopsided gap on the right at desktop widths, not intentional
+  whitespace. `.polityka` still left-pins its column the same way; it hasn't
+  been revisited since this was caught on the article template.
 - **Label / Micro** (600 for field labels at `0.9rem`; 400 for hints, required
   notes and captions at `0.8rem`; 600 for "Więcej" toggles at `0.82rem`): Text
   Muted, except labels and legends which use Text Primary.

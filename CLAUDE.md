@@ -113,7 +113,12 @@ dozwolone (bez pomijania poziomów), `<strong>` w Text Primary, listy ze
 standardowym odstępem. Po treści opcjonalny `.artykul__cta` (ten sam wzorzec
 co `.faq__cta`: akapit + `.btn.btn--primary` do `kontakt.html`) — nie każdy
 artykuł musi go mieć, dodaj gdy treść naturalnie kończy się wezwaniem do
-kontaktu. Link powrotny `.artykul__back` → `artykuly.html`.
+kontaktu. Link powrotny `.artykul__back` → `artykuly.html`. Cała ta kolumna
+(nagłówek + treść + CTA + link powrotny) jest owinięta w `.artykul`,
+wycentrowana (`max-width: 65ch; margin-inline: auto`) w szerszym
+`.container` — **nie** przyklejona do lewej krawędzi, bo to na desktopie
+zostawiało puste miejsce wyłącznie po prawej stronie (złapane i naprawione
+już po opublikowaniu pierwszego artykułu).
 
 **Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
 wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
