@@ -130,6 +130,16 @@ tekst zachęty, co na karcie listy/podglądu (jeśli już ustalony) — nie
 wymyślać nowego. Pierwszy przykład: `jak-wyroznic-sie-jako-trener.html`,
 z `artykul-jak-wyroznic-sie-DRAFT.md`.
 
+**Opcjonalne zdjęcie w tle nagłówka** — jeśli do artykułu dostarczone jest
+zdjęcie: zoptymalizować (`sips -Z 1600 -s format jpeg -s formatOptions 78`,
+docelowo `images/artykul-<slug>-hero.jpg` — oryginał może zostać w korzeniu
+repo jako źródło, bezpieczny bo poza allowlistą `.assetsignore`), dodać klasę
+`.hero--cover` do `<section class="hero hero--compact">` tej strony +
+`style="background-image: url('../images/...')"` inline (obraz to treść
+per-artykuł, reszta stylu już czeka w `style.css`). Nie kopiować CSS
+`.hero--cover` między stronami — to współdzielona klasa, jeden artykuł =
+jedna linijka inline z URL-em zdjęcia.
+
 **`polityka-prywatnosci.html`** — DRAFT, `<meta name="robots" content="noindex">`,
 **celowo niepodlinkowana** z nav/stopki. Treść wklejona z `polityka-prywatnosci-DRAFT.md`
 (sam plik roboczy zostaje w repo, nie jest częścią strony). Miejsca, których nie

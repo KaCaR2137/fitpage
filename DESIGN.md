@@ -445,6 +445,28 @@ degrades safely with JavaScript off. `prefers-reduced-motion` removes the
 overlay outright (`display: none`) rather than freezing it mid-animation —
 the content is instantly available, never gated behind a decorative intro.
 
+### Article cover header (`.hero--cover`)
+An optional modifier on `.hero.hero--compact`, for an article whose draft
+comes with a dedicated header photo (not every article needs one). The photo
+itself is set inline (`style="background-image: url(...)"`) on that one
+page's `<section>` — it's the article's own content, not a design decision,
+so it doesn't live in `style.css`; everything else about the treatment does,
+so the same modifier class works for the next article with a photo without
+repeating CSS. `background-size: cover` + `background-position: center`
+guarantee the photo fills the whole header at any viewport width — no empty
+canvas-colored bars at the sides, ever, regardless of the source image's
+aspect ratio. A Pine Black scrim (`rgba(22,33,27,0.65)` on a full-bleed
+`::before`) sits between photo and text; both the date (`.artykul__meta`)
+and the title switch to Ivory with a small black `text-shadow` for
+legibility against a busy photo — this is the one place Ivory text appears
+outside the accent fill and the footer, because a photo backdrop is,
+functionally, another dark surface. `0.65` opacity was picked by computing
+worst-case contrast against the specific photo's brightest regions (a lit
+wall, white t-shirts), not chosen on sight — comfortably over 4.5:1 even
+there. `min-height: 260px` keeps the header from looking clipped on short
+mobile content; wider/taller viewports are already governed by the existing
+`.hero--compact` padding tiers, unchanged.
+
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note
 on an otherwise light page. Text is Ivory at `0.72` opacity. The footer carries a

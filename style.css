@@ -260,6 +260,37 @@ summary:focus-visible {
 .hero--compact { padding: 72px 20px 60px; }
 .hero--compact .hero__subtitle { margin-bottom: 0; }
 
+/* wariant ze zdjęciem w tle — dla artykułów z dedykowaną grafiką nagłówka.
+   Samo zdjęcie ustawiane jest per-strona inline (style="background-image"),
+   bo to treść konkretnego artykułu, nie decyzja stylistyczna — reszta
+   (przyciemnienie, wysokość, kolor tekstu) żyje tutaj, żeby dało się użyć
+   dla kolejnych artykułów bez powtarzania CSS. background-size: cover +
+   background-position: center gwarantują, że zdjęcie wypełnia cały obszar
+   nagłówka na każdej szerokości ekranu — bez pustych pasów po bokach. */
+.hero--cover {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 260px;
+}
+.hero--cover::before {
+  /* przyciemnienie w kolorze Pine Black (ten sam ciemny akcent co stopka) —
+     0.65 dobrane tak, żeby jasny tekst trzymał WCAG AA (4.5:1) nawet na
+     najjaśniejszych fragmentach tego konkretnego zdjęcia (żółta ściana,
+     białe koszulki) — sprawdzone liczbowo, nie na oko. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 33, 27, 0.65);
+}
+.hero--cover .hero__inner { position: relative; z-index: 1; }
+.hero--cover .artykul__meta,
+.hero--cover .hero__title {
+  color: var(--on-accent);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35); /* dodatkowa czytelność na ruchliwym zdjęciu */
+}
+
 /* ============================== TRENINGI (pasek) ============================== */
 /* Poziomy, zapętlony pasek nad "O nas" — dwie identyczne kopie listy obok
    siebie, animacja przesuwa cały tor o -50% jego własnej szerokości, czyli
