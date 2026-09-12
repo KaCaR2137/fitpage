@@ -182,6 +182,60 @@
         ],
         "createdAt": "2026-09-12T11:22:07.357Z",
         "reason": "agent verified: real rendered colors (--muted 6.54:1, --accent-strong 5.74:1 vs canvas) pass WCAG AA; live detect flags below-fold .reveal/.krok__more elements caught mid opacity-transition by the headless scanner (finding's own snippet reads 'opacity stack') - a known scanner-timing artifact, not a real contrast defect, previously diagnosed on this project"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly.html"
+        ],
+        "createdAt": "2026-09-12T13:56:36.732Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover) already sanctioned on all other pages under DESIGN.md; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly.html"
+        ],
+        "createdAt": "2026-09-12T14:29:17.620Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the light-theme canvas color, not a reflexive AI default (same as all other pages)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly.html"
+        ],
+        "createdAt": "2026-09-12T14:29:25.166Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/jak-wyroznic-sie-jako-trener.html"
+        ],
+        "createdAt": "2026-09-12T14:30:42.524Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover) already sanctioned on all other pages under DESIGN.md; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/jak-wyroznic-sie-jako-trener.html"
+        ],
+        "createdAt": "2026-09-12T14:31:07.916Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the light-theme canvas color, not a reflexive AI default (same as all other pages)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/jak-wyroznic-sie-jako-trener.html"
+        ],
+        "createdAt": "2026-09-12T14:31:17.915Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
       }
     ]
   }

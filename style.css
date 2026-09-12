@@ -480,6 +480,93 @@ summary:focus-visible {
 .card__link:hover { gap: 12px; }
 .card__link svg { width: 16px; height: 16px; }
 
+/* ============================== ARTYKUŁY ============================== */
+/* Ta sama siatka co portfolio, ale karta wzorowana na .krok (Surface Card,
+   bez cienia w spoczynku — cień w spoczynku jest zastrzeżony dla portfolio,
+   patrz DESIGN.md "The Lift-Means-Interactive Rule"). Cień/lekkie uniesienie
+   pojawia się wyłącznie na hover/focus, żeby zasygnalizować klikalność bez
+   łamania tej zasady. */
+.artykuly__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 400px));
+}
+.artykul-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.18s var(--ease),
+              box-shadow 0.18s var(--ease),
+              border-color 0.18s var(--ease);
+}
+.artykul-card:hover,
+.artykul-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+.artykul-card__title { font-size: 1.15rem; margin: 0.2em 0 0.1em; }
+.artykul-card__title a {
+  text-decoration: none;
+  color: var(--text);
+}
+.artykul-card__title a:hover { color: var(--accent-strong); }
+.artykul-card__title a::after {
+  /* powiększa klikalny obszar do całej karty bez zagnieżdżania linków */
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.artykul-card__lead { color: var(--muted); font-size: 0.95rem; margin: 0; }
+.artykul-card__link {
+  position: relative; /* nad pseudo-elementem ::after z .artykul-card__title */
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent-strong);
+  transition: gap 0.18s var(--ease);
+}
+.artykul-card__link:hover { gap: 12px; }
+.artykul-card__link svg { width: 16px; height: 16px; }
+
+/* metadata (data publikacji) — współdzielona przez kartę na liście i
+   nagłówek pojedynczego artykułu */
+.artykul__meta { color: var(--muted); font-size: 0.9rem; margin: 0; }
+
+/* podstrona pojedynczego artykułu — typografia jak .polityka (tryb "Read"):
+   tekst ograniczony do ~65ch, żeby nie powtórzyć problemu z długością linii */
+.artykul__body { margin-top: 32px; }
+.artykul__body p,
+.artykul__body ul,
+.artykul__body ol {
+  max-width: 65ch;
+  color: var(--muted);
+}
+.artykul__body h2 { font-size: 1.3rem; margin: 1.6em 0 0.5em; }
+.artykul__body h2:first-child { margin-top: 0; }
+.artykul__body h3 { font-size: 1.1rem; margin: 1.3em 0 0.4em; }
+.artykul__body strong { color: var(--text); }
+.artykul__body a { color: var(--accent-strong); }
+.artykul__body ul,
+.artykul__body ol { margin-bottom: 1em; padding-left: 1.25em; }
+.artykul__body li { margin-bottom: 0.4em; }
+.artykul__back { margin-top: 28px; font-size: 0.9rem; }
+.artykul__back a { color: var(--accent-strong); text-decoration: none; }
+.artykul__back a:hover { text-decoration: underline; }
+
 /* ============================== PROCES / KROKI ============================== */
 .kroki__grid {
   list-style: none;

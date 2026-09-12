@@ -48,8 +48,11 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 ## Strony
 **`index.html`** — sekcje w kolejności:
 1. Nav — logo-obrazek `images/logo-fitpage.png` (`.nav__logo-img`, 36px,
-   `alt="FitPage"`) + linki do sekcji + CTA „Umów konsultację” → `kontakt.html`
-   (sticky, menu mobilne < 700px)
+   `alt="FitPage"`) + linki do sekcji (O nas, Portfolio, Proces, FAQ, Artykuły)
+   + CTA „Umów konsultację” → `kontakt.html` (sticky, menu mobilne < 700px;
+   z 6 elementami w `.nav__links` (5 linków + CTA) mieści się z zapasem od
+   700px w górę — zmierzone: ~638px potrzebne przy 26px `gap`, próg mobilny
+   dopiero od 700px)
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
    rodzajów treningu (wyciskanie na ławce, bieganie, pilates, balet, joga, boks,
@@ -68,14 +71,37 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
    2 rundy poprawek w cenie / Wyłącznie trenerzy personalni), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.
-8. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” / „Kontakt”
-   (`.footer__links`), pod nim logo + copyright. Ten sam footer (z tymi samymi
-   4 linkami) na wszystkich stronach.
+8. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” / „Artykuły” /
+   „Kontakt” (`.footer__links`), pod nim logo + copyright. Ten sam footer (z tymi
+   samymi 5 linkami) na wszystkich stronach.
 
 **`faq.html`** — najczęściej zadawane pytania, wydzielone z `index.html` na osobną
 podstronę (dawniej sekcja `#faq` na stronie głównej). Kompaktowy hero + ten sam
 akordeon `<details>`/`<summary>` (bez JS) co wcześniej + CTA „Umów konsultację” +
 link „Wróć na stronę główną”. Wejście: „FAQ” w nav i w stopce (obie → `faq.html`).
+
+**`artykuly.html`** — lista artykułów. Kompaktowy hero + `.artykuly__grid`
+(ta sama siatka `repeat(auto-fill, minmax(280px, 400px))` co portfolio) kart
+`.artykul-card` (data, tytuł-link, krótki lead, „Czytaj dalej” z ikoną
+strzałki w prawo — **nie** ikoną „otwiera w nowej karcie” z portfolio, bo to
+nawigacja wewnętrzna). Cała karta klikalna (`::after` na tytule), ale bez
+zagnieżdżania linków. Cień/uniesienie tylko na hover/focus — karta w
+spoczynku jest płaska jak `.krok`, zgodnie z „The Lift-Means-Interactive
+Rule” (cień w spoczynku jest zastrzeżony dla portfolio). Wejście: „Artykuły”
+w nav i w stopce (wszystkie strony), między FAQ a Kontakt. Na razie jeden
+przykładowy artykuł + komentarz `<!-- TODO: kolejne artykuły -->` pokazujący
+gdzie kopiować kolejne karty.
+
+**`artykuly/<slug>.html`** (np. `artykuly/jak-wyroznic-sie-jako-trener.html`) —
+szablon pojedynczego artykułu, w podkatalogu `artykuly/` (stąd `../` przed
+każdym odnośnikiem do stylu/skryptu/obrazów/innych stron w nav i stopce —
+łatwo przeoczyć przy kopiowaniu szablonu). Nagłówek: kompaktowy hero z datą
+publikacji (`.artykul__meta`) nad tytułem (h1). Treść w `.artykul__body` —
+typografia jak `.polityka` (tryb „Read”): tekst ograniczony do ~65ch, h2/h3
+dozwolone (bez pomijania poziomów), `<strong>` w Text Primary, listy ze
+standardowym odstępem. Link powrotny `.artykul__back` → `artykuly.html`.
+Treść artykułu to placeholder (`<!-- TODO: wklej tu gotową treść -->`) —
+celowo nie generowana automatycznie, do wklejenia ręcznie.
 
 **`polityka-prywatnosci.html`** — DRAFT, `<meta name="robots" content="noindex">`,
 **celowo niepodlinkowana** z nav/stopki. Treść wklejona z `polityka-prywatnosci-DRAFT.md`
@@ -162,6 +188,20 @@ Scaffolding gotowy: klasa `.reveal` w HTML + współdzielony `IntersectionObserv
 w `script.js` dodający `.widoczna`, ze staggered `transitionDelay` dla rodzeństwa.
 Bez JS treść jest normalnie widoczna (gate klasą `.js`). Respektuje
 `prefers-reduced-motion`. Aby animować nowy element — dodaj mu klasę `.reveal`.
+
+**Uogólniony fix wyścigu IO (wcześniej: tylko hero).** Element `.reveal`,
+który jest w widocznym obszarze już przy pierwszym renderze, jest wykrywany
+przez `getBoundingClientRect()` na starcie skryptu (nie przez `.closest('.hero')`)
+i odsłaniany przez podwójny `requestAnimationFrame`, z pominięciem
+`IntersectionObserver` — inaczej jego callback odpala się niemal natychmiast,
+zanim przeglądarka zdąży wymalować stan `opacity:0`, i element zostaje trwale
+niewidoczny (opacity utyka na 0) mimo dodanej klasy `.widoczna`. Wykryte przy
+budowie `artykuly.html`: krótka podstrona z jednym kartą artykułu mieści całą
+treść nad zakładką, więc karta (poza `.hero`) łapała dokładnie ten sam wyścig,
+którego pierwotny fix (ograniczony do `.hero`) nie pokrywał. Konsekwencja na
+przyszłość: każda krótka podstrona, gdzie `.reveal` spoza hero może się
+zmieścić w pierwszym widoku bez scrollowania, jest już bezpieczna — nie trzeba
+tego ręcznie wyłapywać per-sekcja.
 
 **Znany artefakt skanera (`impeccable detect <URL>`):** below-fold elementy
 `.reveal` (np. `.faq__item`, `.krok__more`) bywają złapane przez headless

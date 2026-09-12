@@ -3,9 +3,10 @@
    1. Flaga .js (żeby bez JS treść była normalnie widoczna)
    2. Menu mobilne (hamburger)
    3. Rok w stopce
-   4. Animacje przy scrollu — hero odsłania się od razu (poza IO, patrz
-      komentarz przy sekcji), reszta przez współdzielony IntersectionObserver
-      + klasa .widoczna, ze staggered transitionDelay dla rodzeństwa.
+   4. Animacje przy scrollu — elementy już widoczne przy pierwszym renderze
+      odsłaniają się od razu (poza IO, patrz komentarz przy sekcji), reszta
+      przez współdzielony IntersectionObserver + klasa .widoczna, ze
+      staggered transitionDelay dla rodzeństwa.
    5. Formularz kontaktowy — walidacja per-pole + wysyłka (Formspree).
    =================================================================== */
 (function () {
@@ -39,19 +40,28 @@
   if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
 
   /* ---------------------- 4. Animacje przy scrollu ----------------------
-     Hero (i hero--compact na podstronach) jest zawsze w widocznym obszarze
-     już przy pierwszym renderze — nie obserwujemy go IntersectionObserverem.
-     Dla elementu, który jest w viewport od startu, obserwator odpala swój
-     pierwszy callback niemal natychmiast, często zanim przeglądarka zdąży
-     w ogóle wymalować stan początkowy `.reveal` (opacity:0). Bez osobnej
-     klatki z tym stanem przejście CSS nie ma z czego animować — stąd
-     martwe/śladowe hero mimo że nikt nie scrolluje. Reszta sekcji (poniżej
-     zakładki) faktycznie czeka na scroll, więc tam ten wyścig nie występuje. */
+     Elementy .reveal, które są w widocznym obszarze już przy pierwszym
+     renderze — nie tylko hero, także np. cała treść krótkiej podstrony
+     (jedna karta artykułu, kompaktowy hero) mieszcząca się nad zakładką —
+     nie są obserwowane przez IntersectionObserver. Dla elementu widocznego
+     od startu obserwator odpala swój pierwszy callback niemal natychmiast,
+     często zanim przeglądarka zdąży w ogóle wymalować stan początkowy
+     `.reveal` (opacity:0). Bez osobnej klatki z tym stanem przejście CSS
+     nie ma z czego animować — element zostaje trwale niewidoczny (opacity
+     utyka na 0) mimo dodanej klasy .widoczna. Sprawdzamy to raz, na starcie
+     skryptu, przez realną pozycję (getBoundingClientRect), nie przez
+     przynależność do konkretnej sekcji jak `.hero`. Reszta — faktycznie
+     poniżej zakładki — idzie przez IntersectionObserver jak dotąd. */
+  function isInViewportNow(el) {
+    var rect = el.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  }
+
   var allReveals = document.querySelectorAll('.reveal');
-  var heroReveals = [];
+  var immediateReveals = [];
   var scrollReveals = [];
   allReveals.forEach(function (el) {
-    (el.closest('.hero') ? heroReveals : scrollReveals).push(el);
+    (isInViewportNow(el) ? immediateReveals : scrollReveals).push(el);
   });
 
   var noAnimation = reduceMotion || !('IntersectionObserver' in window);
@@ -64,13 +74,13 @@
   }
 
   if (noAnimation) {
-    revealWithStagger(heroReveals);
+    revealWithStagger(immediateReveals);
   } else {
     // podwójny requestAnimationFrame: pierwszy domyka bieżącą klatkę,
     // drugi gwarantuje, że przeglądarka zdążyła wymalować stan opacity:0,
     // zanim dodamy klasę wyzwalającą przejście.
     requestAnimationFrame(function () {
-      requestAnimationFrame(function () { revealWithStagger(heroReveals); });
+      requestAnimationFrame(function () { revealWithStagger(immediateReveals); });
     });
   }
 

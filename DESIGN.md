@@ -212,9 +212,12 @@ The type should feel engineered, not expressive.
   in Ivory — the two don't need to match, since one is a mark and the other a
   small label.
 - **Title** (600–700, `1.1rem`–`1.15rem`, line-height 1.2): card titles, step
-  titles, FAQ and "Więcej" summaries.
+  titles, article-card titles, FAQ and "Więcej" summaries.
 - **Body** (400, `1rem`, line-height 1.65): running copy in Text Muted, with
-  `<strong>` promoted to Text Primary. Prose blocks capped near 680px wide.
+  `<strong>` promoted to Text Primary. Prose blocks capped near 680px wide,
+  except long-form "Read" mode content (`.polityka`, `.artykul__body`), which
+  narrows to ~65ch — measured against the site's own line-length findings
+  rather than the general 680px figure.
 - **Label / Micro** (600 for field labels at `0.9rem`; 400 for hints, required
   notes and captions at `0.8rem`; 600 for "Więcej" toggles at `0.82rem`): Text
   Muted, except labels and legends which use Text Primary.
@@ -244,7 +247,7 @@ the engineered, get-out-of-the-way character of the system.
   hamburger menu boundary; section rhythm and section-title size step up; process
   steps go 1-col → 3-col), `900px` (hero gains more vertical air; "O nas" flips
   from a stacked column to a `text | phone` row).
-- **Grids:** portfolio is `repeat(auto-fill, minmax(280px, 400px))`; process steps
+- **Grids:** portfolio and the articles list share `repeat(auto-fill, minmax(280px, 400px))`; process steps
   are `1fr` → `repeat(3, 1fr)` at 700px, aligned to `start` so an expanded step
   grows without stretching its neighbours; "O nas" is a centered flex column
   (phone capped at 220px) → row at 900px (phone capped at 250px).
@@ -272,9 +275,11 @@ content.
 
 ### Shadow Vocabulary
 - **Card rest** (`box-shadow: 0 14px 40px rgba(31,45,36,0.16)` — the `--shadow`
-  token): the only resting shadow. Portfolio cards only. Green-tinted and soft
+  token): the only *resting* shadow. Portfolio cards only. Green-tinted and soft
   rather than a flat black — a heavy black shadow reads harsh on a light,
-  paper-like canvas.
+  paper-like canvas. The same token is reused as a *hover*-only lift on article
+  cards (paired with `translateY(-2px)` and a Bottle Green border) — the token
+  stays singular, only its trigger changes.
 - **Button lift** (`box-shadow: 0 12px 28px rgba(31,61,43,0.28)` on `:hover`,
   with `translateY(-2px)`): a green-tinted rise, echoing the accent.
 - **Phone drop** (`filter: drop-shadow(0 22px 46px rgba(31,45,36,0.22))`) plus a
@@ -337,6 +342,16 @@ component and do not give an action a boxy radius.
 - **Step card (`.krok`):** Surface Card fill, hairline border, `14px` radius,
   `28px 24px` padding, no resting shadow. A `40px` circular Bottle Green badge
   with Ivory text numbers it. On `:target`: Bottle Green border + `0 0 0 1px` ring.
+- **Article card (`.artykul-card`):** Surface Card fill, hairline border, `14px`
+  radius, `24px` padding — flat at rest like the step card, *not* the portfolio
+  card's resting-shadow exception. On hover/focus-within: `translateY(-2px)` +
+  the card-rest shadow token (`--shadow`) as a lift, border shifts to Bottle
+  Green — shadow-on-interaction only, per The Lift-Means-Interactive Rule. The
+  whole card is a click target (an `::after` on the title stretches over it)
+  without nesting a second `<a>`; the title itself links, and a separate
+  "Czytaj dalej" text link (Leaf Green, `→` arrow — a plain horizontal arrow,
+  not the portfolio card's diagonal "opens elsewhere" arrow, since this is
+  same-site navigation) repeats the same destination for scannability.
 
 ### Inputs / Fields
 - **Style:** Surface Card fill, hairline border, `10px` radius, `12px 14px`
@@ -422,7 +437,7 @@ the content is instantly available, never gated behind a decorative intro.
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note
 on an otherwise light page. Text is Ivory at `0.72` opacity. The footer carries a
-`.footer__links` row (O nas / Proces tworzenia strony / FAQ / Kontakt) — every
+`.footer__links` row (O nas / Proces tworzenia strony / FAQ / Artykuły / Kontakt) — every
 link there is full-opacity Ivory, **not** Leaf Green — Leaf Green's contrast
 against Pine Black falls to ~2.6:1, well under AA, so the footer is the one
 place that does not reuse the standard link color.

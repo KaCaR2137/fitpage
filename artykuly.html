@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dziękujemy — FitPage</title>
-  <meta name="description" content="Dziękujemy za przesłanie briefu do FitPage. Odezwiemy się z propozycją zakresu prac i wyceną.">
-  <meta name="robots" content="noindex">
+  <title>Artykuły — FitPage</title>
+  <meta name="description" content="Artykuły dla trenerów personalnych o stronach internetowych, pozyskiwaniu klientów i budowaniu marki.">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="apple-touch-icon" href="images/favicon-512.png">
@@ -45,25 +44,44 @@
     <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
     <section class="hero hero--compact">
       <div class="hero__inner">
-        <h1 class="hero__title reveal">Dziękujemy!</h1>
+        <h1 class="hero__title reveal">Artykuły</h1>
         <p class="hero__subtitle reveal">
-          Brief dotarł. Odezwiemy się z propozycją zakresu prac i wyceną.
+          Praktyczne teksty dla trenerów personalnych — o stronach internetowych,
+          pozyskiwaniu klientów i budowaniu marki.
         </p>
       </div>
     </section>
 
-    <!-- ============================ POTWIERDZENIE ============================ -->
-    <section class="section brief">
+    <!-- ============================ LISTA ARTYKUŁÓW ============================ -->
+    <section class="section artykuly">
       <div class="container reveal">
-        <p>
-          Sprawdź skrzynkę odbiorczą (również folder SPAM) — odezwiemy się
-          z pierwszym kontaktem. W międzyczasie możesz zerknąć na
-          <a href="proces.html">proces tworzenia strony</a> albo wrócić
-          do naszego portfolio.
-        </p>
+
+        <div class="artykuly__grid">
+
+          <article class="artykul-card reveal">
+            <p class="artykul__meta">12 września 2026</p>
+            <h2 class="artykul-card__title">
+              <a href="artykuly/jak-wyroznic-sie-jako-trener.html">Jak wyróżnić się jako trener personalny</a>
+            </h2>
+            <p class="artykul-card__lead">
+              Krótki opis artykułu — jedno, dwa zdania zachęty do przeczytania całości.
+            </p>
+            <a href="artykuly/jak-wyroznic-sie-jako-trener.html" class="artykul-card__link">
+              Czytaj dalej
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+          </article>
+
+          <!-- TODO: kolejne artykuły — kopiuj <article class="artykul-card reveal"> ... </article> -->
+
+        </div>
+
         <p class="brief__back reveal">
           <a href="index.html">&larr; Wróć na stronę główną</a>
         </p>
+
       </div>
     </section>
 
