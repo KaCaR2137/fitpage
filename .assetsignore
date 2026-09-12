@@ -1,0 +1,19 @@
+# .assetsignore — Cloudflare Workers Static Assets
+# Format identyczny jak .gitignore (potwierdzone w dokumentacji Cloudflare,
+# https://developers.cloudflare.com/workers/static-assets/binding/, wrzesień 2026).
+#
+# Podejście "domyślnie ukryj wszystko" zamiast rosnącej listy zakazanych
+# plików — bezpieczniejsze, bo nowy plik dodany do repo w przyszłości
+# (notatka, .env, cokolwiek) jest niepubliczny, dopóki świadomie go tu
+# nie odsłonimy, zamiast wyciekać przez przeoczenie.
+
+# ukryj wszystko...
+*
+
+# ...poza faktycznymi plikami strony:
+!*.html
+!style.css
+!script.js
+!mockup1.png
+!images/
+!images/**
