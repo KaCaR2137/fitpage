@@ -6,7 +6,7 @@
    4. Animacje przy scrollu — hero odsłania się od razu (poza IO, patrz
       komentarz przy sekcji), reszta przez współdzielony IntersectionObserver
       + klasa .widoczna, ze staggered transitionDelay dla rodzeństwa.
-   5. Formularz kontaktowy — walidacja per-pole + wysyłka (Netlify Forms).
+   5. Formularz kontaktowy — walidacja per-pole + wysyłka (Formspree).
    =================================================================== */
 (function () {
   'use strict';
@@ -106,11 +106,12 @@
   }
 
   /* ---------------------- 5. Formularz kontaktowy ----------------------
-     Wysyłka: Netlify Forms (data-netlify na <form> w kontakt.html).
-     Bez JS formularz działa natywnym POST-em na action="/dziekujemy.html".
-     Z JS: walidacja per-pole (komunikaty + aria-invalid/aria-describedby),
-     potem fetch na "/" (standardowy wzorzec AJAX Netlify Forms) z inline
-     potwierdzeniem, bez przeładowania strony. */
+     Wysyłka: Formspree (action na <form> w kontakt.html — hosting to
+     Cloudflare Pages, Netlify Forms tam nie działa). Bez JS formularz
+     działa natywnym POST-em wprost na Formspree, które po sukcesie
+     przekierowuje na _next (dziekujemy.html). Z JS: walidacja per-pole
+     (komunikaty + aria-invalid/aria-describedby), potem fetch na
+     form.action z inline potwierdzeniem, bez przeładowania strony. */
   var form = document.querySelector('.form');
   var status = document.getElementById('form-status');
   var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
@@ -185,21 +186,25 @@
       status.className = 'form__status';
       status.setAttribute('role', 'status');
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       }).then(function (res) {
-        if (!res.ok) { throw new Error('network'); }
-        status.textContent = 'Dziękuję! Brief dotarł — odezwiemy się wkrótce z propozycją zakresu i wyceną.';
-        status.className = 'form__status is-ok';
-        status.setAttribute('role', 'status');
-        form.reset();
-        formFields.forEach(function (field) {
-          field.classList.remove('is-touched');
-          clearFieldError(field);
-        });
-      }).catch(function () {
+        if (res.ok) {
+          status.textContent = 'Dziękuję! Brief dotarł — odezwiemy się wkrótce z propozycją zakresu i wyceną.';
+          status.className = 'form__status is-ok';
+          status.setAttribute('role', 'status');
+          form.reset();
+          formFields.forEach(function (field) {
+            field.classList.remove('is-touched');
+            clearFieldError(field);
+          });
+          return;
+        }
+        throw new Error('network');
+      }).catch(function (err) {
+        if (window.console && console.warn) { console.warn('Wysyłka formularza nie powiodła się:', err); }
         status.textContent = 'Nie udało się wysłać briefu. Spróbuj ponownie albo zadzwoń: 535 721 592.';
         status.className = 'form__status is-err';
         status.setAttribute('role', 'alert');

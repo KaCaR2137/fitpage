@@ -83,10 +83,10 @@ link „Wróć na stronę główną”. Wejście: „FAQ” w nav i w stopce (ob
 dało się ustalić samodzielnie (tożsamość administratora, e-mail kontaktowy, okres
 przechowywania danych w pozostałych przypadkach, odbiorca danych z formularza,
 data publikacji) zostały w kodzie jako `<!-- TODO: ... -->` — usuń `noindex` i
-dodaj link dopiero po ich uzupełnieniu. **Uwaga:** pkt 3 (odbiorcy danych) czeka
-też na decyzję o mechanizmie wysyłki formularza — Netlify Forms (obecnie
-podłączone na `kontakt.html`) nie działa na Cloudflare Workers, gdzie strona
-faktycznie jest hostowana; wymaga zmiany przed uzupełnieniem tego punktu.
+dodaj link dopiero po ich uzupełnieniu. **Uwaga:** pkt 3 (odbiorcy danych) ma
+już wpisanego realnego odbiorcę — Formspree (mechanizm wysyłki formularza
+z `kontakt.html`, potwierdzony i podłączony) — pozostałe TODO w tym punkcie
+dotyczą już tylko treści niezależnej od mechanizmu.
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
 osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,
@@ -94,13 +94,28 @@ opis wizji strony (textarea) + klauzula RODO (rozwijana) + zgoda wymagana
 + zgoda marketingowa opcjonalna. Wszystkie CTA „Umów konsultację” (nav + hero
 + sekcja kontakt na index) prowadzą tutaj.
 
-Wysyłka: **Netlify Forms** (`data-netlify=”true”`, `netlify-honeypot`, ukryty
-`form-name`). Bez JS formularz działa natywnym POST-em na
-`action=”/dziekujemy.html”`; z JS — walidacja per-pole (komunikaty +
-`aria-invalid`/`aria-describedby`) i wysyłka przez `fetch` z inline
-potwierdzeniem, bez przeładowania. Błąd wysyłki kieruje na telefon
-(535 721 592). Wymaga wdrożenia na Netlify, żeby formularz faktycznie
-zaczął cokolwiek dostarczać — do tego czasu POST-y nikną.
+Wysyłka: **Formspree** (`action="https://formspree.io/f/moeqzapr"`,
+`method="post"`) — wybrane, bo hosting to Cloudflare Pages/Workers, gdzie
+Netlify Forms (poprzednie podłączenie) nic nie dostarczało. Pola: ukryty
+`_subject` (temat maila z powiadomieniem), ukryty `_next` (pełny adres
+`https://fitpage.kacperbarczak11.workers.dev/dziekujemy.html` — **musi** być
+pełnym URL-em, bo Formspree przekierowuje ze swojej domeny; **TODO:**
+zaktualizować na docelową domenę, jeśli/gdy się pojawi), honeypot `_gotcha`
+(Formspree po cichu odrzuca zgłoszenia z wypełnionym tym polem). Pole
+`name="email"` jest automatycznie wykrywane przez Formspree jako adres
+zwrotny (reply-to) — bez potrzeby `_replyto`. Bez JS formularz działa
+natywnym POST-em wprost na Formspree, które po sukcesie przekierowuje na
+`_next`; z JS — walidacja per-pole (komunikaty + `aria-invalid`/
+`aria-describedby`), potem `fetch(form.action, { method: form.method, body:
+new FormData(form), headers: { Accept: 'application/json' } })` z inline
+potwierdzeniem, bez przeładowania (surowy `FormData` jako body, żeby
+przeglądarka sama ustawiła multipart boundary — bez ręcznego urlencode).
+Błąd wysyłki kieruje na telefon (535 721 592). Darmowy plan Formspree: limit
+50 zgłoszeń/miesiąc — do rozważenia przy realnym ruchu.
+
+**Uwaga historyczna:** wcześniej rozważane MailChannels (darmowa wysyłka
+maili z Cloudflare Workers) — ta integracja została zamknięta przez
+MailChannels w sierpniu 2024, więc nie jest już opcją.
 
 **`dziekujemy.html`** — strona potwierdzenia po wysłaniu briefu (cel `action`
 formularza na `kontakt.html`, no-JS fallback). `<meta name=”robots” content=”noindex”>`,
@@ -146,9 +161,9 @@ Bez JS treść jest normalnie widoczna (gate klasą `.js`). Respektuje
       **okres przechowywania** (ustalić wprost), prawa osoby, e-mail kontaktowy,
       prawo skargi do PUODO
 - [ ] Zgoda marketingowa — doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt)
-- [x] Podłączyć wysyłkę formularza z `kontakt.html` — Netlify Forms; zadziała
-      dopiero po wdrożeniu na Netlify (dopóki nie ma deployu, submit i tak nic
-      nie dostarcza)
+- [x] Podłączyć wysyłkę formularza z `kontakt.html` — Formspree, działa na
+      obecnym hostingu (Cloudflare); darmowy plan ograniczony do 50
+      zgłoszeń/miesiąc — do przypilnowania przy realnym ruchu
 - [ ] `<title>` + meta description na obu stronach — sprawdzić, zero placeholderów
 - [ ] Portfolio — opisy realizacji, ewentualnie miniatury (`object-fit: cover` + tło fallback)
 - [ ] Test na 375px, test w incognito (obie strony)

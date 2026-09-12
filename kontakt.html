@@ -55,13 +55,19 @@
     <section class="section brief">
       <div class="container">
 
-        <form class="form reveal" name="brief" method="post" data-netlify="true"
-              netlify-honeypot="bot-field" action="/dziekujemy.html" novalidate>
+        <!-- Formspree: hosting to Cloudflare Pages, nie Netlify — Netlify Forms
+             (poprzednie podłączenie) tam nic nie robi. _next musi być pełnym
+             adresem (Formspree przekierowuje ze swojej domeny, więc ścieżka
+             względna trafiłaby na formspree.io, nie na tę stronę) — TODO:
+             zaktualizuj na docelową domenę (np. fitpage.pl), jeśli/gdy się
+             pojawi zamiast fitpage.kacperbarczak11.workers.dev. -->
+        <form class="form reveal" method="post" action="https://formspree.io/f/moeqzapr" novalidate>
 
-          <input type="hidden" name="form-name" value="brief">
+          <input type="hidden" name="_subject" value="Nowy brief ze strony FitPage">
+          <input type="hidden" name="_next" value="https://fitpage.kacperbarczak11.workers.dev/dziekujemy.html">
           <p class="form__honeypot" aria-hidden="true">
             <label>Nie wypełniaj tego pola
-              <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
             </label>
           </p>
 
