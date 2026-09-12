@@ -110,8 +110,18 @@ natywnym POST-em wprost na Formspree, które po sukcesie przekierowuje na
 new FormData(form), headers: { Accept: 'application/json' } })` z inline
 potwierdzeniem, bez przeładowania (surowy `FormData` jako body, żeby
 przeglądarka sama ustawiła multipart boundary — bez ręcznego urlencode).
-Błąd wysyłki kieruje na telefon (535 721 592). Darmowy plan Formspree: limit
-50 zgłoszeń/miesiąc — do rozważenia przy realnym ruchu.
+
+Utwardzone (harden): fetch ma 15 s limit czasu przez `AbortController` (bez
+tego, przy złej sieci albo martwym endpoincie, żądanie wisiałoby bez końca
+z zablokowanym przyciskiem); przy odpowiedzi z błędem JS próbuje odczytać
+JSON zwrócony przez Formspree (`errors[].message` / `error`) i pokazać
+konkretniejszy komunikat zamiast zawsze tego samego ogólnego; przekroczenie
+czasu ma osobny komunikat („wysyłka trwa zbyt długo”). Każdy wariant błędu
+i tak kończy się podpowiedzią telefonu (535 721 592). Pola `imię i nazwisko`
+(100), `e-mail` (254, wg RFC 5321), `telefon` (20) i `wizja` (4000) mają
+`maxlength`, żeby ekstremalnie długi input nie trafiał bez ograniczeń do
+Formspree/maila. Darmowy plan Formspree: limit 50 zgłoszeń/miesiąc — do
+rozważenia przy realnym ruchu.
 
 **Uwaga historyczna:** wcześniej rozważane MailChannels (darmowa wysyłka
 maili z Cloudflare Workers) — ta integracja została zamknięta przez

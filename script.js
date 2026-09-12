@@ -186,10 +186,17 @@
       status.className = 'form__status';
       status.setAttribute('role', 'status');
 
+      // 15 s limit na fetch — bez tego, przy złej sieci albo martwym
+      // endpointzie, żądanie mogłoby wisieć bez końca, a przycisk zostałby
+      // zablokowany na stałe.
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timeoutId = controller && setTimeout(function () { controller.abort(); }, 15000);
+
       fetch(form.action, {
         method: form.method,
         body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Accept': 'application/json' },
+        signal: controller ? controller.signal : undefined
       }).then(function (res) {
         if (res.ok) {
           status.textContent = 'Dziękuję! Brief dotarł — odezwiemy się wkrótce z propozycją zakresu i wyceną.';
@@ -202,13 +209,34 @@
           });
           return;
         }
-        throw new Error('network');
+        // Formspree zwraca przy błędzie JSON z opisem (np. błąd walidacji
+        // pola po stronie serwera albo przekroczony miesięczny limit
+        // zgłoszeń) — spróbuj go odczytać zamiast od razu pokazywać
+        // ten sam ogólny komunikat niezależnie od przyczyny.
+        return res.json().catch(function () { return null; }).then(function (body) {
+          var detail = null;
+          if (body && Array.isArray(body.errors) && body.errors.length) {
+            detail = body.errors.map(function (item) { return item.message; }).filter(Boolean).join(' ');
+          } else if (body && typeof body.error === 'string') {
+            detail = body.error;
+          }
+          throw new Error(detail || 'formspree-error');
+        });
       }).catch(function (err) {
         if (window.console && console.warn) { console.warn('Wysyłka formularza nie powiodła się:', err); }
-        status.textContent = 'Nie udało się wysłać briefu. Spróbuj ponownie albo zadzwoń: 535 721 592.';
+        var timedOut = err && err.name === 'AbortError';
+        var serverMessage = (!timedOut && err && err.message && err.message !== 'formspree-error') ? err.message : null;
+        if (timedOut) {
+          status.textContent = 'Wysyłka trwa zbyt długo — sprawdź połączenie i spróbuj ponownie, albo zadzwoń: 535 721 592.';
+        } else if (serverMessage) {
+          status.textContent = serverMessage + ' Możesz też zadzwonić: 535 721 592.';
+        } else {
+          status.textContent = 'Nie udało się wysłać briefu. Spróbuj ponownie albo zadzwoń: 535 721 592.';
+        }
         status.className = 'form__status is-err';
         status.setAttribute('role', 'alert');
       }).finally(function () {
+        if (timeoutId) { clearTimeout(timeoutId); }
         if (submitBtn) { submitBtn.disabled = false; }
       });
     });
