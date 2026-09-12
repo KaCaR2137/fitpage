@@ -355,7 +355,7 @@ component and do not give an action a boxy radius.
   Animations drop under reduced motion.
 
 ### Navigation
-- **Logo:** `images/logo-fitpage.png` (rounded-square "FP" mark), `36px` tall,
+- **Logo:** `images/logo-fitpage.png` (rounded-square "FP" mark), `50px` tall,
   `height: auto` width, `alt="FitPage"` — the accessible name, not decorative.
 - **Style:** sticky, `64px` min-height, Nav Scrim (canvas-tinted) + `blur(8px)`,
   hairline-faint bottom border.
