@@ -410,10 +410,10 @@ motion is decorative rather than functional. Three independent layers:
 
 ### Splash intro
 A full-screen overlay, first thing in `<body>` on every page, that plays once
-per page load: the logo (`images/logo-fitpage.png`, `96px`) fades and scales
+per page load: the logo (`images/logo-fitpage.png`, `125px`) fades and scales
 in (`0.6 → 1`), grows a little further (`→ 1.15`), then fades and scales out
 (`→ 1.4`) as the overlay itself becomes invisible and non-interactive
-(`visibility: hidden`, `pointer-events: none`) — `1.2s` total, pure CSS
+(`visibility: hidden`, `pointer-events: none`) — `1.44s` total, pure CSS
 (`animation-fill-mode: forwards`), no JS required for it to disappear, so it
 degrades safely with JavaScript off. `prefers-reduced-motion` removes the
 overlay outright (`display: none`) rather than freezing it mid-animation —

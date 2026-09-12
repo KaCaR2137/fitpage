@@ -128,12 +128,12 @@ a { color: inherit; }
   align-items: center;
   justify-content: center;
   background: var(--canvas);
-  animation: splash-hide 1.2s var(--ease) forwards;
+  animation: splash-hide 1.44s var(--ease) forwards;
 }
 .splash__logo {
-  width: 96px;
+  width: 125px; /* 96px + 30% */
   height: auto;
-  animation: splash-logo 1.2s var(--ease) forwards;
+  animation: splash-logo 1.44s var(--ease) forwards; /* 1.2s + 20% */
 }
 
 @keyframes splash-logo {
