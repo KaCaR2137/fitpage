@@ -163,6 +163,37 @@ w `script.js` dodający `.widoczna`, ze staggered `transitionDelay` dla rodzeńs
 Bez JS treść jest normalnie widoczna (gate klasą `.js`). Respektuje
 `prefers-reduced-motion`. Aby animować nowy element — dodaj mu klasę `.reveal`.
 
+**Znany artefakt skanera (`impeccable detect <URL>`):** below-fold elementy
+`.reveal` (np. `.faq__item`, `.krok__more`) bywają złapane przez headless
+render w trakcie przejścia `opacity`, zanim `IntersectionObserver` je odsłoni
+— skaner raportuje wtedy `low-contrast` z bardzo niskim „pixel contrast" na
+snippetach opisanych jako „opacity stack". To nie jest realny błąd: policzone
+ręcznie kontrasty rzeczywistych par kolorów (`--muted` na canvasie 6.54:1,
+`--accent-strong` 5.74:1) mają zapas ponad wymagane WCAG AA 4.5:1. Sankcjonowany
+wyjątek (`low-contrast` → `*` → `faq.html`/`proces.html`) jest już w
+`.impeccable/config.json`. Jeśli finding wróci na kolejnej stronie z tym samym
+below-fold `.reveal`-em i podpisem „opacity stack" — to ten sam artefakt, nie
+nowy defekt; dodaj analogiczny ignore zamiast zmieniać tokeny kolorów.
+
+## Dostępność
+Domknięte pozostałe punkty z pierwszego audytu Impeccable:
+
+- **Pierścień focusa** — globalna reguła `a:focus-visible, button:focus-visible,
+  summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }`
+  (góra `style.css`, sekcja Podstawy) pokrywa linki (nav, stopka, portfolio),
+  `.btn`, `.nav__toggle` i wszystkie `<summary>` (FAQ, Proces, RODO) — dotąd
+  polegały na domyślnym obramowaniu przeglądarki, które przy resetach
+  (`border:0`, `list-style:none`) bywa niewidoczne. Pola formularza i
+  custom checkbox zgody mają własny, wcześniejszy focus-ring (sekcja `.form`) —
+  bez zmian.
+- **Błąd pola tylko kolorem (WCAG 1.4.1/3.3.1)** — oprócz zmiany `border-color`
+  i tekstu w `.form__error`, nieprawidłowe pole tekstowe/textarea oraz
+  niezaznaczony wymagany checkbox zgody dostają dodatkowo ikonkę (koło
+  z wykrzyknikiem, SVG data-URI z kolorem `--error`/`--on-accent` wpisanym na
+  sztywno — ten sam wzorzec co ptaszek w `.form__consent-box`).
+- **`.nav__toggle`** — `44×44px` (było `40×40px`, WCAG 2.5.5/2.5.8), padding
+  przeliczony tak, żeby ikona hamburgera zostawała tego samego wizualnego rozmiaru.
+
 ## TODO przed publikacją
 - [ ] Treść „O nas” — realna (lata doświadczenia, liczba stron, wyróżnik zespołu)
 - [ ] FAQ — przejrzeć i doprecyzować odpowiedzi wg realnej oferty (bez wymyślonych cen/terminów)
