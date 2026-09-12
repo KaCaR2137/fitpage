@@ -406,7 +406,7 @@ component and do not give an action a boxy radius.
 
 ### Trainings marquee
 A horizontal, infinitely-looping strip of 8 training-type icons + labels
-(wyciskanie na ławce, bieganie, pilates, balet, joga, boks, kolarstwo,
+(trening siłowy, bieganie, pilates, balet, joga, boks, kolarstwo,
 pływanie), between the hero and "O nas" on the homepage. Two identical
 `<ul>` copies sit side by side in a flex track; the track animates
 `translateX(0) → translateX(-50%)` on a `32s linear infinite` loop — exactly

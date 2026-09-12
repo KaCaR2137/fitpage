@@ -62,7 +62,7 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    dopiero od 700px)
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
-   rodzajów treningu (wyciskanie na ławce, bieganie, pilates, balet, joga, boks,
+   rodzajów treningu (trening siłowy, bieganie, pilates, balet, joga, boks,
    kolarstwo, pływanie), wzorowany na sekcji „Dla kogo” z marta-strona-trener.netlify.app.
    CSS-owa pętla bez JS: dwie kopie listy w jednym torze, `translateX(0 → -50%)`,
    `32s linear infinite`; druga kopia `aria-hidden`. Zatrzymuje się pod
