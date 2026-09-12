@@ -66,8 +66,14 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    `mockup1.png` zmniejszony do 500×833 (~307 KB, alpha zachowana) — oryginał
    1857×3096 (~2,3 MB) w kopii poza repo. `<img>` ma `width/height` 500×833, bez `loading="lazy"`.
 5. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
-6. Kontakt (skrót) — CTA „Umów konsultację” + telefon **535 721 592**
-   (`tel:+48535721592`; bezpośredni e-mail — patrz TODO)
+6. Artykuły (podgląd) — dawniej tu była sekcja „Kontakt (skrót)” (CTA „Umów
+   konsultację” + telefon 535 721 592); usunięta i zastąpiona podglądem
+   artykułów, ten sam markup co lista na `artykuly.html` (`.artykuly__grid`
+   + `.artykul-card`, na razie jeden przykładowy wpis) + link „Zobacz
+   wszystkie artykuły” → `artykuly.html`. **Uwaga:** to był jedyny widoczny
+   numer telefonu na stronie głównej poza nav/hero CTA — sam numer nigdzie
+   indziej na `index.html` się teraz nie pojawia (formularz na `kontakt.html`
+   nadal go pokazuje jako fallback błędu wysyłki).
 7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
    2 rundy poprawek w cenie / Wyłącznie trenerzy personalni), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.

@@ -223,13 +223,15 @@ The type should feel engineered, not expressive.
   Muted, except labels and legends which use Text Primary.
 
 **Depth:** headings (`.hero__title`, `.section__title`, `.krok__title` — H1/H2
-only, H3 titles like `.card__title` stay flat) plus the body text in the hero,
-"O nas," and the on-page Kontakt blurb (`.hero__subtitle`, `.o-nas p`,
-`.kontakt p`, `.kontakt__direct`) carry a subtle `text-shadow: 0 1px 3px
-rgba(31,45,36,0.14)` — neutral, green-tinted like the rest of the system's
+only, H3 titles like `.card__title` stay flat) plus the body text in the hero
+and "O nas" (`.hero__subtitle`, `.o-nas p`) carry a subtle `text-shadow: 0 1px
+3px rgba(31,45,36,0.14)` — neutral, green-tinted like the rest of the system's
 shadows, not the accent hue. A quiet lift, not a decorative glow. Elsewhere
-(FAQ, portfolio cards, process steps, the form) body text stays flat; this is
-a first pass scoped to the top of the page, not a blanket rule yet.
+(FAQ, portfolio cards, process steps, article cards, the form) body text stays
+flat; this is a first pass scoped to the top of the page, not a blanket rule
+yet. (The on-page Kontakt blurb this rule originally covered was removed from
+`index.html` — replaced by an Artykuły preview — so its two selectors are
+gone too.)
 
 ### Named Rules
 **The System-Font Rule.** Do not load a web font to "improve" the type. Hierarchy
@@ -398,7 +400,7 @@ kept deliberately, on explicit direction, modeled on a named reference site.
 ### Trust icons (atuty)
 Four short facts in a row — Bezpłatna konsultacja / Cała Polska, zdalnie / 2 rundy
 poprawek w cenie / Wyłącznie trenerzy personalni — near the bottom of the
-homepage, after Kontakt and before FAQ. No panel; the block sits directly on the
+homepage, the last section before the footer. No panel; the block sits directly on the
 canvas, like the hero.
 - **Icon:** `44px` circle, `1px` hairline border, a custom-drawn `24px`-viewBox
   stroke SVG (same stroke system as the portfolio card's arrow) rendered at

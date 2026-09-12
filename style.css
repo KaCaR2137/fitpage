@@ -890,21 +890,6 @@ summary:focus-visible {
 .faq__cta { margin-top: 32px; }
 .faq__cta p { margin-bottom: 12px; color: var(--muted); }
 
-/* ============================== KONTAKT (skrót na index) ============================== */
-.kontakt p,
-.kontakt__direct {
-  text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14); /* ta sama poświata co hero i O nas */
-}
-.kontakt__direct {
-  list-style: none;
-  margin: 24px 0 0;
-  padding: 0;
-  color: var(--muted);
-}
-.kontakt__direct li { margin-bottom: 6px; }
-.kontakt__direct a { color: var(--accent-strong); text-decoration: none; }
-.kontakt__direct a:hover { text-decoration: underline; }
-
 /* ============================== FOOTER ============================== */
 /* Jedyna świadomie ciemna powierzchnia w jasnym motywie — ten sam
    strukturalny "kotwiczący" akcent, co czarna stopka w starym motywie,
