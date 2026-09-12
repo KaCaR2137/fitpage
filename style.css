@@ -713,6 +713,25 @@ a { color: inherit; }
 .brief__back a { color: var(--accent-strong); text-decoration: none; }
 .brief__back a:hover { text-decoration: underline; }
 
+/* ============================== POLITYKA PRYWATNOŚCI ============================== */
+/* Tryb "Read" — sekwencyjne nagłówki numerowane w warstwie "Title" (jak
+   .krok__title/.card__title), nie pełne .section__title dla każdej z 6
+   sekcji naraz. Tekst ograniczony do ~68ch, żeby nie powtórzyć problemu
+   z długością linii, który audyt zgłosił gdzie indziej na stronie. */
+.polityka p,
+.polityka ul {
+  max-width: 60ch;
+  color: var(--muted);
+}
+.polityka h2 {
+  font-size: 1.15rem;
+  margin: 2em 0 0.5em;
+}
+.polityka h2:first-child { margin-top: 0; }
+.polityka strong { color: var(--text); }
+.polityka ul { margin-bottom: 1em; padding-left: 1.25em; }
+.polityka li { margin-bottom: 0.4em; }
+
 /* ============================== FAQ ============================== */
 .faq__list {
   display: grid;

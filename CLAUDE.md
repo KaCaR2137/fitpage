@@ -17,6 +17,21 @@ Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,
 `kontakt.html`, `proces.html`, `dziekujemy.html`, `style.css`, `script.js`
 (CSS i JS współdzielone przez wszystkie strony).
 
+## Deploy
+Cloudflare Workers & Pages, projekt podłączony bezpośrednio do repo GitHub
+(`KaCaR2137/fitpage`, branch `main`) — Workers & Pages → Create → Pages →
+Import an existing Git repository. Automatyczny build/deploy przy każdym
+pushu na `main`, bez lokalnego `wrangler.toml` ani CLI — cała konfiguracja
+żyje po stronie dashboardu Cloudflare. Żywy adres:
+`https://fitpage.kacperbarczak11.workers.dev`.
+
+Cały root repo trafia jako publiczne assety (brak build stepu), stąd
+`.assetsignore` w korzeniu repo — bez niego `PRODUCT.md`, `DESIGN.md`,
+`CLAUDE.md`, `.impeccable/`, `.git/` byłyby publicznie dostępne pod swoimi
+ścieżkami. Format identyczny jak `.gitignore`, podejście „domyślnie ukryj
+wszystko” (`*`) + jawne odsłonięcie plików strony (`!*.html`, `!style.css`
+itd.) — nie rosnąca lista zakazów.
+
 ## Logo, favicon, splash
 `images/logo-fitpage.png` — dostarczony przez klienta, 2000×2000, kanał alfa
 zachowany, oryginalny rozmiar (~90 KB), NIE pomniejszony (użyty wprost w nav
@@ -61,6 +76,17 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 podstronę (dawniej sekcja `#faq` na stronie głównej). Kompaktowy hero + ten sam
 akordeon `<details>`/`<summary>` (bez JS) co wcześniej + CTA „Umów konsultację” +
 link „Wróć na stronę główną”. Wejście: „FAQ” w nav i w stopce (obie → `faq.html`).
+
+**`polityka-prywatnosci.html`** — DRAFT, `<meta name="robots" content="noindex">`,
+**celowo niepodlinkowana** z nav/stopki. Treść wklejona z `polityka-prywatnosci-DRAFT.md`
+(sam plik roboczy zostaje w repo, nie jest częścią strony). Miejsca, których nie
+dało się ustalić samodzielnie (tożsamość administratora, e-mail kontaktowy, okres
+przechowywania danych w pozostałych przypadkach, odbiorca danych z formularza,
+data publikacji) zostały w kodzie jako `<!-- TODO: ... -->` — usuń `noindex` i
+dodaj link dopiero po ich uzupełnieniu. **Uwaga:** pkt 3 (odbiorcy danych) czeka
+też na decyzję o mechanizmie wysyłki formularza — Netlify Forms (obecnie
+podłączone na `kontakt.html`) nie działa na Cloudflare Workers, gdzie strona
+faktycznie jest hostowana; wymaga zmiany przed uzupełnieniem tego punktu.
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
 osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,

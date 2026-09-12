@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polityka prywatności — FitPage</title>
+  <meta name="description" content="Polityka prywatności FitPage — jakie dane zbieramy przez formularz kontaktowy, w jakim celu je przetwarzamy i jakie prawa Ci przysługują.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash" aria-hidden="true">
+    <img src="images/logo-fitpage.png" alt="" class="splash__logo">
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo-fitpage.png" alt="FitPage" class="nav__logo-img">
+      </a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+        <a href="index.html#o-nas">O nas</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="proces.html">Proces</a>
+        <a href="faq.html">FAQ</a>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Polityka prywatności</h1>
+        <p class="hero__subtitle reveal">
+          Jakie dane zbieramy, w jakim celu i jakie prawa Ci przysługują.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ TREŚĆ ============================ -->
+    <!-- DRAFT: część pól czeka na dane, których nie mogłem ustalić samodzielnie —
+         patrz komentarze <!-- TODO: ... --> w tekście. Strona ma meta robots
+         "noindex" i nie jest jeszcze podlinkowana z nav/stopki — usuń noindex
+         i dodaj link dopiero, gdy uzupełnisz TODO i będziesz gotowy publikować. -->
+    <section class="section polityka">
+      <div class="container reveal">
+
+        <h2>1. Administrator danych</h2>
+        <p>Administratorem danych osobowych zbieranych za pośrednictwem strony fitpage.pl jest:</p>
+        <!-- TODO: imię i nazwisko / nazwa działalności, np. "Jan Kowalski, prowadzący działalność gospodarczą pod firmą FitPage Jan Kowalski, NIP: 000-000-00-00" — LUB, jeśli bez rejestrowanej działalności: "Jan Kowalski" -->
+        <p>Kontakt w sprawach ochrony danych:</p>
+        <!-- TODO: docelowy adres e-mail, obecnie na stronie widnieje kontakt@fitpage.pl jako placeholder — potwierdź, że jest aktywny, zanim opublikujesz -->
+
+        <h2>2. Jakie dane zbieramy i w jakim celu</h2>
+        <p><strong>Formularz kontaktowy.</strong> Podczas wypełniania formularza na stronie kontakt.html zbieramy:</p>
+        <ul>
+          <li>imię i nazwisko,</li>
+          <li>adres e-mail i/lub numer telefonu,</li>
+          <li>treść wiadomości.</li>
+        </ul>
+        <p><strong>Cel przetwarzania:</strong> odpowiedź na zapytanie ofertowe i ewentualne przygotowanie oferty/umowy na stworzenie strony internetowej.</p>
+        <p><strong>Podstawa prawna:</strong> art. 6 ust. 1 lit. b RODO (działania podejmowane na żądanie osoby, której dane dotyczą, przed zawarciem umowy) oraz art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes administratora polegający na udzieleniu odpowiedzi na zapytanie).</p>
+        <p><strong>Okres przechowywania:</strong> przez czas trwania korespondencji, a w przypadku zawarcia współpracy — przez okres wynikający z przepisów podatkowych i rachunkowych. W pozostałych przypadkach termin usunięcia danych zostanie ustalony przed publikacją strony.</p>
+        <!-- TODO: ustal dokładny okres przechowywania w pozostałych przypadkach (sugerowane w drafcie: 12 miesięcy od ostatniego kontaktu) -->
+        <p><strong>Dane techniczne (hosting).</strong> Strona jest hostowana przez Cloudflare, który jako dostawca infrastruktury może przetwarzać podstawowe dane techniczne (adres IP, typ przeglądarki) w zakresie niezbędnym do działania usługi hostingowej. Nie prowadzimy własnej analityki ani śledzenia użytkowników poza tym, co jest technicznie konieczne do wyświetlenia strony.</p>
+        <p>Jeśli w przyszłości dodamy Google Analytics, Meta Pixel lub podobne narzędzie — ten dokument będzie wymagał aktualizacji o osobną sekcję dotyczącą plików cookies i zgody na profilowanie. Obecnie żadne takie narzędzie nie jest częścią strony.</p>
+
+        <h2>3. Odbiorcy danych</h2>
+        <p>Dane mogą być przekazywane wyłącznie:</p>
+        <ul>
+          <li>dostawcy hostingu wskazanemu w pkt 2 (w zakresie technicznym, niezbędnym do działania strony).</li>
+        </ul>
+        <!-- TODO: jeśli formularz wysyła dane przez konkretny mechanizm (np. Netlify Forms) — dopisz go tutaj jako odbiorcę. UWAGA: strona jest hostowana na Cloudflare Workers, nie Netlify — obecne podłączenie formularza pod Netlify Forms (kontakt.html) prawdopodobnie nie zadziała na tym hostingu i wymaga zmiany mechanizmu wysyłki, zanim ten punkt będzie można uzupełnić poprawnie -->
+        <p>Dane nie są sprzedawane ani udostępniane podmiotom trzecim w celach marketingowych.</p>
+
+        <h2>4. Prawa osoby, której dane dotyczą</h2>
+        <p>Każda osoba, której dane przetwarzamy, ma prawo do:</p>
+        <ul>
+          <li>dostępu do swoich danych,</li>
+          <li>sprostowania danych,</li>
+          <li>usunięcia danych („prawo do bycia zapomnianym”),</li>
+          <li>ograniczenia przetwarzania,</li>
+          <li>przenoszenia danych,</li>
+          <li>wniesienia sprzeciwu wobec przetwarzania,</li>
+          <li>wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (UODO), ul. Stawki 2, 00-193 Warszawa.</li>
+        </ul>
+        <p>Aby skorzystać z powyższych praw, skontaktuj się pod adresem wskazanym w pkt 1.</p>
+
+        <h2>5. Dobrowolność podania danych</h2>
+        <p>Podanie danych w formularzu kontaktowym jest dobrowolne, ale niezbędne do udzielenia odpowiedzi na zapytanie.</p>
+
+        <h2>6. Zmiany polityki</h2>
+        <p>Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej polityce prywatności. Aktualna wersja jest zawsze dostępna na tej stronie.</p>
+        <p><em>Ostatnia aktualizacja: <!-- TODO: data publikacji --></em></p>
+
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="index.html#o-nas">O nas</a>
+      <a href="proces.html">Proces tworzenia strony</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
