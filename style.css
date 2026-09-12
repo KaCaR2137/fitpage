@@ -563,6 +563,8 @@ summary:focus-visible {
 .artykul__body ul,
 .artykul__body ol { margin-bottom: 1em; padding-left: 1.25em; }
 .artykul__body li { margin-bottom: 0.4em; }
+.artykul__cta { margin-top: 32px; }
+.artykul__cta p { margin-bottom: 12px; color: var(--muted); }
 .artykul__back { margin-top: 28px; font-size: 0.9rem; }
 .artykul__back a { color: var(--accent-strong); text-decoration: none; }
 .artykul__back a:hover { text-decoration: underline; }

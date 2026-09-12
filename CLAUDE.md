@@ -105,9 +105,25 @@ każdym odnośnikiem do stylu/skryptu/obrazów/innych stron w nav i stopce —
 publikacji (`.artykul__meta`) nad tytułem (h1). Treść w `.artykul__body` —
 typografia jak `.polityka` (tryb „Read”): tekst ograniczony do ~65ch, h2/h3
 dozwolone (bez pomijania poziomów), `<strong>` w Text Primary, listy ze
-standardowym odstępem. Link powrotny `.artykul__back` → `artykuly.html`.
-Treść artykułu to placeholder (`<!-- TODO: wklej tu gotową treść -->`) —
-celowo nie generowana automatycznie, do wklejenia ręcznie.
+standardowym odstępem. Po treści opcjonalny `.artykul__cta` (ten sam wzorzec
+co `.faq__cta`: akapit + `.btn.btn--primary` do `kontakt.html`) — nie każdy
+artykuł musi go mieć, dodaj gdy treść naturalnie kończy się wezwaniem do
+kontaktu. Link powrotny `.artykul__back` → `artykuly.html`.
+
+**Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
+wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
+repo (np. `artykul-<slug>-DRAFT.md`, wzorem `polityka-prywatnosci-DRAFT.md`)
+— zostaje w repo jako referencja, ukryty w publicznych assetach przez
+`.assetsignore` (`*.md`). Konwersja Markdown → HTML: `#` tytuł nie duplikuje
+się w treści (już jest w hero jako h1), `##` → `<h2>` z zachowaną numeracją
+w tekście nagłówka, akapity → `<p>`, `**pogrubienie**` → `<strong>`, cudzysłów
+prosty `"..."` → typograficzny „...” (konwencja całej strony), zamykający
+CTA-link w stylu `[tekst](/kontakt)` → prawdziwy `.btn.btn--primary` do
+`../kontakt.html` w bloku `.artykul__cta` (nie zwykły link — to już
+ugruntowany wzorzec CTA na stronie). `<meta name="description">` = ten sam
+tekst zachęty, co na karcie listy/podglądu (jeśli już ustalony) — nie
+wymyślać nowego. Pierwszy przykład: `jak-wyroznic-sie-jako-trener.html`,
+z `artykul-jak-wyroznic-sie-DRAFT.md`.
 
 **`polityka-prywatnosci.html`** — DRAFT, `<meta name="robots" content="noindex">`,
 **celowo niepodlinkowana** z nav/stopki. Treść wklejona z `polityka-prywatnosci-DRAFT.md`
