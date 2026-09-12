@@ -96,7 +96,12 @@ spoczynku jest płaska jak `.krok`, zgodnie z „The Lift-Means-Interactive
 Rule” (cień w spoczynku jest zastrzeżony dla portfolio). Wejście: „Artykuły”
 w nav i w stopce (wszystkie strony), między FAQ a Kontakt. Na razie jeden
 przykładowy artykuł + komentarz `<!-- TODO: kolejne artykuły -->` pokazujący
-gdzie kopiować kolejne karty.
+gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
+(mniejszy padding/odstępy/font nagłówka, lead przycięty do 3 linii przez
+`-webkit-line-clamp`) — pojedyncza karta potrafiła zająć do ~37% wysokości
+ekranu telefonu 390px, przez co nic nie sugerowało, że pod spodem jest więcej
+artykułów; od 480px w górę wraca pełny, nieprzycięty rozmiar (patrz DESIGN.md,
+sekcja Article card, po pełne wartości).
 
 **`artykuly/<slug>.html`** (np. `artykuly/jak-wyroznic-sie-jako-trener.html`) —
 szablon pojedynczego artykułu, w podkatalogu `artykuly/` (stąd `../` przed

@@ -345,15 +345,24 @@ component and do not give an action a boxy radius.
   `28px 24px` padding, no resting shadow. A `40px` circular Bottle Green badge
   with Ivory text numbers it. On `:target`: Bottle Green border + `0 0 0 1px` ring.
 - **Article card (`.artykul-card`):** Surface Card fill, hairline border, `14px`
-  radius, `24px` padding — flat at rest like the step card, *not* the portfolio
-  card's resting-shadow exception. On hover/focus-within: `translateY(-2px)` +
-  the card-rest shadow token (`--shadow`) as a lift, border shifts to Bottle
+  radius — flat at rest like the step card, *not* the portfolio card's
+  resting-shadow exception. On hover/focus-within: `translateY(-2px)` + the
+  card-rest shadow token (`--shadow`) as a lift, border shifts to Bottle
   Green — shadow-on-interaction only, per The Lift-Means-Interactive Rule. The
   whole card is a click target (an `::after` on the title stretches over it)
   without nesting a second `<a>`; the title itself links, and a separate
   "Czytaj dalej" text link (Leaf Green, `→` arrow — a plain horizontal arrow,
   not the portfolio card's diagonal "opens elsewhere" arrow, since this is
   same-site navigation) repeats the same destination for scannability.
+  **Below 480px** the card is deliberately tighter — `14px` padding (vs
+  `24px`), `4px` internal gap (vs `10px`), a `1rem` title (vs `1.15rem`),
+  and the lead text clamped to 3 lines (`-webkit-line-clamp`, ellipsis on
+  overflow) at a smaller `0.875rem`/`1.45` line-height — a single card was
+  measured taking up to 37% of a 390px-wide phone's viewport height before
+  this, leaving no hint that more articles followed below. The 3-line clamp
+  and its tighter type only apply under 480px; at and above that breakpoint
+  the lead reverts to unclamped, natural flow at the original `0.95rem`/
+  `1.65` — nothing about the desktop/tablet card changed.
 
 ### Inputs / Fields
 - **Style:** Surface Card fill, hairline border, `10px` radius, `12px 14px`

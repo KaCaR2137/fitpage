@@ -491,18 +491,18 @@ summary:focus-visible {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 24px;
+  gap: 12px; /* ciaśniej na mobile — patrz >=480px niżej dla pełnego odstępu */
   grid-template-columns: repeat(auto-fill, minmax(280px, 400px));
 }
 .artykul-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px; /* mobile: ciaśniejszy odstęp data/tytuł/lead/link, patrz >=480px */
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 14px; /* mobile: mniejszy niż docelowe 24px (>=480px) — patrz media query */
   transition: transform 0.18s var(--ease),
               box-shadow 0.18s var(--ease),
               border-color 0.18s var(--ease);
@@ -513,7 +513,12 @@ summary:focus-visible {
   box-shadow: var(--shadow);
   border-color: var(--accent);
 }
-.artykul-card__title { font-size: 1.15rem; margin: 0.2em 0 0.1em; }
+/* Na wąskich ekranach karta artykułu potrafiła zająć niemal cały pierwszy
+   ekran (jedna pozycja = nagłówek + tekst na całą wysokość) — mniejszy
+   padding, węższy odstęp i przycięty do 3 linii lead (niezależnie od
+   długości tekstu przyszłych artykułów) trzymają kartę w rozsądnej
+   wysokości, żeby zmieściły się fragmenty co najmniej dwóch kart naraz. */
+.artykul-card__title { font-size: 1rem; margin: 0.2em 0 0.1em; }
 .artykul-card__title a {
   text-decoration: none;
   color: var(--text);
@@ -525,7 +530,16 @@ summary:focus-visible {
   position: absolute;
   inset: 0;
 }
-.artykul-card__lead { color: var(--muted); font-size: 0.95rem; margin: 0; }
+.artykul-card__lead {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
 .artykul-card__link {
   position: relative; /* nad pseudo-elementem ::after z .artykul-card__title */
   z-index: 1;
@@ -533,7 +547,8 @@ summary:focus-visible {
   align-items: center;
   gap: 8px;
   align-self: flex-start;
-  margin-top: 4px;
+  margin-top: 2px;
+  font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--accent-strong);
@@ -544,7 +559,7 @@ summary:focus-visible {
 
 /* metadata (data publikacji) — współdzielona przez kartę na liście i
    nagłówek pojedynczego artykułu */
-.artykul__meta { color: var(--muted); font-size: 0.9rem; margin: 0; }
+.artykul__meta { color: var(--muted); font-size: 0.8rem; margin: 0; }
 
 /* podstrona pojedynczego artykułu — typografia jak .polityka (tryb "Read"):
    tekst ograniczony do ~65ch, żeby nie powtórzyć problemu z długością linii */
@@ -968,6 +983,26 @@ summary:focus-visible {
     justify-content: space-between;
     text-align: left;
   }
+
+  /* karta artykułu wraca do pełnego, "spacious" rozmiaru — mniejsze
+     wersje wyżej (padding/gap/font-size) są tylko dla wąskich ekranów,
+     gdzie jedna karta potrafiła zająć niemal cały pierwszy widok */
+  .artykuly__grid { gap: 24px; }
+  .artykul-card { gap: 10px; padding: 24px; }
+  .artykul-card__title { font-size: 1.15rem; }
+  .artykul-card__lead {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    /* przycięcie do 3 linii jest zabezpieczeniem tylko dla wąskich kart —
+       na szerszych kolumnach (280-400px) oryginalny lead miał się mieścić
+       w całości bez ucinania, więc od tego breakpointu w górę wracamy do
+       naturalnego przepływu tekstu */
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+  .artykul-card__link { margin-top: 4px; font-size: 1rem; }
+  .artykul__meta { font-size: 0.9rem; }
 }
 
 /* --- < 700px : menu mobilne --- */
