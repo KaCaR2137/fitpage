@@ -186,12 +186,19 @@ summary:focus-visible {
 .nav__logo {
   display: flex;
   align-items: center;
+  gap: 10px;
   text-decoration: none;
 }
 .nav__logo-img {
   display: block;
-  height: 50px; /* 36px + 40% */
+  height: 44px; /* dopasowane do wysokości .nav__cta (~43px) */
   width: auto;
+}
+.nav__logo-text {
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  color: var(--text);
 }
 
 .nav__links {

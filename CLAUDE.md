@@ -37,7 +37,14 @@ itd.) — nie rosnąca lista zakazów.
 zachowany, oryginalny rozmiar (~90 KB), NIE pomniejszony (użyty wprost w nav
 i splashu, skalowany przez CSS). Z niego wygenerowane (`sips`) dwa favicony:
 `images/favicon-32.png` i `images/favicon-512.png` — podpięte na wszystkich
-5 stronach (`<link rel="icon">` ×2 + `apple-touch-icon`).
+stronach (`<link rel="icon">` ×2 + `apple-touch-icon`).
+
+W nav logo to teraz para: ikona (`.nav__logo-img`, `44px` wysokości) + napis
+`.nav__logo-text` „FitPage” (waga 800, `1.3rem`, tracking -0.03em) obok
+siebie (`gap: 10px`) — rozmiar dobrany tak, żeby cały układ miał wysokość
+zbliżoną do `.nav__cta` (zmierzone: `44px` vs `~43px`). `alt=""` na obrazku,
+bo widoczny tekst obok przejmuje rolę nazwy dostępności — inaczej czytnik
+ekranu ogłosiłby „FitPage” dwa razy.
 
 Splash: `.splash` — pełnoekranowa nakładka z logo (96px), pierwsza rzecz w
 `<body>` na każdej stronie, odtwarza się przy każdym wejściu (nie zapamiętuje

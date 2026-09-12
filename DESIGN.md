@@ -206,11 +206,15 @@ The type should feel engineered, not expressive.
   -0.02em): the hero headline only — one per page.
 - **Headline** (700, `1.6rem`, rising to `2rem` at ≥700px, line-height 1.2,
   tracking -0.02em): section titles (`.section__title`). One per section.
-- **Logo:** in the nav, the wordmark is now the image logo (`images/logo-fitpage.png`,
-  a rounded-square "FP" badge, `36px` tall, alt text "FitPage"), not styled text.
-  The footer keeps a plain 800-weight text wordmark ("FitPage", tracking -0.03em)
-  in Ivory — the two don't need to match, since one is a mark and the other a
-  small label.
+- **Logo:** the nav now pairs the image mark with a text wordmark —
+  `images/logo-fitpage.png` (rounded-square "FP" badge, `44px` tall) plus
+  `.nav__logo-text` ("FitPage", 800 weight, `1.3rem`, tracking -0.03em, Text
+  Primary) — sized so the whole lockup's height (`44px`) matches `.nav__cta`'s
+  rendered height (`~43px`), for visual parity between the two ends of the
+  nav bar. Since the wordmark is now visible next to it, the image's `alt`
+  is empty (decorative) — the visible text carries the accessible name, so a
+  screen reader doesn't announce "FitPage" twice. The footer keeps its own
+  plain 800-weight text wordmark in Ivory, unchanged and independent of this.
 - **Title** (600–700, `1.1rem`–`1.15rem`, line-height 1.2): card titles, step
   titles, article-card titles, FAQ and "Więcej" summaries.
 - **Body** (400, `1rem`, line-height 1.65): running copy in Text Muted, with
@@ -387,8 +391,11 @@ component and do not give an action a boxy radius.
   Animations drop under reduced motion.
 
 ### Navigation
-- **Logo:** `images/logo-fitpage.png` (rounded-square "FP" mark), `50px` tall,
-  `height: auto` width, `alt="FitPage"` — the accessible name, not decorative.
+- **Logo:** `images/logo-fitpage.png` (rounded-square "FP" mark) at `44px`
+  tall (`height: auto` width) plus a `.nav__logo-text` "FitPage" wordmark
+  (800 weight, `1.3rem`, -0.03em tracking, Text Primary), `10px` gap between
+  them — sized as a pair to match `.nav__cta`'s rendered height. `alt=""` on
+  the image now that the visible text carries the accessible name.
 - **Style:** sticky, `64px` min-height, Nav Scrim (canvas-tinted) + `blur(8px)`,
   hairline-faint bottom border.
 - **Links:** Text Primary at `0.85` opacity → `1` on hover, `0.95rem`. The CTA is
