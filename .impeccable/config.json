@@ -236,6 +236,42 @@
         ],
         "createdAt": "2026-09-12T14:31:17.915Z",
         "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/ile-kosztuje-strona-dla-trenera.html"
+        ],
+        "createdAt": "2026-09-13T20:12:16.226Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover) already sanctioned on all other pages under DESIGN.md; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/ile-kosztuje-strona-dla-trenera.html"
+        ],
+        "createdAt": "2026-09-13T20:12:16.247Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the light-theme canvas color, not a reflexive AI default (same as all other pages)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/ile-kosztuje-strona-dla-trenera.html"
+        ],
+        "createdAt": "2026-09-13T20:12:16.265Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "artykuly.html"
+        ],
+        "createdAt": "2026-09-13T20:15:32.385Z",
+        "reason": "confident false positive: browser-verified via getComputedStyle, real rendered ratio for .artykul-card__title is 1.2 (18.4px font / 22.08px line-height), not the 1.04 the static scanner reports — likely misses the >=480px breakpoint override or the inherited h1/h2/h3 line-height:1.2 base rule. 1.2 is also DESIGN.md's own documented, deliberate value for the 'Title' typography tier (card/step titles), not a body-text readability miss"
       }
     ]
   }
