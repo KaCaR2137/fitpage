@@ -401,8 +401,17 @@ component and do not give an action a boxy radius.
 - **Links:** Text Primary at `0.85` opacity → `1` on hover, `0.95rem`. The CTA is
   a solid Bottle Green pill at opacity 1.
 - **Mobile (< 700px):** a hamburger of three `2px` Text-Primary bars toggles
-  `.is-open` and `aria-expanded`; links become a full-width stacked dropdown on
-  `rgba(247,243,234,0.98)` with hairline dividers; the menu closes on link click.
+  `.is-open` and `aria-expanded`; text links become a full-width stacked
+  dropdown on `rgba(247,243,234,0.98)` with hairline dividers; the menu
+  closes on link click. **The CTA pill does not collapse into the
+  dropdown** — `.nav__right` wraps links + CTA + hamburger as one group so
+  `.nav__inner` always has exactly two flex children (logo, `.nav__right`)
+  regardless of breakpoint; only `.nav__links` inside that group hides.
+  The CTA stays visible in the always-sticky nav bar at every width, sized
+  down slightly (`10px 14px` padding, `0.85rem`) to sit beside the `44px`
+  hamburger without wrapping. Fixed via `/impeccable adapt` after a critique
+  flagged that hiding the primary conversion action behind a hamburger tap
+  was a real cost on a mostly-mobile audience (PRODUCT.md).
 
 ### Trainings marquee
 A horizontal, infinitely-looping strip of 8 training-type icons + labels

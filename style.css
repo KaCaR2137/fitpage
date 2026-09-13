@@ -201,6 +201,18 @@ summary:focus-visible {
   color: var(--text);
 }
 
+/* .nav__right grupuje linki + CTA + hamburger, żeby .nav__inner mogło
+   trzymać tylko dwa elementy (logo | reszta) w space-between — tak samo
+   na każdej szerokości. Pod 700px chowają się same linki tekstowe
+   (.nav__links); CTA zostaje widoczne w pasku nav (który i tak jest
+   position: sticky) zamiast znikać do hamburgera — odwiedzający z telefonu
+   (większość ruchu wg PRODUCT.md) ma "Umów konsultację" w zasięgu zawsze,
+   bez dodatkowego dotknięcia. */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
 .nav__links {
   display: flex;
   align-items: center;
@@ -221,6 +233,8 @@ summary:focus-visible {
   color: var(--on-accent) !important;
   font-weight: 600;
   opacity: 1 !important;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav__toggle {
@@ -1051,6 +1065,7 @@ summary:focus-visible {
 /* --- < 700px : menu mobilne --- */
 @media (max-width: 699px) {
   .nav__toggle { display: flex; }
+  .nav__right { gap: 10px; }
   .nav__links {
     display: none;
     position: absolute;
@@ -1069,7 +1084,10 @@ summary:focus-visible {
     opacity: 1;
     border-bottom: 1px solid rgba(31, 61, 43, 0.12);
   }
-  .nav__cta { margin-top: 10px; text-align: center; }
+  /* CTA zostaje w pasku nav (nie w rozwijanym menu) — trochę bardziej
+     zwarte niż na desktopie, żeby zmieściło się obok hamburgera bez
+     zawijania tekstu (white-space: nowrap wyżej). */
+  .nav__cta { padding: 10px 14px; font-size: 0.85rem; }
 }
 
 /* --- >= 700px --- */

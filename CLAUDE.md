@@ -54,12 +54,18 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 
 ## Strony
 **`index.html`** — sekcje w kolejności:
-1. Nav — logo-obrazek `images/logo-fitpage.png` (`.nav__logo-img`, 36px,
-   `alt="FitPage"`) + linki do sekcji (O nas, Portfolio, Proces, FAQ, Artykuły)
-   + CTA „Umów konsultację” → `kontakt.html` (sticky, menu mobilne < 700px;
-   z 6 elementami w `.nav__links` (5 linków + CTA) mieści się z zapasem od
-   700px w górę — zmierzone: ~638px potrzebne przy 26px `gap`, próg mobilny
-   dopiero od 700px)
+1. Nav — logo (`.nav__logo-img` 44px + `.nav__logo-text` „FitPage”) + linki do
+   sekcji (O nas, Portfolio, Proces, FAQ, Artykuły) + CTA „Umów konsultację”
+   → `kontakt.html`, wszystko wewnątrz `.nav__right` (sticky, menu mobilne
+   < 700px). **CTA nie chowa się do hamburgera** — poniżej 700px znika tylko
+   `.nav__links` (same linki tekstowe); przycisk zostaje widoczny w pasku
+   nav obok hamburgera (dopasowany rozmiar: `10px 14px` padding, `0.85rem`,
+   zmierzone 148×42px, mieści się bez zawijania obok 44px hamburgera).
+   Naprawione przez `/impeccable adapt` po krytyce, która złapała, że
+   ukrywanie głównej akcji konwersji za hamburgerem kosztuje na stronie,
+   której odbiorcy są w większości mobilni (PRODUCT.md). Z 6 elementami
+   (5 linków + CTA) mieści się z zapasem od 700px w górę — zmierzone: ~638px
+   potrzebne przy 26px `gap`, próg mobilny dopiero od 700px.
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
    rodzajów treningu (trening siłowy, bieganie, pilates, balet, joga, boks,
