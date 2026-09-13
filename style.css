@@ -544,7 +544,12 @@ summary:focus-visible {
   padding: 0;
   display: grid;
   gap: 12px; /* ciaśniej na mobile — patrz >=480px niżej dla pełnego odstępu */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 400px));
+  /* auto-fit (nie auto-fill) + 1fr jako górna granica: puste "widmowe"
+     tory kolumn zapadają się do zera zamiast zostawiać widoczną dziurę,
+     a rzeczywiste karty rozciągają się i wypełniają cały wiersz — przy
+     2 kartach wychodzą ~508px, przy 3 dokładnie mieszczą się obok siebie
+     (~331px każda) na szerokości .container (1080px). */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .artykul-card {
   position: relative;
@@ -582,32 +587,37 @@ summary:focus-visible {
   position: absolute;
   inset: 0;
 }
+/* Cały teaser to teraz link (usunięty osobny "Czytaj dalej") — sam tekst
+   niesie akcję, ze strzałką na końcu jako jedynym wskaźnikiem. Świadomie
+   nie pełny .btn: przy 3 kartach obok siebie trzy wypełnione zielone
+   przyciski naraz złamałyby "The One Mark Rule" (akcent ma być rzadki);
+   kolorowy tekst na hover to ten sam ugruntowany wzorzec co "Zobacz
+   wszystkie artykuły" czy "Wróć do listy artykułów". position:relative +
+   z-index:1, żeby wygrać z ::after tytułu (patrz wyżej) i zostać realnie
+   klikalne, nie tylko wizualnie. */
 .artykul-card__lead {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
   color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.45;
   margin: 0;
-  display: -webkit-box;
+  text-decoration: none;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  transition: color 0.15s;
 }
-.artykul-card__link {
-  position: relative; /* nad pseudo-elementem ::after z .artykul-card__title */
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  align-self: flex-start;
-  margin-top: 2px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--accent-strong);
-  transition: gap 0.18s var(--ease);
+.artykul-card__lead:hover { color: var(--accent-strong); }
+.artykul-card__lead svg {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  vertical-align: -2px;
+  flex-shrink: 0;
 }
-.artykul-card__link:hover { gap: 12px; }
-.artykul-card__link svg { width: 16px; height: 16px; }
 
 /* metadata (data publikacji) — współdzielona przez kartę na liście i
    nagłówek pojedynczego artykułu */
@@ -1058,7 +1068,6 @@ summary:focus-visible {
     -webkit-line-clamp: unset;
     overflow: visible;
   }
-  .artykul-card__link { margin-top: 4px; font-size: 1rem; }
   .artykul__meta { font-size: 0.9rem; }
 }
 

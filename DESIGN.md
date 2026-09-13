@@ -259,7 +259,18 @@ the engineered, get-out-of-the-way character of the system.
   hamburger menu boundary; section rhythm and section-title size step up; process
   steps go 1-col → 3-col), `900px` (hero gains more vertical air; "O nas" flips
   from a stacked column to a `text | phone` row).
-- **Grids:** portfolio and the articles list share `repeat(auto-fill, minmax(280px, 400px))`; process steps
+- **Grids:** portfolio stays `repeat(auto-fill, minmax(280px, 400px))`. The
+  articles grid (`.artykuly__grid`, shared by the homepage preview and the
+  full list) uses `repeat(auto-fit, minmax(280px, 1fr))` instead —
+  **`auto-fit`, not `auto-fill`**, and `1fr` as the upper bound, not a fixed
+  px: empty "phantom" tracks collapse to zero instead of leaving a visible
+  gap, and real cards stretch to fill the row. At 2 cards each renders
+  ~508px (the `.container`'s full 1080px, minus padding and gap, split
+  evenly); at 3 it settles to ~331px each without any layout change —
+  built to seat 3 side by side without a fourth ever standing alone.
+  Portfolio was deliberately left on the fixed-max version — it holds a
+  single demo project by design (see PRODUCT.md), not a growing list.
+  Process steps
   are `1fr` → `repeat(3, 1fr)` at 700px, aligned to `start` so an expanded step
   grows without stretching its neighbours; "O nas" is a centered flex column
   (phone capped at 220px) → row at 900px (phone capped at 250px).
@@ -360,10 +371,19 @@ component and do not give an action a boxy radius.
   card-rest shadow token (`--shadow`) as a lift, border shifts to Bottle
   Green — shadow-on-interaction only, per The Lift-Means-Interactive Rule. The
   whole card is a click target (an `::after` on the title stretches over it)
-  without nesting a second `<a>`; the title itself links, and a separate
-  "Czytaj dalej" text link (Leaf Green, `→` arrow — a plain horizontal arrow,
-  not the portfolio card's diagonal "opens elsewhere" arrow, since this is
-  same-site navigation) repeats the same destination for scannability.
+  without nesting a second `<a>`; the title links, and **the whole lead
+  paragraph is now its own separate link too** (not a plain `<p>`), ending
+  inline with a `→` arrow (plain horizontal, same-site — not the portfolio
+  card's diagonal "opens elsewhere" arrow). No standalone "Czytaj dalej"
+  label exists any more — the teaser sentence itself is the visible action,
+  Leaf Green on hover, `position: relative; z-index: 1` so it wins over the
+  title's full-card `::after` instead of being swallowed by it. Deliberately
+  **not** a filled `.btn` pill: with 2-3 of these sitting side by side, three
+  solid Bottle Green buttons in one glance would spend the accent's whole
+  scarcity budget on a single row — the text-link-as-action treatment is the
+  same one every other secondary link on the site already uses (`Zobacz
+  wszystkie artykuły`, `Wróć do listy artykułów`, the portfolio card's own
+  link), not a new pattern invented for this component.
   **Below 480px** the card is deliberately tighter — `14px` padding (vs
   `24px`), `4px` internal gap (vs `10px`), a `1rem` title (vs `1.15rem`),
   and the lead text clamped to 3 lines (`-webkit-line-clamp`, ellipsis on

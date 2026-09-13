@@ -82,8 +82,8 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 6. Artykuły (podgląd) — dawniej tu była sekcja „Kontakt (skrót)” (CTA „Umów
    konsultację” + telefon 535 721 592); usunięta i zastąpiona podglądem
    artykułów, ten sam markup co lista na `artykuly.html` (`.artykuly__grid`
-   + `.artykul-card`, na razie jeden przykładowy wpis) + link „Zobacz
-   wszystkie artykuły” → `artykuly.html`. **Uwaga:** to był jedyny widoczny
+   + `.artykul-card`, oba obecne artykuły obok siebie na desktopie) + link
+   „Zobacz wszystkie artykuły” → `artykuly.html`. **Uwaga:** to był jedyny widoczny
    numer telefonu na stronie głównej poza nav/hero CTA — sam numer nigdzie
    indziej na `index.html` się teraz nie pojawia (formularz na `kontakt.html`
    nadal go pokazuje jako fallback błędu wysyłki).
@@ -99,16 +99,24 @@ podstronę (dawniej sekcja `#faq` na stronie głównej). Kompaktowy hero + ten s
 akordeon `<details>`/`<summary>` (bez JS) co wcześniej + CTA „Umów konsultację” +
 link „Wróć na stronę główną”. Wejście: „FAQ” w nav i w stopce (obie → `faq.html`).
 
-**`artykuly.html`** — lista artykułów. Kompaktowy hero + `.artykuly__grid`
-(ta sama siatka `repeat(auto-fill, minmax(280px, 400px))` co portfolio) kart
-`.artykul-card` (data, tytuł-link, krótki lead, „Czytaj dalej” z ikoną
-strzałki w prawo — **nie** ikoną „otwiera w nowej karcie” z portfolio, bo to
-nawigacja wewnętrzna). Cała karta klikalna (`::after` na tytule), ale bez
-zagnieżdżania linków. Cień/uniesienie tylko na hover/focus — karta w
-spoczynku jest płaska jak `.krok`, zgodnie z „The Lift-Means-Interactive
-Rule” (cień w spoczynku jest zastrzeżony dla portfolio). Wejście: „Artykuły”
-w nav i w stopce (wszystkie strony), między FAQ a Kontakt. Na razie jeden
-przykładowy artykuł + komentarz `<!-- TODO: kolejne artykuły -->` pokazujący
+**`artykuly.html`** — lista artykułów. Kompaktowy hero + `.artykuly__grid` —
+`repeat(auto-fit, minmax(280px, 1fr))`, **nie** `auto-fill`/px-owy max jak
+portfolio: puste tory zapadają się zamiast zostawiać widoczną dziurę, a
+realne karty rozciągają się i wypełniają wiersz (2 karty → ~508px każda;
+od 3 w górę mieszczą się obok siebie po ~331px, bez zmiany layoutu). Karty
+`.artykul-card` (data, tytuł-link, **cały lead to teraz link** kończący się
+inline strzałką w prawo — **nie** ikoną „otwiera w nowej karcie” z
+portfolio, bo to nawigacja wewnętrzna). Żadnego osobnego „Czytaj dalej” —
+usunięte świadomie, żeby przy kilku kartach obok siebie nie mnożyć
+elementów; sam teaser niesie akcję (Leaf Green na hover), celowo nie jako
+wypełniony `.btn` (3 zielone przyciski naraz łamałyby oszczędność akcentu).
+Cała karta klikalna (`::after` na tytule + osobny, realny link na leadzie,
+`z-index:1` żeby wygrać z `::after`), bez zagnieżdżania linków. Cień/
+uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
+`.krok`, zgodnie z „The Lift-Means-Interactive Rule” (cień w spoczynku jest
+zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
+strony), między FAQ a Kontakt. Dwa artykuły obecnie + komentarz
+`<!-- TODO: kolejne artykuły -->` pokazujący
 gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
 (mniejszy padding/odstępy/font nagłówka, lead przycięty do 3 linii przez
 `-webkit-line-clamp`) — pojedyncza karta potrafiła zająć do ~37% wysokości

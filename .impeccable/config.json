@@ -272,6 +272,15 @@
         ],
         "createdAt": "2026-09-13T20:15:32.385Z",
         "reason": "confident false positive: browser-verified via getComputedStyle, real rendered ratio for .artykul-card__title is 1.2 (18.4px font / 22.08px line-height), not the 1.04 the static scanner reports — likely misses the >=480px breakpoint override or the inherited h1/h2/h3 line-height:1.2 base rule. 1.2 is also DESIGN.md's own documented, deliberate value for the 'Title' typography tier (card/step titles), not a body-text readability miss"
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-13T20:39:13.854Z",
+        "reason": "same confirmed false positive as artykuly.html: browser-verified real rendered ratio for .artykul-card__title is 1.2 (18.4px/22.08px), not the 1.04 the static scanner reports; 1.2 is also DESIGN.md's own documented value for the Title typography tier"
       }
     ]
   }
