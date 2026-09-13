@@ -44,7 +44,14 @@
   <main>
 
     <!-- ============================ NAGŁÓWEK ARTYKUŁU ============================ -->
-    <section class="hero hero--compact">
+    <!-- Zdjęcie w tle: images/artykul-ile-kosztuje-hero.jpg (oryginał
+         tloartykulu2.png, 1920x1080/1,47MB — zmniejszony do 1600x900 i
+         skonwertowany na JPEG, ~201KB). .hero--cover (style.css) dokłada
+         przyciemnienie + jasny tekst; sam URL zdjęcia zostaje inline, bo to
+         treść tego konkretnego artykułu. Kontrast sprawdzony piksel po
+         pikselu (PIL): przy scrimie 0.65 najjaśniejszy realny fragment
+         zdjęcia (rgb 251,236,239) daje 5.29:1, bezpiecznie nad wymagane 4.5:1. -->
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-ile-kosztuje-hero.jpg');">
       <div class="hero__inner">
         <p class="artykul__meta reveal">13 września 2026</p>
         <h1 class="hero__title reveal">Ile kosztuje strona internetowa dla trenera personalnego?</h1>
