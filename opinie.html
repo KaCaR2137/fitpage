@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opinie klientów — FitPage</title>
+  <meta name="description" content="Opinie klientów FitPage o współpracy przy budowie strony internetowej dla trenera personalnego.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash" aria-hidden="true">
+    <img src="images/logo-fitpage.png" alt="" class="splash__logo">
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo-fitpage.png" alt="" class="nav__logo-img">
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="index.html#o-nas">O nas</a>
+          <a href="index.html#portfolio">Portfolio</a>
+          <a href="proces.html">Proces</a>
+          <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
+        </nav>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Opinie klientów</h1>
+        <p class="hero__subtitle reveal">
+          Zobacz, co mówią o współpracy z FitPage trenerki i trenerzy personalni.
+        </p>
+
+        <!-- TODO przed publikacją: zaktualizuj średnią ocenę i liczbę opinii
+             poniżej na realne dane, gdy pojawi się pierwsza prawdziwa opinia.
+             "5.0 (0 opinii)" to placeholder gotowy do podmiany, nie prawdziwa
+             ocena — strona ma noindex i nie jest podlinkowana właśnie dlatego,
+             żeby nie mogła zostać zobaczona z fikcyjną statystyką. -->
+        <p class="opinie__summary reveal">
+          <span class="opinie__score">5.0</span>
+          <span class="opinie__stars" role="img" aria-label="Ocena 5 na 5 gwiazdek">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+          </span>
+          <span class="opinie__count">(0 opinii)</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ LISTA OPINII ============================ -->
+    <section class="section opinie">
+      <div class="container reveal">
+
+        <ul class="opinie__grid">
+
+          <!-- TODO: pojedyncza opinia — skopiuj poniższy blok dla każdej
+               nowej opinii, wypełnij realną treścią. Gwiazdki (role="img" +
+               aria-label) ustaw zgodnie z realną oceną; "5 na 5" to tylko
+               przykład w tym szablonie.
+
+          <li class="opinia-card reveal">
+            <div class="opinia-card__stars" role="img" aria-label="Ocena 5 na 5 gwiazdek">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            </div>
+            <p class="opinia-card__text">„Treść opinii klienta — w cudzysłowie typograficznym „…”, zgodnie z konwencją strony.”</p>
+            <p class="opinia-card__author">Imię Nazwisko <span class="opinia-card__role">— trener personalny, redukcja wagi</span></p>
+          </li>
+
+          -->
+
+        </ul>
+
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="index.html#o-nas">O nas</a>
+      <a href="proces.html">Proces tworzenia strony</a>
+      <a href="faq.html">FAQ</a>
+      <a href="artykuly.html">Artykuły</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

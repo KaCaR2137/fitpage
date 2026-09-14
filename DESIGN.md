@@ -509,6 +509,33 @@ there. `min-height: 260px` keeps the header from looking clipped on short
 mobile content; wider/taller viewports are already governed by the existing
 `.hero--compact` padding tiers, unchanged.
 
+### Review card (`.opinia-card`) and star rating
+Draft component on `opinie.html` (noindex, unlinked — see PRODUCT.md/CLAUDE.md;
+not live until a real review exists). Same grid as the article list —
+`repeat(auto-fit, minmax(280px, 1fr))` — and the same flat-at-rest,
+shadow-only-on-hover card as `.artykul-card`/`.krok`, per The
+Lift-Means-Interactive Rule. Stars are drawn SVGs (a five-point star path,
+`fill: currentColor`), never Unicode `★` glyphs — the craft floor bans
+character glyphs standing in for an icon system, and a rating widget is the
+one place on this site where five same-colored accent marks in a row is the
+correct call: a star rating reads as broken if it isn't uniform, unlike a
+generic icon row where the accent should stay sparse. Both the page-level
+summary (`.opinie__stars`, `20px`) and each card's own rating
+(`.opinia-card__stars`, `18px`) use Bottle Green, not a separate gold/yellow
+— staying inside the established palette rather than importing a category
+color. Each stars wrapper carries `role="img"` and a numeric `aria-label`
+("Ocena 5 na 5 gwiazdek"); the SVGs themselves are `aria-hidden`, so a
+screen reader hears the rating once, spoken plainly, not five unlabeled
+icons in a row.
+
+**Named Rule — no invented statistics.** The aggregate summary must never
+show a rating number unmatched by a real review count behind it. The
+current "5.0 (0 opinii)" is placeholder scaffolding, marked with a `TODO`
+in the page itself, and must be replaced with real numbers — or the star
+count removed entirely — before the page's `noindex` comes off and it gets
+linked from nav/footer. This mirrors PRODUCT.md's "no invented prices,
+timelines, testimonials" rule applied to ratings specifically.
+
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note
 on an otherwise light page. Text is Ivory at `0.72` opacity. The footer carries a

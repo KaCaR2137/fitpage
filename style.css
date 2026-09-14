@@ -651,6 +651,78 @@ summary:focus-visible {
 .artykul__back a { color: var(--accent-strong); text-decoration: none; }
 .artykul__back a:hover { text-decoration: underline; }
 
+/* ============================== OPINIE (opinie klientów) ============================== */
+/* Ta sama siatka co .artykuly__grid — auto-fit + 1fr, żeby puste tory
+   kolumn zapadały się zamiast zostawiać widoczną dziurę, kiedy opinii
+   jest mniej niż mieściłoby się w pełnym rzędzie. Karta płaska w
+   spoczynku, cień tylko na hover — jak .artykul-card/.krok, zgodnie
+   z "The Lift-Means-Interactive Rule" (cień w spoczynku zastrzeżony dla
+   portfolio). Gwiazdki jako własne SVG (nie znaki Unicode ★, zakazane
+   przez craft-floor jako namiastka systemu ikon), w kolorze akcentu —
+   pojedyncza dopuszczalna kolorystyczna powtarzalność, bo to rozpoznawalny,
+   wymagający jednolitości wzorzec oceny, nie ozdoba sparowana z resztą UI. */
+.opinie__summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.opinie__score { font-weight: 700; color: var(--text); }
+.opinie__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--accent);
+}
+.opinie__stars svg { width: 20px; height: 20px; }
+.opinie__count { font-weight: 600; }
+
+.opinie__grid {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.opinia-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.18s var(--ease),
+              box-shadow 0.18s var(--ease),
+              border-color 0.18s var(--ease);
+}
+.opinia-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+.opinia-card__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.opinia-card__stars svg { width: 18px; height: 18px; }
+.opinia-card__text {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+.opinia-card__author {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.opinia-card__role {
+  font-weight: 400;
+  color: var(--muted);
+}
+
 /* ============================== PROCES / KROKI ============================== */
 .kroki__grid {
   list-style: none;

@@ -177,6 +177,19 @@ już wpisanego realnego odbiorcę — Formspree (mechanizm wysyłki formularza
 z `kontakt.html`, potwierdzony i podłączony) — pozostałe TODO w tym punkcie
 dotyczą już tylko treści niezależnej od mechanizmu.
 
+**`opinie.html`** — opinie klientów, ten sam wzorzec co `polityka-prywatnosci.html`:
+`<meta name="robots" content="noindex">`, **celowo niepodlinkowana** z nav/stopki.
+Nagłówek + zbiorczy wskaźnik (`.opinie__summary`: ocena, 5 gwiazdek SVG w kolorze
+akcentu, licznik „(N opinii)”) + `.opinie__grid` (ten sam wzorzec siatki co
+`.artykuly__grid` — `auto-fit, minmax(280px, 1fr)`) z kartami `.opinia-card`
+(płaskie w spoczynku, cień tylko na hover, jak `.artykul-card`/`.krok`).
+**Celowo pusta** — zero przykładowych opinii w kodzie, tylko zakomentowany
+szablon karty do skopiowania. Zbiorczy wskaźnik zawiera placeholder „5.0
+(0 opinii)” oznaczony `<!-- TODO -->` — **musi** zostać zaktualizowany na
+realne dane, zanim strona zostanie odsłonięta (usunięty `noindex` + dodany
+link w nav/stopce), żeby nigdy nie pokazać fikcyjnej oceny żywemu odwiedzającemu.
+Aktywuj widoczność dopiero, gdy pojawi się pierwsza prawdziwa opinia do wstawienia.
+
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
 osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,
 opis wizji strony (textarea) + klauzula RODO (rozwijana) + zgoda wymagana
