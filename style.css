@@ -207,16 +207,20 @@ summary:focus-visible {
    (.nav__links); CTA zostaje widoczne w pasku nav (który i tak jest
    position: sticky) zamiast znikać do hamburgera — odwiedzający z telefonu
    (większość ruchu wg PRODUCT.md) ma "Umów konsultację" w zasięgu zawsze,
-   bez dodatkowego dotknięcia. */
+   bez dodatkowego dotknięcia. Odstęp 20px (obniżony z 26px po dodaniu
+   6. linku "Opinie") — przy 26px pełny rząd (6 linków + CTA) potrzebował
+   ~710px, co przy progu 700px dawało realny poziomy overflow ~5-10px w
+   wąskim oknie 700-709px (zmierzone empirycznie w iframe). Przy 20px
+   potrzebne ~680px, zapas ~20px pod progiem. */
 .nav__right {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 20px;
 }
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 20px;
 }
 .nav__links a {
   font-size: 0.95rem;

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Opinie klientów — FitPage</title>
   <meta name="description" content="Opinie klientów FitPage o współpracy przy budowie strony internetowej dla trenera personalnego.">
-  <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="apple-touch-icon" href="images/favicon-512.png">
@@ -33,6 +32,7 @@
           <a href="proces.html">Proces</a>
           <a href="faq.html">FAQ</a>
           <a href="artykuly.html">Artykuły</a>
+          <a href="opinie.html">Opinie</a>
         </nav>
         <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
         <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
@@ -52,21 +52,22 @@
           Zobacz, co mówią o współpracy z FitPage trenerki i trenerzy personalni.
         </p>
 
-        <!-- TODO przed publikacją: zaktualizuj średnią ocenę i liczbę opinii
-             poniżej na realne dane, gdy pojawi się pierwsza prawdziwa opinia.
-             "5.0 (0 opinii)" to placeholder gotowy do podmiany, nie prawdziwa
-             ocena — strona ma noindex i nie jest podlinkowana właśnie dlatego,
-             żeby nie mogła zostać zobaczona z fikcyjną statystyką. -->
+        <!-- Wskaźnik ma zostać uczciwy: dopóki liczba opinii to 0, gwiazdki
+             są konturowe (nie wypełnione) i nie pokazujemy liczbowej
+             średniej — pokazanie oceny bez żadnej opinii za nią byłoby
+             fikcyjną statystyką. Gdy wkleisz pierwszą prawdziwą opinię
+             (szablon karty niżej), zamień tę sekcję na wypełnione gwiazdki
+             + realną średnią, np. "5.0" + aria-label "Ocena 5 na 5
+             gwiazdek" + "(1 opinia)". -->
         <p class="opinie__summary reveal">
-          <span class="opinie__score">5.0</span>
-          <span class="opinie__stars" role="img" aria-label="Ocena 5 na 5 gwiazdek">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+          <span class="opinie__stars" role="img" aria-label="Jeszcze bez ocen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
           </span>
-          <span class="opinie__count">(0 opinii)</span>
+          <span class="opinie__count">0 opinii</span>
         </p>
       </div>
     </section>
@@ -114,6 +115,7 @@
       <a href="proces.html">Proces tworzenia strony</a>
       <a href="faq.html">FAQ</a>
       <a href="artykuly.html">Artykuły</a>
+      <a href="opinie.html">Opinie</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
     <div class="container footer__inner">

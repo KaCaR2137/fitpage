@@ -55,17 +55,22 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 ## Strony
 **`index.html`** — sekcje w kolejności:
 1. Nav — logo (`.nav__logo-img` 44px + `.nav__logo-text` „FitPage”) + linki do
-   sekcji (O nas, Portfolio, Proces, FAQ, Artykuły) + CTA „Umów konsultację”
-   → `kontakt.html`, wszystko wewnątrz `.nav__right` (sticky, menu mobilne
-   < 700px). **CTA nie chowa się do hamburgera** — poniżej 700px znika tylko
-   `.nav__links` (same linki tekstowe); przycisk zostaje widoczny w pasku
-   nav obok hamburgera (dopasowany rozmiar: `10px 14px` padding, `0.85rem`,
-   zmierzone 148×42px, mieści się bez zawijania obok 44px hamburgera).
-   Naprawione przez `/impeccable adapt` po krytyce, która złapała, że
-   ukrywanie głównej akcji konwersji za hamburgerem kosztuje na stronie,
-   której odbiorcy są w większości mobilni (PRODUCT.md). Z 6 elementami
-   (5 linków + CTA) mieści się z zapasem od 700px w górę — zmierzone: ~638px
-   potrzebne przy 26px `gap`, próg mobilny dopiero od 700px.
+   sekcji (O nas, Portfolio, Proces, FAQ, Artykuły, Opinie) + CTA „Umów
+   konsultację” → `kontakt.html`, wszystko wewnątrz `.nav__right` (sticky,
+   menu mobilne < 700px). **CTA nie chowa się do hamburgera** — poniżej 700px
+   znika tylko `.nav__links` (same linki tekstowe); przycisk zostaje widoczny
+   w pasku nav obok hamburgera (dopasowany rozmiar: `10px 14px` padding,
+   `0.85rem`, zmierzone 148×42px, mieści się bez zawijania obok 44px
+   hamburgera). Naprawione przez `/impeccable adapt` po krytyce, która
+   złapała, że ukrywanie głównej akcji konwersji za hamburgerem kosztuje na
+   stronie, której odbiorcy są w większości mobilni (PRODUCT.md). Z 7
+   elementami (6 linków + CTA, po dodaniu linku „Opinie”) `gap: 26px`
+   przestał się mieścić — zmierzone empirycznie w oknie 700-709px: realny
+   poziomy overflow ~5-10px tuż nad progiem 700px (link potrzebował ~710px).
+   Naprawione zmniejszeniem `gap` `.nav__right`/`.nav__links` z 26px na
+   20px — zmierzone ponownie: ~685px potrzebne, zapas ~15px pod progiem
+   700px, zweryfikowane dokładnie na granicy (700px i 705px, oba bez
+   overflow po zmianie).
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
    rodzajów treningu (trening siłowy, bieganie, pilates, balet, joga, boks,
@@ -91,8 +96,8 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    2 rundy poprawek w cenie / Wyłącznie trenerzy personalni), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.
 8. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” / „Artykuły” /
-   „Kontakt” (`.footer__links`), pod nim logo + copyright. Ten sam footer (z tymi
-   samymi 5 linkami) na wszystkich stronach.
+   „Opinie” / „Kontakt” (`.footer__links`), pod nim logo + copyright. Ten sam
+   footer (z tymi samymi 6 linkami) na wszystkich stronach.
 
 **`faq.html`** — najczęściej zadawane pytania, wydzielone z `index.html` na osobną
 podstronę (dawniej sekcja `#faq` na stronie głównej). Kompaktowy hero + ten sam
@@ -177,18 +182,23 @@ już wpisanego realnego odbiorcę — Formspree (mechanizm wysyłki formularza
 z `kontakt.html`, potwierdzony i podłączony) — pozostałe TODO w tym punkcie
 dotyczą już tylko treści niezależnej od mechanizmu.
 
-**`opinie.html`** — opinie klientów, ten sam wzorzec co `polityka-prywatnosci.html`:
-`<meta name="robots" content="noindex">`, **celowo niepodlinkowana** z nav/stopki.
-Nagłówek + zbiorczy wskaźnik (`.opinie__summary`: ocena, 5 gwiazdek SVG w kolorze
-akcentu, licznik „(N opinii)”) + `.opinie__grid` (ten sam wzorzec siatki co
-`.artykuly__grid` — `auto-fit, minmax(280px, 1fr)`) z kartami `.opinia-card`
-(płaskie w spoczynku, cień tylko na hover, jak `.artykul-card`/`.krok`).
-**Celowo pusta** — zero przykładowych opinii w kodzie, tylko zakomentowany
-szablon karty do skopiowania. Zbiorczy wskaźnik zawiera placeholder „5.0
-(0 opinii)” oznaczony `<!-- TODO -->` — **musi** zostać zaktualizowany na
-realne dane, zanim strona zostanie odsłonięta (usunięty `noindex` + dodany
-link w nav/stopce), żeby nigdy nie pokazać fikcyjnej oceny żywemu odwiedzającemu.
-Aktywuj widoczność dopiero, gdy pojawi się pierwsza prawdziwa opinia do wstawienia.
+**`opinie.html`** — opinie klientów. **Żywa i podlinkowana** (nav + stopka,
+wszystkie strony) — `noindex` usunięty. Odsłonięta świadomie zanim pojawiła
+się pierwsza realna opinia (decyzja klienta: „odsłoń stronę teraz, opinię
+dodam sam/sama później”), więc zbiorczy wskaźnik (`.opinie__summary`) jest
+teraz **uczciwym stanem pustym**, nie placeholderem: 5 konturowych
+(niewypełnionych) gwiazdek SVG + tekst „0 opinii”, bez żadnej liczbowej
+średniej — pokazanie oceny bez ani jednej opinii za nią byłoby fikcyjną
+statystyką (patrz DESIGN.md, „Named Rule — no invented statistics”).
+`.opinie__grid` (ten sam wzorzec siatki co `.artykuly__grid` —
+`auto-fit, minmax(280px, 1fr)`) z kartami `.opinia-card` (płaskie w
+spoczynku, cień tylko na hover, jak `.artykul-card`/`.krok`) — **wciąż
+celowo pusta**, zero przykładowych opinii w kodzie, tylko zakomentowany
+szablon karty (wypełnione gwiazdki, realna treść/autor) do skopiowania przy
+wklejaniu pierwszej prawdziwej opinii. Gdy pojawi się pierwsza opinia:
+wklej kartę z szablonu **i** zamień pusty stan wskaźnika na wypełnione
+gwiazdki + realną średnią (np. „5.0” + aria-label „Ocena 5 na 5 gwiazdek” +
+„(1 opinia)”) — instrukcja zapisana wprost w komentarzu HTML nad tą sekcją.
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
 osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,

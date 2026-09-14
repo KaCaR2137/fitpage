@@ -510,8 +510,11 @@ mobile content; wider/taller viewports are already governed by the existing
 `.hero--compact` padding tiers, unchanged.
 
 ### Review card (`.opinia-card`) and star rating
-Draft component on `opinie.html` (noindex, unlinked — see PRODUCT.md/CLAUDE.md;
-not live until a real review exists). Same grid as the article list —
+Live component on `opinie.html` — linked in nav/footer on every page, `noindex`
+removed. Went live intentionally before any real review existed (client's own
+call: reveal the page now, the first review gets added later — see
+CLAUDE.md), so the empty state had to be genuinely empty rather than a
+scaffolding placeholder; see the Named Rule below. Same grid as the article list —
 `repeat(auto-fit, minmax(280px, 1fr))` — and the same flat-at-rest,
 shadow-only-on-hover card as `.artykul-card`/`.krok`, per The
 Lift-Means-Interactive Rule. Stars are drawn SVGs (a five-point star path,
@@ -529,17 +532,20 @@ screen reader hears the rating once, spoken plainly, not five unlabeled
 icons in a row.
 
 **Named Rule — no invented statistics.** The aggregate summary must never
-show a rating number unmatched by a real review count behind it. The
-current "5.0 (0 opinii)" is placeholder scaffolding, marked with a `TODO`
-in the page itself, and must be replaced with real numbers — or the star
-count removed entirely — before the page's `noindex` comes off and it gets
-linked from nav/footer. This mirrors PRODUCT.md's "no invented prices,
-timelines, testimonials" rule applied to ratings specifically.
+show a rating number unmatched by a real review count behind it. With zero
+real reviews live, the summary shows outline (unfilled) stars and "0
+opinii" — no numeric average at all, since a rating with nothing behind it
+is a fabricated statistic. An HTML comment above the summary in
+`opinie.html` documents exactly how to flip it to filled stars + a real
+average once the first genuine review is pasted in. This mirrors
+PRODUCT.md's "no invented prices, timelines, testimonials" rule applied to
+ratings specifically.
 
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note
 on an otherwise light page. Text is Ivory at `0.72` opacity. The footer carries a
-`.footer__links` row (O nas / Proces tworzenia strony / FAQ / Artykuły / Kontakt) — every
+`.footer__links` row (O nas / Proces tworzenia strony / FAQ / Artykuły /
+Opinie / Kontakt) — every
 link there is full-opacity Ivory, **not** Leaf Green — Leaf Green's contrast
 against Pine Black falls to ~2.6:1, well under AA, so the footer is the one
 place that does not reuse the standard link color.
