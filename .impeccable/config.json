@@ -386,6 +386,33 @@
         "value": "fraunces",
         "createdAt": "2026-09-14T08:46:04.112Z",
         "reason": "User explicitly named both fonts by name in the request ('nagłówki na Fraunces', 'treść/body na Inter') — a direct, specific pin, not a reflexive AI default the agent reached for. Per the skill's own 'brief wins' principle, an explicit named-font instruction overrides the saturated-pattern warning."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/jak-zdobyc-klientow-bez-reklam.html"
+        ],
+        "createdAt": "2026-09-14T22:33:46.584Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned on many other pages under DESIGN.md 'The One Lamp Rule' / 'The One Mark Rule'; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/jak-zdobyc-klientow-bez-reklam.html"
+        ],
+        "createdAt": "2026-09-14T22:33:46.607Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the light-theme canvas color, not a reflexive AI default (extends established sanction, shared style.css)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/jak-zdobyc-klientow-bez-reklam.html"
+        ],
+        "createdAt": "2026-09-14T22:33:46.625Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
       }
     ]
   }

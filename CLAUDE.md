@@ -87,7 +87,8 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 6. Artykuły (podgląd) — dawniej tu była sekcja „Kontakt (skrót)” (CTA „Umów
    konsultację” + telefon 535 721 592); usunięta i zastąpiona podglądem
    artykułów, ten sam markup co lista na `artykuly.html` (`.artykuly__grid`
-   + `.artykul-card`, oba obecne artykuły obok siebie na desktopie) + link
+   + `.artykul-card`, wszystkie trzy obecne artykuły obok siebie na desktopie
+   dzięki `auto-fit` — patrz sekcja `artykuly.html` niżej) + link
    „Zobacz wszystkie artykuły” → `artykuly.html`. **Uwaga:** to był jedyny widoczny
    numer telefonu na stronie głównej poza nav/hero CTA — sam numer nigdzie
    indziej na `index.html` się teraz nie pojawia (formularz na `kontakt.html`
@@ -120,7 +121,7 @@ Cała karta klikalna (`::after` na tytule + osobny, realny link na leadzie,
 uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 `.krok`, zgodnie z „The Lift-Means-Interactive Rule” (cień w spoczynku jest
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
-strony), między FAQ a Kontakt. Dwa artykuły obecnie + komentarz
+strony), między FAQ a Kontakt. Trzy artykuły obecnie + komentarz
 `<!-- TODO: kolejne artykuły -->` pokazujący
 gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
 (mniejszy padding/odstępy/font nagłówka, lead przycięty do 3 linii przez
