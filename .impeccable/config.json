@@ -362,6 +362,30 @@
         ],
         "createdAt": "2026-09-14T07:12:43.452Z",
         "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "fraunces",
+        "createdAt": "2026-09-14T08:45:43.663Z",
+        "reason": "Same as Fraunces (capitalized) ignore above — lowercase variant appears in computed-style snippets vs the literal Google Fonts family name."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "inter",
+        "createdAt": "2026-09-14T08:45:43.700Z",
+        "reason": "Same as Inter (capitalized) ignore above — lowercase variant appears in computed-style snippets vs the literal Google Fonts family name."
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-09-14T08:46:04.093Z",
+        "reason": "User explicitly named both fonts by name in the request ('nagłówki na Fraunces', 'treść/body na Inter') — a direct, specific pin, not a reflexive AI default the agent reached for. Per the skill's own 'brief wins' principle, an explicit named-font instruction overrides the saturated-pattern warning."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-09-14T08:46:04.112Z",
+        "reason": "User explicitly named both fonts by name in the request ('nagłówki na Fraunces', 'treść/body na Inter') — a direct, specific pin, not a reflexive AI default the agent reached for. Per the skill's own 'brief wins' principle, an explicit named-font instruction overrides the saturated-pattern warning."
       }
     ]
   }

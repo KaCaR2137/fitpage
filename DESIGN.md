@@ -193,13 +193,27 @@ once, sections never repaint it — survives intact.)
 
 ## Typography
 
-**Display / Body / Label Font:** the native system UI stack —
-`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-sans-serif`. No web fonts load. No distinct display or monospace face.
+**Heading Font:** Fraunces (600–700), a webfont from Google Fonts. **Body /
+Label Font:** Inter (400/500 for running copy, 600/700 for UI chrome —
+buttons, nav, form labels), also from Google Fonts. Both load via a
+`<link>` in every page's `<head>` — a `preconnect` pair for
+`fonts.googleapis.com`/`fonts.gstatic.com` plus the stylesheet link itself
+(`family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap`) —
+never `@import` inside `style.css`, which blocks parallel downloading and
+delays first paint. `display=swap` in the URL means the browser paints the
+fallback stack immediately and swaps to the webfont once it arrives, so
+there's no invisible-text flash on a slow connection. Superseded the
+System-Font Rule below (kept, struck through, for the record — see Named
+Rules).
 
-**Character:** neutral and highly legible by design. All personality comes from
-weight (700–800), negative tracking on headings, and generous body leading (1.65).
-The type should feel engineered, not expressive.
+**Character:** the two families are chosen to contrast on purpose — Fraunces
+is a wonky, characterful serif built for display sizes, Inter a neutral,
+highly legible grotesque built for UI text at small sizes. Personality now
+comes from the heading face itself, not just weight/tracking; body copy
+keeps the previous engineered, get-out-of-the-way character. Verified live
+across every heading size actually in use, from the H1 clamp (`30px` mobile
+→ `50px` desktop) down to the smallest H3 (`16px`, mobile article cards) —
+Fraunces stays crisp and readable at all of them, so no size changed.
 
 ### Hierarchy
 - **Display** (700, `clamp(1.9rem, 6vw, 3.1rem)`, line-height 1.2, tracking
@@ -244,9 +258,25 @@ yet. (The on-page Kontakt blurb this rule originally covered was removed from
 gone too.)
 
 ### Named Rules
-**The System-Font Rule.** Do not load a web font to "improve" the type. Hierarchy
-is built from weight and tracking on the system stack; a custom face would fight
-the engineered, get-out-of-the-way character of the system.
+**The System-Font Rule (superseded).** Originally: do not load a web font to
+"improve" the type — hierarchy comes from weight/tracking on the system
+stack, a custom face would fight its engineered character. Explicitly
+overturned by direct instruction: load Fraunces for headings and Inter for
+body. Kept here, not deleted, so the earlier reasoning and the fact that a
+real decision reversed it both stay on record — a future "should we load a
+web font" question shouldn't rediscover this from git blame.
+
+**Resolved tradeoff — synthetic bold on Inter UI chrome.** Initially only
+Inter 400/500 were loaded (matching the first "waga 400-500" instruction
+for body text), which left several non-heading UI elements rendering with
+browser-faked bold — buttons (`.btn`, 600), form labels (`.form__row
+label`, 600), and others already styled at weights the loaded font file
+didn't contain. Fixed by widening the query to `Inter:wght@400;500;600;700`
+— those elements now render a real drawn weight instead of a
+geometrically-thickened 400. **Still synthetic:** the nav/footer wordmark
+(`.nav__logo-text`/`.footer__logo`, 800) — nobody has asked to add 800 yet,
+and it's a single short "FitPage" string rather than body-length text, so
+the faux-bold there is the least noticeable instance if it needs revisiting.
 
 ## Layout
 

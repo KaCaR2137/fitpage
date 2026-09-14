@@ -32,6 +32,19 @@
   --radius: 14px;
   --shadow: 0 14px 40px rgba(31, 45, 36, 0.16); /* miękki, zazieleniony — czarny 45% byłby na jasnym tle zbyt ciężki */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Typografia — webfonty z Google Fonts (podłączone przez <link> w <head>
+     każdej strony, nie @import w CSS — @import blokuje równoległe pobieranie
+     i opóźnia pierwsze wymalowanie tekstu). Fraunces (600/700) na nagłówki —
+     serif o wyraźnym charakterze, kontrastuje z neutralnym Inter (400/500)
+     na treść. Oba mają `&display=swap` w URL-u zapytania, więc przeglądarka
+     pokazuje fallback natychmiast i podmienia na webfont dopiero po
+     doładowaniu (bez niewidocznego tekstu na starcie — FOIT). Fallbacki w
+     stosie to poprzedni systemowy stos, nie generyczne serif/sans-serif —
+     stos systemowy jest bliższy proporcjom Fraunces/Inter niż domyślny
+     serif przeglądarki, więc swap jest mniej zauważalny. */
+  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ----------------------------- Podstawy ----------------------------- */
@@ -41,7 +54,8 @@ html { scroll-behavior: smooth; background: var(--canvas); color-scheme: light; 
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 400;
   color: var(--text);
   background: var(--canvas);
   min-height: 100vh;
@@ -49,12 +63,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+/* h4-h6 nieużywane nigdzie na stronie dziś, ale reguła obejmuje cały
+   zakres h1-h6 na wypadek przyszłej treści — waga 600 dla mniejszych
+   poziomów (700 zostaje dla h1-h3, już przetestowane wizualnie). */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   line-height: 1.2;
   margin: 0 0 0.5em;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em; /* Fraunces ma już własny, wyraźniejszy rytm liter niż stos systemowy —
+                               poprzedni -0.02em (dobrany pod system-ui) na serifie ściska litery
+                               odrobinę za mocno, stąd o 0.01em luźniej */
 }
+h1, h2, h3 { font-weight: 700; }
+h4, h5, h6 { font-weight: 600; }
 /* subtelna, neutralna poświata pod nagłówkami H1/H2 (nie H3 — tytuły
    komponentów typu .card__title zostają płaskie). Zazieleniona jak reszta
    cieni w systemie (spójna z --shadow), nie kolor akcentu — to głębia,
