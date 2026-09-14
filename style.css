@@ -946,6 +946,65 @@ summary:focus-visible {
   .form__consent > input:checked ~ .form__consent-box { animation: none; }
 }
 
+/* --- Ocena w gwiazdkach (formularz opinii, opinie-dodaj.html) ---
+   Klasyczna czysto-CSS-owa sztuczka z radio-buttonami: kolejność w DOM jest
+   odwrócona (5,4,3,2,1), a flex-direction: row-reverse przywraca właściwy
+   wizualny porządek 1→5 — dzięki temu ogólny selektor rodzeństwa (~) od
+   zaznaczonej/najechanej gwiazdki trafia dokładnie w te "niższe" wizualnie
+   (czyli fizycznie kolejne w DOM), które mają się też zapalić. */
+.form__rating-group { margin: 0 0 18px; padding: 0; border: 0; }
+.form__rating-group legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.form__rating {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 4px;
+}
+/* natywne radio — niewidoczne, ale klikalne i dostępne z klawiatury (ten sam
+   wzorzec „visually hidden” co .form__consent > input) */
+.form__rating input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* 44×44px cel dotyku (WCAG 2.5.5/2.5.8, ten sam próg co .nav__toggle) —
+   ikona w środku mniejsza, żeby 5 gwiazdek nie rozjeżdżało się na wąskim ekranie */
+.form__rating label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--border);
+  cursor: pointer;
+  transition: color 0.15s var(--ease);
+}
+.form__rating label svg { width: 26px; height: 26px; }
+.form__rating label:hover,
+.form__rating label:hover ~ label,
+.form__rating input:checked ~ label {
+  color: var(--accent);
+}
+.form__rating input:focus-visible + label {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .form__rating label { transition: none; }
+}
+
 .req { color: var(--accent); font-weight: 700; }
 
 .form__status {

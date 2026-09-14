@@ -7,7 +7,7 @@
       odsłaniają się od razu (poza IO, patrz komentarz przy sekcji), reszta
       przez współdzielony IntersectionObserver + klasa .widoczna, ze
       staggered transitionDelay dla rodzeństwa.
-   5. Formularz kontaktowy — walidacja per-pole + wysyłka (Formspree).
+   5. Formularze (kontakt + opinia) — walidacja per-pole + wysyłka (Formspree).
    =================================================================== */
 (function () {
   'use strict';
@@ -115,26 +115,40 @@
     scrollReveals.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---------------------- 5. Formularz kontaktowy ----------------------
-     Wysyłka: Formspree (action na <form> w kontakt.html — hosting to
-     Cloudflare Pages, Netlify Forms tam nie działa). Bez JS formularz
-     działa natywnym POST-em wprost na Formspree, które po sukcesie
-     przekierowuje na _next (dziekujemy.html). Z JS: walidacja per-pole
-     (komunikaty + aria-invalid/aria-describedby), potem fetch na
-     form.action z inline potwierdzeniem, bez przeładowania strony. */
+  /* ---------------------- 5. Formularze (kontakt + opinia) ----------------------
+     Wysyłka: Formspree (action na <form> — hosting to Cloudflare Pages,
+     Netlify Forms tam nie działa). Ta sama logika obsługuje oba formularze
+     strony (kontakt.html — brief, opinie-dodaj.html — opinia klienta), bo
+     każda podstrona ładuje tylko jeden .form naraz; data-form na <form>
+     ("brief" / "opinia") wybiera tylko treść komunikatów sukcesu/błędu,
+     cała reszta mechaniki jest wspólna. Bez JS formularz działa natywnym
+     POST-em wprost na Formspree, które po sukcesie przekierowuje na _next.
+     Z JS: walidacja per-pole (komunikaty + aria-invalid/aria-describedby),
+     potem fetch na form.action z inline potwierdzeniem, bez przeładowania. */
   var form = document.querySelector('.form');
   var status = document.getElementById('form-status');
   var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+  var formType = form ? (form.dataset.form || 'brief') : null;
+
+  // Grupa radio (np. ocena w gwiazdkach) nie ma wspólnego id — każdy input
+  // w grupie ma inny id, ale ten sam name, więc błąd wiążemy przez name.
+  function errorIdFor(field) {
+    return (field.type === 'radio' ? field.name : field.id) + '-error';
+  }
 
   var fieldMessages = {
     'imie-nazwisko': 'Podaj imię i nazwisko.',
     'email': 'Podaj adres e-mail.',
     'telefon': 'Podaj numer telefonu.',
-    'wizja': 'Napisz chociaż kilka zdań o Twojej wizji strony.'
+    'wizja': 'Napisz chociaż kilka zdań o Twojej wizji strony.',
+    'zgoda-kontakt': 'Zaznacz zgodę, żeby wysłać brief.',
+    'tresc-opinii': 'Napisz treść swojej opinii.',
+    'ocena': 'Wybierz ocenę w gwiazdkach.',
+    'zgoda-publikacja': 'Zaznacz zgodę, żeby opublikować opinię.'
   };
 
   function fieldErrorMessage(field) {
-    if (field.type === 'checkbox') { return 'Zaznacz zgodę, żeby wysłać brief.'; }
+    if (field.type === 'radio') { return fieldMessages[field.name] || 'Wybierz jedną z opcji.'; }
     if (field.type === 'email' && field.validity.typeMismatch) {
       return 'Podaj poprawny adres e-mail (np. jan@przyklad.pl).';
     }
@@ -143,13 +157,13 @@
 
   function clearFieldError(field) {
     field.removeAttribute('aria-invalid');
-    var errorEl = document.getElementById(field.id + '-error');
+    var errorEl = document.getElementById(errorIdFor(field));
     if (errorEl) { errorEl.textContent = ''; }
   }
 
   function showFieldError(field) {
     field.setAttribute('aria-invalid', 'true');
-    var errorEl = document.getElementById(field.id + '-error');
+    var errorEl = document.getElementById(errorIdFor(field));
     if (errorEl) { errorEl.textContent = fieldErrorMessage(field); }
   }
 
@@ -157,16 +171,27 @@
     if (field.checkValidity()) { clearFieldError(field); } else { showFieldError(field); }
   }
 
+  // Komunikaty sukcesu/błędu zależne od typu formularza (data-form na <form>);
+  // reszta logiki (timeout, parsowanie błędu Formspree, walidacja) jest wspólna.
+  var formSuccessMessages = {
+    brief: 'Dziękuję! Brief dotarł — odezwiemy się wkrótce z propozycją zakresu i wyceną.',
+    opinia: 'Dziękujemy za opinię! Po weryfikacji pojawi się na stronie.'
+  };
+  var formGenericErrorMessages = {
+    brief: 'Nie udało się wysłać briefu. Spróbuj ponownie albo zadzwoń: 535 721 592.',
+    opinia: 'Nie udało się wysłać opinii. Spróbuj ponownie albo zadzwoń: 535 721 592.'
+  };
+
   if (form && status) {
     var formFields = form.querySelectorAll(
-      '.form__row input, .form__row textarea, .form__consent > input[required]'
+      '.form__row input, .form__row textarea, .form__consent > input[required], .form__rating-group input[required]'
     );
 
     formFields.forEach(function (field) {
       field.addEventListener('input', function () {
         if (field.classList.contains('is-touched')) { validateField(field); }
       });
-      if (field.type === 'checkbox') {
+      if (field.type === 'checkbox' || field.type === 'radio') {
         field.addEventListener('change', function () {
           field.classList.add('is-touched');
           validateField(field);
@@ -209,7 +234,7 @@
         signal: controller ? controller.signal : undefined
       }).then(function (res) {
         if (res.ok) {
-          status.textContent = 'Dziękuję! Brief dotarł — odezwiemy się wkrótce z propozycją zakresu i wyceną.';
+          status.textContent = formSuccessMessages[formType] || formSuccessMessages.brief;
           status.className = 'form__status is-ok';
           status.setAttribute('role', 'status');
           form.reset();
@@ -241,7 +266,7 @@
         } else if (serverMessage) {
           status.textContent = serverMessage + ' Możesz też zadzwonić: 535 721 592.';
         } else {
-          status.textContent = 'Nie udało się wysłać briefu. Spróbuj ponownie albo zadzwoń: 535 721 592.';
+          status.textContent = formGenericErrorMessages[formType] || formGenericErrorMessages.brief;
         }
         status.className = 'form__status is-err';
         status.setAttribute('role', 'alert');

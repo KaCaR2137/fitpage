@@ -541,6 +541,29 @@ average once the first genuine review is pasted in. This mirrors
 PRODUCT.md's "no invented prices, timelines, testimonials" rule applied to
 ratings specifically.
 
+### Star rating input (`.form__rating`, opinie-dodaj.html)
+The interactive counterpart to the display-only stars above — collects the
+rating on the private review-submission form. Same drawn-SVG star (never a
+Unicode glyph), but as a real form control: 5 native radio inputs
+(`name="ocena"`), visually hidden with the same "clip-path visually-hidden"
+technique as `.form__consent > input` (not `display:none`, so it stays
+keyboard-focusable and in the accessibility tree), each paired with a
+`44×44px` label — a touch target, not a decorative icon, so it gets the same
+WCAG 2.5.5/2.5.8 minimum already used for `.nav__toggle`, larger than the
+passive `.opinie__stars`/`.opinia-card__stars`. The fill-on-hover/select
+behavior is the standard CSS-only radio-star trick: DOM order reversed
+(5,4,3,2,1) + `flex-direction: row-reverse` restores the visual 1→5 order,
+so the general sibling combinator (`~`) from the checked/hovered star
+correctly lights up every "lower" star too. Every radio carries the `required`
+attribute — not just one of the five. HTML5 only needs it on one member for
+the group's native validity, but the site's own JS validation selects fields
+by `input[required]`; with `required` on a single radio, only that one
+radio gets a live `change` listener, so picking any other star wouldn't
+clear the error message until the next full submit attempt (caught and
+fixed while building this page, verified in-browser). The shared error
+message (`#ocena-error`) is looked up by `name`, not `id`, since the five
+radios don't share one — see `errorIdFor()` in `script.js`.
+
 ### Footer (the one dark surface)
 The footer is Pine Black (`#16211B`) — opaque, the single deliberately dark note
 on an otherwise light page. Text is Ivory at `0.72` opacity. The footer carries a

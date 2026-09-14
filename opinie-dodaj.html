@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dodaj opinię — FitPage</title>
+  <meta name="description" content="Podziel się opinią o współpracy z FitPage — Twoja recenzja pomoże kolejnym trenerom personalnym zdecydować się na własną stronę internetową.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash" aria-hidden="true">
+    <img src="images/logo-fitpage.png" alt="" class="splash__logo">
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo-fitpage.png" alt="" class="nav__logo-img">
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="index.html#o-nas">O nas</a>
+          <a href="index.html#portfolio">Portfolio</a>
+          <a href="proces.html">Proces</a>
+          <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
+          <a href="opinie.html">Opinie</a>
+        </nav>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Podziel się opinią</h1>
+        <p class="hero__subtitle reveal">
+          Dziękujemy za współpracę! Kilka zdań o Twoich doświadczeniach pomoże
+          nam pokazać kolejnym trenerom personalnym, jak wygląda praca z FitPage.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ FORMULARZ ============================ -->
+    <!-- Osobny formularz Formspree (nie ten sam co kontakt.html), żeby opinie
+         klientów nie mieszały się w jednej skrzynce z briefami od nowych
+         zapytań. Strona ma noindex i nie jest linkowana z nav/stopki —
+         dostęp tylko przez bezpośredni link wysyłany klientom indywidualnie
+         po zakończeniu projektu. -->
+    <section class="section brief">
+      <div class="container">
+
+        <form class="form reveal" method="post" action="https://formspree.io/f/mwlkdyvb" data-form="opinia" novalidate>
+
+          <input type="hidden" name="_subject" value="Nowa opinia klienta — FitPage">
+          <input type="hidden" name="_next" value="https://fitpage.kacperbarczak11.workers.dev/dziekujemy-opinia.html">
+          <p class="form__honeypot" aria-hidden="true">
+            <label>Nie wypełniaj tego pola
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </label>
+          </p>
+
+          <div class="form__row">
+            <label for="imie-nazwisko">Imię i nazwisko</label>
+            <input type="text" id="imie-nazwisko" name="imie_nazwisko" required autocomplete="name"
+                   maxlength="100" aria-describedby="imie-nazwisko-error">
+            <small class="form__error" id="imie-nazwisko-error" aria-live="polite"></small>
+          </div>
+
+          <fieldset class="form__rating-group">
+            <legend>Twoja ocena <span class="req">*</span></legend>
+            <div class="form__rating">
+              <input type="radio" id="ocena-5" name="ocena" value="5" required aria-describedby="ocena-error">
+              <label for="ocena-5" aria-label="5 na 5 gwiazdek">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              </label>
+              <input type="radio" id="ocena-4" name="ocena" value="4" required aria-describedby="ocena-error">
+              <label for="ocena-4" aria-label="4 na 5 gwiazdek">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              </label>
+              <input type="radio" id="ocena-3" name="ocena" value="3" required aria-describedby="ocena-error">
+              <label for="ocena-3" aria-label="3 na 5 gwiazdek">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              </label>
+              <input type="radio" id="ocena-2" name="ocena" value="2" required aria-describedby="ocena-error">
+              <label for="ocena-2" aria-label="2 na 5 gwiazdek">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              </label>
+              <input type="radio" id="ocena-1" name="ocena" value="1" required aria-describedby="ocena-error">
+              <label for="ocena-1" aria-label="1 na 5 gwiazdek">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              </label>
+            </div>
+            <small class="form__error" id="ocena-error" aria-live="polite"></small>
+          </fieldset>
+
+          <div class="form__row">
+            <label for="tresc-opinii">Treść opinii</label>
+            <textarea id="tresc-opinii" name="tresc_opinii" rows="6" required maxlength="1000"
+              placeholder="Jak wyglądała współpraca? Co zyskałeś/zyskałaś dzięki nowej stronie?"
+              aria-describedby="tresc-opinii-error"></textarea>
+            <small class="form__error" id="tresc-opinii-error" aria-live="polite"></small>
+          </div>
+
+          <div class="form__row">
+            <label for="specjalizacja">Specjalizacja / kontekst współpracy <span class="form__hint">(opcjonalnie)</span></label>
+            <input type="text" id="specjalizacja" name="specjalizacja" autocomplete="off"
+                   maxlength="150" placeholder="np. trener personalny, redukcja wagi">
+          </div>
+
+          <!-- ================================================================
+               RODO — klauzula informacyjna, dostosowana do celu tej strony:
+               publikacja imienia i nazwiska + treści opinii na stronie FitPage.
+               TODO przed wysyłką linku klientom: uzupełnić realnymi danymi
+               FitPage (administrator, e-mail kontaktowy), tak jak w kontakt.html.
+               =============================================================== -->
+          <details class="form__rodo">
+            <summary>Informacja o przetwarzaniu danych osobowych (RODO)</summary>
+            <p>
+              <strong>[Placeholder klauzuli — do uzupełnienia przed wysyłką linku klientom]</strong>
+              Administratorem danych podanych w formularzu jest [nazwa i dane FitPage].
+              Imię i nazwisko oraz treść opinii, po wyrażeniu zgody poniżej, zostaną
+              opublikowane na stronie FitPage w sekcji „Opinie klientów”, na podstawie
+              art. 6 ust. 1 lit. a RODO (zgoda). Dane będą przechowywane do czasu
+              wycofania zgody lub usunięcia opinii ze strony. Przysługuje Ci prawo
+              dostępu do danych, ich sprostowania, usunięcia (w tym zdjęcia opinii
+              ze strony), ograniczenia przetwarzania oraz wniesienia sprzeciwu, a
+              także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych
+              Osobowych. Podanie danych jest dobrowolne, ale niezbędne do publikacji
+              opinii. Kontakt w sprawie danych: [adres e-mail].
+            </p>
+          </details>
+
+          <fieldset class="form__consents">
+            <legend>Zgoda</legend>
+
+            <label class="form__consent">
+              <input type="checkbox" id="zgoda-publikacja" name="zgoda_publikacja" required aria-describedby="zgoda-publikacja-error">
+              <span class="form__consent-box" aria-hidden="true"></span>
+              <span class="form__consent-text">Wyrażam zgodę na opublikowanie mojego imienia i nazwiska wraz z treścią opinii na stronie internetowej FitPage. <span class="req">*</span></span>
+            </label>
+            <small class="form__error" id="zgoda-publikacja-error" aria-live="polite"></small>
+
+            <p class="form__required-note"><span class="req">*</span> pole wymagane</p>
+          </fieldset>
+
+          <button type="submit" class="btn btn--primary">Wyślij opinię</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="index.html#o-nas">O nas</a>
+      <a href="proces.html">Proces tworzenia strony</a>
+      <a href="faq.html">FAQ</a>
+      <a href="artykuly.html">Artykuły</a>
+      <a href="opinie.html">Opinie</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

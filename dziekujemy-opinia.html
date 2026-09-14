@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dziękujemy za opinię — FitPage</title>
+  <meta name="description" content="Dziękujemy za przesłanie opinii o współpracy z FitPage.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash" aria-hidden="true">
+    <img src="images/logo-fitpage.png" alt="" class="splash__logo">
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo-fitpage.png" alt="" class="nav__logo-img">
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="index.html#o-nas">O nas</a>
+          <a href="index.html#portfolio">Portfolio</a>
+          <a href="proces.html">Proces</a>
+          <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
+          <a href="opinie.html">Opinie</a>
+        </nav>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Dziękujemy!</h1>
+        <p class="hero__subtitle reveal">
+          Opinia dotarła. Po weryfikacji pojawi się na stronie.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ POTWIERDZENIE ============================ -->
+    <section class="section brief">
+      <div class="container reveal">
+        <p>
+          Dziękujemy za poświęcony czas — Twoja opinia pomoże kolejnym trenerom
+          personalnym zdecydować się na własną stronę internetową.
+        </p>
+        <p class="brief__back reveal">
+          <a href="index.html">&larr; Wróć na stronę główną</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="index.html#o-nas">O nas</a>
+      <a href="proces.html">Proces tworzenia strony</a>
+      <a href="faq.html">FAQ</a>
+      <a href="artykuly.html">Artykuły</a>
+      <a href="opinie.html">Opinie</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage — strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

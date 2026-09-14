@@ -233,7 +233,11 @@ i tak kończy się podpowiedzią telefonu (535 721 592). Pola `imię i nazwisko`
 (100), `e-mail` (254, wg RFC 5321), `telefon` (20) i `wizja` (4000) mają
 `maxlength`, żeby ekstremalnie długi input nie trafiał bez ograniczeń do
 Formspree/maila. Darmowy plan Formspree: limit 50 zgłoszeń/miesiąc — do
-rozważenia przy realnym ruchu.
+rozważenia przy realnym ruchu. **Uwaga:** ten limit bywa liczony per
+konto, nie per formularz — jeśli tak, to `kontakt.html` i
+`opinie-dodaj.html` (osobny formularz `mwlkdyvb`, ale to samo konto)
+dzielą wspólną pulę 50/miesiąc; do zweryfikowania wprost w panelu
+Formspree, jeśli ruch na obu formularzach zacznie rosnąć.
 
 **Uwaga historyczna:** wcześniej rozważane MailChannels (darmowa wysyłka
 maili z Cloudflare Workers) — ta integracja została zamknięta przez
@@ -242,6 +246,54 @@ MailChannels w sierpniu 2024, więc nie jest już opcją.
 **`dziekujemy.html`** — strona potwierdzenia po wysłaniu briefu (cel `action`
 formularza na `kontakt.html`, no-JS fallback). `<meta name=”robots” content=”noindex”>`,
 bez wpisu w nav/stopce — trafia się tam tylko po submit.
+
+**`opinie-dodaj.html`** — osobny, krótszy formularz do zbierania realnych opinii
+od klientów, ten sam wzorzec co `kontakt.html`/`polityka-prywatnosci.html`:
+`<meta name="robots" content="noindex">`, **celowo niepodlinkowana** z
+nav/stopki — dostęp tylko przez bezpośredni link wysyłany klientom
+indywidualnie po zakończeniu projektu (nie trafia tam nikt z ruchu
+organicznego). Pola: imię i nazwisko, ocena w gwiazdkach (`.form__rating`,
+5 natywnych radio-buttonów `name="ocena"`, wymagane), treść opinii
+(textarea, wymagane), specjalizacja/kontekst współpracy (opcjonalnie), zgoda
+na publikację imienia i nazwiska wraz z treścią opinii (`.form__consent`,
+wymagana) + klauzula RODO (`.form__rodo`, te same placeholdery co w
+`kontakt.html` — TODO przed wysyłką linku klientom). **Osobny formularz
+Formspree** (`action="https://formspree.io/f/mwlkdyvb"`) — inny niż
+`kontakt.html` (`moeqzapr`), żeby zgłoszenia opinii nie mieszały się w
+jednej skrzynce z briefami nowych zapytań. `_next` → `dziekujemy-opinia.html`
+(dedykowana, uogólniona strona potwierdzenia — treść `dziekujemy.html` mówi
+wprost o "briefie", więc nie nadawała się do przekierowania po wysłaniu opinii).
+
+**Ocena w gwiazdkach (`.form__rating`)** — klasyczna, czysto CSS-owa sztuczka:
+DOM w kolejności odwróconej (5,4,3,2,1) + `flex-direction: row-reverse`
+przywraca wizualny porządek 1→5, a `~` (ogólny selektor rodzeństwa) od
+zaznaczonej/najechanej gwiazdki poprawnie zapala też wszystkie "niższe".
+Natywne radio są wizualnie ukryte (ten sam wzorzec „visually hidden” co
+`.form__consent > input`), ale zostają w drzewie dostępności i w tab-order —
+w pełni obsługiwane z klawiatury. Każda etykieta to `44×44px` cel dotyku
+(WCAG 2.5.5/2.5.8, ten sam próg co `.nav__toggle`) z ikoną SVG w środku (ten
+sam kształt gwiazdki co na `opinie.html`), nie glif Unicode. **Uwaga
+implementacyjna:** atrybut `required` musi być na **każdym** z 5 radio, nie
+tylko na jednym (mimo że HTML5 semantycznie uznaje grupę za wymaganą już przy
+jednym) — inaczej JS-owy selektor pól do walidacji (`input[required]`)
+łapie tylko ten jeden input, więc tylko on dostaje listener `change`, i
+kliknięcie innej gwiazdki nie czyści błędu na żywo (złapane i naprawione
+przy budowie tej strony, zweryfikowane w przeglądarce).
+
+**`opinie-dodaj.html` a `script.js`** — jeden współdzielony handler formularzy
+obsługuje teraz oba formularze strony (`kontakt.html` = brief, `opinie-dodaj.html`
+= opinia), bo każda podstrona ładuje tylko jeden `.form` naraz. `data-form`
+na `<form>` (`"brief"` / `"opinia"`) wybiera tylko treść komunikatu
+sukcesu/błędu (`formSuccessMessages`/`formGenericErrorMessages` w
+`script.js`), cała reszta mechaniki — 15s timeout, parsowanie błędu JSON z
+Formspree, walidacja per-pole, `maxlength` — jest w pełni wspólna. Błąd pola
+z grupy radio jest przypisywany po `name`, nie po `id` (grupa nie ma
+wspólnego id) — `errorIdFor()` w `script.js` rozróżnia oba przypadki.
+
+**`dziekujemy-opinia.html`** — dedykowana strona potwierdzenia dla
+`opinie-dodaj.html` (cel `_next`, no-JS fallback), analogiczna do
+`dziekujemy.html` ale z treścią neutralną wobec opinii, nie briefu.
+`<meta name="robots" content="noindex">`, bez wpisu w nav/stopce.
 
 **`proces.html`** — podstrona „Proces tworzenia strony” (wzór:
 leadpage.pl/strony-internetowe/). Kompaktowy hero + 6 etapów (Analiza / Struktura /

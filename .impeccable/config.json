@@ -308,6 +308,60 @@
         ],
         "createdAt": "2026-09-14T06:21:30.750Z",
         "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "opinie-dodaj.html"
+        ],
+        "createdAt": "2026-09-14T07:12:05.847Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned on index/kontakt/proces/dziekujemy.html and others under DESIGN.md 'The One Lamp Rule'; new page shares the same stylesheet, not a new page-specific choice"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "opinie-dodaj.html"
+        ],
+        "createdAt": "2026-09-14T07:12:20.014Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default (extends established index.html/kontakt.html sanction, shared style.css)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "opinie-dodaj.html"
+        ],
+        "createdAt": "2026-09-14T07:12:20.040Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "dziekujemy-opinia.html"
+        ],
+        "createdAt": "2026-09-14T07:12:43.407Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned on index/kontakt/proces/dziekujemy.html and others under DESIGN.md 'The One Lamp Rule'; new page shares the same stylesheet, not a new page-specific choice"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "dziekujemy-opinia.html"
+        ],
+        "createdAt": "2026-09-14T07:12:43.430Z",
+        "reason": "user confirmed: exact hex #F7F3EA specified verbatim by the user as the new light-theme canvas color, not a reflexive AI default (extends established sanction, shared style.css)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "dziekujemy-opinia.html"
+        ],
+        "createdAt": "2026-09-14T07:12:43.452Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
       }
     ]
   }
