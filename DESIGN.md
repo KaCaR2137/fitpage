@@ -282,9 +282,18 @@ the faux-bold there is the least noticeable instance if it needs revisiting.
 
 - **Container:** `max-width: 1080px`, centered, `20px` inline padding. One width
   for all content.
-- **Section rhythm:** `52px` vertical padding per section on mobile, `88px` from
-  700px up. The container adds a further `40px` / `44px` internal top / bottom
-  padding — no panel wraps it, this is pure spacing.
+- **Section rhythm:** `40px` vertical padding per section on mobile, `56px` from
+  700px up. The container adds a further `16px` / `20px` internal top / bottom
+  padding — no panel wraps it, this is pure spacing. (Lowered from the
+  original `52px`/`88px` + `40px`/`44px` — that combination stacked to
+  ~260-284px of empty space between one section's content and the next
+  section's heading at desktop widths, reported as looking too sparse on
+  the O nas → Portfolio → Artykuły run on the homepage. New total: ~148px
+  desktop / ~116px mobile, measured content-edge to content-edge — still a
+  clear break between sections, not cramped. Global change, not scoped to
+  those three sections: the same two-layer padding was identical on every
+  page, so narrowing it only on index.html would have made that page's
+  rhythm inconsistent with the rest of the site.)
 - **Breakpoints:** `480px` (footer switches to a justified row), `700px` (mobile
   hamburger menu boundary; section rhythm and section-title size step up; process
   steps go 1-col → 3-col), `900px` (hero gains more vertical air; "O nas" flips

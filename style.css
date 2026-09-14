@@ -112,11 +112,22 @@ summary:focus-visible {
 /* ----------------------------- Sekcje ----------------------------- */
 /* Bez paneli — treść siedzi bezpośrednio na canvasie. Odstęp między
    sekcjami idzie wyłącznie przez padding/margin (--section + wewnętrzny
-   padding kontenera), nie przez wizualne pudełka. */
-.section { padding: 52px 0; }
+   padding kontenera), nie przez wizualne pudełka. Wartości obniżone
+   (z 52/88px i 40/44px) po zgłoszeniu, że kolejne sekcje na index.html
+   (O nas / Portfolio / Artykuły) wyglądają na zbyt puste — dwie warstwy
+   paddingu (sekcja + kontener) sumowały się do ~260-284px pustej
+   przestrzeni między treścią jednej sekcji a nagłówkiem następnej na
+   desktopie, zmierzone w przeglądarce. Nowe wartości dają ~148px na
+   desktopie / ~116px na mobile, ok. 45%/38% mniej — nadal wyraźny
+   odstęp, bez wrażenia pustki. Zmiana dotyczy `.section` globalnie
+   (współdzielone przez wszystkie strony), nie tylko trójki wskazanej
+   przez klienta — te same dwie warstwy paddingu były identyczne
+   wszędzie, więc zawężenie tylko do index.html wprowadziłoby
+   niespójny rytm między stronami. */
+.section { padding: 40px 0; }
 .section > .container {
-  padding-top: 40px;
-  padding-bottom: 44px;
+  padding-top: 16px;
+  padding-bottom: 20px;
 }
 .section__title { font-size: 1.6rem; margin-bottom: 1rem; }
 
@@ -1257,7 +1268,7 @@ summary:focus-visible {
 
 /* --- >= 700px --- */
 @media (min-width: 700px) {
-  .section { padding: 88px 0; }
+  .section { padding: 56px 0; }
   .section__title { font-size: 2rem; }
   .kroki__grid { grid-template-columns: repeat(3, 1fr); }
   .atuty__grid { grid-template-columns: repeat(4, 1fr); }
