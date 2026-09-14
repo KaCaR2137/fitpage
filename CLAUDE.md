@@ -93,7 +93,7 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    indziej na `index.html` się teraz nie pojawia (formularz na `kontakt.html`
    nadal go pokazuje jako fallback błędu wysyłki).
 7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
-   2 rundy poprawek w cenie / Wyłącznie trenerzy personalni), bez panelu, akcent
+   2 rundy poprawek w cenie / Trenerzy, instruktorzy, coache), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.
 8. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” / „Artykuły” /
    „Opinie” / „Kontakt” (`.footer__links`), pod nim logo + copyright. Ten sam

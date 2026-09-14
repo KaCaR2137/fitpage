@@ -450,12 +450,15 @@ kept deliberately, on explicit direction, modeled on a named reference site.
 
 ### Trust icons (atuty)
 Four short facts in a row — Bezpłatna konsultacja / Cała Polska, zdalnie / 2 rundy
-poprawek w cenie / Wyłącznie trenerzy personalni — near the bottom of the
+poprawek w cenie / Trenerzy, instruktorzy, coache — near the bottom of the
 homepage, the last section before the footer. No panel; the block sits directly on the
 canvas, like the hero.
-- **Icon:** `44px` circle, `1px` hairline border, a custom-drawn `24px`-viewBox
-  stroke SVG (same stroke system as the portfolio card's arrow) rendered at
-  `22px`, centered.
+- **Icon:** `44px` circle, `1px` hairline border, a `24px`-viewBox stroke SVG
+  (same stroke system as the portfolio card's arrow) rendered at `22px`,
+  centered. Three of the four are custom-drawn; the fourth ("Trenerzy,
+  instruktorzy, coache") uses Lucide's `brain` icon verbatim (ISC license) —
+  its stroke attributes already matched the site's system exactly, so it
+  was dropped in rather than redrawn from scratch.
 - **Color:** neutral (Text Primary) on three of four icons; exactly one — the
   most action-adjacent fact — gets Bottle Green on both border and stroke. The
   One Mark Rule applied at component scale: the accent marks a single item,
