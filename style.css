@@ -457,43 +457,6 @@ summary:focus-visible {
 }
 
 /* ============================== O NAS ============================== */
-/* Dekoracyjne tło SVG (O nas + Portfolio) — rozmyta plama, cienka linia,
-   kropki w --accent przy bardzo niskiej opacity (4-16%). Cel: dodać
-   wizualnego "życia" dwóm sekcjom pod rząd, które wyglądały zbyt pusto,
-   bez łamania dwóch nazwanych zasad z DESIGN.md:
-   - The Flat Canvas Rule ("no section carries a background of its own") —
-     to nie pełne tło sekcji, tylko mały, rozmyty, prawie niewidoczny
-     akcent w rogu, kanwa pod spodem zostaje dominująca.
-   - The One Mark Rule (akcent <=10% ekranu, nigdy duże wypełnienie) —
-     opacity rzędu kilku procent świadomie dużo poniżej tego progu.
-   Ta sama logika co istniejąca poświata pod telefonem (.o-nas__visual::before,
-   10% opacity) — rozszerzona na całą sekcję, tym razem jako SVG (kształty,
-   nie gradient), zgodnie z konkretną prośbą. Kolor wpisany na sztywno
-   (#1F3D2B = --accent) zamiast var() w atrybucie SVG — spójne z resztą
-   projektu (ikonki błędu formularza, ptaszek zgody też mają wpisany hex).
-   Ukryte < 700px, żeby mobile zostało gęste i skupione na treści — to tam
-   dotąd stronie chodziło o oszczędność, nie o dekorację. */
-.o-nas, .portfolio { position: relative; overflow: hidden; }
-.o-nas > .container, .portfolio > .container { position: relative; z-index: 1; }
-
-.section__deco {
-  display: none;
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  z-index: 0;
-  pointer-events: none;
-}
-.o-nas .section__deco { top: -40px; right: -60px; }
-.portfolio .section__deco { top: 30px; right: -60px; }
-
-@media (min-width: 700px) {
-  .section__deco { display: block; }
-}
-@media (min-width: 900px) {
-  .section__deco { width: 480px; height: 480px; }
-}
-
 .o-nas p {
   max-width: 680px;
   color: var(--muted);

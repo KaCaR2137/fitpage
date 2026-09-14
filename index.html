@@ -138,27 +138,6 @@
 
     <!-- ============================ O NAS ============================ -->
     <section id="o-nas" class="section o-nas">
-      <!-- Dekoracyjne tło SVG — rozmyta plama, cienka linia, kropki (ten sam
-           motyw kropki-separatora co w pasku treningów). Bardzo niska
-           opatity (4-16%), --accent, żeby dodać "życia" bez łamania The
-           Flat Canvas Rule / The One Mark Rule z DESIGN.md — patrz notatka
-           przy .section__deco w style.css. Ukryte < 700px (mobile zostaje
-           gęste/skupione na treści). Kształty celowo skupione blisko rogu
-           (nie rozciągnięte na cały bok viewBoksa) — pierwsza wersja miała
-           kropki tak daleko od rogu, że przy krótszej treści nachodziły na
-           tekst akapitu (złapane wizualnie, poprawione). -->
-      <svg class="section__deco" viewBox="0 0 340 340" aria-hidden="true" focusable="false">
-        <defs>
-          <filter id="onas-deco-blur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="38"/>
-          </filter>
-        </defs>
-        <circle cx="250" cy="80" r="115" fill="#1F3D2B" opacity="0.05" filter="url(#onas-deco-blur)"/>
-        <path d="M 170 20 C 215 12, 255 45, 280 95" stroke="#1F3D2B" stroke-width="1.5" fill="none" opacity="0.12"/>
-        <circle cx="95" cy="150" r="3.5" fill="#1F3D2B" opacity="0.15"/>
-        <circle cx="122" cy="168" r="2.5" fill="#1F3D2B" opacity="0.12"/>
-        <circle cx="70" cy="175" r="2" fill="#1F3D2B" opacity="0.10"/>
-      </svg>
       <div class="container reveal">
         <h2 class="section__title reveal">O nas</h2>
         <!-- TODO: zastąpić realną treścią — konkretne lata doświadczenia,
@@ -181,24 +160,6 @@
 
     <!-- ============================ PORTFOLIO ============================ -->
     <section id="portfolio" class="section portfolio">
-      <!-- Dekoracyjne tło SVG, ten sam wzorzec co przy O nas (patrz notatka
-           tam). Kotwiczone od `top`, nie `bottom` — sekcja ma tylko jedną
-           kartę portfolio (wąska, ~400px, przy lewej krawędzi), więc akcent
-           kotwiczony od dołu w wysokim boksie potrafił sięgnąć w górę na
-           wysokość tytułu/karty przy krótkiej sekcji (złapane wizualnie,
-           poprawione). Po prawej stronie, w przestrzeni obok karty, nie nad nią. -->
-      <svg class="section__deco" viewBox="0 0 340 340" aria-hidden="true" focusable="false">
-        <defs>
-          <filter id="portfolio-deco-blur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="38"/>
-          </filter>
-        </defs>
-        <circle cx="90" cy="180" r="115" fill="#1F3D2B" opacity="0.045" filter="url(#portfolio-deco-blur)"/>
-        <path d="M 40 260 C 90 275, 150 250, 180 200" stroke="#1F3D2B" stroke-width="1.5" fill="none" opacity="0.11"/>
-        <circle cx="250" cy="60" r="3.5" fill="#1F3D2B" opacity="0.15"/>
-        <circle cx="278" cy="82" r="2.5" fill="#1F3D2B" opacity="0.12"/>
-        <circle cx="288" cy="44" r="2" fill="#1F3D2B" opacity="0.10"/>
-      </svg>
       <div class="container reveal">
         <h2 class="section__title reveal">Portfolio</h2>
         <div class="portfolio__grid">

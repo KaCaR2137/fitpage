@@ -191,19 +191,6 @@ the sole deliberate exception. (Replaces "The Single Gradient Rule": the
 gradient is gone, but the underlying discipline — one background, painted
 once, sections never repaint it — survives intact.)
 
-**Second exception, narrower than the footer's:** `#o-nas` and `#portfolio`
-each carry a `.section__deco` — a small corner-anchored SVG (blurred blob +
-thin line + a few dots, `#1F3D2B` at 4-16% opacity, `≥700px` only). By
-explicit request, to stop that content run reading as too empty. This is
-not a repaint (canvas stays the dominant color by a wide margin; the
-decoration occupies a corner, not the section) and not a large fill (the
-opacity ceiling is nowhere near the One Mark Rule's ~10%-of-screen
-threshold), so the rule's underlying discipline — one flat background,
-nothing repainted opaque — holds; but it's still a section-scoped visual
-element the original wording didn't anticipate, so it's recorded here
-rather than silently squeezed under "padding alone." See "Section corner
-accent" under Cards/Containers for the component itself.
-
 ## Typography
 
 **Heading Font:** Fraunces (600–700), a webfont from Google Fonts. **Body /
@@ -412,30 +399,6 @@ component and do not give an action a boxy radius.
 - **Sections themselves are not containers.** `.section > .container` carries no
   fill, border, blur, or radius — only the internal padding that spaces its
   content from the section edge. It is a spacing wrapper, not a surface.
-- **Section corner accent (`.section__deco`):** an inline SVG, one per section
-  on `#o-nas` and `#portfolio` — a blurred blob (`feGaussianBlur`, `0.045-0.05`
-  opacity), a single thin curved stroke (`1.5px`, `~0.12` opacity), and a small
-  loose cluster of 2-3 dots (`~0.10-0.15` opacity, echoing the marquee's dot
-  separator) — all `#1F3D2B`, hardcoded (not `var()`, matching how the form's
-  error icon and consent checkmark are also hardcoded SVG data). Absolutely
-  positioned, bleeding off one corner (`.o-nas`: top-right; `.portfolio`:
-  right side, lower — not mirrored to the exact opposite corner, see below),
-  `pointer-events: none`, `aria-hidden="true"`, `z-index: 0` under the
-  section's own `.container` (`z-index: 1`). Hidden below `700px` — mobile
-  stays dense/content-only, this is a wide-viewport-only accent. **All
-  shapes cluster tight to the anchor corner, not spread toward the box's far
-  edge:** a first pass placed the dot cluster near the opposite end of the
-  SVG's local coordinate space, which — on a short section — put the dots at
-  the same height as real body copy, faintly overlapping a line of text.
-  Caught visually (not by the detector) and fixed by pulling every shape
-  within roughly the first third of the box, and by anchoring `.portfolio`'s
-  instance from `top` instead of `bottom` (a `bottom`-anchored tall box
-  reaches *upward* by its full height, which on a section with only one
-  narrow portfolio card was tall enough to reach the heading) — anchoring
-  from a section's top edge is far more predictable than from its bottom,
-  since content below an accent can grow without the accent needing to know
-  how far. See the Named Rules note on The Flat Canvas Rule for why this
-  exists at all.
 - **Portfolio card:** Surface Card fill, hairline border, `14px` radius, resting
   shadow `0 14px 40px rgba(31,45,36,0.16)`, `overflow: hidden`, `24px` body padding.
 - **Step card (`.krok`):** Surface Card fill, hairline border, `14px` radius,
