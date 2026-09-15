@@ -1274,8 +1274,12 @@ summary:focus-visible {
   }
   /* CTA zostaje w pasku nav (nie w rozwijanym menu) — trochę bardziej
      zwarte niż na desktopie, żeby zmieściło się obok hamburgera bez
-     zawijania tekstu (white-space: nowrap wyżej). */
-  .nav__cta { padding: 10px 14px; font-size: 0.85rem; }
+     zawijania tekstu (white-space: nowrap wyżej). Pionowy padding 11px
+     (zamiast 10px) domyka wysokość do pełnych 44px (WCAG 2.5.5/2.5.8,
+     ten sam próg co .nav__toggle) — poziomy padding/font-size bez zmian,
+     więc szerokość (zmierzona wcześniej: 148px, z zapasem ~15px pod
+     progiem 700px) jest nietknięta. */
+  .nav__cta { padding: 11px 14px; font-size: 0.85rem; }
 }
 
 /* --- >= 700px --- */

@@ -352,6 +352,14 @@ content.
   what it now means visually.
 - **Step target** (`box-shadow: 0 0 0 1px var(--accent)` with a Bottle Green
   border): the `:target` step when linked from the process nav.
+- **Photo-overlay text shadow** (`text-shadow: 0 1px 4px rgba(0,0,0,0.35)` on
+  `.hero--cover .artykul__meta`/`.hero__title`): the one flat-black shadow in
+  the system, and a deliberate exception to the green-tinted rule above — it
+  sits on Ivory text laid directly over an article's own header photo (see
+  Components → Article cover header), not on the flat canvas, so it isn't
+  competing with the accent hue the rest of the vocabulary is tuned for.
+  `0.35` opacity was picked by computing worst-case contrast against that
+  photo's brightest regions, not chosen on sight.
 - **Focus ring** (`outline: 2px solid #1F3D2B`, `outline-offset: 1–2px`): every
   interactive element. Not a shadow, but the primary depth-cue for keyboard state.
 
