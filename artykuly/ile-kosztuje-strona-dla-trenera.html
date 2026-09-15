@@ -17,14 +17,20 @@
 
   <!-- ============================ SPLASH (logo na wejściu) ============================ -->
   <div class="splash" aria-hidden="true">
-    <img src="../images/logo-fitpage.png" alt="" class="splash__logo">
+    <picture>
+      <source srcset="../images/logo-fitpage.webp" type="image/webp">
+      <img src="../images/logo-fitpage.png" alt="" class="splash__logo">
+    </picture>
   </div>
 
   <!-- ============================ NAV ============================ -->
   <header class="nav">
     <div class="nav__inner container">
       <a href="../index.html" class="nav__logo">
-        <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
         <span class="nav__logo-text">FitPage</span>
       </a>
 
@@ -55,7 +61,7 @@
          treść tego konkretnego artykułu. Kontrast sprawdzony piksel po
          pikselu (PIL): przy scrimie 0.65 najjaśniejszy realny fragment
          zdjęcia (rgb 251,236,239) daje 5.29:1, bezpiecznie nad wymagane 4.5:1. -->
-    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-ile-kosztuje-hero.jpg');">
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-ile-kosztuje-hero.jpg'); background-image: image-set(url('../images/artykul-ile-kosztuje-hero.webp') type('image/webp'), url('../images/artykul-ile-kosztuje-hero.jpg') type('image/jpeg'));">
       <div class="hero__inner">
         <p class="artykul__meta reveal">13 września 2026</p>
         <h1 class="hero__title reveal">Ile kosztuje strona internetowa dla trenera personalnego?</h1>

@@ -17,14 +17,20 @@
 
   <!-- ============================ SPLASH (logo na wejściu) ============================ -->
   <div class="splash" aria-hidden="true">
-    <img src="../images/logo-fitpage.png" alt="" class="splash__logo">
+    <picture>
+      <source srcset="../images/logo-fitpage.webp" type="image/webp">
+      <img src="../images/logo-fitpage.png" alt="" class="splash__logo">
+    </picture>
   </div>
 
   <!-- ============================ NAV ============================ -->
   <header class="nav">
     <div class="nav__inner container">
       <a href="../index.html" class="nav__logo">
-        <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
         <span class="nav__logo-text">FitPage</span>
       </a>
 
@@ -53,7 +59,7 @@
          skonwertowany na JPEG, ~237KB). .hero--cover (style.css) dokłada
          przyciemnienie + jasny tekst; sam URL zdjęcia zostaje inline, bo to
          treść tego konkretnego artykułu. -->
-    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-jak-wyroznic-hero.jpg');">
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-jak-wyroznic-hero.jpg'); background-image: image-set(url('../images/artykul-jak-wyroznic-hero.webp') type('image/webp'), url('../images/artykul-jak-wyroznic-hero.jpg') type('image/jpeg'));">
       <div class="hero__inner">
         <p class="artykul__meta reveal">12 września 2026</p>
         <h1 class="hero__title reveal">Jak wyróżnić się jako trener personalny</h1>

@@ -32,7 +32,41 @@ Cały root repo trafia jako publiczne assety (brak build stepu), stąd
 wszystko” (`*`) + jawne odsłonięcie plików strony (`!*.html`, `!style.css`
 itd.) — nie rosnąca lista zakazów.
 
-## Logo, favicon, splash
+## Obrazy — WebP z fallbackiem
+Wszystkie zdjęcia/grafiki użyte przez `<img>` (logo, mockup telefonu) mają
+teraz WebP obok oryginału (PNG) i są wpięte przez
+`<picture><source type="image/webp">...<img></picture>` — nowoczesna
+przeglądarka pobiera tylko WebP (zweryfikowane: oryginał PNG/JPG w ogóle
+nie trafia do sieci, `performance.getEntriesByType('resource')` to
+potwierdza), starsza dostaje `<img>` z oryginałem. Konwersja przez Pillow
+(`sips` na tym macOS nie zapisuje WebP) — grafiki płaskie/z przezroczystością
+(logo, favicony) na `quality=90` (lżejsze niż lossless przy tej treści),
+zdjęcia (JPG) na `quality=80`. Oszczędność łącznie ok. 77% (896KB → 204KB
+dla wszystkich siedmiu plików).
+
+**Tła CSS (`background-image` na `.hero--cover`, zdjęcia artykułów) NIE
+używają `<picture>`** — ten tag działa tylko dla `<img>`, nie dla CSS.
+Zamiast tego dwie warstwowe deklaracje w tym samym atrybucie `style`: zwykły
+`url()` jako pierwsza (fallback, każda przeglądarka), potem
+`image-set(url(...) type('image/webp'), url(...) type('image/jpeg'))` jako
+druga — przeglądarka, która nie rozumie `image-set()`, po prostu ignoruje tę
+deklarację i zostaje przy pierwszej.
+
+**Favicony (`<link rel="icon">`, `apple-touch-icon`) zostały PNG-only** —
+`<picture>` nie dotyczy `<link>`, więc nie ma tu odpowiednika tej samej
+techniki; podwójne `<link rel="icon" type="...">` per format to inny
+mechanizm, celowo pominięty (pliki i tak ważą 1-26 KB, zysk pomijalny
+względem złożoności). `images/favicon-32.webp`/`images/favicon-512.webp`
+istnieją na dysku (wygenerowane przy okazji), ale **nic ich nie
+referencjuje** — zostały jako gotowe źródło, gdyby kiedyś ta technika
+miała sens.
+
+**Kolejny nowy obraz w `images/` lub przy artykule:** wygeneruj też jego
+`.webp` (Pillow, jak wyżej) i owiń istniejący `<img>` w `<picture>` /
+dodaj drugą warstwę `background-image` — ta sama zasada co przy artykułach
+(patrz "Workflow wklejania artykułu" niżej), nie osobny, ręczny wybór za
+każdym razem.
+
 `images/logo-fitpage.png` — dostarczony przez klienta, 2000×2000, kanał alfa
 zachowany, oryginalny rozmiar (~90 KB), NIE pomniejszony (użyty wprost w nav
 i splashu, skalowany przez CSS). Z niego wygenerowane (`sips`) dwa favicony:
@@ -83,6 +117,11 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    od 900px = wiersz tekst | telefon (max 250px). id `#o-nas`, klasa `.o-nas`.
    `mockup1.png` zmniejszony do 500×833 (~307 KB, alpha zachowana) — oryginał
    1857×3096 (~2,3 MB) w kopii poza repo. `<img>` ma `width/height` 500×833, bez `loading="lazy"`.
+   Od WebP-konwersji: `<img>` owinięty w `<picture>` z `mockup1.webp` (~47 KB,
+   patrz "Obrazy — WebP z fallbackiem" wyżej) — `mockup1.webp` jest w korzeniu
+   repo obok `.png`, więc ma własny wpis `!mockup1.webp` w `.assetsignore`
+   (sam `!mockup1.png` go nie odsłania — ten sam typ luki co wcześniej przy
+   `artykuly/`, złapany i naprawiony od razu, zanim trafił na produkcję).
 5. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
 6. Artykuły (podgląd) — dawniej tu była sekcja „Kontakt (skrót)” (CTA „Umów
    konsultację” + telefon 535 721 592); usunięta i zastąpiona podglądem

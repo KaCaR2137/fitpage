@@ -17,14 +17,20 @@
 
   <!-- ============================ SPLASH (logo na wejściu) ============================ -->
   <div class="splash" aria-hidden="true">
-    <img src="../images/logo-fitpage.png" alt="" class="splash__logo">
+    <picture>
+      <source srcset="../images/logo-fitpage.webp" type="image/webp">
+      <img src="../images/logo-fitpage.png" alt="" class="splash__logo">
+    </picture>
   </div>
 
   <!-- ============================ NAV ============================ -->
   <header class="nav">
     <div class="nav__inner container">
       <a href="../index.html" class="nav__logo">
-        <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
         <span class="nav__logo-text">FitPage</span>
       </a>
 
@@ -59,7 +65,7 @@
          231,241,253) daje 5.28:1 — rozmycie złagodziło najostrzejszy
          odblask, więc margines jest teraz lepszy niż przed podmianą
          (było 4.93:1). -->
-    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-jak-zdobyc-klientow-bez-reklam-hero.jpg');">
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-jak-zdobyc-klientow-bez-reklam-hero.jpg'); background-image: image-set(url('../images/artykul-jak-zdobyc-klientow-bez-reklam-hero.webp') type('image/webp'), url('../images/artykul-jak-zdobyc-klientow-bez-reklam-hero.jpg') type('image/jpeg'));">
       <div class="hero__inner">
         <p class="artykul__meta reveal">15 września 2026</p>
         <h1 class="hero__title reveal">Jak zdobyć pierwszych klientów jako trener personalny bez płatnych reklam</h1>
