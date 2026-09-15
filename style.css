@@ -52,6 +52,15 @@
 
 html { scroll-behavior: smooth; background: var(--canvas); color-scheme: light; }
 
+/* min-height:100vh samo w sobie NIE przykleja stopki do dołu — rozciąga
+   tylko sam element body, a footer i tak kończy się tam, gdzie kończy się
+   treść. Na krótkich stronach (np. artykuly.html na wysokim ekranie)
+   zostawiało to puste, kremowe pole pod ciemną stopką zamiast stopki na
+   samym dole. Flex column + main jako jedyny rosnący element to
+   standardowy wzorzec "sticky footer": main wypełnia całą wolną
+   przestrzeń, stopka zostaje dosunięta do dołu niezależnie od tego, ile
+   treści jest w main. .splash (position:fixed) i tak jest poza normalnym
+   flow, więc flex go nie dotyczy. */
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -59,9 +68,12 @@ body {
   color: var(--text);
   background: var(--canvas);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+main { flex: 1 0 auto; }
 
 /* h4-h6 nieużywane nigdzie na stronie dziś, ale reguła obejmuje cały
    zakres h1-h6 na wypadek przyszłej treści — waga 600 dla mniejszych

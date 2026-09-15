@@ -393,6 +393,21 @@ wyjątek (`low-contrast` → `*` → `faq.html`/`proces.html`) jest już w
 below-fold `.reveal`-em i podpisem „opacity stack" — to ten sam artefakt, nie
 nowy defekt; dodaj analogiczny ignore zamiast zmieniać tokeny kolorów.
 
+## Stopka na samym dole (sticky footer)
+`body` ma teraz `display: flex; flex-direction: column;` + `main { flex: 1 0
+auto; }` — `.splash` (`position:fixed`) i `.nav` (`position:sticky`) nie są
+tym dotknięte (fixed w ogóle wypada z flow, sticky zostaje normalnym
+elementem flex). Bez tego `min-height:100vh` na samym `body` rozciągał tylko
+sam element, ale stopka i tak kończyła się tam, gdzie kończyła się treść —
+na krótkich stronach (np. `artykuly.html`, `opinie.html`, `dziekujemy.html`)
+na wysokim ekranie zostawiało to puste, kremowe pole pod ciemną stopką
+zamiast stopki na samym dole. Zmierzone i odtworzone w przeglądarce (symulacja
+wysokiego viewportu przez iframe — realny `resize_window` w tym środowisku
+nie działa niezawodnie, patrz notatka w pamięci sesji): przy 1300px wysokości
+i krótkiej treści `artykuly.html` zostawiało 244px pustki pod stopką; po
+poprawce 0px na każdej sprawdzonej stronie (krótkiej i długiej), bez zmiany
+zachowania stron, gdzie treść i tak przekracza wysokość ekranu.
+
 ## Dostępność
 Domknięte pozostałe punkty z pierwszego audytu Impeccable:
 
