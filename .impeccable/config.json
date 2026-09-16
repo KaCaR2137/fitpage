@@ -413,6 +413,33 @@
         ],
         "createdAt": "2026-09-14T22:33:46.625Z",
         "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/instagram-czy-strona.html"
+        ],
+        "createdAt": "2026-09-16T21:52:08.445Z",
+        "reason": "same documented amber-lift button-hover shadow (shared style.css .btn--primary:hover, 12px offset + 28px blur) already sanctioned on all other pages under DESIGN.md 'The One Mark Rule'; new page shares the same stylesheet"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/instagram-czy-strona.html"
+        ],
+        "createdAt": "2026-09-16T21:52:08.467Z",
+        "reason": "user confirmed: exact hex #F7F3EA is the site's established light-theme canvas color, not a reflexive AI default (extends established sanction, shared style.css)"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/instagram-czy-strona.html"
+        ],
+        "createdAt": "2026-09-16T21:52:08.485Z",
+        "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
       }
     ]
   }

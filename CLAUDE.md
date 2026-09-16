@@ -140,12 +140,21 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 6. Artykuły (podgląd) — dawniej tu była sekcja „Kontakt (skrót)” (CTA „Umów
    konsultację” + telefon 535 721 592); usunięta i zastąpiona podglądem
    artykułów, ten sam markup co lista na `artykuly.html` (`.artykuly__grid`
-   + `.artykul-card`, wszystkie trzy obecne artykuły obok siebie na desktopie
-   dzięki `auto-fit` — patrz sekcja `artykuly.html` niżej) + link
-   „Zobacz wszystkie artykuły” → `artykuly.html`. **Uwaga:** to był jedyny widoczny
-   numer telefonu na stronie głównej poza nav/hero CTA — sam numer nigdzie
-   indziej na `index.html` się teraz nie pojawia (formularz na `kontakt.html`
-   nadal go pokazuje jako fallback błędu wysyłki).
+   + `.artykul-card`, karty obok siebie na desktopie dzięki `auto-fit` —
+   patrz sekcja `artykuly.html` niżej) + link „Zobacz wszystkie artykuły” →
+   `artykuly.html`. **Uwaga (celowa rozbieżność od 16.09.2026):** to już
+   **nie jest** zawsze pełne lustro pełnej listy — pokazuje tylko 3
+   najstarsze z 4 obecnych artykułów (`jak-zdobyc-klientow-bez-reklam`,
+   `ile-kosztuje-strona-dla-trenera`, `jak-wyroznic-sie-jako-trener`);
+   najnowszy (`instagram-czy-strona`) pojawia się tylko na pełnej liście,
+   na wyraźne życzenie — podgląd na stronie głównej ma pozostać krótki,
+   pełna lista ma być jedynym miejscem, które rośnie wraz z każdym kolejnym
+   artykułem. Przy dodawaniu kolejnych artykułów: domyślnie dopisuj tylko do
+   `artykuly.html`, nie kopiuj automatycznie do tego podglądu, chyba że
+   ktoś wyraźnie o to poprosi. To był też jedyny widoczny numer telefonu na
+   stronie głównej poza nav/hero CTA — sam numer nigdzie indziej na
+   `index.html` się teraz nie pojawia (formularz na `kontakt.html` nadal go
+   pokazuje jako fallback błędu wysyłki).
 7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
    2 rundy poprawek w cenie / Trenerzy, instruktorzy, coache), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.
@@ -181,9 +190,12 @@ Cała karta klikalna (`::after` na tytule + osobny, realny link na leadzie,
 uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 `.krok`, zgodnie z „The Lift-Means-Interactive Rule” (cień w spoczynku jest
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
-strony), między FAQ a Kontakt. Trzy artykuły obecnie + komentarz
-`<!-- TODO: kolejne artykuły -->` pokazujący
-gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
+strony), między FAQ a Kontakt. Cztery artykuły obecnie (najnowszy:
+„Instagram czy własna strona internetowa? Co bardziej buduje zaufanie
+klienta”, 16.09.2026, bez zdjęcia w tle nagłówka — klient nie dostarczył
+grafiki, więc zwykły `.hero--compact` zamiast `.hero--cover`, jak
+`faq.html`/`proces.html`) + komentarz `<!-- TODO: kolejne artykuły -->`
+pokazujący gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
 (mniejszy padding/odstępy/font nagłówka, lead przycięty do 3 linii przez
 `-webkit-line-clamp`) — pojedyncza karta potrafiła zająć do ~37% wysokości
 ekranu telefonu 390px, przez co nic nie sugerowało, że pod spodem jest więcej
