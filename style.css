@@ -6,6 +6,21 @@
 
 /* ----------------------------- Zmienne ----------------------------- */
 :root {
+  /* `only` (nie samo `light`) mówi przeglądarce wprost: nie odwracaj/nie
+     przemalowuj tej strony pod wymuszony tryb ciemny systemu, nawet jeśli
+     użytkownik ma go włączony (np. "wymuszony tryb ciemny dla stron" w
+     Chrome/Samsung Internet na Androidzie) — bez tego niektóre przeglądarki
+     mobilne same odwracały kolory całej strony, logo włącznie, bo strona
+     nigdzie wprost nie deklarowała, że nie obsługuje ciemnego motywu.
+     `:root` ma wyższą specyficzność niż selektor `html` niżej (który wciąż
+     ma samo `color-scheme: light` — zostaje, bo i tak przegrywa z tą
+     regułą), więc to ta wartość obowiązuje. Uzupełnione przez
+     `<meta name="color-scheme" content="light">` w `<head>` każdej strony —
+     ta sama deklaracja w dwóch miejscach z tego samego powodu, jak zaleca
+     specyfikacja. Zgodne z "Don't introduce or assume a dark theme"
+     (DESIGN.md) — to świadomie jedyny, jasny motyw. */
+  color-scheme: only light;
+
   /* tło całej strony — jasny, kremowy canvas. Świadomy wybór jasnego
      motywu (patrz DESIGN.md), nie gradient — jedna płaska płaszczyzna,
      na której siedzi cała treść. */
