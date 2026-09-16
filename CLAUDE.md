@@ -67,11 +67,22 @@ dodaj drugą warstwę `background-image` — ta sama zasada co przy artykułach
 (patrz "Workflow wklejania artykułu" niżej), nie osobny, ręczny wybór za
 każdym razem.
 
-`images/logo-fitpage.png` — dostarczony przez klienta, 2000×2000, kanał alfa
-zachowany, oryginalny rozmiar (~90 KB), NIE pomniejszony (użyty wprost w nav
-i splashu, skalowany przez CSS). Z niego wygenerowane (`sips`) dwa favicony:
-`images/favicon-32.png` i `images/favicon-512.png` — podpięte na wszystkich
-stronach (`<link rel="icon">` ×2 + `apple-touch-icon`).
+`images/logo-fitpage.png` — druga wersja loga od klienta (16.09.2026,
+zastąpiła pierwszą, 2000×2000). Źródło: `logo2.png` w korzeniu repo
+(596×596, realnie przezroczyste tło — zweryfikowane programowo, alfa=0 w
+rogach i poza kształtem), użyty wprost bez zmiany rozmiaru (nadal z
+zapasem rozdzielczości przy wyświetlaniu w 44px/125px przez CSS). Z niego
+wygenerowane (Pillow) `images/logo-fitpage.webp` (jakość 90, jak inne
+płaskie/przezroczyste grafiki) oraz — przez `resize` w Pillow, nie `sips` —
+dwa favicony: `images/favicon-32.png` i `images/favicon-512.png` — te same
+nazwy plików co poprzednio, więc `<head>` nie wymagał żadnej zmiany. Dwa
+pozostałe warianty od klienta zostały w repo jako referencja/źródło, nic
+ich nie używa: `logo1.svg` (pełne logo, ikona + wektorowy napis „FitPage” —
+napis w nav/stopce to wciąż żywy tekst w Fraunces, nie ten SVG) i
+`logo3.png` (wariant „badge" — pełne, nieprzezroczyste ciemnozielone
+zaokrąglone tło, nie pasował do „przezroczyste tło"). Żaden z tych trzech
+plików nie jest w `.assetsignore` allowlist, więc pozostają niepubliczne
+mimo leżenia w korzeniu repo — tak samo jak oryginały-źródła innych grafik.
 
 W nav logo to teraz para: ikona (`.nav__logo-img`, `44px` wysokości) + napis
 `.nav__logo-text` „FitPage” (waga 800, `1.3rem`, tracking -0.03em) obok
