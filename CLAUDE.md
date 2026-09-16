@@ -100,22 +100,25 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 ## Strony
 **`index.html`** — sekcje w kolejności:
 1. Nav — logo (`.nav__logo-img` 44px + `.nav__logo-text` „FitPage”) + linki do
-   sekcji (O nas, Portfolio, Proces, FAQ, Artykuły, Opinie) + CTA „Umów
-   konsultację” → `kontakt.html`, wszystko wewnątrz `.nav__right` (sticky,
-   menu mobilne < 700px). **CTA nie chowa się do hamburgera** — poniżej 700px
-   znika tylko `.nav__links` (same linki tekstowe); przycisk zostaje widoczny
-   w pasku nav obok hamburgera (dopasowany rozmiar: `10px 14px` padding,
-   `0.85rem`, zmierzone 148×42px, mieści się bez zawijania obok 44px
-   hamburgera). Naprawione przez `/impeccable adapt` po krytyce, która
-   złapała, że ukrywanie głównej akcji konwersji za hamburgerem kosztuje na
-   stronie, której odbiorcy są w większości mobilni (PRODUCT.md). Z 7
-   elementami (6 linków + CTA, po dodaniu linku „Opinie”) `gap: 26px`
-   przestał się mieścić — zmierzone empirycznie w oknie 700-709px: realny
-   poziomy overflow ~5-10px tuż nad progiem 700px (link potrzebował ~710px).
-   Naprawione zmniejszeniem `gap` `.nav__right`/`.nav__links` z 26px na
-   20px — zmierzone ponownie: ~685px potrzebne, zapas ~15px pod progiem
-   700px, zweryfikowane dokładnie na granicy (700px i 705px, oba bez
-   overflow po zmianie).
+   sekcji (O nas, Portfolio, Proces, FAQ) + CTA „Umów konsultację” →
+   `kontakt.html`, wszystko wewnątrz `.nav__right` (sticky, menu mobilne <
+   700px). **CTA nie chowa się do hamburgera** — poniżej 700px znika tylko
+   `.nav__links` (same linki tekstowe); przycisk zostaje widoczny w pasku nav
+   obok hamburgera (dopasowany rozmiar: `10px 14px` padding → `11px 14px` od
+   poprawki wysokości dotykowej niżej, `0.85rem`, `148×44px`, mieści się bez
+   zawijania obok 44px hamburgera). Naprawione przez `/impeccable adapt` po
+   krytyce, która złapała, że ukrywanie głównej akcji konwersji za
+   hamburgerem kosztuje na stronie, której odbiorcy są w większości mobilni
+   (PRODUCT.md). **Historia (nieaktualna liczba linków, zasada nadal
+   obowiązuje):** z 7 elementami (6 linków + CTA, po dodaniu linku „Opinie”)
+   `gap: 26px` przestał się mieścić w oknie 700-709px — naprawione
+   zmniejszeniem `gap` do `20px`. Później (`/impeccable critique`, patrz
+   niżej) `.nav__links` zredukowane do 4 linków (Artykuły/Opinie przeniesione
+   do stopki), więc ten konkretny overflow już się nie powtórzy przy żadnej
+   dotychczasowej szerokości — `gap: 20px` zostaje bez zmian, po prostu z
+   większym zapasem niż wtedy. `.nav__cta` dobite do pełnych `44px` wysokości
+   (WCAG 2.5.5/2.5.8, ten sam próg co `.nav__toggle`) pionowym paddingiem
+   `11px` zamiast `10px` — poziomy padding/szerokość bez zmian.
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
    rodzajów treningu (trening siłowy, bieganie, pilates, balet, joga, boks,
@@ -146,9 +149,16 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
 7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
    2 rundy poprawek w cenie / Trenerzy, instruktorzy, coache), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.
-8. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” / „Artykuły” /
-   „Opinie” / „Kontakt” (`.footer__links`), pod nim logo + copyright. Ten sam
-   footer (z tymi samymi 6 linkami) na wszystkich stronach.
+8. CTA (domykające, `.cta-closing`) — „Gotowy zacząć?” + krótki podtekst +
+   ten sam `.btn.btn--primary` co w hero/nav, wyśrodkowane, bez panelu (Flat
+   Canvas Rule) i bez nowych efektów wizualnych. Dodane po `/impeccable
+   critique`, która złapała naruszenie peak-end rule — strona kończyła się
+   najsilniejszym blokiem zaufania (Atuty) i wpadała prosto w ciemną stopkę
+   bez żadnego wezwania do działania.
+9. Footer — rząd skrótów „O nas” / „Proces tworzenia strony” / „FAQ” /
+   „Artykuły” / „Opinie” / „Kontakt” / „Polityka prywatności” (`.footer__links`,
+   7 linków), pod nim logo + copyright. Ten sam footer (z tymi samymi 7
+   linkami) na wszystkich stronach.
 
 **`faq.html`** — najczęściej zadawane pytania, wydzielone z `index.html` na osobną
 podstronę (dawniej sekcja `#faq` na stronie głównej). Kompaktowy hero + ten sam
@@ -222,16 +232,19 @@ per-artykuł, reszta stylu już czeka w `style.css`). Nie kopiować CSS
 `.hero--cover` między stronami — to współdzielona klasa, jeden artykuł =
 jedna linijka inline z URL-em zdjęcia.
 
-**`polityka-prywatnosci.html`** — DRAFT, `<meta name="robots" content="noindex">`,
-**celowo niepodlinkowana** z nav/stopki. Treść wklejona z `polityka-prywatnosci-DRAFT.md`
-(sam plik roboczy zostaje w repo, nie jest częścią strony). Miejsca, których nie
-dało się ustalić samodzielnie (tożsamość administratora, e-mail kontaktowy, okres
-przechowywania danych w pozostałych przypadkach, odbiorca danych z formularza,
-data publikacji) zostały w kodzie jako `<!-- TODO: ... -->` — usuń `noindex` i
-dodaj link dopiero po ich uzupełnieniu. **Uwaga:** pkt 3 (odbiorcy danych) ma
-już wpisanego realnego odbiorcę — Formspree (mechanizm wysyłki formularza
-z `kontakt.html`, potwierdzony i podłączony) — pozostałe TODO w tym punkcie
-dotyczą już tylko treści niezależnej od mechanizmu.
+**`polityka-prywatnosci.html`** — **Żywa i podlinkowana** (stopka, wszystkie
+strony — jako ostatni link, po Kontakt) — `noindex` usunięty (16.09.2026).
+Treść wklejona z `polityka-prywatnosci-DRAFT.md` (sam plik roboczy zostaje w
+repo, nie jest częścią strony), wszystkie TODO uzupełnione realnymi danymi:
+administrator — Kacper Barczak (osoba fizyczna, bez zarejestrowanej
+działalności gospodarczej); kontakt w sprawach ochrony danych —
+`kontakt@fitpage.pl`; okres przechowywania — 12 miesięcy od ostatniego
+kontaktu, przy zawartej współpracy zgodnie z przepisami podatkowymi;
+odbiorca danych — Formspree, Inc. (USA), z wprost dopisaną wzmianką o
+możliwym transferze danych poza EOG (pkt 3); data ostatniej aktualizacji —
+16 września 2026. Klauzula RODO w `kontakt.html` (`.form__rodo`) uzupełniona
+tymi samymi danymi i linkuje na końcu do tej strony po realne informacje
+o odbiorcach danych — nie duplikuje ich w całości.
 
 **`opinie.html`** — opinie klientów. **Żywa i podlinkowana** (nav + stopka,
 wszystkie strony) — `noindex` usunięty. Odsłonięta świadomie zanim pojawiła
@@ -441,15 +454,21 @@ Domknięte pozostałe punkty z pierwszego audytu Impeccable:
 ## TODO przed publikacją
 - [ ] Treść „O nas” — realna (lata doświadczenia, liczba stron, wyróżnik zespołu)
 - [ ] FAQ — przejrzeć i doprecyzować odpowiedzi wg realnej oferty (bez wymyślonych cen/terminów)
-- [ ] Bezpośredni e-mail w sekcji Kontakt na `index.html` (placeholder; telefon 535 721 592 już wstawiony)
-- [ ] Klauzula RODO w `kontakt.html` — dane administratora, cel, podstawa prawna,
-      **okres przechowywania** (ustalić wprost), prawa osoby, e-mail kontaktowy,
-      prawo skargi do PUODO
+- [x] ~~Bezpośredni e-mail w sekcji Kontakt na `index.html`~~ — nieaktualne: ta
+      sekcja („Kontakt (skrót)”) została usunięta z `index.html` (patrz punkt 6
+      wyżej), więc nie ma już gdzie wstawić e-maila na tej stronie. E-mail
+      kontaktowy (`kontakt@fitpage.pl`) jest teraz realną, potwierdzoną
+      wartością — widoczny w klauzuli RODO na `kontakt.html` i w
+      `polityka-prywatnosci.html`.
+- [x] Klauzula RODO w `kontakt.html` — dane administratora, cel, podstawa prawna,
+      okres przechowywania, prawa osoby, e-mail kontaktowy, prawo skargi do
+      PUODO — uzupełnione 16.09.2026, patrz `polityka-prywatnosci.html` wyżej
 - [ ] Zgoda marketingowa — doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt)
 - [x] Podłączyć wysyłkę formularza z `kontakt.html` — Formspree, działa na
       obecnym hostingu (Cloudflare); darmowy plan ograniczony do 50
       zgłoszeń/miesiąc — do przypilnowania przy realnym ruchu
-- [ ] `<title>` + meta description na obu stronach — sprawdzić, zero placeholderów
+- [x] `<title>` + meta description na obu stronach — sprawdzone (`/impeccable audit`,
+      15.09.2026): każda strona ma realny, unikalny `<title>` i opis, zero placeholderów
 - [ ] Portfolio — opisy realizacji, ewentualnie miniatury (`object-fit: cover` + tło fallback)
 - [ ] Test na 375px, test w incognito (obie strony)
 - [ ] Wszystkie `<img>` mają `alt` (gdy dojdą zdjęcia)

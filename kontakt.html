@@ -113,34 +113,32 @@
             <small class="form__error" id="wizja-error" aria-live="polite"></small>
           </div>
 
-          <!-- ================================================================
-               RODO — klauzula informacyjna. WYMAGANE przy każdym formularzu.
-               TODO przed publikacją: uzupełnić realnymi danymi FitPage:
-                 - administrator danych (nazwa, adres, kontakt)
-                 - cel i podstawa prawna przetwarzania
-                 - OKRES PRZECHOWYWANIA danych (ustalić wprost — nie zostawiać pusto)
-                 - prawa osoby, której dane dotyczą, prawo skargi do PUODO
-               =============================================================== -->
+          <!-- RODO — klauzula informacyjna, uzupełniona realnymi danymi
+               FitPage (16.09.2026). Pełna treść, w tym odbiorcy danych i
+               informacja o transferze poza EOG (Formspree, Inc., USA),
+               w Polityce prywatności, do której ta klauzula linkuje. -->
           <details class="form__rodo">
             <summary>Informacja o przetwarzaniu danych osobowych (RODO)</summary>
             <p>
-              <strong>[Placeholder klauzuli — do uzupełnienia przed publikacją]</strong>
-              Administratorem danych podanych w formularzu jest [nazwa i dane FitPage].
+              Administratorem danych podanych w formularzu jest Kacper Barczak
+              (osoba fizyczna, bez zarejestrowanej działalności gospodarczej).
               Dane (imię i nazwisko, e-mail, telefon, opis wizji strony) przetwarzane są
               w celu obsługi zapytania, przygotowania oferty i kontaktu, na podstawie
               art. 6 ust. 1 lit. b oraz f RODO. Dane będą przechowywane przez
-              [okres do ustalenia — np. czas prowadzenia korespondencji i [X] miesięcy po jej zakończeniu].
+              12 miesięcy od ostatniego kontaktu, a w przypadku zawartej współpracy —
+              przez okres wynikający z przepisów podatkowych i rachunkowych.
               Przysługuje Ci prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia
               przetwarzania oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do
               Prezesa Urzędu Ochrony Danych Osobowych. Podanie danych jest dobrowolne, ale
-              niezbędne do udzielenia odpowiedzi. Kontakt w sprawie danych: [adres e-mail].
+              niezbędne do udzielenia odpowiedzi. Kontakt w sprawie danych: kontakt@fitpage.pl.
+              Pełne informacje, w tym o odbiorcach danych, znajdziesz w
+              <a href="polityka-prywatnosci.html">Polityce prywatności</a>.
             </p>
           </details>
 
           <fieldset class="form__consents">
             <legend>Zgody</legend>
 
-            <!-- TODO: dopracować treść zgody spójnie z klauzulą RODO powyżej -->
             <label class="form__consent">
               <input type="checkbox" id="zgoda-kontakt" name="zgoda_kontakt" required aria-describedby="zgoda-kontakt-error">
               <span class="form__consent-box" aria-hidden="true"></span>
@@ -180,6 +178,7 @@
       <a href="artykuly.html">Artykuły</a>
       <a href="opinie.html">Opinie</a>
       <a href="kontakt.html">Kontakt</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
     </nav>
     <div class="container footer__inner">
       <span class="footer__logo">FitPage</span>
