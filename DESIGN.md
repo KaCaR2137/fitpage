@@ -298,18 +298,29 @@ the faux-bold there is the least noticeable instance if it needs revisiting.
   hamburger menu boundary; section rhythm and section-title size step up; process
   steps go 1-col → 3-col), `900px` (hero gains more vertical air; "O nas" flips
   from a stacked column to a `text | phone` row).
-- **Grids:** portfolio stays `repeat(auto-fill, minmax(280px, 400px))`. The
-  articles grid (`.artykuly__grid`, shared by the homepage preview and the
-  full list) uses `repeat(auto-fit, minmax(280px, 1fr))` instead —
+- **Grids:** portfolio uses `repeat(auto-fit, minmax(280px, 400px))` plus
+  `justify-content: center` on `.portfolio__grid`. Previously `auto-fill`
+  (fixed-max, left-aligned) — changed after `/impeccable critique` caught
+  the single live card floating in ~600px of dead space on desktop, reading
+  as an oversight right where a skeptical visitor is evaluating trust.
+  `auto-fill` still reserves as many 280-400px tracks as the container
+  could hold even with only one populated; `auto-fit` collapses the unused
+  ones to zero width, so `justify-content: center` can center the one real
+  card instead of pinning it to the left edge of empty space. The articles
+  grid (`.artykuly__grid`, shared by the homepage preview and the full
+  list) uses `repeat(auto-fit, minmax(280px, 1fr))` instead —
   **`auto-fit`, not `auto-fill`**, and `1fr` as the upper bound, not a fixed
   px: empty "phantom" tracks collapse to zero instead of leaving a visible
   gap, and real cards stretch to fill the row. At 2 cards each renders
   ~508px (the `.container`'s full 1080px, minus padding and gap, split
   evenly); at 3 it settles to ~331px each without any layout change —
   built to seat 3 side by side without a fourth ever standing alone.
-  Portfolio was deliberately left on the fixed-max version — it holds a
-  single demo project by design (see PRODUCT.md), not a growing list.
-  Process steps
+  Portfolio keeps the fixed 400px max (unlike articles' `1fr`) since a
+  single card stretched to fill the full row width would look like an
+  error, not a feature — centering, not stretching, is the fix here. Once
+  a second real portfolio project ships, the two cards will sit side by
+  side from the left as before; the centering only affects the 1-2 card
+  case. Process steps
   are `1fr` → `repeat(3, 1fr)` at 700px, aligned to `start` so an expanded step
   grows without stretching its neighbours; "O nas" is a centered flex column
   (phone capped at 220px) → row at 900px (phone capped at 250px).

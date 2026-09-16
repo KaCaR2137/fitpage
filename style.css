@@ -468,6 +468,23 @@ summary:focus-visible {
   color: var(--muted);
 }
 
+/* ============================== CTA (domykające) ============================== */
+/* Ostatnia sekcja przed stopką — Atuty (najsilniejszy blok zaufania na
+   stronie) dotąd wpadały prosto w ciemną stopkę bez żadnego wezwania do
+   działania (złapane przez /impeccable critique: naruszenie peak-end rule
+   dokładnie w momencie najwyższego zbudowanego zainteresowania). Ten sam
+   wizualny język co hero (wyśrodkowany tekst, ten sam .btn.btn--primary,
+   bez panelu/tła — zgodnie z Flat Canvas Rule) — świadomie bez nowych
+   efektów ozdobnych, żeby to był spokojny, czytelny blok, nie kolejny
+   element przyciągający uwagę. */
+.cta-closing { text-align: center; }
+.cta-closing__inner { max-width: 560px; margin-inline: auto; }
+.cta-closing .section__title { margin-bottom: 0.5em; }
+.cta-closing__text {
+  color: var(--muted);
+  margin-bottom: 1.75em;
+}
+
 /* ============================== O NAS ============================== */
 .o-nas p {
   max-width: 680px;
@@ -553,10 +570,20 @@ summary:focus-visible {
 }
 
 /* ============================== PORTFOLIO ============================== */
+/* auto-fit (nie auto-fill) + justify-content: center — z jedną kartą
+   auto-fill wciąż rezerwuje tyle kolumn 280-400px, ile zmieściłoby się w
+   .container, więc karta zostaje przyklejona do lewej krawędzi z dużą,
+   niewidzialną pustką po prawej (złapane przez /impeccable critique: karta
+   "floats in dead space" tuż przy sekcji budującej zaufanie). auto-fit
+   zwija nieużywane tory do 0px, więc jedyna realna karta jest wyśrodkowana
+   w sekcji zamiast wyglądać na przypadkowo osierocony fragment siatki;
+   przy kolejnych realizacjach karty i tak ułożą się w rząd od lewej, jak
+   dotąd — zmiana wpływa tylko na wygląd przy 1-2 kartach. */
 .portfolio__grid {
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 400px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 400px));
+  justify-content: center;
 }
 .card {
   background: var(--bg);
