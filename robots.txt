@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /opinie-dodaj.html
+
+Sitemap: https://fitpage.pl/sitemap.xml

@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light">
   <title>Umów konsultację — FitPage</title>
   <meta name="description" content="Umów bezpłatną konsultację z FitPage — opisz swoją wizję strony dla działalności trenerskiej, a odezwiemy się z propozycją zakresu i wyceną.">
+  <link rel="canonical" href="https://fitpage.pl/kontakt.html">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="apple-touch-icon" href="images/favicon-512.png">
@@ -70,13 +71,14 @@
         <!-- Formspree: hosting to Cloudflare Pages, nie Netlify — Netlify Forms
              (poprzednie podłączenie) tam nic nie robi. _next musi być pełnym
              adresem (Formspree przekierowuje ze swojej domeny, więc ścieżka
-             względna trafiłaby na formspree.io, nie na tę stronę) — TODO:
-             zaktualizuj na docelową domenę (np. fitpage.pl), jeśli/gdy się
-             pojawi zamiast fitpage.kacperbarczak11.workers.dev. -->
+             względna trafiłaby na formspree.io, nie na tę stronę) — wskazuje
+             na fitpage.pl (17.09.2026: potwierdzone, że domena żyje i
+             serwuje tę samą stronę przez Cloudflare), nie na
+             fitpage.kacperbarczak11.workers.dev jak wcześniej. -->
         <form class="form reveal" method="post" action="https://formspree.io/f/moeqzapr" data-form="brief" novalidate>
 
           <input type="hidden" name="_subject" value="Nowy brief ze strony FitPage">
-          <input type="hidden" name="_next" value="https://fitpage.kacperbarczak11.workers.dev/dziekujemy.html">
+          <input type="hidden" name="_next" value="https://fitpage.pl/dziekujemy.html">
           <p class="form__honeypot" aria-hidden="true">
             <label>Nie wypełniaj tego pola
               <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">

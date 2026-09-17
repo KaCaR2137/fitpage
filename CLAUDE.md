@@ -22,8 +22,13 @@ Cloudflare Workers & Pages, projekt podłączony bezpośrednio do repo GitHub
 (`KaCaR2137/fitpage`, branch `main`) — Workers & Pages → Create → Pages →
 Import an existing Git repository. Automatyczny build/deploy przy każdym
 pushu na `main`, bez lokalnego `wrangler.toml` ani CLI — cała konfiguracja
-żyje po stronie dashboardu Cloudflare. Żywy adres:
-`https://fitpage.kacperbarczak11.workers.dev`.
+żyje po stronie dashboardu Cloudflare. Docelowa domena `fitpage.pl` jest
+już podłączona i żywa (potwierdzone 17.09.2026: HTTP 200, serwuje tę samą
+treść) — to na nią wskazują teraz `sitemap.xml`, `robots.txt`, wszystkie
+`<link rel="canonical">` i przekierowania `_next` Formspree. Techniczny
+adres Cloudflare (`https://fitpage.kacperbarczak11.workers.dev`) wciąż
+działa równolegle jako dev/fallback URL, ale nie jest już nigdzie w kodzie
+wskazywany jako docelowy.
 
 Cały root repo trafia jako publiczne assety (brak build stepu), stąd
 `.assetsignore` w korzeniu repo — bez niego `PRODUCT.md`, `DESIGN.md`,
@@ -299,9 +304,10 @@ Wysyłka: **Formspree** (`action="https://formspree.io/f/moeqzapr"`,
 `method="post"`) — wybrane, bo hosting to Cloudflare Pages/Workers, gdzie
 Netlify Forms (poprzednie podłączenie) nic nie dostarczało. Pola: ukryty
 `_subject` (temat maila z powiadomieniem), ukryty `_next` (pełny adres
-`https://fitpage.kacperbarczak11.workers.dev/dziekujemy.html` — **musi** być
-pełnym URL-em, bo Formspree przekierowuje ze swojej domeny; **TODO:**
-zaktualizować na docelową domenę, jeśli/gdy się pojawi), honeypot `_gotcha`
+`https://fitpage.pl/dziekujemy.html` — **musi** być pełnym URL-em, bo
+Formspree przekierowuje ze swojej domeny; zaktualizowane z
+`fitpage.kacperbarczak11.workers.dev` na `fitpage.pl` 17.09.2026, po
+potwierdzeniu że domena już żyje), honeypot `_gotcha`
 (Formspree po cichu odrzuca zgłoszenia z wypełnionym tym polem). Pole
 `name="email"` jest automatycznie wykrywane przez Formspree jako adres
 zwrotny (reply-to) — bez potrzeby `_replyto`. Bez JS formularz działa

@@ -20,3 +20,5 @@
 !images/**
 !artykuly/
 !artykuly/**
+!robots.txt
+!sitemap.xml
