@@ -789,10 +789,37 @@ summary:focus-visible {
 .artykul__body h2:first-child { margin-top: 0; }
 .artykul__body h3 { font-size: 1.1rem; margin: 1.3em 0 0.4em; }
 .artykul__body strong { color: var(--text); }
-.artykul__body a { color: var(--accent-strong); }
+/* Linki wewnątrz treści (linkowanie międzyartykułowe) — kolor akcentu,
+   bez podkreślenia w spoczynku, podkreślenie tylko na hover/focus. Zwykły
+   tekstowy link w zdaniu, nie link-przycisk — bez lift/shadow, które mają
+   .brief__back/.artykul__back/.card__link (to inna kategoria, patrz
+   CLAUDE.md "Popraw animacje interakcji"), bo uniesienie pojedynczego
+   słowa w środku płynącego akapitu wyglądałoby na złamane, nie subtelne. */
+.artykul__body a { color: var(--accent-strong); text-decoration: none; }
+.artykul__body a:hover,
+.artykul__body a:focus-visible { text-decoration: underline; }
 .artykul__body ul,
 .artykul__body ol { margin-bottom: 1em; padding-left: 1.25em; }
 .artykul__body li { margin-bottom: 0.4em; }
+
+/* "Zobacz też" — link do jednego powiązanego artykułu, przed CTA.
+   Hairline border u góry jako jedyny separator (bez panelu/tła, zgodnie z
+   Flat Canvas Rule) — ten sam wzorzec co linia nad .footer__links. */
+.artykul__related {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.artykul__related p {
+  margin: 0 0 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.artykul__related a { color: var(--accent-strong); text-decoration: none; }
+.artykul__related a:hover,
+.artykul__related a:focus-visible { text-decoration: underline; }
+
 .artykul__cta { margin-top: 32px; }
 .artykul__cta p { margin-bottom: 12px; color: var(--muted); }
 .artykul__back { margin-top: 28px; font-size: 0.9rem; }

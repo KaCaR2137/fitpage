@@ -227,6 +227,32 @@ wycentrowana (`max-width: 65ch; margin-inline: auto`) w szerszym
 zostawiało puste miejsce wyłącznie po prawej stronie (złapane i naprawione
 już po opublikowaniu pierwszego artykułu).
 
+**Linkowanie międzyartykułowe (od 17.09.2026).** Każdy z czterech artykułów
+ma teraz: (1) co najmniej jeden link w treści `.artykul__body` do innego
+artykułu, wstawiony tylko tam, gdzie zdanie się do tego już nadawało (bez
+naginania treści na siłę), i (2) blok `.artykul__related` tuż przed
+`.artykul__cta` — hairline `border-top`, pogrubiona etykieta „Zobacz też”
+(Text Primary) + jeden link (Leaf Green). Styl linku w treści: `color:
+var(--accent-strong)`, bez podkreślenia w spoczynku, podkreślenie tylko na
+`:hover`/`:focus-visible` (`.artykul__body a`, `style.css`) — to zwykły
+link tekstowy w zdaniu, **nie** link-przycisk jak `.artykul__back`/
+`.card__link` (te dostają `translateY` + cień na hover, patrz „Popraw
+animacje interakcji” wyżej; uniesienie pojedynczego słowa w środku akapitu
+wyglądałoby na złamane). Obecna sieć linków (nieprzypadkowa, dopasowana
+tematycznie): `jak-wyroznic-sie-jako-trener` ↔ `instagram-czy-strona`
+(oba linkują do siebie nawzajem inline — ten sam motyw: profil wyglądający
+tak samo jak tysiące innych trenerów), `ile-kosztuje-strona-dla-trenera` →
+`jak-wyroznic-sie-jako-trener` (przy wzmiance o gotowym szablonie „takim
+samym jak u innych”), `jak-zdobyc-klientow-bez-reklam` →
+`instagram-czy-strona` (przy temacie profilu ginącego w przewijaniu).
+Sekcje „Zobacz też” domykają graf tak, żeby każdy artykuł prowadził do co
+najmniej jednego innego: `jak-wyroznic-sie-jako-trener` → `ile-kosztuje`,
+`ile-kosztuje` → `jak-zdobyc-klientow-bez-reklam`, `jak-zdobyc-klientow-bez-reklam`
+→ `jak-wyroznic-sie-jako-trener`, `instagram-czy-strona` →
+`jak-zdobyc-klientow-bez-reklam`. Przy dodawaniu piątego artykułu: szukaj
+podobnych, realnych zazębień tematycznych zamiast linkować mechanicznie do
+wszystkich naraz, i dodaj mu też własną sekcję „Zobacz też”.
+
 **Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
 wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
 repo (np. `artykul-<slug>-DRAFT.md`, wzorem `polityka-prywatnosci-DRAFT.md`)
