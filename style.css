@@ -883,6 +883,17 @@ summary:focus-visible {
 }
 
 /* ============================== PROCES / KROKI ============================== */
+/* align-items: stretch (domyślne dla grid, więc nieużywane wprost) —
+   wcześniej było "start", żeby rozwinięty krok rósł bez rozciągania
+   sąsiadów, ale to zostawiało panele w tym samym rzędzie o różnej
+   wysokości w spoczynku, ilekroć widoczny akapit miał inną liczbę linii
+   (zmierzone w przeglądarce: przy 900px szerokości panel 1. "Analiza"
+   277px vs panel 2. "Struktura" 252px — złapane i zgłoszone jako
+   nierówne panele). Stretch wyrównuje karty w każdym rzędzie do
+   najwyższej niezależnie od szerokości ekranu; skutek uboczny: rozwinięcie
+   „Więcej” w jednej karcie teraz podciąga wysokość sąsiadów w tym samym
+   rzędzie zamiast rosnąć w izolacji — świadomie zaakceptowany kompromis,
+   bo równe panele w spoczynku są ważniejsze niż ten szczegół accordionu. */
 .kroki__grid {
   list-style: none;
   margin: 0;
@@ -890,7 +901,6 @@ summary:focus-visible {
   display: grid;
   gap: 24px;
   grid-template-columns: 1fr;
-  align-items: start;          /* rozwinięty krok rośnie, nie rozciąga sąsiadów */
 }
 .krok {
   background: var(--bg);
