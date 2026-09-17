@@ -805,7 +805,6 @@ summary:focus-visible {
 }
 .artykul__back a:hover,
 .artykul__back a:focus-visible {
-  text-decoration: underline;
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
@@ -1223,7 +1222,6 @@ summary:focus-visible {
 }
 .brief__back a:hover,
 .brief__back a:focus-visible {
-  text-decoration: underline;
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
