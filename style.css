@@ -176,7 +176,8 @@ summary:focus-visible {
               background-color 0.18s var(--ease);
 }
 .btn--primary { background: var(--accent); color: var(--on-accent); }
-.btn--primary:hover {
+.btn--primary:hover,
+.btn--primary:focus-visible {
   background: var(--accent-strong);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(31, 61, 43, 0.28);
@@ -185,6 +186,37 @@ summary:focus-visible {
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none; /* blokuje :hover, żeby przycisk nie "ożywał" wizualnie podczas wysyłki */
+}
+
+/* Pulsująca obwódka — WYŁĄCZNIE na głównym CTA "Umów konsultację": hero,
+   .nav__cta (współdzielony, więc pulsuje na każdej stronie) i domykający
+   blok CTA na końcu index.html. Świadomy wyjątek od The Lift-Means-
+   Interactive Rule (DESIGN.md) — na wyraźne, szczegółowe życzenie
+   (kolor, timing i krzywa podane wprost), nie odruchowy wybór. Reszta
+   przycisków/linków (patrz niżej) dostaje tylko reakcję na hover/focus,
+   zero ruchu w spoczynku — pulsowanie zostaje zarezerwowane dla tych
+   trzech miejsc, żeby nie rozmyć akcentu na całą stronę. Animacja żyje
+   wyłącznie pod prefers-reduced-motion: no-preference, więc z włączonym
+   ograniczeniem ruchu systemowego przycisk jest w pełni statyczny — nie
+   trzeba tego osobno wyłączać. animation-play-state: paused na hover/focus,
+   żeby istniejący, celowy efekt uniesienia (.btn--primary:hover, cień
+   0 12px 28px) mógł się pokazać bez konkurowania z pulsującym box-shadow
+   (animacja CSS nadpisywałaby go co klatkę). */
+@keyframes cta-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(31, 61, 43, 0.35); }
+  100% { box-shadow: 0 0 0 10px rgba(31, 61, 43, 0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn--pulse,
+  .nav__cta {
+    animation: cta-pulse 2s ease-in-out infinite;
+  }
+  .btn--pulse:hover,
+  .btn--pulse:focus-visible,
+  .nav__cta:hover,
+  .nav__cta:focus-visible {
+    animation-play-state: paused;
+  }
 }
 
 /* ============================== SPLASH ============================== */
@@ -286,9 +318,15 @@ summary:focus-visible {
   text-decoration: none;
   color: var(--text);
   opacity: 0.85;
-  transition: opacity 0.15s;
+  border-radius: 6px;
+  transition: opacity 0.15s, transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
 }
-.nav__links a:hover { opacity: 1; }
+.nav__links a:hover,
+.nav__links a:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
 .nav__cta {
   padding: 9px 18px;
   border-radius: 999px;
@@ -298,6 +336,20 @@ summary:focus-visible {
   opacity: 1 !important;
   text-decoration: none;
   white-space: nowrap;
+  transition: transform 0.18s var(--ease),
+              box-shadow 0.18s var(--ease),
+              background-color 0.18s var(--ease);
+}
+/* Ten sam lift co .btn--primary:hover (identyczny przycisk "Umów
+   konsultację", inna klasa z powodów layoutu w nav) — dotąd nav__cta nie
+   miał żadnej reakcji na hover w ogóle; bez tego, po wstrzymaniu pulsu na
+   hover (patrz cta-pulse wyżej), przycisk stawałby się nagle całkiem
+   statyczny. */
+.nav__cta:hover,
+.nav__cta:focus-visible {
+  background: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(31, 61, 43, 0.28);
 }
 
 .nav__toggle {
@@ -617,9 +669,15 @@ summary:focus-visible {
   font-weight: 600;
   text-decoration: none;
   color: var(--accent-strong);
-  transition: gap 0.18s var(--ease);
+  border-radius: 6px;
+  transition: gap 0.18s var(--ease), transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
 }
-.card__link:hover { gap: 12px; }
+.card__link:hover,
+.card__link:focus-visible {
+  gap: 12px;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
 .card__link svg { width: 16px; height: 16px; }
 
 /* ============================== ARTYKUŁY ============================== */
@@ -738,8 +796,19 @@ summary:focus-visible {
 .artykul__cta { margin-top: 32px; }
 .artykul__cta p { margin-bottom: 12px; color: var(--muted); }
 .artykul__back { margin-top: 28px; font-size: 0.9rem; }
-.artykul__back a { color: var(--accent-strong); text-decoration: none; }
-.artykul__back a:hover { text-decoration: underline; }
+.artykul__back a {
+  display: inline-block;
+  color: var(--accent-strong);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.artykul__back a:hover,
+.artykul__back a:focus-visible {
+  text-decoration: underline;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
 
 /* ============================== OPINIE (opinie klientów) ============================== */
 /* Ta sama siatka co .artykuly__grid — auto-fit + 1fr, żeby puste tory
@@ -1135,8 +1204,19 @@ summary:focus-visible {
 
 /* podstrona briefu */
 .brief__back { margin-top: 28px; font-size: 0.9rem; }
-.brief__back a { color: var(--accent-strong); text-decoration: none; }
-.brief__back a:hover { text-decoration: underline; }
+.brief__back a {
+  display: inline-block;
+  color: var(--accent-strong);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.brief__back a:hover,
+.brief__back a:focus-visible {
+  text-decoration: underline;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
 
 /* ============================== POLITYKA PRYWATNOŚCI ============================== */
 /* Tryb "Read" — sekwencyjne nagłówki numerowane w warstwie "Title" (jak
@@ -1231,10 +1311,22 @@ summary:focus-visible {
   font-weight: 600;
 }
 .footer__links a {
+  display: inline-block;
   color: var(--on-accent);
   text-decoration: none;
+  transition: transform 0.18s var(--ease);
 }
-.footer__links a:hover { text-decoration: underline; }
+/* Bez box-shadow tutaj (inaczej niż pozostałe linki-przyciski) — tło
+   stopki jest już prawie czarne (Pine Black, #16211B), więc ten sam
+   zazieleniony token --shadow po prostu zlewa się z tłem i nic by nie
+   było widać. Uniesienie translateY + podkreślenie na hover/focus
+   wystarcza jako reakcja, bez wymyślania nowego, jaśniejszego cienia
+   tylko dla tego jednego, ciemnego kontekstu. */
+.footer__links a:hover,
+.footer__links a:focus-visible {
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
 
 /* ===================================================================
    ANIMACJE PRZY SCROLLU — scaffolding pod przyszłą rozbudowę

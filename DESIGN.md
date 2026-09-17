@@ -375,9 +375,28 @@ content.
   interactive element. Not a shadow, but the primary depth-cue for keyboard state.
 
 ### Named Rules
-**The Lift-Means-Interactive Rule.** With the single exception of the portfolio
-card's resting shadow, a shadow means the element is hovered, targeted, or the
-animated phone. Resting surfaces read as flat, tinted paper.
+**The Lift-Means-Interactive Rule.** With the exception of the portfolio
+card's resting shadow and the primary-CTA pulse below, a shadow means the
+element is hovered, targeted, or the animated phone. Resting surfaces read
+as flat, tinted paper.
+
+**The CTA Pulse (exception, 17.09.2026).** The three instances of the
+primary "Umów konsultację" button — hero, `.nav__cta`, and the closing CTA
+on `index.html` — carry a continuous, ambient `box-shadow` pulse
+(`cta-pulse` keyframe, `rgba(31,61,43,0.35) → rgba(31,61,43,0)`, `2s
+ease-in-out infinite`), independent of hover/focus. This is a deliberate,
+explicit exception to the rule above and to "reserve motion for content
+that changes" (see Key Characteristics) — specified in full detail by the
+site owner (exact color, ring size, cycle length, easing), not a reflexive
+AI pattern. Scoped narrowly to `.btn--pulse` (hero + closing CTA) and
+`.nav__cta` specifically, so the accent's scarcity (One Mark Rule) isn't
+diluted across every button on the site — only the single highest-priority
+action pulses, everywhere else stays governed by the rule above. Gated
+behind `@media (prefers-reduced-motion: no-preference)`, so it doesn't
+exist at all under reduced motion (fully static, no override needed
+elsewhere). Pauses on hover/focus (`animation-play-state: paused`) so the
+pre-existing hover lift/shadow can render without the animation
+overwriting `box-shadow` every frame.
 
 ## Shapes
 
@@ -410,9 +429,25 @@ component and do not give an action a boxy radius.
   shadow `0 12px 28px rgba(31,61,43,0.28)`; transition `0.18s` on the
   `cubic-bezier(0.22, 1, 0.36, 1)` ease. Transition removed under reduced
   motion.
+- **Pulse (primary CTA only):** hero button, `.nav__cta`, and the
+  `index.html` closing CTA additionally carry an ambient `box-shadow` pulse
+  at rest — see The CTA Pulse under Elevation & Depth → Named Rules for the
+  full exception writeup. Paused on hover/focus; absent under reduced motion.
 - **Nav CTA:** same fill and text, smaller pill (`9px 18px`), always full opacity
-  among the dimmed (0.85) nav links.
-- **Secondary / Ghost:** none. Leaf Green text links fill that role.
+  among the dimmed (0.85) nav links. Previously had no dedicated hover state;
+  now mirrors the primary button's hover (Leaf Green background,
+  `translateY(-2px)`, same directional shadow) so it isn't the one "Umów
+  konsultację" instance with zero feedback once its pulse pauses on hover.
+- **Secondary / Ghost:** none as filled buttons — Leaf Green text links fill
+  that role. As of 17.09.2026 these secondary links (nav text links, footer
+  links, article "wróć"/"zobacz wszystkie" links, the portfolio card's
+  `.card__link`) also lift on hover/focus (`translateY(-2px)` +
+  `box-shadow: var(--shadow)`, `0.18s` transition) — the same interactive-only
+  lift language as the article card, extended from cards down to plain
+  links so every clickable "goes somewhere" element in this tier reacts the
+  same way. **Exception:** footer links skip the `box-shadow` — the
+  green-tinted `--shadow` token is invisible against Pine Black, so only
+  `translateY` + underline carry the hover cue there.
 
 ### Cards / Containers
 - **Sections themselves are not containers.** `.section > .container` carries no
@@ -503,8 +538,10 @@ same stroke system as elsewhere); a small Bottle Green dot after each label
 is the only accent — a full row of solid-green icons would spend the One
 Mark Rule's scarcity on decoration. `prefers-reduced-motion` stops the
 animation and drops the hidden duplicate; the strip becomes a static row.
-This is the one exception to "reserve motion for content that changes" —
-kept deliberately, on explicit direction, modeled on a named reference site.
+This was the one exception to "reserve motion for content that changes"
+until the CTA pulse (17.09.2026, see Elevation & Depth → Named Rules) —
+both kept deliberately, on explicit direction, each scoped narrowly rather
+than becoming a general license for ambient motion elsewhere.
 
 ### Trust icons (atuty)
 Four short facts in a row — Bezpłatna konsultacja / Cała Polska, zdalnie / 2 rundy
