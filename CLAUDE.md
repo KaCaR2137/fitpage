@@ -192,9 +192,12 @@ uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
 strony), między FAQ a Kontakt. Cztery artykuły obecnie (najnowszy:
 „Instagram czy własna strona internetowa? Co bardziej buduje zaufanie
-klienta”, 16.09.2026, bez zdjęcia w tle nagłówka — klient nie dostarczył
-grafiki, więc zwykły `.hero--compact` zamiast `.hero--cover`, jak
-`faq.html`/`proces.html`) + komentarz `<!-- TODO: kolejne artykuły -->`
+klienta”, 16.09.2026 — początkowo bez zdjęcia w tle nagłówka, bo klient
+nie dostarczył grafiki od razu; zdjęcie (`tlodoartykulu4.png`, rozmyty
+telefon z ikonami Instagrama/social mediów na czarnym tle) doszło
+17.09.2026 tym samym workflow co pozostałe artykuły — patrz „Opcjonalne
+zdjęcie w tle nagłówka” niżej, teraz też `.hero--cover`) + komentarz
+`<!-- TODO: kolejne artykuły -->`
 pokazujący gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
 (mniejszy padding/odstępy/font nagłówka, lead przycięty do 3 linii przez
 `-webkit-line-clamp`) — pojedyncza karta potrafiła zająć do ~37% wysokości
@@ -235,14 +238,24 @@ wymyślać nowego. Pierwszy przykład: `jak-wyroznic-sie-jako-trener.html`,
 z `artykul-jak-wyroznic-sie-DRAFT.md`.
 
 **Opcjonalne zdjęcie w tle nagłówka** — jeśli do artykułu dostarczone jest
-zdjęcie: zoptymalizować (`sips -Z 1600 -s format jpeg -s formatOptions 78`,
-docelowo `images/artykul-<slug>-hero.jpg` — oryginał może zostać w korzeniu
-repo jako źródło, bezpieczny bo poza allowlistą `.assetsignore`), dodać klasę
-`.hero--cover` do `<section class="hero hero--compact">` tej strony +
-`style="background-image: url('../images/...')"` inline (obraz to treść
-per-artykuł, reszta stylu już czeka w `style.css`). Nie kopiować CSS
-`.hero--cover` między stronami — to współdzielona klasa, jeden artykuł =
-jedna linijka inline z URL-em zdjęcia.
+zdjęcie (od razu lub później, jak przy `instagram-czy-strona.html`, patrz
+wyżej): zoptymalizować do JPEG (`sips -Z 1600 -s format jpeg -s
+formatOptions 78`, docelowo `images/artykul-<slug>-hero.jpg` — oryginał
+może zostać w korzeniu repo jako źródło, bezpieczny bo poza allowlistą
+`.assetsignore`) **i** wygenerować `.webp` obok (Pillow, `quality=80` —
+ten sam schemat co reszta zdjęć, patrz „Obrazy — WebP z fallbackiem”
+wyżej). Dodać klasę `.hero--cover` do `<section class="hero
+hero--compact">` tej strony + dwuwarstwowy `style="background-image:
+url('../images/....jpg'); background-image: image-set(url('../images/....webp')
+type('image/webp'), url('../images/....jpg') type('image/jpeg'));"`
+inline (obraz to treść per-artykuł, reszta stylu już czeka w
+`style.css`) — ten sam wzorzec `image-set()` co przy tłach CSS gdzie
+indziej (patrz „Tła CSS” wyżej), nie `<picture>` (to działa tylko dla
+`<img>`). Nie kopiować CSS `.hero--cover` między stronami — to
+współdzielona klasa, jeden artykuł = jedna linijka inline z URL-ami
+zdjęcia. Sprawdzić kontrast tekstu piksel po pikselu (PIL, jak przy
+poprzednich zdjęciach) — jeśli najciemniejszy scrim (0.65) i najjaśniejszy
+realny fragment zdjęcia i tak dają >=4.5:1, nic nie trzeba dostrajać.
 
 **`polityka-prywatnosci.html`** — **Żywa i podlinkowana** (stopka, wszystkie
 strony — jako ostatni link, po Kontakt) — `noindex` usunięty (16.09.2026).
