@@ -335,7 +335,11 @@ hero + sekcja kontakt na index) prowadzą tutaj.
   „Zapytaj o wycenę””), co Cię wyróżnia (textarea), Instagram/Facebook
   (tekst), **styl strony** (`.form__radio-group`, 3 opcje: poważnie i
   eksperckie / swobodnie i przyjaźnie / coś pomiędzy), inspiracja (tekst,
-  link do strony wzorcowej).
+  link do strony wzorcowej — placeholder krótki, „Link do strony”; pełne
+  pytanie w `.form__hint` pod polem, nie w placeholderze — pierwsza wersja
+  wpisywała tam całe zdanie, które się nie mieściło w jednolinijkowym
+  polu i wizualnie ucinało, poprawione 18.09.2026 tym samym wzorcem co
+  „Twoja wizja strony” niżej).
 - **„Twoja wizja strony”** (textarea, na samym końcu, tuż przed RODO) —
   była jedynym wymaganym polem opisowym, teraz **opcjonalna**, przemianowana
   w treści placeholdera na ogólne „dowolne uwagi, które nie zmieściły się w
@@ -343,15 +347,23 @@ hero + sekcja kontakt na index) prowadzą tutaj.
   linki-inspiracje — mają już własne, dedykowane pola, więc zostawienie
   starego tekstu dublowałoby je).
 
-`.form__radio-group` — nowy, prosty wzorzec dla grupy radio z tekstowymi
-opcjami (nie ocena gwiazdkowa jak `.form__rating-group`): natywne radio
-**widoczne** (nie ukryte jak w ocenie — nie ma tu osobnej ikony do
-narysowania), `accent-color: var(--accent)`, cel dotyku 44px na całej
-etykiecie `<label>` (klik gdziekolwiek w label zaznacza input — to
-wystarcza na WCAG 2.5.5/2.5.8 bez custom SVG). Oba pola radio są
-opcjonalne, więc bez `required`/ikonki błędu — `script.js` i tak ich nie
-zbiera do walidacji (selektor `formFields` łapie `.form__row input/textarea`
-i `[required]` warianty konsentu/oceny, nie `.form__radio-group`).
+`.form__radio-group` — wzorzec dla grupy radio z tekstowymi opcjami (nie
+ocena gwiazdkowa jak `.form__rating-group`). Pierwsza wersja (17.09.2026)
+używała widocznego natywnego radio + `accent-color`; **zmienione
+18.09.2026** na dokładnie tę samą animację zaznaczenia co `.form__consent`
+(zgody) — natywny input ukryty (`opacity:0`), rysowany `.form__radio-dot`
+(`border-radius: 50%` zamiast kwadratu, wypełniona kropka SVG zamiast
+ptaszka), ten sam, współdzielony keyframe `consent-pop` (skala
+1 → 1.22 → 0.94 → 1) na `:checked`, ta sama transition na
+background-color/border-color/background-size. Cel dotyku 44px zostaje na
+`<label>` (`min-height: 44px`, `align-items: center` — inaczej niż
+`.form__consent`, które pod `align-items: start` polega na tym, że tekst
+zgody i tak zwykle zawija się na >1 linię; tu opcje są jednolinijkowe,
+więc bez jawnego `min-height` rząd byłby węższy niż 44px). Oba pola radio
+są opcjonalne, więc bez `required`/ikonki błędu — `script.js` i tak ich
+nie zbiera do walidacji (selektor `formFields` łapie `.form__row
+input/textarea` i `[required]` warianty konsentu/oceny, nie
+`.form__radio-group`).
 
 Klauzula RODO: opis zbieranych danych celowo ogólny („dane kontaktowe oraz
 informacje o Twojej działalności i wizji strony”), nie wymienia już pól

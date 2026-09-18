@@ -129,11 +129,13 @@
             <legend>Ceny na stronie <span class="form__optional">(opcjonalnie)</span></legend>
             <label class="form__radio-option">
               <input type="radio" name="ceny_na_stronie" value="Chcę pokazać konkretne ceny">
-              Chcę pokazać konkretne ceny
+              <span class="form__radio-dot" aria-hidden="true"></span>
+              <span class="form__radio-text">Chcę pokazać konkretne ceny</span>
             </label>
             <label class="form__radio-option">
               <input type="radio" name="ceny_na_stronie" value="Wolę „Zapytaj o wycenę”">
-              Wolę „Zapytaj o wycenę”
+              <span class="form__radio-dot" aria-hidden="true"></span>
+              <span class="form__radio-text">Wolę „Zapytaj o wycenę”</span>
             </label>
           </fieldset>
 
@@ -153,22 +155,26 @@
             <legend>Styl strony <span class="form__optional">(opcjonalnie)</span></legend>
             <label class="form__radio-option">
               <input type="radio" name="styl_strony" value="Poważnie i eksperckie">
-              Poważnie i eksperckie
+              <span class="form__radio-dot" aria-hidden="true"></span>
+              <span class="form__radio-text">Poważnie i eksperckie</span>
             </label>
             <label class="form__radio-option">
               <input type="radio" name="styl_strony" value="Swobodnie i przyjaźnie">
-              Swobodnie i przyjaźnie
+              <span class="form__radio-dot" aria-hidden="true"></span>
+              <span class="form__radio-text">Swobodnie i przyjaźnie</span>
             </label>
             <label class="form__radio-option">
               <input type="radio" name="styl_strony" value="Coś pomiędzy">
-              Coś pomiędzy
+              <span class="form__radio-dot" aria-hidden="true"></span>
+              <span class="form__radio-text">Coś pomiędzy</span>
             </label>
           </fieldset>
 
           <div class="form__row">
             <label for="inspiracja">Inspiracja <span class="form__optional">(opcjonalnie)</span></label>
             <input type="text" id="inspiracja" name="inspiracja" maxlength="300"
-                   placeholder="Widziałaś/eś jakąś stronę (dowolna branża), która Ci się podoba? Wklej link, jeśli masz.">
+                   placeholder="Link do strony" aria-describedby="inspiracja-hint">
+            <small class="form__hint" id="inspiracja-hint">Widziałaś/eś jakąś stronę (dowolna branża), która Ci się podoba? Wklej link, jeśli masz.</small>
           </div>
 
           <div class="form__row">
