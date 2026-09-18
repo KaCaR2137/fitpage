@@ -321,10 +321,42 @@ gwiazdki + realną średnią (np. „5.0” + aria-label „Ocena 5 na 5 gwiazde
 „(1 opinia)”) — instrukcja zapisana wprost w komentarzu HTML nad tą sekcją.
 
 **`kontakt.html`** — podstrona z briefem (wg standardu ze skilla: formularz na
-osobnej podstronie, nie w modalu). Pola: imię i nazwisko, e-mail, telefon,
-opis wizji strony (textarea) + klauzula RODO (rozwijana) + zgoda wymagana
-+ zgoda marketingowa opcjonalna. Wszystkie CTA „Umów konsultację” (nav + hero
-+ sekcja kontakt na index) prowadzą tutaj.
+osobnej podstronie, nie w modalu). Wszystkie CTA „Umów konsultację” (nav +
+hero + sekcja kontakt na index) prowadzą tutaj.
+
+**Pola (rozbudowane 18.09.2026, kolejność jak w formularzu):**
+- Wymagane: imię i nazwisko, e-mail, telefon, **miasto/forma zajęć**
+  (`miasto_forma_zajec`, nowe — krótki tekst, placeholder „np. Poznań,
+  stacjonarnie i online”).
+- Opcjonalne (każde z `<span class="form__optional">(opcjonalnie)</span>`
+  w etykiecie, żeby nie było wątpliwości które pola można pominąć):
+  specjalizacja, oferta/pakiety (obie textarea), **ceny na stronie**
+  (`.form__radio-group`, 2 opcje: „Chcę pokazać konkretne ceny” / „Wolę
+  „Zapytaj o wycenę””), co Cię wyróżnia (textarea), Instagram/Facebook
+  (tekst), **styl strony** (`.form__radio-group`, 3 opcje: poważnie i
+  eksperckie / swobodnie i przyjaźnie / coś pomiędzy), inspiracja (tekst,
+  link do strony wzorcowej).
+- **„Twoja wizja strony”** (textarea, na samym końcu, tuż przed RODO) —
+  była jedynym wymaganym polem opisowym, teraz **opcjonalna**, przemianowana
+  w treści placeholdera na ogólne „dowolne uwagi, które nie zmieściły się w
+  polach powyżej” (stare pytania z placeholdera — specjalizacja, oferta,
+  linki-inspiracje — mają już własne, dedykowane pola, więc zostawienie
+  starego tekstu dublowałoby je).
+
+`.form__radio-group` — nowy, prosty wzorzec dla grupy radio z tekstowymi
+opcjami (nie ocena gwiazdkowa jak `.form__rating-group`): natywne radio
+**widoczne** (nie ukryte jak w ocenie — nie ma tu osobnej ikony do
+narysowania), `accent-color: var(--accent)`, cel dotyku 44px na całej
+etykiecie `<label>` (klik gdziekolwiek w label zaznacza input — to
+wystarcza na WCAG 2.5.5/2.5.8 bez custom SVG). Oba pola radio są
+opcjonalne, więc bez `required`/ikonki błędu — `script.js` i tak ich nie
+zbiera do walidacji (selektor `formFields` łapie `.form__row input/textarea`
+i `[required]` warianty konsentu/oceny, nie `.form__radio-group`).
+
+Klauzula RODO: opis zbieranych danych celowo ogólny („dane kontaktowe oraz
+informacje o Twojej działalności i wizji strony”), nie wymienia już pól
+z nazwy — przy 11 polach dosłowna lista szybko się dezaktualizuje przy
+każdej kolejnej zmianie formularza.
 
 Wysyłka: **Formspree** (`action="https://formspree.io/f/moeqzapr"`,
 `method="post"`) — wybrane, bo hosting to Cloudflare Pages/Workers, gdzie

@@ -1196,7 +1196,45 @@ summary:focus-visible {
   .form__rating label { transition: none; }
 }
 
+/* --- Grupa radio prostych wyborów tekstowych (nie ocena gwiazdkowa) ---
+   "Ceny na stronie" / "Styl strony" na kontakt.html — oba opcjonalne, więc
+   bez ikonki błędu / required. Natywny radio zostaje widoczny (nie ukryty
+   jak .form__rating), bo tu nie ma osobnej ikony do narysowania — sam
+   accent-color wystarcza. Cel dotyku 44px na etykiecie (nie na samym 20px
+   kółku) — klik gdziekolwiek w <label> i tak zaznacza input, więc to
+   wystarcza na WCAG 2.5.5/2.5.8 bez przerabiania na custom SVG. */
+.form__radio-group { margin: 0 0 18px; padding: 0; border: 0; }
+.form__radio-group legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.form__radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.form__radio-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.form__radio-option input[type="radio"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.form__radio-option:has(input:checked) { color: var(--text); }
+
 .req { color: var(--accent); font-weight: 700; }
+.form__optional { color: var(--muted); font-weight: 400; font-size: 0.85em; }
 
 .form__status {
   min-height: 1.2em;

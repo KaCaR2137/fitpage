@@ -107,12 +107,76 @@
           </div>
 
           <div class="form__row">
-            <label for="wizja">Twoja wizja strony</label>
-            <textarea id="wizja" name="wizja" rows="6" required maxlength="4000"
-              placeholder="Kogo trenujesz i dla kogo ma być strona? Co strona ma osiągać (więcej zapytań, zapisy na zajęcia, budowanie marki)? Podlinkuj strony, które Ci się podobają."
-              aria-describedby="wizja-hint wizja-error"></textarea>
-            <small class="form__hint" id="wizja-hint">Kilka zdań w zupełności wystarczy, resztę doprecyzujemy na konsultacji.</small>
-            <small class="form__error" id="wizja-error" aria-live="polite"></small>
+            <label for="miasto-forma">Miasto/forma zajęć</label>
+            <input type="text" id="miasto-forma" name="miasto_forma_zajec" required autocomplete="address-level2"
+                   placeholder="np. Poznań, stacjonarnie i online" maxlength="100" aria-describedby="miasto-forma-error">
+            <small class="form__error" id="miasto-forma-error" aria-live="polite"></small>
+          </div>
+
+          <div class="form__row">
+            <label for="specjalizacja">Specjalizacja <span class="form__optional">(opcjonalnie)</span></label>
+            <textarea id="specjalizacja" name="specjalizacja" rows="3" maxlength="2000"
+              placeholder="Kogo trenujesz i w czym się specjalizujesz? Np. redukcja wagi, przygotowanie motoryczne, powrót po kontuzji."></textarea>
+          </div>
+
+          <div class="form__row">
+            <label for="oferta-pakiety">Oferta/pakiety <span class="form__optional">(opcjonalnie)</span></label>
+            <textarea id="oferta-pakiety" name="oferta_pakiety" rows="3" maxlength="2000"
+              placeholder="Jakie masz pakiety lub usługi? Np. pojedyncza sesja, karnet 4/8/12 sesji, plan online."></textarea>
+          </div>
+
+          <fieldset class="form__radio-group">
+            <legend>Ceny na stronie <span class="form__optional">(opcjonalnie)</span></legend>
+            <label class="form__radio-option">
+              <input type="radio" name="ceny_na_stronie" value="Chcę pokazać konkretne ceny">
+              Chcę pokazać konkretne ceny
+            </label>
+            <label class="form__radio-option">
+              <input type="radio" name="ceny_na_stronie" value="Wolę „Zapytaj o wycenę”">
+              Wolę „Zapytaj o wycenę”
+            </label>
+          </fieldset>
+
+          <div class="form__row">
+            <label for="wyroznienie">Co Cię wyróżnia <span class="form__optional">(opcjonalnie)</span></label>
+            <textarea id="wyroznienie" name="wyroznienie" rows="3" maxlength="2000"
+              placeholder="Dlaczego klienci wybierają akurat Ciebie? Doświadczenie, podejście, certyfikaty."></textarea>
+          </div>
+
+          <div class="form__row">
+            <label for="social">Instagram/Facebook <span class="form__optional">(opcjonalnie)</span></label>
+            <input type="text" id="social" name="instagram_facebook" maxlength="200"
+                   placeholder="np. instagram.com/twojprofil">
+          </div>
+
+          <fieldset class="form__radio-group">
+            <legend>Styl strony <span class="form__optional">(opcjonalnie)</span></legend>
+            <label class="form__radio-option">
+              <input type="radio" name="styl_strony" value="Poważnie i eksperckie">
+              Poważnie i eksperckie
+            </label>
+            <label class="form__radio-option">
+              <input type="radio" name="styl_strony" value="Swobodnie i przyjaźnie">
+              Swobodnie i przyjaźnie
+            </label>
+            <label class="form__radio-option">
+              <input type="radio" name="styl_strony" value="Coś pomiędzy">
+              Coś pomiędzy
+            </label>
+          </fieldset>
+
+          <div class="form__row">
+            <label for="inspiracja">Inspiracja <span class="form__optional">(opcjonalnie)</span></label>
+            <input type="text" id="inspiracja" name="inspiracja" maxlength="300"
+                   placeholder="Widziałaś/eś jakąś stronę (dowolna branża), która Ci się podoba? Wklej link, jeśli masz.">
+          </div>
+
+          <div class="form__row">
+            <label for="wizja">Twoja wizja strony <span class="form__optional">(opcjonalnie)</span></label>
+            <textarea id="wizja" name="wizja" rows="6" maxlength="4000"
+              placeholder="Chcesz dodać coś, co nie zmieściło się w polach powyżej? To dobre miejsce na dowolne uwagi."
+              aria-describedby="wizja-hint"></textarea>
+            <small class="form__hint" id="wizja-hint">Zupełnie opcjonalne — reszta pól wyżej daje nam już niezły obraz sytuacji.</small>
           </div>
 
           <!-- RODO — klauzula informacyjna, uzupełniona realnymi danymi
@@ -124,7 +188,8 @@
             <p>
               Administratorem danych podanych w formularzu jest Kacper Barczak
               (osoba fizyczna, bez zarejestrowanej działalności gospodarczej).
-              Dane (imię i nazwisko, e-mail, telefon, opis wizji strony) przetwarzane są
+              Dane podane w formularzu (dane kontaktowe oraz informacje o Twojej
+              działalności i wizji strony) przetwarzane są
               w celu obsługi zapytania, przygotowania oferty i kontaktu, na podstawie
               art. 6 ust. 1 lit. b oraz f RODO. Dane będą przechowywane przez
               12 miesięcy od ostatniego kontaktu, a w przypadku zawartej współpracy —
