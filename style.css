@@ -282,8 +282,16 @@ summary:focus-visible {
 }
 .nav__logo-img {
   display: block;
+  /* Wymiary jawne + flex-shrink: 0, nie "height: 44px; width: auto".
+     .nav__logo to kontener flex, a przy width: auto obrazek jest elementem
+     flex, który może się kurczyć — na telefonach węższych niż ~385px
+     (360px: 19x44, 375px: 34x44, 320px: 0x44 — zmierzone) logo było
+     ściskane wszerz i wyglądało na rozciągnięte pionowo. Ikona jest
+     kwadratowa (596x596), więc 44x44 to jej realne proporcje. */
+  width: 44px;
   height: 44px; /* dopasowane do wysokości .nav__cta (~43px) */
-  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .nav__logo-text {
   font-weight: 800;
@@ -553,6 +561,19 @@ summary:focus-visible {
 }
 
 /* ============================== O NAS ============================== */
+/* Przed odsłonięciem (.reveal, poniżej ekranu) telefon jest przesunięty o
+   42px w prawo (translateX), a jego poświata ::before wystaje jeszcze
+   ~24% szerokości poza figurę — razem ~9px poza viewport na telefonie 390px
+   (zmierzone: scrollWidth 399 przy oknie 390), więc strona główna dawała
+   się przesuwać na boki, dopóki nie doscrollowało się do tej sekcji.
+   `clip` przycina tylko poziomo i nie tworzy kontenera przewijania
+   (overflow-y zostaje visible — cień/poświata telefonu nie są ucinane od
+   góry i dołu, jak przy `hidden`); `hidden` przed nim to fallback dla
+   przeglądarek bez `clip` (Safari < 16). */
+.o-nas {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
 .o-nas p {
   max-width: 680px;
   color: var(--muted);
@@ -1532,6 +1553,37 @@ summary:focus-visible {
      więc szerokość (zmierzona wcześniej: 148px, z zapasem ~15px pod
      progiem 700px) jest nietknięta. */
   .nav__cta { padding: 11px 14px; font-size: 0.85rem; }
+}
+
+/* --- <= 385px : wąskie telefony (iPhone SE/mini 375, popularne Androidy 360, 320) ---
+   Pełny pasek nav (logo 44 + napis 72 + CTA 149 + hamburger 44 + odstępy +
+   padding kontenera) potrzebuje ~385px; węższy ekran nie mieścił go bez
+   ściskania logo lub poziomego przewijania. Zamiast zmniejszać cele dotyku
+   (CTA i hamburger zostają 44px wysokości), oszczędzamy na odstępach,
+   paddingu i kroju napisu. */
+@media (max-width: 385px) {
+  .nav__inner { gap: 8px; }
+  .nav__inner.container { padding-inline: 16px; }
+  .nav__logo { gap: 8px; }
+  .nav__logo-text { font-size: 1.1rem; }
+  .nav__right { gap: 4px; }
+  .nav__cta { padding: 12px 12px; font-size: 0.8rem; } /* 12px pion: przy 0.8rem daje pełne 44px */
+}
+
+/* --- <= 349px : najwęższe telefony (320-349px) ---
+   Nawet po powyższym napis "FitPage" obok ikony się nie mieści. Ikona
+   zostaje, napis jest tylko ukryty wizualnie (technika visually-hidden, nie
+   display:none) — dzięki temu link do strony głównej zachowuje nazwę
+   dostępności (img ma alt="", więc to napis jest jego nazwą). */
+@media (max-width: 349px) {
+  .nav__logo-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 
 /* --- >= 700px --- */

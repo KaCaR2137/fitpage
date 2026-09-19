@@ -124,6 +124,18 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    większym zapasem niż wtedy. `.nav__cta` dobite do pełnych `44px` wysokości
    (WCAG 2.5.5/2.5.8, ten sam próg co `.nav__toggle`) pionowym paddingiem
    `11px` zamiast `10px` — poziomy padding/szerokość bez zmian.
+   **Wąskie telefony (19.09.2026):** pełny pasek (logo 44 + napis 72 + CTA
+   149 + hamburger 44 + odstępy + padding) potrzebuje ~385px. Poniżej tego
+   `.nav__logo-img` (wtedy `height: 44px; width: auto` jako element flex)
+   był ściskany wszerz — zmierzone: 34×44 przy 375px, 19×44 przy 360px,
+   0×44 przy 320px — stąd „rozciągnięte wzdłuż” logo na części telefonów.
+   Naprawa: ikona ma jawne `44×44` + `flex-shrink: 0`, a nav się zagęszcza
+   w dwóch progach — `≤385px` (mniejsze odstępy, padding kontenera 16px,
+   napis `1.1rem`, CTA `0.8rem` z pionowym paddingiem 12px = 44px) i
+   `≤349px` (napis „FitPage” ukryty technika visually-hidden, nie
+   `display:none`, żeby link do strony głównej zachował nazwę dostępności).
+   Przy zmianie zawartości paska (nowy link, dłuższy CTA) sprawdź szerokości
+   320/360/375/390 — ikona ma zawsze zostać 44×44.
 2. Hero — „Niech Twoja forma nie będzie jedyną wizytówką” + podtytuł + CTA „Umów konsultację”
 3. Treningi (pasek) — poziomy, zapętlony marquee (`.trainings`) z 8 ikonami+etykietami
    rodzajów treningu (trening siłowy, bieganie, pilates, balet, joga, boks,
