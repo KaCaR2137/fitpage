@@ -218,19 +218,22 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    artykułów, ten sam markup co lista na `artykuly.html` (`.artykuly__grid`
    + `.artykul-card`, karty obok siebie na desktopie dzięki `auto-fit` —
    patrz sekcja `artykuly.html` niżej) + link „Zobacz wszystkie artykuły” →
-   `artykuly.html`. **Uwaga (celowa rozbieżność od 16.09.2026):** to już
-   **nie jest** zawsze pełne lustro pełnej listy — pokazuje tylko 3
-   najstarsze z 4 obecnych artykułów (`jak-zdobyc-klientow-bez-reklam`,
-   `ile-kosztuje-strona-dla-trenera`, `jak-wyroznic-sie-jako-trener`);
-   najnowszy (`instagram-czy-strona`) pojawia się tylko na pełnej liście,
-   na wyraźne życzenie — podgląd na stronie głównej ma pozostać krótki,
-   pełna lista ma być jedynym miejscem, które rośnie wraz z każdym kolejnym
-   artykułem. Przy dodawaniu kolejnych artykułów: domyślnie dopisuj tylko do
-   `artykuly.html`, nie kopiuj automatycznie do tego podglądu, chyba że
-   ktoś wyraźnie o to poprosi. To był też jedyny widoczny numer telefonu na
-   stronie głównej poza nav/hero CTA — sam numer nigdzie indziej na
-   `index.html` się teraz nie pojawia (formularz na `kontakt.html` nadal go
-   pokazuje jako fallback błędu wysyłki).
+   `artykuly.html`. **Zasada (poprawiona 22.09.2026, patrz historia niżej):**
+   podgląd pokazuje zawsze 3 **najnowsze** artykuły, w kolejności od
+   najnowszego — obecnie `jakie-zdjecia-tresci-przygotowac` (19.09),
+   `instagram-czy-strona` (16.09), `jak-zdobyc-klientow-bez-reklam` (15.09).
+   Przy dodawaniu kolejnego artykułu: dopisz jego kartę na samej górze tej
+   listy i usuń najstarszą z trzech obecnych, żeby podgląd zostawał krótki
+   (3 karty) i zawsze aktualny — pełna, rosnąca lista zostaje wyłącznie na
+   `artykuly.html`. **Historia:** między 16.09 a 22.09.2026 obowiązywała
+   odwrotna, celowa zasada — podgląd pokazywał 3 *najstarsze* artykuły i
+   świadomie NIE aktualizował się o nowe, żeby uniknąć kopiowania przy
+   każdym dodaniu. Klient poprosił wprost o odwrócenie tego na "od
+   najnowszego" — nie licz więc, że któraś z tych dwóch wersji reguły jest
+   trwalsza od drugiej; trzymaj się tej aktualnej. To był też jedyny
+   widoczny numer telefonu na stronie głównej poza nav/hero CTA — sam numer
+   nigdzie indziej na `index.html` się teraz nie pojawia (formularz na
+   `kontakt.html` nadal go pokazuje jako fallback błędu wysyłki).
 7. Atuty (`.atuty`) — pasek 4 punktów (Bezpłatna konsultacja / Cała Polska, zdalnie /
    2 rundy poprawek w cenie / Trenerzy, instruktorzy, coache), bez panelu, akcent
    punktowo tylko na pierwszej ikonie.
