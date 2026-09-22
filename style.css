@@ -671,10 +671,14 @@ summary:focus-visible {
    tylko w pionie zamiast w poziomie. linear, bez easingu — stałe tempo,
    bez przyspieszeń/zwolnień przy każdym powtórzeniu pętli. */
 .terminal__scroll {
-  animation: terminal-scroll 29s linear infinite; /* czas dobrany do wysokości
-  jednej kopii treści (~558px, po dodaniu linii echo 22.09.2026) tak, żeby
-  tempo zostało ~19px/s jak przy pierwszej wersji (493px/26s) — przy zmianie
-  treści przelicz analogicznie, nie zostawiaj starego czasu z inną liczbą linii */
+  /* 22.09.2026: treść zredukowana do krótkiego CTA (~210px/kopia, wcześniej
+     ~558px z kodem/git/audytem) — przy okazji zwolnione tempo z ~19px/s do
+     ~9.5px/s (210px/22s). Poprzednia treść była ambientowym tłem (kod, nie
+     do czytania słowo w słowo), więc mogła przelatywać szybciej; ta jest
+     realną wiadomością (CTA), ma być czytelna w trakcie przewijania, nie
+     tylko dekoracyjna. Przy kolejnej zmianie treści przelicz proporcjonalnie
+     do NOWEGO celu (czytelność vs ambient), nie kopiuj tej liczby wprost. */
+  animation: terminal-scroll 22s linear infinite;
 }
 .terminal__code {
   margin: 0;
@@ -696,15 +700,14 @@ summary:focus-visible {
 }
 
 /* kolory tokenów — paleta zbliżona do VS Code Dark+, tylko w tym panelu
-   (nie dotyczy reszty strony, stąd wartości wpisane wprost, nie zmienne) */
-.t-c      { color: #6A9955; } /* komentarz */
-.t-kw     { color: #569CD6; } /* słowo kluczowe: :root, const, new, if */
-.t-str    { color: #CE9178; } /* string/wartość: hex kolorów, cudzysłowy */
-.t-var    { color: #9CDCFE; } /* nazwa zmiennej CSS */
-.t-fn     { color: #DCDCAA; } /* nazwa funkcji/metody */
-.t-ok     { color: #4EC9B0; } /* wynik sukcesu: deploy, audyt */
+   (nie dotyczy reszty strony, stąd wartości wpisane wprost, nie zmienne).
+   Treść od 22.09.2026 (CTA: whoami/status/echo/open) używa tylko tych
+   dwóch klas — .t-c/.t-kw/.t-var/.t-fn/.t-ok/.t-muted zostały usunięte
+   razem z poprzednią treścią (tokeny CSS, git, script.js, audyt), która
+   je jedyna wykorzystywała; jeśli treść znów urośnie o inne typy tokenów,
+   dopisz analogiczną klasę zamiast nadużywać tych dwóch do wszystkiego. */
+.t-str    { color: #CE9178; } /* string/wartość w cudzysłowie */
 .t-prompt { color: #6A9955; } /* znak "$" zachęty terminala */
-.t-muted  { color: #808080; } /* mniej istotny fragment: hash commitów */
 
 @keyframes terminal-scroll {
   from { transform: translateY(0); }

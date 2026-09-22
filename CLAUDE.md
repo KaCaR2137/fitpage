@@ -158,23 +158,40 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    desktopie, ~1.4:1 — świadomie NIE wąska ramka telefonu jak poprzednio),
    `max-width: 420px` (mobile: `width: 100%` do tego limitu). Pasek tytułu
    (`.terminal__bar`) — 3 kropki styl macOS (`#FF5F57`/`#FEBC2E`/`#28C840`)
-   + napis „fitpage — terminal”. Treść (`.terminal__code`) to prawdziwy,
-   związany z projektem fragment: token CSS (`--c-cream`/`--c-green`),
-   sekwencja `git add/commit/push` z realnymi hashami commitów z historii
-   repo (`6ab4a25..8997ca7`, artykuł + fix logo), fragment `script.js`
-   (`IntersectionObserver` → `.widoczna`, ten sam mechanizm co realny kod
-   w tym pliku) i wynik `npx impeccable audit`. Kolory tokenów wpisane na
-   sztywno (`.t-c`/`.t-kw`/`.t-str`/`.t-var`/`.t-fn`/`.t-ok`/`.t-prompt`/
-   `.t-muted`), paleta zbliżona do VS Code Dark+ — nie przez zmienne
-   `--text`/`--muted`/itd., bo to osobny, ciemny mikroukład niezależny od
-   jasnej palety reszty strony.
+   + napis „fitpage — terminal”. **Treść (`.terminal__code`), zmieniona
+   22.09.2026 z demo-kodu na czyste CTA** — pierwsza wersja pokazywała
+   token CSS, sekwencję `git add/commit/push` z realnymi hashami commitów
+   i wynik `npx impeccable audit` (ambientowy „kod w tle”, do skanowania
+   wzrokiem, nie do czytania słowo w słowo); zastąpiona krótką, w pełni
+   czytelną wiadomością: `$ whoami` → „trener personalny? Twoja strona
+   czeka”, `$ status` → „gotowa · czytelna · Twoja”, `$ echo "Umów
+   bezpłatną konsultację"` + `$ open fitpage.pl/kontakt` (ostatnia para bez
+   wyniku pod spodem — to sam koniec sekwencji). Kolory tokenów: tylko
+   `.t-prompt` (znak „$”) i `.t-str` (tekst w cudzysłowie) zostały —
+   `.t-c`/`.t-kw`/`.t-var`/`.t-fn`/`.t-ok`/`.t-muted` usunięte razem z
+   poprzednią treścią, jedyną, która ich używała; dopisz analogiczną klasę
+   zamiast nadużywać tych dwóch, jeśli treść znów urośnie o inne typy
+   tokenów. Reszta tekstu (linie „trener personalny...”/„gotowa...”, i
+   `open fitpage.pl/kontakt`) zostaje domyślnym kolorem `.terminal__code`
+   (`#D4D4D4`), bez owijania w `<a>` — to ma być czysty tekst w stylu
+   terminala, nie klikalny link. Kolory wpisane na sztywno, nie przez
+   zmienne `--text`/`--muted`/itd., bo to osobny, ciemny mikroukład
+   niezależny od jasnej palety reszty strony.
 
    **Pętla przewijania** — dokładnie ten sam trik co `.trainings-scroll`
    (patrz „Treningi” wyżej), tylko w pionie: treść zdublowana 1:1 wewnątrz
    `.terminal__scroll`, `@keyframes terminal-scroll` jedzie
-   `translateY(0) → translateY(-50%)`, `26s linear infinite` — stałe tempo,
-   bez easingu, żeby pętla nie przyspieszała/zwalniała przy każdym
-   powtórzeniu. `translateY(-50%)` to procent WŁASNEJ wysokości elementu,
+   `translateY(0) → translateY(-50%)` — stałe tempo (`linear`, bez
+   easingu), żeby pętla nie przyspieszała/zwalniała przy każdym
+   powtórzeniu. Czas (`animation-duration`) przeliczany przy każdej
+   zmianie treści z wysokości jednej kopii, nie wpisywany na sztywno raz —
+   po skróceniu treści do CTA (22.09.2026, ~210px/kopia) zamiast trzymać
+   tempo z wersji kod-jako-tło (~19px/s) tempo świadomie zwolnione do
+   ~9,5px/s (`22s`), bo ta treść ma być czytana w trakcie przewijania, nie
+   tylko migać w tle jak poprzednia. Pełne rozumowanie i wzór przeliczenia
+   w komentarzu przy `.terminal__scroll` w `style.css` — tam, nie tutaj, bo
+   to jedyne miejsce, które faktycznie edytuje się przy każdej zmianie.
+   `translateY(-50%)` to procent WŁASNEJ wysokości elementu,
    więc automatycznie równa się wysokości jednej kopii (obie kopie
    identyczne = ta sama wysokość), stąd zero widocznego "skoku" na złączeniu
    bez liczenia pikseli na sztywno. `.terminal__body` ma stałą wysokość
