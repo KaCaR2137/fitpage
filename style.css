@@ -591,70 +591,126 @@ summary:focus-visible {
 .o-nas__text { min-width: 0; }
 .o-nas__text p:last-child { margin-bottom: 0; }
 
-.o-nas__visual {
+/* --- Panel terminala (zastąpił mockup telefonu 22.09.2026) ---
+   Pozioma "landscape" karta, nie wąska ramka telefonu — stąd max-width
+   znacznie szerszy niż poprzednie 220/250px. Ciemny panel niezależny od
+   jasnej palety strony (dosłowny, statyczny fragment kodu/terminala jako
+   ilustracja, nie UI strony), więc kolory tokenów są wpisane na sztywno,
+   nie przez zmienne --text/--muted/itd. */
+.o-nas__terminal {
   position: relative;
   margin: 0;
   flex-shrink: 0;
-  max-width: 220px;            /* rozmiar telefonu na mobile */
   width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  background: #1A1A1A;
+  box-shadow: 0 22px 46px rgba(31, 45, 36, 0.22); /* ten sam cień co wcześniej pod telefonem */
+  overflow: hidden;
 }
-/* miękka poświata pod telefonem — na jasnym tle to już nie "światło w
-   ciemności", tylko cichy akcentowy cień/winieta spójna z zielenią */
-.o-nas__visual::before {
+/* ta sama miękka poświata co wcześniej pod telefonem, teraz pod panelem */
+.o-nas__terminal::before {
   content: "";
   position: absolute;
-  inset: -12% -24%;
+  inset: -10% -16%;
   background: radial-gradient(closest-side, rgba(31, 61, 43, 0.10), transparent 72%);
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
-.o-nas__visual img {
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #242424;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.terminal__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.terminal__dot--red    { background: #FF5F57; }
+.terminal__dot--yellow { background: #FEBC2E; }
+.terminal__dot--green  { background: #28C840; }
+.terminal__bar-title {
+  margin-left: 4px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+}
+/* okno o stałej wysokości + overflow: hidden — .terminal__scroll wewnątrz
+   jest wyższy niż to okno i przesuwa się w pionie (patrz niżej), reszta
+   po prostu zostaje przycięta, tak jak prawdziwy terminal pokazuje tylko
+   fragment długiego logu na raz */
+.terminal__body {
   position: relative;
+  height: 260px;
+  overflow: hidden;
+}
+/* delikatne rozmycie na krawędziach — tekst nie "wjeżdża"/"wyjeżdża" ostro */
+.terminal__body::before,
+.terminal__body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 32px;
   z-index: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 22px 46px rgba(31, 45, 36, 0.22)); /* miększy niż czarny 50% — na jasnym tle wyglądał ciężko */
+  pointer-events: none;
+}
+.terminal__body::before { top: 0;    background: linear-gradient(#1A1A1A, transparent); }
+.terminal__body::after  { bottom: 0; background: linear-gradient(transparent, #1A1A1A); }
+
+/* Dwie identyczne kopie treści w kolumnie (patrz HTML) — translateY(-50%)
+   przesuwa o dokładnie połowę WŁASNEJ wysokości .terminal__scroll, czyli o
+   wysokość jednej kopii, więc pętla jest bez szwu, ten sam trik co
+   translateX(-50%) w .trainings-scroll (patrz sekcja "Treningi" wyżej),
+   tylko w pionie zamiast w poziomie. linear, bez easingu — stałe tempo,
+   bez przyspieszeń/zwolnień przy każdym powtórzeniu pętli. */
+.terminal__scroll {
+  animation: terminal-scroll 26s linear infinite;
+}
+.terminal__code {
+  margin: 0;
+  padding: 18px;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  white-space: pre;
+  color: #D4D4D4; /* domyślny tekst kodu, reszta tokenów przez klasy niżej */
+  /* Panel ma stałą szerokość (patrz .o-nas__terminal), a niektóre linie
+     (np. komunikat commita) są dłuższe niż mieści się na wąskim telefonie —
+     .terminal__body przycina je poziomo (overflow: hidden), więc bez tej
+     maski koniec zdania ucinał się na ostro na krawędzi panelu. Maska daje
+     mu ten sam płynny zanik co pionowe krawędzie (.terminal__body::before/
+     ::after) — dla linii, które mieszczą się w całości, nie zmienia
+     wyglądu (blaknie tylko ostatnie 24px tła, nie tekstu). */
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent 100%);
 }
 
-/* --- Animacja telefonu (mockup1.png) ---
-   1. Wjazd przy scrollu: wsuwa się z prawej + obrót/skala, dłuższy glide niż .reveal.
-      Wyższa specyficzność niż `.js .reveal`, więc nadpisuje jego transform.
-   2. Po odsłonięciu (.widoczna): telefon kołysze się w pętli (unoszenie + lekki
-      obrót), a poświata pod nim (::before) delikatnie pulsuje w tym samym rytmie.
-   Reveal (opacity + transform) siedzi na <figure>, pętla ruchu na <img>,
-   puls na ::before — trzy niezależne warstwy, nie kolidują ze sobą. */
-.js .o-nas__visual--anim.reveal {
-  transform: translateY(24px) translateX(42px) rotate(3.5deg) scale(0.92);
-  transition: opacity 0.8s var(--ease), transform 1s var(--ease);
-}
-.js .o-nas__visual--anim.reveal.widoczna {
-  transform: none;
-}
-.js .o-nas__visual--anim.widoczna img {
-  animation: phone-float 4s ease-in-out 0.9s infinite;
-}
-.js .o-nas__visual--anim.widoczna::before {
-  animation: phone-glow 4s ease-in-out 0.9s infinite;
-}
+/* kolory tokenów — paleta zbliżona do VS Code Dark+, tylko w tym panelu
+   (nie dotyczy reszty strony, stąd wartości wpisane wprost, nie zmienne) */
+.t-c      { color: #6A9955; } /* komentarz */
+.t-kw     { color: #569CD6; } /* słowo kluczowe: :root, const, new, if */
+.t-str    { color: #CE9178; } /* string/wartość: hex kolorów, cudzysłowy */
+.t-var    { color: #9CDCFE; } /* nazwa zmiennej CSS */
+.t-fn     { color: #DCDCAA; } /* nazwa funkcji/metody */
+.t-ok     { color: #4EC9B0; } /* wynik sukcesu: deploy, audyt */
+.t-prompt { color: #6A9955; } /* znak "$" zachęty terminala */
+.t-muted  { color: #808080; } /* mniej istotny fragment: hash commitów */
 
-@keyframes phone-float {
-  0%   { transform: translateY(0)     rotate(0deg); }
-  50%  { transform: translateY(-14px) rotate(-1.4deg); }
-  100% { transform: translateY(0)     rotate(0deg); }
-}
-@keyframes phone-glow {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.07); }
+@keyframes terminal-scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .o-nas__visual--anim.reveal {
-    transform: none;
-    transition: none;
-  }
-  .js .o-nas__visual--anim.widoczna img,
-  .js .o-nas__visual--anim.widoczna::before { animation: none; }
+  .terminal__scroll { animation: none; }
+  .terminal__code[aria-hidden="true"] { display: none; }
 }
 
 /* ============================== PORTFOLIO ============================== */

@@ -155,12 +155,69 @@
             <p class="reveal">Ty zajmujesz się swoimi podopiecznymi. My zadbamy o to, jak prezentujesz się w internecie.</p>
           </div>
 
-          <figure class="o-nas__visual o-nas__visual--anim reveal">
-            <picture>
-              <source srcset="mockup1.webp" type="image/webp">
-              <img src="mockup1.png" width="500" height="833" decoding="async"
-                   alt="Telefon z otwartą stroną internetową trenerki personalnej zaprojektowaną przez FitPage">
-            </picture>
+          <!-- Dekoracyjny panel terminala — treść (fragment CSS, sekwencja
+               git/deploy, wynik audytu impeccable) jest prawdziwa i związana
+               z projektem, ale panel niczego nie komunikuje ponad tekst obok
+               (kolumna .o-nas__text), więc cała figura jest aria-hidden.
+               Druga kopia kodu (.terminal__code[aria-hidden]) to tylko
+               techniczny duplikat do pętli przewijania — ten sam wzorzec co
+               druga, ukryta kopia listy w .trainings (patrz sekcja
+               "Treningi (pasek)" niżej), łącznie z identyczną regułą
+               prefers-reduced-motion, która ją chowa. -->
+          <figure class="o-nas__terminal reveal" aria-hidden="true">
+            <div class="terminal__bar">
+              <span class="terminal__dot terminal__dot--red"></span>
+              <span class="terminal__dot terminal__dot--yellow"></span>
+              <span class="terminal__dot terminal__dot--green"></span>
+              <span class="terminal__bar-title">fitpage — terminal</span>
+            </div>
+            <div class="terminal__body">
+              <div class="terminal__scroll">
+                <pre class="terminal__code"><span class="t-c">/* style.css */</span>
+<span class="t-kw">:root</span> {
+  <span class="t-var">--c-cream</span>: <span class="t-str">#F7F3EA</span>;
+  <span class="t-var">--c-green</span>: <span class="t-str">#1F3D2B</span>;
+}
+
+<span class="t-prompt">$</span> git add style.css index.html
+<span class="t-prompt">$</span> git commit -m <span class="t-str">"Dodaj piąty artykuł i popraw logo"</span>
+<span class="t-prompt">$</span> git push origin main
+   <span class="t-muted">6ab4a25..8997ca7</span>  main -&gt; main
+<span class="t-ok">✓ Deploy live -&gt; fitpage.pl</span>
+
+<span class="t-c">// script.js</span>
+<span class="t-kw">const</span> reveal = <span class="t-kw">new</span> <span class="t-fn">IntersectionObserver</span>(entries =&gt; {
+  entries.<span class="t-fn">forEach</span>(e =&gt; {
+    <span class="t-kw">if</span> (e.isIntersecting) e.target.classList.<span class="t-fn">add</span>(<span class="t-str">'widoczna'</span>);
+  });
+});
+
+<span class="t-prompt">$</span> npx impeccable audit
+  <span class="t-ok">Score: 19/20 — excellent</span>
+</pre><pre class="terminal__code" aria-hidden="true"><span class="t-c">/* style.css */</span>
+<span class="t-kw">:root</span> {
+  <span class="t-var">--c-cream</span>: <span class="t-str">#F7F3EA</span>;
+  <span class="t-var">--c-green</span>: <span class="t-str">#1F3D2B</span>;
+}
+
+<span class="t-prompt">$</span> git add style.css index.html
+<span class="t-prompt">$</span> git commit -m <span class="t-str">"Dodaj piąty artykuł i popraw logo"</span>
+<span class="t-prompt">$</span> git push origin main
+   <span class="t-muted">6ab4a25..8997ca7</span>  main -&gt; main
+<span class="t-ok">✓ Deploy live -&gt; fitpage.pl</span>
+
+<span class="t-c">// script.js</span>
+<span class="t-kw">const</span> reveal = <span class="t-kw">new</span> <span class="t-fn">IntersectionObserver</span>(entries =&gt; {
+  entries.<span class="t-fn">forEach</span>(e =&gt; {
+    <span class="t-kw">if</span> (e.isIntersecting) e.target.classList.<span class="t-fn">add</span>(<span class="t-str">'widoczna'</span>);
+  });
+});
+
+<span class="t-prompt">$</span> npx impeccable audit
+  <span class="t-ok">Score: 19/20 — excellent</span>
+</pre>
+              </div>
+            </div>
           </figure>
         </div>
 

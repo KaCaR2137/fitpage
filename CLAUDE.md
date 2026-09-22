@@ -143,16 +143,58 @@ w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do t
    CSS-owa pętla bez JS: dwie kopie listy w jednym torze, `translateX(0 → -50%)`,
    `32s linear infinite`; druga kopia `aria-hidden`. Zatrzymuje się pod
    `prefers-reduced-motion`. Ikony neutralne, zielona kropka-separator jako jedyny akcent.
-4. O nas — tekst + grafika `mockup1.png` (telefon z ekranem strony) obok, po prawej.
-   Układ `.o-nas__grid` (flex): mobile = kolumna (telefon pod tekstem, max 220px),
-   od 900px = wiersz tekst | telefon (max 250px). id `#o-nas`, klasa `.o-nas`.
-   `mockup1.png` zmniejszony do 500×833 (~307 KB, alpha zachowana) — oryginał
-   1857×3096 (~2,3 MB) w kopii poza repo. `<img>` ma `width/height` 500×833, bez `loading="lazy"`.
-   Od WebP-konwersji: `<img>` owinięty w `<picture>` z `mockup1.webp` (~47 KB,
-   patrz "Obrazy — WebP z fallbackiem" wyżej) — `mockup1.webp` jest w korzeniu
-   repo obok `.png`, więc ma własny wpis `!mockup1.webp` w `.assetsignore`
-   (sam `!mockup1.png` go nie odsłania — ten sam typ luki co wcześniej przy
-   `artykuly/`, złapany i naprawiony od razu, zanim trafił na produkcję).
+4. O nas — tekst + dekoracyjny panel terminala obok, po prawej (zastąpił
+   22.09.2026 mockup telefonu `mockup1.png` — patrz „Panel terminala"
+   niżej). Układ `.o-nas__grid` (flex): mobile = kolumna (panel pod
+   tekstem), od 900px = wiersz tekst | panel. id `#o-nas`, klasa `.o-nas`.
+   `mockup1.png`/`.webp` zostają w repo i w `.assetsignore` (nic ich nie
+   usuwało z allowlisty), ale od tej zmiany nic ich już nie referencjuje —
+   martwy, publiczny plik, nie źródło błędu, po prostu nieużywany zasób
+   (ten sam status co `logo1.svg`/`logo3.png`, patrz „Obrazy" wyżej —
+   różnica: te dwa NIE są w allowliście, mockup1 wciąż jest).
+
+   **Panel terminala (`.o-nas__terminal`)** — ciemna karta (`#1A1A1A`,
+   `border-radius: 16px`), pozioma proporcja (zmierzone: 420×306 na
+   desktopie, ~1.4:1 — świadomie NIE wąska ramka telefonu jak poprzednio),
+   `max-width: 420px` (mobile: `width: 100%` do tego limitu). Pasek tytułu
+   (`.terminal__bar`) — 3 kropki styl macOS (`#FF5F57`/`#FEBC2E`/`#28C840`)
+   + napis „fitpage — terminal”. Treść (`.terminal__code`) to prawdziwy,
+   związany z projektem fragment: token CSS (`--c-cream`/`--c-green`),
+   sekwencja `git add/commit/push` z realnymi hashami commitów z historii
+   repo (`6ab4a25..8997ca7`, artykuł + fix logo), fragment `script.js`
+   (`IntersectionObserver` → `.widoczna`, ten sam mechanizm co realny kod
+   w tym pliku) i wynik `npx impeccable audit`. Kolory tokenów wpisane na
+   sztywno (`.t-c`/`.t-kw`/`.t-str`/`.t-var`/`.t-fn`/`.t-ok`/`.t-prompt`/
+   `.t-muted`), paleta zbliżona do VS Code Dark+ — nie przez zmienne
+   `--text`/`--muted`/itd., bo to osobny, ciemny mikroukład niezależny od
+   jasnej palety reszty strony.
+
+   **Pętla przewijania** — dokładnie ten sam trik co `.trainings-scroll`
+   (patrz „Treningi” wyżej), tylko w pionie: treść zdublowana 1:1 wewnątrz
+   `.terminal__scroll`, `@keyframes terminal-scroll` jedzie
+   `translateY(0) → translateY(-50%)`, `26s linear infinite` — stałe tempo,
+   bez easingu, żeby pętla nie przyspieszała/zwalniała przy każdym
+   powtórzeniu. `translateY(-50%)` to procent WŁASNEJ wysokości elementu,
+   więc automatycznie równa się wysokości jednej kopii (obie kopie
+   identyczne = ta sama wysokość), stąd zero widocznego "skoku" na złączeniu
+   bez liczenia pikseli na sztywno. `.terminal__body` ma stałą wysokość
+   (`260px`) + `overflow: hidden` — okno pokazuje tylko fragment treści,
+   jak prawdziwy terminal. Druga kopia treści ma `aria-hidden="true"` — ten
+   sam wzorzec co druga, ukryta kopia `.trainings__list`, łącznie z
+   identyczną regułą `prefers-reduced-motion` (`.terminal__code[aria-hidden="true"]
+   { display: none; }`, zeruje animację `.terminal__scroll`). Cała figura
+   ma dodatkowo `aria-hidden="true"` na wierzchu — panel nie niesie żadnej
+   informacji ponad tekst już obecny w `.o-nas__text`, więc czytnik ekranu
+   go całkiem pomija.
+
+   **Fade na krawędziach** — pionowo: `.terminal__body::before`/`::after`,
+   liniowy gradient do/z `#1A1A1A` na górnej/dolnej krawędzi (36px), żeby
+   tekst nie wjeżdżał/wyjeżdżał ostro. Poziomo: `mask-image` na
+   `.terminal__code` (fade ostatnich 24px szerokości) — bez tego długie
+   linie (np. komunikat commita) ucinały się na sztywno na krawędzi panelu
+   na wąskich telefonach (zmierzone i naprawione 22.09.2026, zanim trafiło
+   na produkcję — linie krótsze niż szerokość panelu wyglądają bez zmian,
+   maska blaknie tylko puste tło za nimi).
 5. Portfolio — karty realizacji (na start: Marta Dominikowska → marta-strona-trener.netlify.app)
 6. Artykuły (podgląd) — dawniej tu była sekcja „Kontakt (skrót)” (CTA „Umów
    konsultację” + telefon 535 721 592); usunięta i zastąpiona podglądem

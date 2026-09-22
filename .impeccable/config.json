@@ -467,6 +467,15 @@
         ],
         "createdAt": "2026-09-19T09:11:09.536Z",
         "reason": "confident false positive: the .trainings markup only exists on index.html; this page merely links the shared style.css, which defines the .trainings-scroll keyframe/animation rule reachable but never matched here"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "sfmono-regular",
+        "files": [
+          "style.css"
+        ],
+        "createdAt": "2026-09-22T09:30:07.886Z",
+        "reason": "model: monospace stos w dekoracyjnym panelu terminala (.terminal__code) to celowe odejście od Fraunces/Inter — kod musi być w czcionce o stałej szerokości, izolowane od reszty typografii strony"
       }
     ]
   }
