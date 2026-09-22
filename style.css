@@ -671,7 +671,10 @@ summary:focus-visible {
    tylko w pionie zamiast w poziomie. linear, bez easingu — stałe tempo,
    bez przyspieszeń/zwolnień przy każdym powtórzeniu pętli. */
 .terminal__scroll {
-  animation: terminal-scroll 26s linear infinite;
+  animation: terminal-scroll 29s linear infinite; /* czas dobrany do wysokości
+  jednej kopii treści (~558px, po dodaniu linii echo 22.09.2026) tak, żeby
+  tempo zostało ~19px/s jak przy pierwszej wersji (493px/26s) — przy zmianie
+  treści przelicz analogicznie, nie zostawiaj starego czasu z inną liczbą linii */
 }
 .terminal__code {
   margin: 0;
