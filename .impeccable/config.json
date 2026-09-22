@@ -476,6 +476,33 @@
         ],
         "createdAt": "2026-09-22T09:30:07.886Z",
         "reason": "model: monospace stos w dekoracyjnym panelu terminala (.terminal__code) to celowe odejście od Fraunces/Inter — kod musi być w czcionce o stałej szerokości, izolowane od reszty typografii strony"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/trening-online-strona.html"
+        ],
+        "createdAt": "2026-09-22T22:58:25.281Z",
+        "reason": "model: pulsujący box-shadow na .nav__cta/.btn--pulse (CTA Pulse) to celowa, w pełni udokumentowana funkcja z własną nazwaną regułą w DESIGN.md (Elevation & Depth), zweryfikowana wizualnie w tej sesji podczas /impeccable polish jako poprawnie ograniczona do 3 instancji. Nie nowy dryf, tylko pierwsze przeskanowanie współdzielonego nav na nowym pliku."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/trening-online-strona.html"
+        ],
+        "createdAt": "2026-09-22T23:01:56.798Z",
+        "reason": "model: .trainings nie występuje w treści tego pliku (potwierdzone grep) — detektor ocenia współdzielony style.css/script.js niezależnie od realnego markupu strony. Sam marquee to i tak udokumentowany, świadomie ograniczony wyjątek od reguły ruchu w DESIGN.md (sekcja Trainings marquee), obecny tylko na index.html."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/trening-online-strona.html"
+        ],
+        "createdAt": "2026-09-22T23:02:04.142Z",
+        "reason": "model: kremowy canvas #F7F3EA to udokumentowana 'The Flat Canvas Rule' w DESIGN.md, ten sam kolor na każdej stronie serwisu od początku projektu, nie AI-owy odruch na tym nowym pliku."
       }
     ]
   }

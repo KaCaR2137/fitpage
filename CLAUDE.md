@@ -269,20 +269,27 @@ Cała karta klikalna (`::after` na tytule + osobny, realny link na leadzie,
 uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 `.krok`, zgodnie z „The Lift-Means-Interactive Rule” (cień w spoczynku jest
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
-strony), między FAQ a Kontakt. Pięć artykułów obecnie (najnowszy:
-„Jakie zdjęcia i treści przygotować przed zamówieniem strony”, 19.09.2026,
-`jakie-zdjecia-tresci-przygotowac.html` — zdjęcie od razu w komplecie,
-`tlodoartykulu5.png`, rozmyta siłownia. Oryginał miał czysto białą plamę
-światła dającą tylko 4.88:1 ze scrimem 0.65 — cienki margines nad
-wymagane 4.5:1 — więc jasność zdjęcia obniżona o 15% (Pillow
-`ImageEnhance.Brightness`) przed eksportem do JPEG/WebP, kontrast po
-korekcie 5.99:1, zgodnie z marginesem pozostałych artykułów). Poprzedni
-najnowszy: „Instagram czy własna strona internetowa? Co bardziej buduje
-zaufanie klienta”, 16.09.2026 — początkowo bez zdjęcia w tle nagłówka, bo
-klient nie dostarczył grafiki od razu; zdjęcie (`tlodoartykulu4.png`,
-rozmyty telefon z ikonami Instagrama/social mediów na czarnym tle) doszło
-17.09.2026 tym samym workflow co pozostałe artykuły — patrz „Opcjonalne
-zdjęcie w tle nagłówka” niżej, teraz też `.hero--cover`) + komentarz
+strony), między FAQ a Kontakt. Sześć artykułów obecnie (najnowszy:
+„Trening online: dlaczego strona internetowa jest ważniejsza niż
+kiedykolwiek”, 23.09.2026, `trening-online-strona.html` — zdjęcie od razu
+w komplecie, `tlodoartykulu6.png`, biurko z rozmytą infografiką/wykresami
+(dostarczone od klienta już rozmyte, bez potrzeby dodatkowej obróbki
+Pillow poza standardową konwersją). Kontrast sprawdzony jak zawsze
+piksel po pikselu (99. percentyl jasności, nie pojedynczy odstający
+piksel): ze scrimem 0.65 od razu 5.12:1, nad wymagane 4.5:1, bez
+przyciemniania. Poprzedni najnowszy: „Jakie zdjęcia i treści przygotować
+przed zamówieniem strony”, 19.09.2026, `jakie-zdjecia-tresci-przygotowac.html`
+— zdjęcie od razu w komplecie, `tlodoartykulu5.png`, rozmyta siłownia.
+Oryginał miał czysto białą plamę światła dającą tylko 4.88:1 ze scrimem
+0.65, cienki margines nad wymagane 4.5:1, więc jasność zdjęcia obniżona
+o 15% (Pillow `ImageEnhance.Brightness`) przed eksportem do JPEG/WebP,
+kontrast po korekcie 5.99:1. Wcześniejszy: „Instagram czy własna strona
+internetowa? Co bardziej buduje zaufanie klienta”, 16.09.2026, początkowo
+bez zdjęcia w tle nagłówka, bo klient nie dostarczył grafiki od razu;
+zdjęcie (`tlodoartykulu4.png`, rozmyty telefon z ikonami Instagrama/social
+mediów na czarnym tle) doszło 17.09.2026 tym samym workflow co pozostałe
+artykuły, patrz „Opcjonalne zdjęcie w tle nagłówka” niżej, teraz też
+`.hero--cover`) + komentarz
 `<!-- TODO: kolejne artykuły -->`
 pokazujący gdzie kopiować kolejne karty. Poniżej 480px karta jest wyraźnie ciaśniejsza
 (mniejszy padding/odstępy/font nagłówka, lead przycięty do 3 linii przez
@@ -308,8 +315,8 @@ wycentrowana (`max-width: 65ch; margin-inline: auto`) w szerszym
 zostawiało puste miejsce wyłącznie po prawej stronie (złapane i naprawione
 już po opublikowaniu pierwszego artykułu).
 
-**Linkowanie międzyartykułowe (od 17.09.2026, rozszerzone 19.09.2026).**
-Każdy z pięciu artykułów ma: (1) co najmniej jeden link w treści `.artykul__body` do innego
+**Linkowanie międzyartykułowe (od 17.09.2026, rozszerzone 19.09 i 23.09.2026).**
+Każdy z sześciu artykułów ma: (1) co najmniej jeden link w treści `.artykul__body` do innego
 artykułu, wstawiony tylko tam, gdzie zdanie się do tego już nadawało (bez
 naginania treści na siłę), i (2) blok `.artykul__related` tuż przed
 `.artykul__cta` — hairline `border-top`, pogrubiona etykieta „Zobacz też”
@@ -339,9 +346,25 @@ linkuje inline przy „Kto pisze treści” (dostarczenie gotowych tekstów
 obniża cenę strony), nowy artykuł linkuje inline przy „Decyzja w sprawie
 cen” z powrotem do `ile-kosztuje`. „Zobacz też” nowego artykułu →
 `jak-wyroznic-sie-jako-trener` (temat „To, co Cię wyróżnia” pokrywa się
-z całym tamtym artykułem). Przy dodawaniu kolejnego (szóstego) artykułu:
-szukaj podobnych, realnych zazębień tematycznych zamiast linkować
-mechanicznie do wszystkich naraz, i dodaj mu też własną sekcję „Zobacz też”.
+z całym tamtym artykułem).
+
+**Szósty artykuł (23.09.2026):** `trening-online-strona` ↔
+`instagram-czy-strona` — para dodana wzajemnie, ten sam wzorzec co
+poprzednie pary: nowy artykuł linkuje inline przy „Dlaczego sam Instagram
+tu nie wystarczy” z powrotem do `instagram-czy-strona`, a `instagram-czy-strona`
+dostał nowe zdanie (nie nadpisujące istniejącej treści) w sekcji „Co to
+znaczy w praktyce”, linkujące inline do `trening-online-strona` przy temacie
+pracy wyłącznie zdalnej. Dodatkowy inline link nowego artykułu →
+`jakie-zdjecia-tresci-przygotowac` (przy „Realne zdjęcia, nie stockowe
+uśmiechy” — dokładnie ten sam checklist). „Zobacz też” nowego artykułu →
+`jakie-zdjecia-tresci-przygotowac` (inny cel niż inline link do
+`instagram-czy-strona`, zgodnie z zasadą niżej: te dwa linki celują w różne
+artykuły, żeby budować szerszy graf, nie dublować jednego adresata).
+Przy dodawaniu kolejnego (siódmego) artykułu: szukaj podobnych, realnych
+zazębień tematycznych zamiast linkować mechanicznie do wszystkich naraz,
+dodaj mu własną sekcję „Zobacz też”, i rozważ dodanie nowego zdania (nie
+nadpisywanie istniejącego) w najbliżej powiązanym starszym artykule, jeśli
+temat się realnie pokrywa — tak jak przy `instagram-czy-strona` wyżej.
 
 **Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
 wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
