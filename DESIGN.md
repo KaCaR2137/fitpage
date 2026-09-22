@@ -16,31 +16,31 @@ colors:
   error: "#A13333"
 typography:
   display:
-    fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Fraunces, Georgia, \"Times New Roman\", serif"
     fontSize: "clamp(1.9rem, 6vw, 3.1rem)"
     fontWeight: 700
     lineHeight: 1.2
-    letterSpacing: "-0.02em"
+    letterSpacing: "-0.01em"
   headline:
-    fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Fraunces, Georgia, \"Times New Roman\", serif"
     fontSize: "clamp(1.6rem, 4vw, 2rem)"
     fontWeight: 700
     lineHeight: 1.2
-    letterSpacing: "-0.02em"
+    letterSpacing: "-0.01em"
   title:
-    fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Fraunces, Georgia, \"Times New Roman\", serif"
     fontSize: "1.15rem"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.2
-    letterSpacing: "normal"
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "normal"
   label:
-    fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
     fontSize: "0.9rem"
     fontWeight: 600
     lineHeight: 1.5
@@ -108,7 +108,7 @@ gradient, no variation by scroll position — the same tone from the first pixel
 to the last. There is no card, no panel: content sits directly on the canvas,
 section rhythm built entirely from padding, not boxes. Depth is almost entirely
 absent at rest; shadows appear only when something lifts — a button on hover,
-the phone mockup drifting in "O nas," a handful of small component cards
+the terminal panel grounded in "O nas," a handful of small component cards
 (portfolio, steps, form fields) that keep their own faint tinted fill. The one
 deliberately dark note left anywhere in the system is the footer — a near-black
 forest green, the single anchor at the bottom of an otherwise light page.
@@ -125,9 +125,16 @@ image are the loudest thing on screen.
 - Section rhythm is padding/margin only; no card, border, or box ever separates
   one section from the next.
 - Full 999px pills for actions; a 6 / 10 / 14px radius ladder for everything else.
-- System-font typography; weight and tracking do the work.
-- Light-only, by deliberate choice — not a default light/dark pairing, a single
-  committed direction. No dark theme exists or is planned.
+- Fraunces headings against an Inter body — a deliberately contrasting pair
+  (wonky display serif vs. neutral UI grotesque), not the system-font stack
+  this bullet used to claim; see Typography below for the switch. (Caught
+  and fixed 22.09.2026 — this line had gone stale relative to the rest of
+  the document.)
+- Light-only for the page itself, by deliberate choice — not a default
+  light/dark pairing, a single committed direction. One narrow, disclosed
+  exception as of 22.09.2026: the decorative terminal panel in "O nas" (see
+  Components) is its own small dark surface, not a site theme — see the
+  Colors and Do's/Don'ts notes on this.
 - Motion gated behind `.js` and `prefers-reduced-motion`, always with a static fallback.
 
 ## Colors
@@ -191,6 +198,16 @@ the sole deliberate exception. (Replaces "The Single Gradient Rule": the
 gradient is gone, but the underlying discipline — one background, painted
 once, sections never repaint it — survives intact.)
 
+**Scoped exception (22.09.2026) — the terminal panel is not a page color.**
+The decorative code-terminal panel in "O nas" (see Components) is a small,
+self-contained dark surface (`#1A1A1A` panel, `#242424` title bar) with its
+own literal, hard-coded colors — not drawn from this palette, and not
+exposed as reusable tokens. It is a single illustrative widget, styled like
+a real code editor, not a step toward a page-level dark theme; nothing else
+on the site references its colors, and the Flat Canvas / One Mark rules
+above still govern every other surface unchanged. See "Terminal panel
+(signature)" under Components for the full color list.
+
 ## Typography
 
 **Heading Font:** Fraunces (600–700), a webfont from Google Fonts. **Body /
@@ -220,17 +237,37 @@ Fraunces stays crisp and readable at all of them, so no size changed.
   -0.02em): the hero headline only — one per page.
 - **Headline** (700, `1.6rem`, rising to `2rem` at ≥700px, line-height 1.2,
   tracking -0.02em): section titles (`.section__title`). One per section.
-- **Logo:** the nav now pairs the image mark with a text wordmark —
-  `images/logo-fitpage.png` (rounded-square "FP" badge, `44px` tall) plus
-  `.nav__logo-text` ("FitPage", 800 weight, `1.3rem`, tracking -0.03em, Text
-  Primary) — sized so the whole lockup's height (`44px`) matches `.nav__cta`'s
-  rendered height (`~43px`), for visual parity between the two ends of the
-  nav bar. Since the wordmark is now visible next to it, the image's `alt`
-  is empty (decorative) — the visible text carries the accessible name, so a
-  screen reader doesn't announce "FitPage" twice. The footer keeps its own
-  plain 800-weight text wordmark in Ivory, unchanged and independent of this.
-- **Title** (600–700, `1.1rem`–`1.15rem`, line-height 1.2): card titles, step
-  titles, article-card titles, FAQ and "Więcej" summaries.
+- **Logo:** the nav pairs an image mark with a text wordmark —
+  `images/logo-fitpage.png` (an abstract, rounded shield/pick silhouette in
+  a green gradient — not literal "FP" lettering, despite older notes here
+  once describing it that way) at `44px` tall, plus `.nav__logo-text`
+  ("FitPage", 800 weight, `1.3rem`, tracking -0.03em, Text Primary) — sized
+  so the whole lockup's height (`44px`) matches `.nav__cta`'s rendered
+  height (`~43px`), for visual parity between the two ends of the nav bar.
+  Since the wordmark is visible next to it, the image's `alt` is empty
+  (decorative) — the visible text carries the accessible name, so a screen
+  reader doesn't announce "FitPage" twice. The footer keeps its own plain
+  800-weight text wordmark in Ivory, unchanged and independent of this.
+  **Narrow-phone compression (22.09.2026):** below `385px` the wordmark
+  drops to `1.1rem` and nav spacing tightens; below `350px` the wordmark is
+  visually hidden (clip-path technique, not `display:none`, so the link's
+  accessible name survives) and only the `44×44px` icon remains — added
+  after the icon itself was measured shrinking to as little as `0×44px` on
+  the narrowest real phones, because it sat in a flex row with
+  `width: auto` and nothing stopping it from being squeezed. See Navigation
+  under Components for the full breakpoint behavior.
+- **Title** (700, `1.1rem`–`1.15rem`, line-height 1.2): card titles, step
+  titles, article-card titles, FAQ and "Więcej" summaries. All of h1–h3 share
+  one explicit `font-weight: 700` rule — there is no live 600 instance today;
+  600 is reserved for the unused h4–h6 tier, so a future heading nested
+  under a Title doesn't have to compete with it in weight. (Corrected
+  22.09.2026 — this used to read "600–700", implying a 600 case that isn't
+  actually in the code.)
+- **In-article sub-heads** (`.artykul__body h2`/`h3`, 700, `1.3rem`/`1.1rem`):
+  headings inside long-form article body copy only (`.artykul__body`), one
+  size step below Headline for `h2`, level with Title for `h3` — the same
+  weight as the rest of the hierarchy, just a size in between Headline and
+  Title that only appears in this one long-form context.
 - **Body** (400, `1rem`, line-height 1.65): running copy in Text Muted, with
   `<strong>` promoted to Text Primary. Prose blocks capped near 680px wide,
   except long-form "Read" mode content (`.polityka`, `.artykul__body`), which
@@ -244,7 +281,24 @@ Fraunces stays crisp and readable at all of them, so no size changed.
   been revisited since this was caught on the article template.
 - **Label / Micro** (600 for field labels at `0.9rem`; 400 for hints, required
   notes and captions at `0.8rem`; 600 for "Więcej" toggles at `0.82rem`): Text
-  Muted, except labels and legends which use Text Primary.
+  Muted, except labels and legends which use Text Primary. **Expanded
+  22.09.2026** — this tier actually spans a small, deliberate range around
+  its two anchors rather than one fixed size, because a field label, a card
+  date, and a hint sentence are different weights of "secondary" and don't
+  read right at identical size. Real values in current use, smallest to
+  largest: `0.78rem` (the decorative terminal panel's title-bar caption —
+  see Components), `0.8rem` (article-card date/`.artykul__meta`, form hints,
+  the required-field note), `0.82rem` (process-step "Więcej" toggle,
+  weight 600), `0.85rem` (RODO clause text, inline form error text, and the
+  nav CTA's own label once it compresses below 700px), `0.875rem` (article-
+  card lead text once it tightens below 480px — see Article card under
+  Components), `0.9rem` (field labels, atuty captions, trainings-marquee
+  labels — the tier's main anchor), `0.95rem` (nav links, card/step body
+  text, article-card lead at its normal width). None of these are one-off
+  drift: each is a real, reused rule tied to a specific component listed
+  above, not a stray value touched once. Treat `0.8rem`–`0.95rem` as this
+  tier's working range; a new component's secondary text should land inside
+  it rather than introduce a size outside both ends.
 
 **Depth:** headings (`.hero__title`, `.section__title`, `.krok__title` — H1/H2
 only, H3 titles like `.card__title` stay flat) plus the body text in the hero
@@ -297,7 +351,7 @@ the faux-bold there is the least noticeable instance if it needs revisiting.
 - **Breakpoints:** `480px` (footer switches to a justified row), `700px` (mobile
   hamburger menu boundary; section rhythm and section-title size step up; process
   steps go 1-col → 3-col), `900px` (hero gains more vertical air; "O nas" flips
-  from a stacked column to a `text | phone` row).
+  from a stacked column to a `text | terminal panel` row).
 - **Grids:** portfolio uses `repeat(auto-fit, minmax(280px, 400px))` plus
   `justify-content: center` on `.portfolio__grid`. Previously `auto-fill`
   (fixed-max, left-aligned) — changed after `/impeccable critique` caught
@@ -331,8 +385,10 @@ the faux-bold there is the least noticeable instance if it needs revisiting.
   that expanding one step's "Więcej" now pulls its row-mates' bottom edge
   down with it (empty space inside the shorter cards) instead of growing in
   isolation — verified this reads as a cohesive block, not broken, not a
-  jagged row. "O nas" is a centered flex column (phone capped at 220px) →
-  row at 900px (phone capped at 250px).
+  jagged row. "O nas" is a centered flex column → row at 900px; the
+  terminal panel that replaced the phone mockup here (22.09.2026) caps at
+  `420px` at both tiers, not two different widths — see Components →
+  Terminal panel for its shape and colors.
 - **Anchor offset:** `[id] { scroll-margin-top: 84px }` clears the sticky nav on
   in-page jumps. `scroll-behavior: smooth`, reset to `auto` under reduced motion.
 - **Nav:** sticky, `z-index: 50`, `min-height: 64px`, Nav Scrim background over an
@@ -350,8 +406,10 @@ cards. Those cards (portfolio, steps, FAQ, form fields) are the only remaining
 surfaces, and they stay flat at rest too: faint tinted fill, hairline border,
 nothing else. There is one deliberate exception: portfolio cards carry a single
 soft ambient shadow at rest to anchor them on the canvas. Every other shadow on
-screen means the element is being hovered, is `:target`, or is the animated
-phone. The nav keeps its own scrim + blur — that one surface predates and sits
+screen means the element is being hovered, is `:target`, or is the terminal
+panel (the one component with a constant, ungated resting shadow — see
+Shadow Vocabulary and Components → Terminal panel). The nav keeps its own
+scrim + blur — that one surface predates and sits
 outside this rule, since it exists to stay legible while sticky over scrolling
 content.
 
@@ -364,12 +422,18 @@ content.
   stays singular, only its trigger changes.
 - **Button lift** (`box-shadow: 0 12px 28px rgba(31,61,43,0.28)` on `:hover`,
   with `translateY(-2px)`): a green-tinted rise, echoing the accent.
-- **Phone drop** (`filter: drop-shadow(0 22px 46px rgba(31,45,36,0.22))`) plus a
+- **Panel drop** (`box-shadow: 0 22px 46px rgba(31,45,36,0.22)`) plus the same
   soft green vignette (`radial-gradient(closest-side, rgba(31,61,43,0.10),
-  transparent 72%)`) on the figure's `::before`. On the dark canvas this was a
-  glow — light emanating in a dark room. On the light canvas the same layer
-  reads as a quiet shadow/vignette instead; the mechanism didn't change, only
-  what it now means visually.
+  transparent 72%)`) on a `::before` behind it. Originally the floating
+  phone mockup's shadow (a `filter: drop-shadow`, needed for its irregular
+  PNG silhouette); reused verbatim, token and vignette both, under the
+  terminal panel that replaced it (22.09.2026, see Components → Terminal
+  panel) — a plain `box-shadow` there since a rectangular panel doesn't
+  need `drop-shadow`'s alpha-aware clipping. On the dark canvas this shadow
+  family started life as a glow — light emanating in a dark room. On the
+  light canvas it reads as a quiet shadow/vignette instead; the mechanism
+  hasn't changed since, only what it visually means, and now which
+  component wears it.
 - **Step target** (`box-shadow: 0 0 0 1px var(--accent)` with a Bottle Green
   border): the `:target` step when linked from the process nav.
 - **Photo-overlay text shadow** (`text-shadow: 0 1px 4px rgba(0,0,0,0.35)` on
@@ -385,8 +449,9 @@ content.
 
 ### Named Rules
 **The Lift-Means-Interactive Rule.** With the exception of the portfolio
-card's resting shadow and the primary-CTA pulse below, a shadow means the
-element is hovered, targeted, or the animated phone. Resting surfaces read
+card's resting shadow, the terminal panel's constant grounding shadow, and
+the primary-CTA pulse below, a shadow means the element is hovered or
+targeted. Resting surfaces read
 as flat, tinted paper.
 
 **The CTA Pulse (exception, 17.09.2026).** The three instances of the
@@ -414,6 +479,12 @@ overwriting `box-shadow` every frame.
   button, nav CTA) · `50%` (the 40px circular step-number badge, the 44px atuty
   icon circles). Corners are always soft; no sharp edges anywhere. Sections
   themselves have no radius — nothing to round, there's no box.
+  **Documented micro-exception:** the inline error-icon glyph (an SVG
+  data-URI circle-with-exclamation-mark on invalid form fields and the
+  unchecked-required consent box, see Inputs/Fields below) uses its own
+  `2px` radius on a `<span>` a few pixels wide — too small to read against
+  the ladder's actual steps, so it isn't a ladder step, but it's a single
+  deliberate shape used consistently, not scattered drift.
 - **Borders:** a `1px` hairline (`rgba(31,61,43,0.10–0.16)`) on nearly every
   surface. Since fills are near-transparent, the border is the shape.
 - **Custom-drawn controls:** native form chrome is never shown. The checkbox is a
@@ -502,7 +573,12 @@ component and do not give an action a boxy radius.
 - **Focus:** `outline: 2px solid #1F3D2B`, `outline-offset: 1px`, border goes
   transparent.
 - **Error / Disabled:** after a submit attempt, `.is-touched:invalid` borders in
-  Error red; the `aria-live` status line turns Error red with a message.
+  Error red; the `aria-live` status line turns Error red with a message. The
+  error isn't color-only (WCAG 1.4.1): an invalid text field/textarea and an
+  unchecked required consent checkbox additionally get a small SVG
+  data-URI icon (a circle with an exclamation mark, Error red on Ivory,
+  `2px` radius — see the Shapes radius-ladder note above), the same
+  drawing technique as the checkbox's own tick mark.
 - **Autofill:** forced to match the field's own light fill —
   `-webkit-box-shadow: 0 0 0 1000px #F1EEE2 inset` — instead of the browser's
   native (usually yellowish) autofill highlight; text fill stays Text Primary.
@@ -513,11 +589,28 @@ component and do not give an action a boxy radius.
   Animations drop under reduced motion.
 
 ### Navigation
-- **Logo:** `images/logo-fitpage.png` (rounded-square "FP" mark) at `44px`
-  tall (`height: auto` width) plus a `.nav__logo-text` "FitPage" wordmark
-  (800 weight, `1.3rem`, -0.03em tracking, Text Primary), `10px` gap between
-  them — sized as a pair to match `.nav__cta`'s rendered height. `alt=""` on
-  the image now that the visible text carries the accessible name.
+- **Skip link (22.09.2026):** the first focusable element in every `<body>`,
+  invisible until keyboard focus lands on it (WCAG 2.4.1) — "Przejdź do
+  treści", styled as a full `999px` pill in the standard Bottle
+  Green/Ivory button language (not a new shape), fixed-positioned above
+  the splash overlay (`z-index: 1000`, one above the splash's `999`), so a
+  keyboard user tabbing in immediately sees it even before the splash's own
+  reveal animation finishes.
+- **Logo:** `images/logo-fitpage.png` (an abstract green-gradient shield/pick
+  mark — see the correction under Typography → Hierarchy) at `44px`
+  tall, fixed `44×44` with `flex-shrink: 0`, plus a `.nav__logo-text`
+  "FitPage" wordmark (800 weight, `1.3rem`, -0.03em tracking, Text
+  Primary), `10px` gap between them — sized as a pair to match
+  `.nav__cta`'s rendered height. `alt=""` on the image now that the visible
+  text carries the accessible name.
+  **Narrow-phone compression (22.09.2026):** below `385px` nav spacing/
+  padding tighten and the wordmark drops to `1.1rem`; below `350px` the
+  wordmark is visually hidden (clip technique, stays in the accessibility
+  tree) and only the icon remains. Added after the icon — previously
+  `height: 44px; width: auto` inside a flex row — was found shrinking to as
+  little as `0×44px` on real narrow phones, reading as a stretched,
+  distorted mark; fixing the icon's own sizing (`flex-shrink: 0`) solved
+  the distortion, and the two breakpoints solved the resulting crowding.
 - **Style:** sticky, `64px` min-height, Nav Scrim (canvas-tinted) + `blur(8px)`,
   hairline-faint bottom border.
 - **Links:** Text Primary at `0.85` opacity → `1` on hover, `0.95rem`. The CTA is
@@ -530,10 +623,15 @@ component and do not give an action a boxy radius.
   `.nav__inner` always has exactly two flex children (logo, `.nav__right`)
   regardless of breakpoint; only `.nav__links` inside that group hides.
   The CTA stays visible in the always-sticky nav bar at every width, sized
-  down slightly (`10px 14px` padding, `0.85rem`) to sit beside the `44px`
-  hamburger without wrapping. Fixed via `/impeccable adapt` after a critique
-  flagged that hiding the primary conversion action behind a hamburger tap
-  was a real cost on a mostly-mobile audience (PRODUCT.md).
+  down slightly (`11px 14px` padding — corrected here 22.09.2026, this line
+  had said `10px 14px`; `11px` gives the pill a full `44px` touch target,
+  WCAG 2.5.5/2.5.8 — `0.85rem`) to sit beside the `44px` hamburger without
+  wrapping. Fixed via `/impeccable adapt` after a critique flagged that
+  hiding the primary conversion action behind a hamburger tap was a real
+  cost on a mostly-mobile audience (PRODUCT.md). Below `385px` it compresses
+  once more (`12px 12px` padding, `0.8rem`) as part of the narrow-phone nav
+  tightening described under Logo above — still a full `44px` target, just
+  narrower horizontally.
 
 ### Trainings marquee
 A horizontal, infinitely-looping strip of 8 training-type icons + labels
@@ -571,17 +669,59 @@ canvas, like the hero.
   subtitle.
 - **Grid:** 2 columns on mobile, 4 from 700px.
 
-### Floating phone (signature)
-The "O nas" mockup (`mockup1.png`, 500×833) is the one showpiece and the only place
-motion is decorative rather than functional. Three independent layers:
-- The `<figure>` carries the scroll reveal — slides in from the lower-right with a
-  `3.5deg` rotate and `0.92` scale over `1s` (a longer glide than the standard
-  `0.6s` `.reveal`).
-- The `<img>` runs a `4s` infinite `phone-float` (`translateY(-14px)` + `-1.4deg`).
-- The `::before` soft green vignette runs `phone-glow` on the same `4s` beat
-  (opacity `0.7 → 1`, scale `1 → 1.07`) — a quiet pulse now, not a glow.
-- Grounded by `drop-shadow(0 22px 46px rgba(31,45,36,0.22))`. All three layers
-  freeze static under `prefers-reduced-motion`.
+### Terminal panel (signature)
+Replaced the floating phone mockup in "O nas" on 22.09.2026 — same slot in
+the page (text | visual, mobile column → 900px row), same showpiece role,
+same "the only place motion is decorative rather than functional" status.
+`mockup1.png`/`.webp` are unreferenced anywhere now; kept in the repo as an
+unused asset, not deleted.
+
+A small, self-contained dark card — the one deliberately non-Canvas surface
+outside the footer (see the Colors scoped-exception note above) — styled
+like a real code editor, not a screenshot of the product:
+- **Shape:** `420px` max-width, horizontal proportion (measured ~420×306,
+  ~1.4:1) — deliberately **not** a narrow phone-frame shape like its
+  predecessor. `16px` radius, off-ladder (a standalone dark component, not
+  part of the light-palette shape system).
+- **Colors (literal, not tokens):** panel `#1A1A1A`; title bar `#242424`
+  with a `rgba(255,255,255,0.06)` hairline under it; three macOS-style
+  window dots (`#FF5F57` red, `#FEBC2E` yellow, `#28C840` green); title-bar
+  caption text `rgba(255,255,255,0.55)` (raised from an initial `0.45` —
+  that read `4.3:1` against the title-bar background, under the `4.5:1` AA
+  floor this whole system otherwise holds everywhere; `0.55` clears `5.7:1`)
+  in Inter at `0.78rem`; code text `#D4D4D4` default, with two accent
+  tokens inside it — the `$` prompt and quoted-string values both in a
+  muted terracotta/green pulled from a VS Code Dark+-style palette, not
+  from this system's own Bottle Green (mixing the two would read as the
+  terminal trying to be branded chrome instead of an illustrative prop).
+- **Content:** a short, looping, real CTA message (`whoami` → "trener
+  personalny? Twoja strona czeka", `status` → "gotowa · czytelna ·
+  Twoja", `echo "Umów bezpłatną konsultację"` + `open fitpage.pl/kontakt`)
+  — swapped 22.09.2026 from an earlier version that showed ambient
+  decorative code (a CSS token, a git/deploy sequence, an audit result).
+  Both versions share the same mechanism below; only the text changed.
+- **Loop:** the content is duplicated once inside a track; the track
+  animates `translateY(0) → translateY(-50%)` — the same seamless-loop
+  trick as the Trainings marquee below, in the vertical axis instead of
+  horizontal. `linear`, no easing, so the loop never audibly
+  speeds up or slows down at the seam. Duration is re-tuned by hand
+  whenever the content changes, to hold a roughly constant px/s pace
+  rather than a fixed duration (see the comment beside
+  `.terminal__scroll` in `style.css` for the current math).
+- **Edge fade:** a vertical linear-gradient-to-panel-color on the fixed-
+  height viewport's top and bottom (so lines don't cut in/out sharply),
+  plus a `mask-image` fade on the trailing ~24px of every code line
+  horizontally, so a line too long for the panel's width fades rather than
+  hard-clips on narrow phones.
+- **Motion + a11y:** the whole figure is `aria-hidden="true"` — it repeats
+  nothing the adjacent text column doesn't already say, so a screen reader
+  skips it entirely. Under `prefers-reduced-motion`, the scroll animation
+  stops and the duplicate copy is hidden via the same
+  `[aria-hidden="true"] { display: none }` pattern the Trainings marquee
+  already used, so only one static, readable copy remains — never two
+  identical stacked blocks.
+- **Grounding:** `Panel drop` shadow + vignette — see Shadow Vocabulary
+  above; reused, not reinvented, from the phone this replaced.
 
 ### Splash intro
 A full-screen overlay, first thing in `<body>` on every page, that plays once
@@ -717,11 +857,16 @@ place that does not reuse the standard link color.
   the point.
 - **Don't** add a second accent hue. Green + neutral only; Error red (`#A13333`)
   is a state color, not an accent.
-- **Don't** introduce or assume a dark theme. The system is light-only, by
-  deliberate choice — this is not a default awaiting a dark variant.
+- **Don't** introduce or assume a *page* dark theme. The system is light-only
+  by deliberate choice — this is not a default awaiting a dark variant. This
+  doesn't prohibit a single, disclosed, self-contained dark component (the
+  terminal panel in "O nas" — see Colors and Components) that stays
+  literal-colored and never becomes a reusable token or a toggle; it does
+  prohibit a `--dark` token set, a `prefers-color-scheme` branch, or a
+  second component picking up dark styling by imitation.
 - **Don't** load a web font to "fix" the typography; weight and tracking carry the
   hierarchy.
-- **Don't** let a shadow sit on a resting surface (portfolio card excepted) —
-  shadows mean hover, `:target`, or the animated phone.
+- **Don't** let a shadow sit on a resting surface (portfolio card and the
+  terminal panel excepted) — shadows otherwise mean hover or `:target`.
 - **Don't** reuse the standard Leaf Green link color inside the footer — it
   fails contrast there. Use Ivory.

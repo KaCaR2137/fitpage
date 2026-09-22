@@ -1697,12 +1697,16 @@ summary:focus-visible {
   .hero:not(.hero--compact) { padding: 120px 20px 130px; }
   .hero--compact { padding: 96px 20px 76px; }
 
-  /* O nas: tekst z lewej, telefon z prawej */
+  /* O nas: tekst z lewej, panel terminala z prawej. Martwa reguła
+     .o-nas__visual (usunięta 22.09.2026, przy /impeccable document) —
+     ta klasa zniknęła z HTML razem z mockupem telefonu, ale ten jeden
+     breakpoint ją przeoczył. .o-nas__terminal ma już max-width: 420px
+     w bazowej regule (patrz sekcja "O nas — panel terminala" wyżej),
+     wspólne dla mobile i tego breakpointu — nic tu nie trzeba nadpisywać. */
   .o-nas__grid {
     flex-direction: row;
     align-items: center;
     gap: 52px;
   }
   .o-nas__text { flex: 1 1 auto; }
-  .o-nas__visual { max-width: 250px; }
 }
