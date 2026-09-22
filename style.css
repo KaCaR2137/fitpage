@@ -1578,7 +1578,14 @@ summary:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
+  /* will-change: auto tutaj też (nie tylko opacity/transform/transition) —
+     bez transition, script.js nigdy nie dostanie "transitionend", którego
+     używa do sprzątania will-change po normalnym przejściu (patrz
+     releaseWillChangeAfterReveal w script.js), więc pod reduced-motion
+     zostałby zapalony na >100 elementach .reveal na stałe, mimo że żadna
+     animacja się tu w ogóle nie odbywa — zero uzasadnienia dla warstwy
+     kompozytora. Naprawione przy okazji /impeccable optimize 22.09.2026. */
+  .js .reveal { opacity: 1; transform: none; transition: none; will-change: auto; }
   .btn { transition: none; }
 }
 

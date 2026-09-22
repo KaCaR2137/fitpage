@@ -57,6 +57,36 @@
     return rect.bottom > 0 && rect.top < window.innerHeight;
   }
 
+  /* Sprzątanie will-change po realnym zakończeniu przejścia (/impeccable
+     audit, 22.09.2026, P2): baza CSS (.js .reveal) trzyma will-change:
+     opacity, transform, żeby przeglądarka zdążyła przygotować warstwę
+     kompozytora PRZED startem animacji — ale sama klasa .reveal nigdy nie
+     jest usuwana po odsłonięciu (.widoczna tylko dokłada opacity:1), więc
+     bez tej funkcji ponad 100 elementów tej klasy na stronie trzymałoby
+     zarezerwowaną warstwę bezterminowo, długo po jednorazowym wjeździe przy
+     scrollu. Czyścimy inline stylem (nadpisuje deklarację z klasy) dopiero
+     gdy transitionend faktycznie przyjdzie od TEGO elementu, nie od
+     dziecka z własnym przejściem (np. hover na linku/przycisku w środku
+     karty) — stąd ręczne sprawdzenie e.target zamiast { once: true },
+     które usunęłoby nasłuch po pierwszym, niekoniecznie właściwym
+     zdarzeniu. Pod prefers-reduced-motion transition jest wyłączony w CSS
+     (transition: none), więc transitionend nigdy by tu nie przyszedł —
+     ten przypadek jest domknięty osobno, czysto w CSS (patrz
+     prefers-reduced-motion w style.css). */
+  function releaseWillChangeAfterReveal(el) {
+    function onTransitionEnd(e) {
+      if (e.target !== el) { return; }
+      el.style.willChange = 'auto';
+      el.removeEventListener('transitionend', onTransitionEnd);
+    }
+    el.addEventListener('transitionend', onTransitionEnd);
+  }
+
+  function markRevealed(el) {
+    el.classList.add('widoczna');
+    releaseWillChangeAfterReveal(el);
+  }
+
   var allReveals = document.querySelectorAll('.reveal');
   var immediateReveals = [];
   var scrollReveals = [];
@@ -69,7 +99,7 @@
   function revealWithStagger(elements) {
     elements.forEach(function (el, index) {
       if (index > 0) { el.style.transitionDelay = (index * 90) + 'ms'; }
-      el.classList.add('widoczna');
+      markRevealed(el);
     });
   }
 
@@ -86,7 +116,7 @@
 
   if (noAnimation) {
     // brak animacji — po prostu pokaż wszystko
-    scrollReveals.forEach(function (el) { el.classList.add('widoczna'); });
+    scrollReveals.forEach(function (el) { markRevealed(el); });
   } else {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -104,7 +134,7 @@
         var index = siblings.indexOf(el);
         if (index > 0) { el.style.transitionDelay = (index * 90) + 'ms'; }
 
-        el.classList.add('widoczna');
+        markRevealed(el);
         observer.unobserve(el);
       });
     }, {
