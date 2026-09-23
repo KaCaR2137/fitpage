@@ -267,6 +267,37 @@
           status.textContent = formSuccessMessages[formType] || formSuccessMessages.brief;
           status.className = 'form__status is-ok';
           status.setAttribute('role', 'status');
+
+          // Dodatkowy mail z podziękowaniem przez Resend (/api/potwierdz-kontakt),
+          // tylko dla briefu z kontakt.html — niezależny od zgłoszenia do
+          // Formspree powyżej, które zostaje bez zmian. Wartości pól trzeba
+          // odczytać PRZED form.reset() poniżej, bo reset je czyści.
+          // Fire-and-forget: błąd tego wywołania (sieć, serwer, cokolwiek)
+          // jest tylko logowany do konsoli, nigdy nie trafia do
+          // użytkownika — to dodatek, nie krytyczna ścieżka zgłoszenia.
+          if (formType === 'brief') {
+            var imieField = document.getElementById('imie-nazwisko');
+            var emailField = document.getElementById('email');
+            // Ten sam honeypot co w zgłoszeniu do Formspree (name="_gotcha")
+            // — przekazany dalej bez zmian, endpoint sam decyduje, co z nim zrobić.
+            var gotchaField = form.querySelector('[name="_gotcha"]');
+            if (imieField && emailField && imieField.value && emailField.value) {
+              fetch('/api/potwierdz-kontakt', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  imie: imieField.value,
+                  email: emailField.value,
+                  honeypot: gotchaField ? gotchaField.value : ''
+                })
+              }).catch(function (err) {
+                if (window.console && console.warn) {
+                  console.warn('Mail potwierdzający (Resend) nie powiódł się:', err);
+                }
+              });
+            }
+          }
+
           form.reset();
           formFields.forEach(function (field) {
             field.classList.remove('is-touched');
