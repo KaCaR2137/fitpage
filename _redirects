@@ -1,0 +1,24 @@
+# Przekierowania 301 ze starych adresów bez rozszerzenia na wersje .html
+# (dodane 30.09.2026, po zmianie html_handling na "none" w wrangler.toml
+# — .html przestało automatycznie przekierowywać na wersję bez
+# rozszerzenia, więc stare zakładki/backlinki do bare-URL bez tego pliku
+# dostawałyby 404 zamiast trafić na właściwą stronę). Jedna linia na
+# każdą stronę z sitemap.xml poza „/" (strona główna nie ma
+# odpowiednika bez rozszerzenia do przekierowania).
+#
+# Format: <źródło> <cel> <kod>. Cloudflare czyta ten plik jako
+# konfigurację przekierowań, nie jako zwykły plik strony — sam nie jest
+# publicznie serwowany (potwierdzone: ukryty tak samo jak wszystko poza
+# .assetsignore, a Cloudflare i tak traktuje _redirects specjalnie).
+
+/proces /proces.html 301
+/faq /faq.html 301
+/kontakt /kontakt.html 301
+/artykuly /artykuly.html 301
+/artykuly/jak-wyroznic-sie-jako-trener /artykuly/jak-wyroznic-sie-jako-trener.html 301
+/artykuly/ile-kosztuje-strona-dla-trenera /artykuly/ile-kosztuje-strona-dla-trenera.html 301
+/artykuly/jak-zdobyc-klientow-bez-reklam /artykuly/jak-zdobyc-klientow-bez-reklam.html 301
+/artykuly/instagram-czy-strona /artykuly/instagram-czy-strona.html 301
+/artykuly/jakie-zdjecia-tresci-przygotowac /artykuly/jakie-zdjecia-tresci-przygotowac.html 301
+/artykuly/trening-online-strona /artykuly/trening-online-strona.html 301
+/opinie /opinie.html 301
