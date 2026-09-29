@@ -5,3 +5,7 @@
 .vscode/
 .idea/
 *.swp
+
+# lokalny cache Wranglera (npx wrangler ...) — nigdy nie commitować
+.wrangler/
+node_modules/
