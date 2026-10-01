@@ -287,15 +287,22 @@ Cała karta klikalna (`::after` na tytule + osobny, realny link na leadzie,
 uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 `.krok`, zgodnie z „The Lift-Means-Interactive Rule” (cień w spoczynku jest
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
-strony), między FAQ a Kontakt. Sześć artykułów obecnie (najnowszy:
-„Trening online: dlaczego strona internetowa jest ważniejsza niż
-kiedykolwiek”, 23.09.2026, `trening-online-strona.html` — zdjęcie od razu
-w komplecie, `tlodoartykulu6.png`, biurko z rozmytą infografiką/wykresami
-(dostarczone od klienta już rozmyte, bez potrzeby dodatkowej obróbki
-Pillow poza standardową konwersją). Kontrast sprawdzony jak zawsze
-piksel po pikselu (99. percentyl jasności, nie pojedynczy odstający
-piksel): ze scrimem 0.65 od razu 5.12:1, nad wymagane 4.5:1, bez
-przyciemniania. Poprzedni najnowszy: „Jakie zdjęcia i treści przygotować
+strony), między FAQ a Kontakt. Siedem artykułów obecnie (najnowszy:
+„Strona czy Booksy? Co lepiej sprawdzi się u trenera personalnego”,
+01.10.2026, `strona-czy-booksy.html` — opublikowany najpierw bez zdjęcia
+w tle nagłówka (klient nie dostarczył grafiki od razu), zdjęcie
+(`tlodoartykulu67.png`, zamazane drewniane klocki z napisem „WEBSITE” na
+tle zieleni i kwiatu) doszło tego samego dnia tym samym workflow co
+pozostałe artykuły, patrz „Opcjonalne zdjęcie w tle nagłówka” niżej.
+Kontrast sprawdzony jak zawsze piksel po pikselu (99. percentyl jasności,
+nie pojedynczy odstający piksel): ze scrimem 0.65 od razu 6.16:1, nad
+wymagane 4.5:1, bez przyciemniania. Poprzedni najnowszy: „Trening online:
+dlaczego strona internetowa jest ważniejsza niż kiedykolwiek”,
+23.09.2026, `trening-online-strona.html` — zdjęcie od razu w komplecie,
+`tlodoartykulu6.png`, biurko z rozmytą infografiką/wykresami (dostarczone
+od klienta już rozmyte, bez potrzeby dodatkowej obróbki Pillow poza
+standardową konwersją). Kontrast ze scrimem 0.65 od razu 5.12:1, nad
+wymagane 4.5:1, bez przyciemniania. Wcześniejszy: „Jakie zdjęcia i treści przygotować
 przed zamówieniem strony”, 19.09.2026, `jakie-zdjecia-tresci-przygotowac.html`
 — zdjęcie od razu w komplecie, `tlodoartykulu5.png`, rozmyta siłownia.
 Oryginał miał czysto białą plamę światła dającą tylko 4.88:1 ze scrimem
@@ -384,6 +391,16 @@ dodaj mu własną sekcję „Zobacz też”, i rozważ dodanie nowego zdania (ni
 nadpisywanie istniejącego) w najbliżej powiązanym starszym artykule, jeśli
 temat się realnie pokrywa — tak jak przy `instagram-czy-strona` wyżej.
 
+**Siódmy artykuł (01.10.2026):** `strona-czy-booksy` — inline linki do
+`jak-wyroznic-sie-jako-trener` (przy temacie wyróżniania się ceną) i do
+`instagram-czy-strona` (przy temacie kierowania klientów z własnych
+kanałów zamiast przez wyszukiwarkę aplikacji). „Zobacz też” → osobny,
+trzeci cel: `ile-kosztuje-strona-dla-trenera` (inny niż oba linki inline,
+zgodnie z zasadą o budowaniu szerszego grafu). `instagram-czy-strona`
+dostał nowe zdanie (nie nadpisujące istniejącej treści) w sekcji
+„Dlaczego to nie jest wybór jednego albo drugiego”, linkujące inline z
+powrotem do `strona-czy-booksy` przy temacie aplikacji rezerwacyjnych.
+
 **Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
 wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
 repo (np. `artykul-<slug>-DRAFT.md`, wzorem `polityka-prywatnosci-DRAFT.md`)
@@ -398,6 +415,13 @@ ugruntowany wzorzec CTA na stronie). `<meta name="description">` = ten sam
 tekst zachęty, co na karcie listy/podglądu (jeśli już ustalony) — nie
 wymyślać nowego. Pierwszy przykład: `jak-wyroznic-sie-jako-trener.html`,
 z `artykul-jak-wyroznic-sie-DRAFT.md`.
+
+Format pliku roboczego bywa też `.docx` zamiast `.md` (pierwszy raz przy
+siódmym artykule, `artykul-strona-czy-booksy-DRAFT.docx`) — ten sam
+workflow konwersji i ta sama zasada ukrycia działają bez zmian, bo
+`.assetsignore` domyślnie chowa wszystko (`*`) i tylko jawnie odsłania
+pliki strony, więc żadne rozszerzenie pliku roboczego nigdy nie trafia
+do publicznych assetów bez osobnego wpisu w allowliście.
 
 **Opcjonalne zdjęcie w tle nagłówka** — jeśli do artykułu dostarczone jest
 zdjęcie (od razu lub później, jak przy `instagram-czy-strona.html`, patrz

@@ -84,13 +84,18 @@
   <main id="main-content">
 
     <!-- ============================ NAGŁÓWEK ARTYKUŁU ============================ -->
-    <!-- Brak zdjęcia w tle nagłówka na start — klient nie dostarczył grafiki
-         razem z tym artykułem (ten sam przypadek co instagram-czy-strona.html
-         przed 17.09.2026, patrz CLAUDE.md "Opcjonalne zdjęcie w tle nagłówka").
-         Zwykły .hero--compact bez .hero--cover; gdy zdjęcie się pojawi, dodać
-         modyfikator i inline background-image tym samym wzorcem co pozostałe
-         artykuły. -->
-    <section class="hero hero--compact">
+    <!-- Zdjęcie w tle: images/artykul-strona-czy-booksy-hero.jpg (oryginał
+         tlodoartykulu67.png, 1920x1080/1,2MB — zmniejszony do 1600x900 i
+         skonwertowany na JPEG, ~91KB, plus .webp/19KB przez Pillow). Dodane
+         01.10.2026, dopiero po opublikowaniu artykułu bez zdjęcia (klient nie
+         dostarczył grafiki od razu) — patrz też CLAUDE.md. .hero--cover
+         (style.css) dokłada przyciemnienie + jasny tekst; sam URL zdjęcia
+         zostaje inline, bo to treść tego konkretnego artykułu. Kontrast
+         sprawdzony piksel po pikselu (PIL, luminancja WCAG): najjaśniejszy
+         realny fragment zdjęcia (99. percentyl, nie pojedynczy odstający
+         piksel) ze scrimem 0.65 daje 6.16:1, nad wymagane 4.5:1 - bez
+         potrzeby przyciemniania zdjęcia przed eksportem. -->
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-strona-czy-booksy-hero.jpg'); background-image: image-set(url('../images/artykul-strona-czy-booksy-hero.webp') type('image/webp'), url('../images/artykul-strona-czy-booksy-hero.jpg') type('image/jpeg'));">
       <div class="hero__inner">
         <p class="artykul__meta reveal">1 października 2026</p>
         <h1 class="hero__title reveal">Strona czy Booksy? Co lepiej sprawdzi się u trenera personalnego</h1>
