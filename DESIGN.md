@@ -724,15 +724,76 @@ like a real code editor, not a screenshot of the product:
   above; reused, not reinvented, from the phone this replaced.
 
 ### Splash intro
-A full-screen overlay, first thing in `<body>` on every page, that plays once
-per page load: the logo (`images/logo-fitpage.png`, `125px`) fades and scales
-in (`0.6 → 1`), grows a little further (`→ 1.15`), then fades and scales out
-(`→ 1.4`) as the overlay itself becomes invisible and non-interactive
-(`visibility: hidden`, `pointer-events: none`) — `1.44s` total, pure CSS
-(`animation-fill-mode: forwards`), no JS required for it to disappear, so it
-degrades safely with JavaScript off. `prefers-reduced-motion` removes the
-overlay outright (`display: none`) rather than freezing it mid-animation —
-the content is instantly available, never gated behind a decorative intro.
+A full-screen overlay, first thing in `<body>` on every page — two variants
+live in the DOM together (`.splash--new`, `.splash--old`), only one visible
+at a time, both entirely pure CSS (`@keyframes` + `animation-fill-mode:
+forwards`), no JS required for either to finish or disappear, so both
+degrade safely with JavaScript off.
+- **New vs. old (see "Session gating" below):** the first page view of a
+  browser session shows `.splash--new` — the elaborate, `1.6s` entrance
+  described below. Every page view after that, for the rest of the
+  session, shows `.splash--old` instead — the simpler overlay that shipped
+  before the `1.6s` redesign (a single green logo fading and scaling in,
+  then out, on a static `--canvas` background, `1.44s`, no color
+  crossfade). This is deliberate, not a fallback: the new sequence is a
+  one-time welcome; the old one is the lighter, already-proven touch that
+  continues on every subsequent page.
+- **Sequence (`.splash--new`):** the overlay fills the screen in the accent green
+  (`--accent`). The icon (`images/logo-fitpage-cream.png`, a flat-cream
+  recolor of the nav icon) scales and fades in (`0.82 → 1` scale,
+  `0 → 1` opacity) over the first `450ms`; the wordmark "FitPage" (Fraunces,
+  `--canvas`) fades up right after, overlapping slightly so it reads as
+  "right behind" the icon, not a separate beat. Both then hold steady until
+  `1020ms`. From there the background crossfades green → `--canvas`, and the
+  icon/wordmark crossfade cream → `--accent`, finishing by `1420ms`. The
+  whole overlay fades to invisible starting at `1300ms` (overlapping the end
+  of the color crossfade on purpose) so the cut to the real page — which is
+  already sitting there in its normal colors — is seamless, with no flash
+  and no visible seam between "splash" and "page".
+- **No `color` animation:** animating `color` directly isn't allowed (motion
+  is restricted to `transform`, `opacity`, `background-color`), so the
+  cream → green recolor of both the icon and the wordmark is done by
+  stacking two copies of each (two `<img>` variants for the icon — a
+  pre-rendered flat-cream PNG/WebP plus the existing green original; two
+  identical `<span>FitPage</span>` elements for the text, one colored
+  `--canvas` and one `--accent`) and crossfading their `opacity`.
+- **Even-paced color crossfade:** the site's standard easing
+  (`var(--ease)`, an aggressive ease-out) is used for the icon/text
+  *entrance*, where a snappy "arrival" reads well, but the 64%–89%
+  color-crossfade keyframe segment overrides it with a per-keyframe
+  `animation-timing-function: linear`. With the inherited ease-out, the
+  crossfade visually finished within roughly the first third of its
+  allotted time and then sat static for the rest — scrubbed and measured
+  via the Web Animations API, confirmed CSS easing curves are
+  duration-invariant so this holds at any speed. Linear spreads the
+  color change evenly across the whole segment instead, so it reads as a
+  continuous wash rather than a sudden jump-then-pause.
+- **Session gating:** an inline script in `<head>`, before anything else,
+  checks `sessionStorage` for a flag; if already set, it adds
+  `.splash-repeat` to `<html>` before first paint
+  (`.splash-repeat .splash--new { display: none }`,
+  `.splash-repeat .splash--old { display: flex }`), so there's no flash of
+  the wrong variant and no flash of content either. If unset, it sets the
+  flag — the base, un-prefixed state of both variants (`.splash--new`
+  visible, `.splash--old` hidden) is already what a first view should show,
+  so nothing further is needed for that case.
+- **Skip:** a first click or keypress anywhere adds `.splash--skip` to
+  *both* overlay elements (only the visible one matters, but it's cheaper
+  than checking which), which sets `animation-duration: 0.01ms !important`
+  on the overlay and every descendant. Each in-flight `@keyframes`
+  animation still runs its own curve to completion, just compressed to
+  near-zero time, so it lands cleanly on its real defined end state — never
+  a hard `animation: none` reset, which would snap every animated property
+  back to its unanimated CSS value instead of wherever the sequence
+  currently was. Works the same way for both variants.
+- **Content and a11y:** the real page content sits in the DOM from the
+  start, unobstructed — both overlays are pure decoration
+  (`aria-hidden="true"`), never a loading gate, so neither is ever in the
+  way for Google or a screen reader. `prefers-reduced-motion` removes both
+  outright (`display: none !important` — `!important` is load-bearing here:
+  `.splash-repeat .splash--old`'s two-class selector would otherwise
+  out-specificity the media query's single-class one and show the old
+  variant anyway) rather than freezing either mid-animation.
 
 ### Article cover header (`.hero--cover`)
 An optional modifier on `.hero.hero--compact`, for an article whose draft

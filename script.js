@@ -1,13 +1,15 @@
 /* ===================================================================
    FitPage — script.js
    1. Flaga .js (żeby bez JS treść była normalnie widoczna)
-   2. Menu mobilne (hamburger)
-   3. Rok w stopce
-   4. Animacje przy scrollu — elementy już widoczne przy pierwszym renderze
+   2. Splash: pomijanie klikiem/klawiszem (reszta to czyste CSS, patrz
+      style.css — ta sama "działa też bez JS" zasada co reszta strony)
+   3. Menu mobilne (hamburger)
+   4. Rok w stopce
+   5. Animacje przy scrollu — elementy już widoczne przy pierwszym renderze
       odsłaniają się od razu (poza IO, patrz komentarz przy sekcji), reszta
       przez współdzielony IntersectionObserver + klasa .widoczna, ze
       staggered transitionDelay dla rodzeństwa.
-   5. Formularze (kontakt + opinia) — walidacja per-pole + wysyłka (Formspree).
+   6. Formularze (kontakt + opinia) — walidacja per-pole + wysyłka (Formspree).
    =================================================================== */
 (function () {
   'use strict';
@@ -17,7 +19,31 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------------------- 2. Menu mobilne ---------------------- */
+  /* ---------------------- 2. Splash: pomijanie klikiem/klawiszem ----------------------
+     Cała sekwencja (tło, ikona, napis) to czyste CSS @keyframes z
+     animation-fill-mode: forwards (patrz .splash w style.css) — kończy się
+     sama, bez JS, więc bez niego splash po prostu odtworzy swój czas i
+     zniknie (nowy wariant ~1.6s, stary ~1.44s — patrz style.css, "Przełącznik
+     nowy/stary"). Ten kod to wyłącznie dodatek: pierwszy klik albo klawisz
+     dodaje .splash--skip na OBA elementy .splash (nowy i stary — tylko
+     jeden jest akurat widoczny, ale taniej dodać klasę na oba niż sprawdzać
+     który to), co ściska WSZYSTKIE trwające animacje do prawie zera (reguła
+     w style.css) — każda kończy swoją krzywą i ląduje na zdefiniowanym
+     stanie końcowym, więc nic nie "skacze". Pod prefers-reduced-motion
+     splash jest i tak ukryty przez CSS — nasłuch poniżej po prostu się nie
+     podłącza, bo nie ma czego pomijać. */
+  var splashEls = document.querySelectorAll('.splash');
+  if (splashEls.length && !reduceMotion) {
+    var skipSplash = function () {
+      splashEls.forEach(function (el) { el.classList.add('splash--skip'); });
+      document.removeEventListener('click', skipSplash);
+      document.removeEventListener('keydown', skipSplash);
+    };
+    document.addEventListener('click', skipSplash);
+    document.addEventListener('keydown', skipSplash);
+  }
+
+  /* ---------------------- 3. Menu mobilne ---------------------- */
   var nav = document.querySelector('.nav');
   var toggle = document.querySelector('.nav__toggle');
 
@@ -35,11 +61,11 @@
     });
   }
 
-  /* ---------------------- 3. Rok w stopce ---------------------- */
+  /* ---------------------- 4. Rok w stopce ---------------------- */
   var yearEl = document.getElementById('year');
   if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
 
-  /* ---------------------- 4. Animacje przy scrollu ----------------------
+  /* ---------------------- 5. Animacje przy scrollu ----------------------
      Elementy .reveal, które są w widocznym obszarze już przy pierwszym
      renderze — nie tylko hero, także np. cała treść krótkiej podstrony
      (jedna karta artykułu, kompaktowy hero) mieszcząca się nad zakładką —
@@ -145,7 +171,7 @@
     scrollReveals.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---------------------- 5. Formularze (kontakt + opinia) ----------------------
+  /* ---------------------- 6. Formularze (kontakt + opinia) ----------------------
      Wysyłka: Formspree (action na <form> — hosting to Cloudflare Pages,
      Netlify Forms tam nie działa). Ta sama logika obsługuje oba formularze
      strony (kontakt.html — brief, opinie-dodaj.html — opinia klienta), bo

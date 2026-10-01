@@ -96,11 +96,29 @@ zbliżoną do `.nav__cta` (zmierzone: `44px` vs `~43px`). `alt=""` na obrazku,
 bo widoczny tekst obok przejmuje rolę nazwy dostępności — inaczej czytnik
 ekranu ogłosiłby „FitPage” dwa razy.
 
-Splash: `.splash` — pełnoekranowa nakładka z logo (96px), pierwsza rzecz w
-`<body>` na każdej stronie, odtwarza się przy każdym wejściu (nie zapamiętuje
-sesji). Czysty CSS, `animation-fill-mode: forwards` — nie wymaga JS do
-zniknięcia, więc działa też bez niego. `prefers-reduced-motion`: nakładka
-w ogóle się nie renderuje (`display:none`), zero opóźnienia w dostępie do treści.
+Splash: przebudowany 30.09.2026-01.10.2026 — dwa warianty naraz w DOM na
+każdej stronie, `.splash--new` i `.splash--old`, tylko jeden widoczny
+naraz. Pierwsze wejście w sesji (`sessionStorage`, inline `<script>` w
+`<head>`, sprawdzane przed pierwszym renderem — zero mignięcia) pokazuje
+`.splash--new`: pełnoekranowe tło `--accent`→`--canvas`, ikona (osobny,
+wygenerowany Pillow wariant kremowy, `images/logo-fitpage-cream.png`) +
+napis „FitPage” wchodzą, potem oba przechodzą kolorem na zielony w parze
+z tłem robiącym odwrotnie, `1.6s`. Każde kolejne wejście na jakąkolwiek
+stronę w tej samej sesji pokazuje `.splash--old` — dokładnie tę
+implementację, która działała przed przebudową (pojedyncze zielone logo,
+fade+scale, stałe tło `--canvas`, `1.44s`) — decyzja klienta: nowy splash
+jako jednorazowe powitanie, stary jako lżejszy akcent przy każdym kolejnym
+wejściu, nie cisza. Czysty CSS, `animation-fill-mode: forwards` na obu
+wariantach — nie wymaga JS do zniknięcia, więc działa też bez niego;
+jedyny JS-owy dodatek to pomijanie klikiem/klawiszem (`script.js`).
+Pierwszy klik/klawisz dodaje `.splash--skip` (ściska animację do ~0 przez
+`animation-duration`, nie `animation: none` — każda kończy swoją krzywą
+bez skoku). `prefers-reduced-motion`: żaden wariant się nie renderuje
+(`display:none !important` — `!important` konieczne, bo selektor
+przełącznika `.splash-repeat .splash--old` ma wyższą swoistość niż
+jednoklasowa reguła media i bez tego by ją przebił), zero opóźnienia w
+dostępie do treści. Pełny opis obu wariantów i uzasadnienie techniki w
+`DESIGN.md`, sekcja „Splash intro”.
 
 ## Strony
 **`index.html`** — sekcje w kolejności:

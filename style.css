@@ -247,10 +247,19 @@ summary:focus-visible {
 }
 
 /* ============================== SPLASH ============================== */
-/* Pełnoekranowa nakładka z logo na wejściu, na każdej stronie. Czysty CSS —
-   dwie osobne animacje (nakładka + logo), obie kończą się na stanie, w którym
-   nakładka jest niewidoczna I nieklikalna (animation-fill-mode: forwards),
-   więc do zniknięcia nie jest potrzebny żaden JS — działa też bez niego. */
+/* Pełnoekranowa nakładka na wejściu — dwa warianty na każdej stronie,
+   .splash--new i .splash--old, oba w DOM naraz, tylko jeden naraz widoczny
+   (display, patrz "Przełącznik nowy/stary" niżej). Pierwsze wejście w
+   sesji (sessionStorage, inline <script> w <head>, sprawdzane przed
+   pierwszym renderem) pokazuje nowy, rozbudowany wariant — każde kolejne
+   wejście na jakąkolwiek stronę w tej samej sesji pokazuje z powrotem
+   wariant sprzed przebudowy 30.09.2026 (prostsze logo na kremowym tle,
+   1.44s) zamiast w ogóle nic nie pokazywać — to świadoma decyzja klienta:
+   nowy splash jako "powitanie" przy pierwszym wejściu, stary jako lżejszy,
+   już wcześniej sprawdzony akcent przy każdym kolejnym wejściu na stronę.
+
+   .splash (baza, wspólna dla obu wariantów) niesie tylko pozycjonowanie —
+   kolor tła i animacja należą do każdego wariantu osobno. */
 .splash {
   position: fixed;
   inset: 0;
@@ -258,29 +267,193 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--canvas);
-  animation: splash-hide 1.44s var(--ease) forwards;
-}
-.splash__logo {
-  width: 125px; /* 96px + 30% */
-  height: auto;
-  animation: splash-logo 1.44s var(--ease) forwards; /* 1.2s + 20% */
 }
 
-@keyframes splash-logo {
+/* ---- Wariant nowy (.splash--new) — pierwsze wejście w sesji ----
+   Tło idzie zieleń (--accent) → kremowy (--canvas), na środku ikona +
+   napis "FitPage" wchodzą osobno (ikona pierwsza, napis zaraz po niej),
+   potem oba przechodzą z kremowego na zielony w tym samym momencie, co tło
+   robi odwrotnie — nakładka znika dopiero, gdy ten kolorowy crossfade jest
+   już prawie domknięty, żeby nic nie "skakało" w momencie zniknięcia. Cały
+   timing: czyste CSS @keyframes z animation-fill-mode: forwards (skrót
+   `forwards` w `animation`) na KAŻDYM elemencie z osobna — zero JS
+   potrzebne, żeby cokolwiek z tego ruszyło albo się zakończyło. JS
+   (script.js) dokłada wyłącznie pomijanie klikiem/klawiszem, patrz niżej.
+
+   Technika "dwa nałożone elementy + crossfade opacity" (zamiast animowania
+   `color` wprost, czego nie ma na liście dozwolonych właściwości: transform,
+   opacity, background-color) — ikona to dwa obrazy (`images/logo-fitpage-
+   cream.png`, wygenerowany z oryginału przez Pillow z tej samej maski alfa,
+   i oryginalny zielony `logo-fitpage.png`), napis to dwa identyczne <span>
+   w różnych kolorach. Oba zestawy nakładają się idealnie (position:
+   absolute na drugiej warstwie), więc crossfade opacity wygląda jak zmiana
+   koloru, mimo że `color`/żaden kolor obrazu nigdy nie jest animowany. */
+.splash--new {
+  background-color: var(--accent);
+  animation: splash-bg 1.6s var(--ease) forwards,
+             splash-hide-new 1.6s var(--ease) forwards;
+}
+.splash__inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.splash__icon-stack {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  animation: splash-icon-scale 1.6s var(--ease) forwards;
+}
+.splash__icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.splash__icon--cream { animation: splash-icon-cream 1.6s var(--ease) forwards; }
+.splash__icon--green { animation: splash-icon-green 1.6s var(--ease) forwards; }
+
+.splash__text-stack {
+  position: relative;
+  display: inline-block;
+}
+.splash__text {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.splash__text--cream {
+  color: var(--canvas);
+  animation: splash-text-cream 1.6s var(--ease) forwards;
+}
+.splash__text--green {
+  position: absolute;
+  inset: 0;
+  color: var(--accent);
+  animation: splash-text-green 1.6s var(--ease) forwards;
+}
+
+/* Procenty poniżej odpowiadają konkretnym milisekundom na osi 1.6s:
+   6%=100ms (start wejścia ikony), 28%=450ms (koniec wejścia ikony),
+   24%=380ms (start wejścia napisu, lekko na zakładkę z ikoną — "zaraz
+   po niej"), 46%=730ms (koniec wejścia napisu), 64%=1020ms (koniec
+   przystanku, start przejścia kolorów), 89%=1420ms (koniec przejścia
+   kolorów), 81%=1300ms (start zanikania całej nakładki, nachodzi na
+   koniec przejścia kolorów, więc do zniknięcia dochodzi, gdy kolory są
+   już prawie na miejscu — bez tego nachodzenia zanikanie zaczynałoby się
+   dopiero po twardej przerwie, co czuć jako zacięcie).
+
+   Segment przejścia kolorów (64%-89%) ma własny `animation-timing-function:
+   linear`, inny niż `var(--ease)` odziedziczony z `animation` na elemencie.
+   Powód: `var(--ease)` to agresywna krzywa ease-out, która przy wejściu
+   ikony/napisu daje pożądany, żwawy "doskok" na miejsce, ale na crossfadzie
+   kolorów (opacity dwóch warstw + background-color razem) ściskała niemal
+   całą widoczną zmianę w pierwszą jedną trzecią segmentu, zostawiając długi,
+   wizualnie "martwy" ogon - zmierzone przez scrubowanie animacji (Web
+   Animations API, currentTime) co kilka punktów procentowych: przy 72%
+   (niecałe 1/3 drogi przez segment) opacity było już na 0.146 z 1, czyli
+   85% zmiany już za sobą. Linear rozkłada to równo na całej długości
+   segmentu, więc kolory realnie "płyną" przez cały czas trwania przejścia,
+   zamiast skoczyć na początku i stać w miejscu do końca. */
+@keyframes splash-icon-scale {
+  0%, 6%    { transform: scale(0.82); }
+  28%, 100% { transform: scale(1); }
+}
+@keyframes splash-icon-cream {
+  0%, 6%    { opacity: 0; }
+  28%       { opacity: 1; }
+  64%       { opacity: 1; animation-timing-function: linear; }
+  89%, 100% { opacity: 0; }
+}
+@keyframes splash-icon-green {
+  0%, 89%   { opacity: 0; animation-timing-function: linear; }
+  100%      { opacity: 1; }
+}
+@keyframes splash-text-cream {
+  0%, 24%   { opacity: 0; transform: translateY(8px); }
+  46%       { opacity: 1; transform: translateY(0); }
+  64%       { opacity: 1; transform: translateY(0); animation-timing-function: linear; }
+  89%, 100% { opacity: 0; transform: translateY(0); }
+}
+@keyframes splash-text-green {
+  0%, 89%   { opacity: 0; animation-timing-function: linear; }
+  100%      { opacity: 1; }
+}
+@keyframes splash-bg {
+  0%, 64%   { background-color: var(--accent); animation-timing-function: linear; }
+  89%, 100% { background-color: var(--canvas); }
+}
+@keyframes splash-hide-new {
+  0%, 81%  { opacity: 1; visibility: visible; pointer-events: auto; }
+  100%     { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* ---- Wariant stary (.splash--old) — drugie i kolejne wejście w sesji ----
+   Dokładnie ta sama implementacja, która działała na stronie przed
+   przebudową 30.09.2026 (logo na stałym kremowym tle, bez przejścia
+   kolorów) — przywrócona tu pod osobnymi nazwami klas/keyframes, żeby nie
+   kolidowała z wariantem nowym. Domyślnie ukryty (display: none);
+   przełącznik "nowy/stary" niżej odwraca to w zależności od tego, czy
+   .splash-repeat jest na <html>. */
+.splash--old {
+  display: none;
+  background-color: var(--canvas);
+  animation: splash-hide-old 1.44s var(--ease) forwards;
+}
+.splash__logo-old {
+  width: 125px; /* 96px + 30% */
+  height: auto;
+  animation: splash-logo-old 1.44s var(--ease) forwards; /* 1.2s + 20% */
+}
+@keyframes splash-logo-old {
   0%   { opacity: 0; transform: scale(0.6); }
   30%  { opacity: 1; transform: scale(1); }
   70%  { opacity: 1; transform: scale(1.15); }
   100% { opacity: 0; transform: scale(1.4); }
 }
-@keyframes splash-hide {
+@keyframes splash-hide-old {
   0%, 85% { opacity: 1; visibility: visible; pointer-events: auto; }
   100%    { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .splash { display: none; }
+/* Pomijanie klikiem/klawiszem (script.js dodaje tę klasę raz, przy
+   pierwszym kliku albo klawiszu, na OBA warianty naraz — tylko widoczny
+   ma znaczenie, ale to tańsze niż sprawdzać który to). Nie usuwa animacji
+   (co cofnęłoby wszystko do stanu 0% i dałoby widoczny skok) — zamiast
+   tego ściska KAŻDĄ trwającą animację do prawie zera, więc każda
+   dokańcza swoją własną krzywą i ląduje dokładnie na zdefiniowanym
+   stanie końcowym. Ten sam, dobrze znany trik co globalne wyłączanie
+   animacji pod prefers-reduced-motion, tu użyty punktowo na nakładkę. */
+.splash--skip,
+.splash--skip * {
+  animation-duration: 0.01ms !important;
+  animation-delay: 0s !important;
 }
+
+/* !important celowe: .splash-repeat .splash--old (niżej) ma wyższą
+   swoistość (dwie klasy) niż ta reguła media (jedna klasa) i bez
+   !important by ją przebił, pokazując stary splash nawet pod
+   prefers-reduced-motion. Dostępność wygrywa zawsze, niezależnie od
+   swoistości reszty reguł. */
+@media (prefers-reduced-motion: reduce) {
+  .splash { display: none !important; }
+}
+
+/* Przełącznik nowy/stary — klasa .splash-repeat na <html> (inline <script>
+   w <head>, sprawdza sessionStorage przed pierwszym renderem) oznacza, że
+   to NIE jest pierwsze wejście w tej sesji: chowa wariant nowy, pokazuje
+   stary. Bez tej klasy (pierwsze wejście) domyślny stan obu wariantów
+   (.splash--new widoczny przez bazowe display:flex z .splash, .splash--old
+   ukryty) już jest tym, co ma się pokazać — nic dodatkowego nie trzeba
+   pisać dla tego przypadku. */
+.splash-repeat .splash--new { display: none; }
+.splash-repeat .splash--old { display: flex; }
 
 /* ============================== NAV ============================== */
 .nav {

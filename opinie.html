@@ -2,6 +2,17 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
   <title>Opinie klientów: FitPage</title>
@@ -19,10 +30,28 @@
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
 
   <!-- ============================ SPLASH (logo na wejściu) ============================ -->
-  <div class="splash" aria-hidden="true">
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
     <picture>
       <source srcset="images/logo-fitpage.webp" type="image/webp">
-      <img src="images/logo-fitpage.png" alt="" class="splash__logo">
+      <img src="images/logo-fitpage.png" alt="" class="splash__logo-old">
     </picture>
   </div>
 
