@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Strona czy Booksy? Co lepiej sprawdzi się u trenera personalnego: FitPage</title>
+  <meta name="description" content="Booksy daje kalendarz i widoczność w aplikacji, ale nie zbuduje zaufania do Ciebie jako trenera. Sprawdź, co lepiej sprawdzi się w Twojej sytuacji.">
+  <link rel="canonical" href="https://fitpage.pl/artykuly/strona-czy-booksy.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../images/favicon-512.png">
+  <link rel="apple-touch-icon" href="../images/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="../images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="../images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
+    <picture>
+      <source srcset="../images/logo-fitpage.webp" type="image/webp">
+      <img src="../images/logo-fitpage.png" alt="" class="splash__logo-old">
+    </picture>
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="../index.html" class="nav__logo">
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="../index.html#o-nas">O nas</a>
+          <a href="../index.html#portfolio">Portfolio</a>
+          <a href="../proces.html">Proces</a>
+          <a href="../faq.html">FAQ</a>
+        </nav>
+        <a href="../kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================ NAGŁÓWEK ARTYKUŁU ============================ -->
+    <!-- Brak zdjęcia w tle nagłówka na start — klient nie dostarczył grafiki
+         razem z tym artykułem (ten sam przypadek co instagram-czy-strona.html
+         przed 17.09.2026, patrz CLAUDE.md "Opcjonalne zdjęcie w tle nagłówka").
+         Zwykły .hero--compact bez .hero--cover; gdy zdjęcie się pojawi, dodać
+         modyfikator i inline background-image tym samym wzorcem co pozostałe
+         artykuły. -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <p class="artykul__meta reveal">1 października 2026</p>
+        <h1 class="hero__title reveal">Strona czy Booksy? Co lepiej sprawdzi się u trenera personalnego</h1>
+      </div>
+    </section>
+
+    <!-- ============================ TREŚĆ ARTYKUŁU ============================ -->
+    <section class="section">
+      <div class="container reveal">
+
+        <article class="artykul">
+          <div class="artykul__body">
+            <p>Trener, który chce, żeby klienci mogli się sami zapisywać, prędzej czy później trafia na to pytanie. Założyć profil w Booksy? Zrobić własną stronę? A może jedno i drugie?</p>
+
+            <p>Odpowiedź zależy od tego, czym dokładnie ma się zająć narzędzie. Bo Booksy i strona internetowa robią dwie zupełnie różne rzeczy, choć na pierwszy rzut oka wyglądają podobnie.</p>
+
+            <h2>Co Booksy robi dobrze</h2>
+            <p>Booksy to przede wszystkim kalendarz. Klient widzi wolne terminy, klika, rezerwuje. Dostaje przypomnienie przed wizytą, więc rzadziej zapomina. Ty nie musisz odpisywać na wiadomości w stylu „a czy w czwartek o 18 jest coś wolnego?”.</p>
+
+            <p>Jest jeszcze jedna zaleta: Booksy to też wyszukiwarka. Ludzie przeglądają aplikację i mogą tam trafić na Ciebie, nawet jeśli wcześniej o Tobie nie słyszeli.</p>
+
+            <h2>Ile to kosztuje</h2>
+            <p>Abonament Booksy Biz kosztuje 145 zł netto miesięcznie za jedną osobę w kalendarzu. Do tego dochodzi Boost, czyli promowanie profilu w wyszukiwarce Booksy. Za każdego nowego klienta, który znajdzie Cię dzięki Boost, oddajesz 45% netto wartości jego pierwszej wizyty, minimum 25 zł netto.</p>
+
+            <p>Przykład: jeśli pierwszy trening kosztuje 150 zł, z tej kwoty około 67 zł netto idzie do Booksy. Płacisz to raz za każdego nowego klienta, ale przy kilku nowych osobach w miesiącu robi się z tego realna kwota.</p>
+
+            <p>Ceny w takich aplikacjach się zmieniają, więc przed decyzją zawsze sprawdź aktualny cennik.</p>
+
+            <h2>Czego Booksy za Ciebie nie zrobi</h2>
+            <p>Trening personalny to nie strzyżenie. Do fryzjera można pójść do kogokolwiek, kto ma wolny termin w sobotę. Trenera wybiera się na miesiące. Ktoś ma Ci powierzyć swoje zdrowie, ciało i pieniądze za cały pakiet. Ta decyzja nie zapada przy wolnym okienku w kalendarzu.</p>
+
+            <p>Profil w Booksy wygląda tak jak profile wszystkich innych trenerów w okolicy. Ta sama ramka, te same pola, gwiazdki, cena. Klient przewija listę i porównuje. Jeśli jedyne, co Cię <a href="jak-wyroznic-sie-jako-trener.html">wyróżnia</a>, to cena za godzinę, będziesz się ścigać ceną.</p>
+
+            <p>Do tego klienci zostają na cudzej platformie. Wiadomości, historia, opinie. Jeśli kiedyś zrezygnujesz z abonamentu, część tego zostaje po drugiej stronie.</p>
+
+            <h2>Co daje własna strona</h2>
+            <p>Strona to miejsce, w którym ktoś decyduje, czy chce trenować właśnie z Tobą. Możesz tam pokazać, jak pracujesz, z kim, jakie efekty osiągają Twoi podopieczni i dlaczego Twoja metoda działa. Możesz opisać pakiety, współpracę online, plan dietetyczny, cokolwiek sprzedajesz poza pojedynczym treningiem.</p>
+
+            <p>Strona pracuje też w Google. Kiedy ktoś wpisze „trener personalny” i nazwę swojej dzielnicy, ma szansę trafić na Ciebie, a nie na listę w aplikacji, gdzie stoisz obok konkurencji.</p>
+
+            <p>No i wszystko jest Twoje. Adres, treść, kontakty od klientów. Nikt nie zmieni Ci zasad z dnia na dzień.</p>
+
+            <h2>Nie musisz wybierać</h2>
+            <p>Najrozsądniejsze rozwiązanie dla większości trenerów to połączenie obu rzeczy. Strona jest wizytówką i miejscem, w którym klient się przekonuje. Kalendarz, czy to Booksy, czy inne narzędzie do rezerwacji, jest przyciskiem „Umów się”, który na tej stronie wisi.</p>
+
+            <p>Jest w tym jeszcze jedna korzyść. Jeśli kierujesz klientów ze swojej strony, <a href="instagram-czy-strona.html">Instagrama</a> czy polecenia prosto do swojego kalendarza, nie płacisz prowizji Boost, bo ci ludzie nie przyszli z wyszukiwarki Booksy. Płacisz wtedy tylko abonament. Boost możesz włączyć świadomie, jako dodatkowe źródło nowych osób, a nie jako jedyny sposób na klientów.</p>
+
+            <h2>Co wybrać w Twojej sytuacji</h2>
+            <p>Dopiero zaczynasz i nie masz jeszcze bazy klientów. Booksy z Boost może dać Ci pierwsze osoby, zanim ktokolwiek usłyszy o Tobie inną drogą. Licz się z prowizją, ale traktuj ją jak koszt pozyskania klienta.</p>
+
+            <p>Sprzedajesz pakiety, prowadzenie online albo masz już stałych podopiecznych. Tu bardziej przyda się strona. Ludzie płacący za kilka miesięcy współpracy chcą wiedzieć, komu ufają, a nie tylko gdzie jest wolny termin.</p>
+
+            <p>Chcesz rosnąć stabilnie. Strona jako fundament, kalendarz do rezerwacji podpięty pod nią, Booksy jako jeden z kanałów, a nie cały biznes.</p>
+          </div>
+
+          <div class="artykul__related reveal">
+            <p>Zobacz też</p>
+            <a href="ile-kosztuje-strona-dla-trenera.html">Ile kosztuje strona internetowa dla trenera personalnego?</a>
+          </div>
+
+          <div class="artykul__cta reveal">
+            <p>Jeśli zastanawiasz się, jak mogłaby wyglądać strona, która przekonuje klientów i od razu prowadzi ich do Twojego kalendarza, umów bezpłatną konsultację. Pokażę Ci, co sprawdzi się w Twoim przypadku.</p>
+            <a href="../kontakt.html" class="btn btn--primary">Umów bezpłatną konsultację</a>
+          </div>
+
+          <p class="artykul__back">
+            <a href="../artykuly.html">&larr; Wróć do listy artykułów</a>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="../index.html#o-nas">O nas</a>
+      <a href="../proces.html">Proces tworzenia strony</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../artykuly.html">Artykuły</a>
+      <a href="../opinie.html">Opinie</a>
+      <a href="../kontakt.html">Kontakt</a>
+      <a href="../polityka-prywatnosci.html">Polityka prywatności</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

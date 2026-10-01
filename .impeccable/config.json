@@ -503,6 +503,33 @@
         ],
         "createdAt": "2026-09-22T23:02:04.142Z",
         "reason": "model: kremowy canvas #F7F3EA to udokumentowana 'The Flat Canvas Rule' w DESIGN.md, ten sam kolor na każdej stronie serwisu od początku projektu, nie AI-owy odruch na tym nowym pliku."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/strona-czy-booksy.html"
+        ],
+        "createdAt": "2026-10-01T17:20:07.284Z",
+        "reason": "Udokumentowana zazieleniona poswiata na H1 (text-shadow, DESIGN.md Typography), ten sam wspoldzielony styl co kazda inna strona - pierwsze przeskanowanie na nowym pliku artykulu."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/strona-czy-booksy.html"
+        ],
+        "createdAt": "2026-10-01T17:20:24.260Z",
+        "reason": "Udokumentowana 'Flat Canvas Rule' w DESIGN.md, ten sam kremowy #F7F3EA co kazda inna strona serwisu od poczatku projektu."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/strona-czy-booksy.html"
+        ],
+        "createdAt": "2026-10-01T17:20:24.284Z",
+        "reason": ".trainings nie wystepuje w tresci tego pliku (wspoldzielony style.css/script.js skanowany niezaleznie od realnego markupu) - sam marquee to udokumentowany, swiadomie ograniczony wyjatek w DESIGN.md (Trainings marquee), obecny tylko na index.html."
       }
     ]
   }
