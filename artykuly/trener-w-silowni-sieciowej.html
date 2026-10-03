@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia daje klientów: FitPage</title>
+  <meta name="description" content="Siłownia daje Ci klientów, ale nie zabierzesz jej ze sobą, gdy coś się zmieni. Sprawdź, po co trenerowi pracującemu w klubie własna strona.">
+  <link rel="canonical" href="https://fitpage.pl/artykuly/trener-w-silowni-sieciowej.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../images/favicon-512.png">
+  <link rel="apple-touch-icon" href="../images/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="../images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="../images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
+    <picture>
+      <source srcset="../images/logo-fitpage.webp" type="image/webp">
+      <img src="../images/logo-fitpage.png" alt="" class="splash__logo-old">
+    </picture>
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="../index.html" class="nav__logo">
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="../index.html#o-nas">O nas</a>
+          <a href="../index.html#portfolio">Portfolio</a>
+          <a href="../proces.html">Proces</a>
+          <a href="../faq.html">FAQ</a>
+        </nav>
+        <a href="../kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================ NAGŁÓWEK ARTYKUŁU ============================ -->
+    <!-- Brak zdjęcia w tle nagłówka na start — klient nie dostarczył grafiki
+         razem z tym artykułem (ten sam przypadek co instagram-czy-strona.html
+         przed 17.09.2026, patrz CLAUDE.md "Opcjonalne zdjęcie w tle nagłówka").
+         Zwykły .hero--compact bez .hero--cover; gdy zdjęcie się pojawi, dodać
+         modyfikator i inline background-image tym samym wzorcem co pozostałe
+         artykuły. -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <p class="artykul__meta reveal">4 października 2026</p>
+        <h1 class="hero__title reveal">Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia daje klientów</h1>
+      </div>
+    </section>
+
+    <!-- ============================ TREŚĆ ARTYKUŁU ============================ -->
+    <section class="section">
+      <div class="container reveal">
+
+        <article class="artykul">
+          <div class="artykul__body">
+            <p>Wielu trenerów zaczyna w dużej siłowni. To ma sens. Masz sprzęt, masz salę, a przede wszystkim masz ludzi, którzy codziennie przechodzą obok Ciebie. Część z nich prędzej czy później zapyta o trening personalny.</p>
+
+            <p>Dlatego pytanie „po co mi strona?” brzmi rozsądnie. Klienci są. Grafik się zapełnia. Tylko że jest kilka rzeczy, których siłownia za Ciebie nie zrobi, a o których trener zwykle przypomina sobie dopiero wtedy, gdy coś się zmieni.</p>
+
+            <h2>Klienci z siłowni są trochę klientami siłowni</h2>
+            <p>Ktoś zaczął z Tobą trenować, bo był w tym klubie, o tej godzinie, a Ty akurat byłeś pod ręką. To dobry początek, ale ta relacja w dużej mierze opiera się na miejscu.</p>
+
+            <p>Wyobraź sobie, że przenosisz się do innego klubu. Albo siłownia zmienia zasady współpracy z trenerami. Albo zamyka oddział. Część podopiecznych pójdzie za Tobą. Część zostanie, bo mają karnet, bo mają blisko, bo tak im wygodniej. A nowi klienci, którzy dopiero mieli się pojawić, trafią do trenera, który zajmie Twoje miejsce.</p>
+
+            <p>Własna strona to coś, co zabierasz ze sobą wszędzie. Adres się nie zmienia, nawet jeśli zmienia się siłownia.</p>
+
+            <h2>Na profilu siłowni jesteś jednym z wielu</h2>
+            <p>Duże sieci często pokazują swoich trenerów na stronie albo w aplikacji. Zdjęcie, kilka zdań, specjalizacja. Obok Ciebie kilkunastu innych, w tym samym formacie.</p>
+
+            <p>Klient, który przegląda taką listę, nie ma jak poznać różnicy między Wami. Widzi twarze i krótkie hasła. Wybiera tego, kto ładnie wyszedł na zdjęciu albo kto ma najbliższy wolny termin.</p>
+
+            <p>Na własnej stronie masz miejsce, żeby powiedzieć więcej. Z kim pracujesz najchętniej. Jak wygląda pierwszy trening. Co mówią o Tobie podopieczni. Dlaczego ktoś, kto nigdy nie był na siłowni, nie musi się u Ciebie niczego wstydzić. To są rzeczy, które przekonują, a nie mieszczą się w trzech zdaniach na profilu klubu.</p>
+
+            <h2>Nie każdy klient jest już w Twojej siłowni</h2>
+            <p>Siłownia daje Ci ludzi, którzy już kupili karnet. A co z tymi, którzy dopiero szukają?</p>
+
+            <p>Ktoś, kto chce zacząć, często nie idzie najpierw do klubu. Wpisuje w Google „trener personalny” i nazwę swojej dzielnicy. Pyta znajomych. Przegląda <a href="instagram-czy-strona.html">Instagram</a>. Jeśli nie masz własnej strony, w tych miejscach Cię po prostu nie ma. Ta osoba trafi do kogoś innego, zanim w ogóle przekroczy próg Twojego klubu.</p>
+
+            <h2>Siłownia nie sprzeda Twoich usług poza salą</h2>
+            <p>Coraz więcej trenerów prowadzi podopiecznych także <a href="trening-online-strona.html">online</a>. Rozpisuje plany, robi konsultacje, łączy trening z dietą. Siłownia nie ma powodu, żeby to promować, bo zarabia na tym, że ludzie przychodzą do klubu.</p>
+
+            <p>Jeśli chcesz kiedyś rozwijać coś poza salą, potrzebujesz miejsca, które mówi o Tobie, a nie o klubie. Strona to najprostszy sposób, żeby takie usługi w ogóle istniały w oczach klientów.</p>
+
+            <h2>Strona nie konkuruje z siłownią</h2>
+            <p>Często trenerzy boją się, że własna strona będzie wyglądać jak „konkurencja” dla klubu. Nic z tych rzeczy. Na stronie możesz spokojnie napisać, gdzie prowadzisz treningi, i podać adres siłowni. Dla klienta to nawet plus: od razu wie, gdzie Cię znaleźć i że masz porządne miejsce do pracy.</p>
+
+            <p>Strona po prostu dodaje do tego to, czego klub nie pokaże. Ciebie.</p>
+
+            <h2>Kiedy strona nie jest Ci potrzebna</h2>
+            <p>Uczciwie: jeśli masz pełny grafik, nie planujesz zmiany klubu ani pracy online i nie potrzebujesz nowych klientów, możesz spokojnie żyć bez strony. Siłownia wystarczy.</p>
+
+            <p>Ale nawet wtedy warto mieć choćby prostą wizytówkę. Grafik pełny dziś nie zawsze jest pełny za pół roku. Lepiej mieć gotowe miejsce, zanim zacznie Ci go brakować.</p>
+
+            <h2>Co powinno się na niej znaleźć na start</h2>
+            <p>Nie potrzebujesz od razu rozbudowanego serwisu. Wystarczy kilka rzeczy:</p>
+
+            <ul>
+              <li>kim jesteś i z kim pracujesz,</li>
+              <li>gdzie prowadzisz treningi, stacjonarnie i ewentualnie online,</li>
+              <li>jak wygląda współpraca, krok po kroku,</li>
+              <li>opinie podopiecznych,</li>
+              <li>prosty sposób kontaktu.</li>
+            </ul>
+
+            <p>To dużo mniej, niż się wydaje, a robi ogromną różnicę, gdy ktoś szuka trenera i trafia właśnie na Ciebie.</p>
+          </div>
+
+          <div class="artykul__related reveal">
+            <p>Zobacz też</p>
+            <a href="jak-wyroznic-sie-jako-trener.html">Jak wyróżnić się jako trener personalny</a>
+          </div>
+
+          <div class="artykul__cta reveal">
+            <p>Jeśli pracujesz w siłowni i zastanawiasz się, jak mogłaby wyglądać Twoja strona, umów bezpłatną konsultację. Porozmawiamy o tym, co sprawdzi się w Twojej sytuacji.</p>
+            <a href="../kontakt.html" class="btn btn--primary">Umów bezpłatną konsultację</a>
+          </div>
+
+          <p class="artykul__back">
+            <a href="../artykuly.html">&larr; Wróć do listy artykułów</a>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="../index.html#o-nas">O nas</a>
+      <a href="../proces.html">Proces tworzenia strony</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../artykuly.html">Artykuły</a>
+      <a href="../opinie.html">Opinie</a>
+      <a href="../kontakt.html">Kontakt</a>
+      <a href="../polityka-prywatnosci.html">Polityka prywatności</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

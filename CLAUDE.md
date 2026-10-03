@@ -287,16 +287,23 @@ Cała karta klikalna (`::after` na tytule + osobny, realny link na leadzie,
 uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 `.krok`, zgodnie z „The Lift-Means-Interactive Rule” (cień w spoczynku jest
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
-strony), między FAQ a Kontakt. Siedem artykułów obecnie (najnowszy:
-„Strona czy Booksy? Co lepiej sprawdzi się u trenera personalnego”,
-01.10.2026, `strona-czy-booksy.html` — opublikowany najpierw bez zdjęcia
-w tle nagłówka (klient nie dostarczył grafiki od razu), zdjęcie
+strony), między FAQ a Kontakt. Osiem artykułów obecnie (najnowszy:
+„Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia
+daje klientów”, 04.10.2026, `trener-w-silowni-sieciowej.html` — bez
+zdjęcia w tle nagłówka na start (klient nie dostarczył grafiki); treść
+zawiera też krótką listę (`<ul><li>`, ten sam wzorzec co
+`polityka-prywatnosci.html`) — pierwszy artykuł z listą zamiast samych
+akapitów, bo źródłowy tekst już był sformatowany jako lista, nie
+wymyślona przy konwersji. Poprzedni najnowszy: „Strona czy Booksy? Co
+lepiej sprawdzi się u trenera personalnego”, 01.10.2026,
+`strona-czy-booksy.html` — opublikowany najpierw bez zdjęcia w tle
+nagłówka (klient nie dostarczył grafiki od razu), zdjęcie
 (`tlodoartykulu67.png`, zamazane drewniane klocki z napisem „WEBSITE” na
 tle zieleni i kwiatu) doszło tego samego dnia tym samym workflow co
 pozostałe artykuły, patrz „Opcjonalne zdjęcie w tle nagłówka” niżej.
 Kontrast sprawdzony jak zawsze piksel po pikselu (99. percentyl jasności,
 nie pojedynczy odstający piksel): ze scrimem 0.65 od razu 6.16:1, nad
-wymagane 4.5:1, bez przyciemniania. Poprzedni najnowszy: „Trening online:
+wymagane 4.5:1, bez przyciemniania. Wcześniejszy: „Trening online:
 dlaczego strona internetowa jest ważniejsza niż kiedykolwiek”,
 23.09.2026, `trening-online-strona.html` — zdjęcie od razu w komplecie,
 `tlodoartykulu6.png`, biurko z rozmytą infografiką/wykresami (dostarczone
@@ -400,6 +407,18 @@ zgodnie z zasadą o budowaniu szerszego grafu). `instagram-czy-strona`
 dostał nowe zdanie (nie nadpisujące istniejącej treści) w sekcji
 „Dlaczego to nie jest wybór jednego albo drugiego”, linkujące inline z
 powrotem do `strona-czy-booksy` przy temacie aplikacji rezerwacyjnych.
+
+**Ósmy artykuł (04.10.2026):** `trener-w-silowni-sieciowej` — inline
+linki do `instagram-czy-strona` (przy wzmiance o przeglądaniu Instagrama
+w poszukiwaniu trenera) i do `trening-online-strona` (przy temacie
+prowadzenia podopiecznych online). „Zobacz też” → `jak-wyroznic-sie-jako-trener`
+(trzeci, inny cel — ten artykuł i tamten dzielą mocny wspólny wątek:
+nieodróżnianie się od innych trenerów w tym samym formacie/na tej samej
+liście). `trening-online-strona` dostał nowe zdanie (nie nadpisujące
+istniejącej treści) w pierwszym akapicie, linkujące inline z powrotem do
+`trener-w-silowni-sieciowej` — oba artykuły opisują lustrzane strony tego
+samego problemu (trener bez fizycznego miejsca kontra trener, który na
+fizycznym miejscu polega za bardzo).
 
 **Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
 wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
