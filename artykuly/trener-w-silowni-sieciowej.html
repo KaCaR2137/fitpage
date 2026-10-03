@@ -84,13 +84,19 @@
   <main id="main-content">
 
     <!-- ============================ NAGŁÓWEK ARTYKUŁU ============================ -->
-    <!-- Brak zdjęcia w tle nagłówka na start — klient nie dostarczył grafiki
-         razem z tym artykułem (ten sam przypadek co instagram-czy-strona.html
-         przed 17.09.2026, patrz CLAUDE.md "Opcjonalne zdjęcie w tle nagłówka").
-         Zwykły .hero--compact bez .hero--cover; gdy zdjęcie się pojawi, dodać
-         modyfikator i inline background-image tym samym wzorcem co pozostałe
-         artykuły. -->
-    <section class="hero hero--compact">
+    <!-- Zdjęcie w tle: images/artykul-trener-w-silowni-sieciowej-hero.jpg
+         (oryginał tlodoartykulu8.jpg, zdjęcie trenerki z klientką na siłowni
+         sieciowej, 11648x6552/7,6MB, ostre — w odróżnieniu od poprzednich
+         artykułów klient dostarczył je nierozmyte, więc rozmycie dodane tu
+         po raz pierwszy ręcznie: Pillow ImageFilter.GaussianBlur(radius=20)
+         zastosowany PO zmniejszeniu do docelowych 1600x900, nie przed —
+         rozmycie na pełnej rozdzielczości źródła wymagałoby dużo większego
+         promienia, żeby dać ten sam efekt po zmniejszeniu, i byłoby mniej
+         przewidywalne. Eksport do JPEG ~54KB, plus .webp/18KB. Kontrast
+         sprawdzony piksel po pikselu (PIL, luminancja WCAG, 99. percentyl
+         jasności, nie pojedynczy odstający piksel): ze scrimem 0.65 daje
+         5.92:1, nad wymagane 4.5:1, bez potrzeby dodatkowego przyciemniania. -->
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-trener-w-silowni-sieciowej-hero.jpg'); background-image: image-set(url('../images/artykul-trener-w-silowni-sieciowej-hero.webp') type('image/webp'), url('../images/artykul-trener-w-silowni-sieciowej-hero.jpg') type('image/jpeg'));">
       <div class="hero__inner">
         <p class="artykul__meta reveal">4 października 2026</p>
         <h1 class="hero__title reveal">Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia daje klientów</h1>

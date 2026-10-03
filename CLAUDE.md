@@ -289,12 +289,24 @@ uniesienie tylko na hover/focus — karta w spoczynku jest płaska jak
 zastrzeżony dla portfolio). Wejście: „Artykuły” w nav i w stopce (wszystkie
 strony), między FAQ a Kontakt. Osiem artykułów obecnie (najnowszy:
 „Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia
-daje klientów”, 04.10.2026, `trener-w-silowni-sieciowej.html` — bez
-zdjęcia w tle nagłówka na start (klient nie dostarczył grafiki); treść
+daje klientów”, 04.10.2026, `trener-w-silowni-sieciowej.html` — treść
 zawiera też krótką listę (`<ul><li>`, ten sam wzorzec co
 `polityka-prywatnosci.html`) — pierwszy artykuł z listą zamiast samych
 akapitów, bo źródłowy tekst już był sformatowany jako lista, nie
-wymyślona przy konwersji. Poprzedni najnowszy: „Strona czy Booksy? Co
+wymyślona przy konwersji. Opublikowany najpierw bez zdjęcia w tle
+nagłówka (klient nie dostarczył grafiki od razu), zdjęcie
+(`tlodoartykulu8.jpg`, trenerka z klientką na siłowni sieciowej)
+doszło tego samego dnia — **pierwszy przypadek, gdzie klient dostarczył
+zdjęcie ostre, nierozmyte**, w odróżnieniu od wszystkich poprzednich
+(zawsze już rozmyte od klienta). Rozmycie dodane tu po raz pierwszy
+ręcznie: Pillow `ImageFilter.GaussianBlur(radius=20)`, zastosowany PO
+zmniejszeniu do docelowych 1600x900, nie na pełnej rozdzielczości źródła
+(promień dobrany pod docelowy rozmiar, nie pod oryginał — inaczej ten sam
+promień dałby inny efekt po skalowaniu). Kontrast ze scrimem 0.65 daje
+5.92:1, nad wymagane 4.5:1, bez przyciemniania. Jeśli kolejny klient
+dostarczy ostre zdjęcie zamiast rozmytego: ten sam przepis (resize do
+1600x900 → `GaussianBlur(radius=20)` → eksport), nie promień dobrany
+na oko przy pełnej rozdzielczości. Poprzedni najnowszy: „Strona czy Booksy? Co
 lepiej sprawdzi się u trenera personalnego”, 01.10.2026,
 `strona-czy-booksy.html` — opublikowany najpierw bez zdjęcia w tle
 nagłówka (klient nie dostarczył grafiki od razu), zdjęcie
