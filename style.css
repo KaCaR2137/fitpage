@@ -109,7 +109,8 @@ h4, h5, h6 { font-weight: 600; }
    nie ozdoba. */
 .hero__title,
 .section__title,
-.krok__title {
+.krok__title,
+.brief-success__title {
   text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14);
 }
 p { margin: 0 0 1em; }
@@ -1573,8 +1574,140 @@ summary:focus-visible {
   font-weight: 600;
 }
 .form__status.is-ok  { color: var(--accent-strong); }
-.form__status.is-err { color: var(--error); }
 .form .is-touched:invalid { border-color: var(--error); }
+
+/* Błąd wysyłki, podbity wizualnie (04.10.2026) — sama kolorowa linia
+   tekstu była za łatwa do przeoczenia po nieudanej wysyłce. Ten sam
+   wzorzec ikony błędu (koło z wykrzyknikiem) co przy polach i checkboxie
+   zgody wyżej, tu jako tło ::before zamiast inline w polu. */
+.form__status.is-err {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(161, 51, 51, 0.08);
+  border: 1px solid rgba(161, 51, 51, 0.28);
+  border-radius: 10px;
+  color: var(--error);
+}
+.form__status.is-err::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23A13333'/%3E%3Crect x='11' y='6' width='2' height='8' rx='1' fill='%23FBF8F0'/%3E%3Crect x='11' y='16' width='2' height='2' rx='1' fill='%23FBF8F0'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+}
+
+/* --- Spinner na przycisku wysyłki (stan "Wysyłanie…", 04.10.2026) ---
+   .btn__spinner jest w DOM zawsze (wewnątrz przycisku), ale ukryty
+   (display:none) — JS dokłada .is-loading na .btn, nie na sam spinner,
+   żeby ta sama klasa mogła w przyszłości sterować też innymi stanami
+   przycisku (np. tekstem), nie tylko widocznością kółka. */
+.btn__spinner {
+  display: none;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  vertical-align: -2px;
+  border: 2px solid rgba(251, 248, 240, 0.35);
+  border-top-color: var(--on-accent);
+  border-radius: 50%;
+}
+.btn.is-loading .btn__spinner {
+  display: inline-block;
+  animation: btn-spin 0.7s linear infinite;
+}
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn.is-loading .btn__spinner { animation: none; }
+}
+
+/* --- Panel sukcesu briefu (04.10.2026) — zastępuje cały formularz po
+   udanej wysyłce, patrz kontakt.html/script.js. .brief.is-submitted to
+   klasa na <section class="section brief">, dodawana przez JS po
+   potwierdzeniu od Formspree; bez niej panel zostaje display:none, a
+   formularz/link powrotny widoczne jak dotąd (to NIE jest stan domyślny
+   strony, tylko stan po wysyłce). */
+.brief-success {
+  display: none;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: center;
+}
+.brief.is-submitted .form,
+.brief.is-submitted .brief__back { display: none; }
+.brief.is-submitted .brief-success { display: block; }
+
+/* Focus ring własny, nie poleganie na globalnej regule a/button/summary
+   wyżej (ta nie obejmuje zwykłego diva) — panel dostaje focus programowo
+   (script.js, po scrollIntoView), więc musi mieć widoczny, spójny z resztą
+   strony pierścień, nie domyślny obrys przeglądarki. */
+.brief-success:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+/* Ikona potwierdzenia — jedyny akcent zieleni w tym widoku (The One Mark
+   Rule, DESIGN.md): kontur koła + znacznik rysują się przez
+   stroke-dasharray/dashoffset, klasyczny trik SVG "drawing-on" zamiast
+   zwykłego fade-in, bo to właśnie ma czytać się jak odhaczenie, nie jak
+   zwykłe pojawienie się elementu. Koło najpierw (0-0.5s), znacznik zaraz
+   po (0.35-0.7s, lekko nachodzi na koniec koła) - żadna z dwóch animacji
+   nie jest przypięta do stanu początkowego innej właściwości niż
+   stroke-dashoffset, więc nic nie "skacze" na starcie. dasharray obu
+   kształtów jest świadomie trochę większy niż realna długość konturu
+   (176 dla koła r=28, 2*pi*28≈175.9; 40 dla znacznika, realnie ~35) —
+   bezpieczny margines, nie wymaga liczenia promienia/długości co do piksela. */
+.brief-success__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+}
+.brief-success__icon-circle,
+.brief-success__icon-check {
+  stroke: var(--accent);
+  fill: none;
+}
+.brief-success__icon-circle {
+  stroke-dasharray: 176;
+  stroke-dashoffset: 176;
+  animation: brief-success-draw 0.5s var(--ease) forwards;
+}
+.brief-success__icon-check {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: brief-success-draw 0.35s var(--ease) 0.35s forwards;
+}
+@keyframes brief-success-draw {
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brief-success__icon-circle,
+  .brief-success__icon-check {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+.brief-success__title {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text);
+}
+.brief-success__text {
+  margin: 0 0 28px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
 
 .form__hint {
   font-size: 0.8rem;

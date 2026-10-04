@@ -186,6 +186,23 @@
   var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
   var formType = form ? (form.dataset.form || 'brief') : null;
 
+  // Spinner + zamiana tekstu na przycisku w trakcie wysyłki ("Wysyłanie…",
+  // 04.10.2026) — submitLabelDefault zapamiętany raz na starcie, żeby było
+  // do czego wrócić po błędzie (po sukcesie panel i tak zastępuje cały
+  // formularz dla briefu; dla opinii przycisk wraca do normalnego stanu,
+  // bo tam nadal jest potrzebny, gdyby ktoś wysłał kolejną opinię).
+  var submitLabel = submitBtn ? submitBtn.querySelector('.btn__label') : null;
+  var submitLabelDefault = submitLabel ? submitLabel.textContent : '';
+
+  // Panel sukcesu briefu — tylko kontakt.html ma te elementy w DOM, więc
+  // na opinie-dodaj.html wszystkie poniższe będą null i formType==='brief'
+  // nigdy tam nie zajdzie (data-form="opinia" na tamtym formularzu), więc
+  // nie trzeba dodatkowo sprawdzać, która strona się właśnie wykonuje.
+  var briefSection = document.getElementById('brief-section');
+  var briefSuccessPanel = document.getElementById('brief-success');
+  var briefSuccessText = document.getElementById('brief-success-text');
+  var briefBackLink = document.querySelector('.brief__back');
+
   // Grupa radio (np. ocena w gwiazdkach) nie ma wspólnego id — każdy input
   // w grupie ma inny id, ale ten sam name, więc błąd wiążemy przez name.
   function errorIdFor(field) {
@@ -229,12 +246,20 @@
 
   // Komunikaty sukcesu/błędu zależne od typu formularza (data-form na <form>);
   // reszta logiki (timeout, parsowanie błędu Formspree, walidacja) jest wspólna.
+  // "brief" w formSuccessMessages zostaje jako nieużywany fallback (sukces
+  // briefu idzie teraz przez panel .brief-success, patrz niżej) — zostawiony
+  // na wypadek, gdyby panel kiedyś zniknął z DOM na jakiejś stronie.
   var formSuccessMessages = {
-    brief: 'Dziękuję! Brief dotarł — odezwiemy się wkrótce z propozycją zakresu i wyceną.',
+    brief: 'Dziękuję! Brief dotarł, odezwiemy się wkrótce z propozycją zakresu i wyceną.',
     opinia: 'Dziękujemy za opinię! Po weryfikacji pojawi się na stronie.'
   };
+  // Błąd briefu (04.10.2026): jeden, stały komunikat zamiast rozróżniania
+  // timeoutu/treści błędu Formspree/przypadku ogólnego jak wcześniej — to
+  // właśnie ta różnorodność wariantów była częścią problemu z czytelnością.
+  // Opinia zostaje przy starym, bardziej szczegółowym zachowaniu (patrz
+  // .catch niżej) — nikt nie zgłaszał tam tego samego problemu.
   var formGenericErrorMessages = {
-    brief: 'Nie udało się wysłać briefu. Spróbuj ponownie albo zadzwoń: 535 721 592.',
+    brief: 'Coś poszło nie tak. Spróbuj jeszcze raz albo napisz na kontakt@fitpage.pl',
     opinia: 'Nie udało się wysłać opinii. Spróbuj ponownie albo zadzwoń: 535 721 592.'
   };
 
@@ -272,7 +297,11 @@
         return;
       }
 
-      if (submitBtn) { submitBtn.disabled = true; }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-loading');
+      }
+      if (submitLabel) { submitLabel.textContent = 'Wysyłanie…'; }
       status.textContent = 'Wysyłanie…';
       status.className = 'form__status';
       status.setAttribute('role', 'status');
@@ -290,38 +319,90 @@
         signal: controller ? controller.signal : undefined
       }).then(function (res) {
         if (res.ok) {
-          status.textContent = formSuccessMessages[formType] || formSuccessMessages.brief;
-          status.className = 'form__status is-ok';
-          status.setAttribute('role', 'status');
+          // Wartości pól trzeba odczytać PRZED form.reset() niżej, bo reset
+          // je czyści — potrzebne i do maila przez Resend, i do treści
+          // panelu sukcesu (imię, e-mail w zdaniu "Potwierdzenie wysłałem
+          // na...").
+          var imieField = document.getElementById('imie-nazwisko');
+          var emailField = document.getElementById('email');
 
-          // Dodatkowy mail z podziękowaniem przez Resend (/api/potwierdz-kontakt),
-          // tylko dla briefu z kontakt.html — niezależny od zgłoszenia do
-          // Formspree powyżej, które zostaje bez zmian. Wartości pól trzeba
-          // odczytać PRZED form.reset() poniżej, bo reset je czyści.
-          // Fire-and-forget: błąd tego wywołania (sieć, serwer, cokolwiek)
-          // jest tylko logowany do konsoli, nigdy nie trafia do
-          // użytkownika — to dodatek, nie krytyczna ścieżka zgłoszenia.
+          // Dodatkowe maile przez Resend (/api/potwierdz-kontakt), tylko dla
+          // briefu z kontakt.html — niezależne od zgłoszenia do Formspree
+          // powyżej, które zostaje bez zmian. Endpoint wysyła dwa maile:
+          // podziękowanie do klienta i kopię całego briefu na
+          // kontakt@fitpage.pl (dodane 04.10.2026 — druga, niezależna od
+          // Formspree ścieżka dostarczenia treści formularza, na wypadek
+          // gdyby Formspree oznaczył realne zgłoszenie jako spam i nie
+          // wysłał maila). Fire-and-forget: błąd tego wywołania (sieć,
+          // serwer, cokolwiek) jest tylko logowany do konsoli, nigdy nie
+          // trafia do użytkownika — to dodatek, nie krytyczna ścieżka
+          // zgłoszenia (ta już poszła do Formspree wyżej), i w szczególności
+          // nigdy nie wpływa na to, który stan sukcesu widzi użytkownik
+          // niżej — ten zależy wyłącznie od odpowiedzi Formspree.
           if (formType === 'brief') {
-            var imieField = document.getElementById('imie-nazwisko');
-            var emailField = document.getElementById('email');
             // Ten sam honeypot co w zgłoszeniu do Formspree (name="_gotcha")
             // — przekazany dalej bez zmian, endpoint sam decyduje, co z nim zrobić.
             var gotchaField = form.querySelector('[name="_gotcha"]');
             if (imieField && emailField && imieField.value && emailField.value) {
+              // Wszystkie pola briefu (poza honeypotem i plumbingiem
+              // Formspree _subject/_next, które endpoint i tak by
+              // zignorował) — do kopii briefu wysyłanej na
+              // kontakt@fitpage.pl. Budowane z tego samego FormData co
+              // zgłoszenie do Formspree powyżej, więc żadne pole nie
+              // wymaga osobnego, ręcznego odczytu po id.
+              var fields = {};
+              new FormData(form).forEach(function (value, key) {
+                if (key === '_subject' || key === '_next' || key === '_gotcha') { return; }
+                fields[key] = value;
+              });
+
               fetch('/api/potwierdz-kontakt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                   imie: imieField.value,
                   email: emailField.value,
-                  honeypot: gotchaField ? gotchaField.value : ''
+                  honeypot: gotchaField ? gotchaField.value : '',
+                  fields: fields
                 })
               }).catch(function (err) {
                 if (window.console && console.warn) {
-                  console.warn('Mail potwierdzający (Resend) nie powiódł się:', err);
+                  console.warn('Maile przez Resend nie powiodły się:', err);
                 }
               });
             }
+          }
+
+          // Panel sukcesu briefu (04.10.2026) — zastępuje cały formularz,
+          // zamiast krótkiej linijki tekstu pod przyciskiem jak wcześniej.
+          // Niezależny od wyniku autorespondera Resend powyżej: ten panel
+          // reaguje wyłącznie na res.ok z Formspree, dokładnie jak wymaga
+          // zadanie ("niezależnie od wyniku autorespondera"). Opinia
+          // (formType !== 'brief') zostaje przy starym, krótkim komunikacie
+          // w .form__status — ten panel istnieje tylko na kontakt.html.
+          if (formType === 'brief' && briefSection && briefSuccessPanel && briefSuccessText) {
+            var imieVal = imieField ? imieField.value.trim() : '';
+            var emailVal = emailField ? emailField.value.trim() : '';
+            briefSuccessText.textContent = 'Dzięki, ' + imieVal + '! Odezwę się w ciągu 24 godzin roboczych. '
+              + 'Potwierdzenie wysłałem na ' + emailVal + '. Jeśli go nie widzisz, zajrzyj do spamu.';
+
+            if (briefBackLink) { briefBackLink.hidden = true; }
+            briefSection.classList.add('is-submitted');
+
+            // scrollIntoView + focus, żeby panel był od razu widoczny także
+            // na telefonie (formularz bywa dłuższy niż ekran, bez tego
+            // panel pojawiłby się poza widokiem, przewinięty w miejscu,
+            // gdzie stał przycisk) — smooth tylko bez
+            // prefers-reduced-motion, reduceMotion zdefiniowany wyżej w tym
+            // pliku (sekcja 1). tabindex="-1" w HTML pozwala na .focus()
+            // mimo że to zwykły <div>, nie wchodzi przy tym w normalny
+            // tab-order.
+            briefSuccessPanel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+            briefSuccessPanel.focus();
+          } else {
+            status.textContent = formSuccessMessages[formType] || formSuccessMessages.brief;
+            status.className = 'form__status is-ok';
+            status.setAttribute('role', 'status');
           }
 
           form.reset();
@@ -346,20 +427,33 @@
         });
       }).catch(function (err) {
         if (window.console && console.warn) { console.warn('Wysyłka formularza nie powiodła się:', err); }
-        var timedOut = err && err.name === 'AbortError';
-        var serverMessage = (!timedOut && err && err.message && err.message !== 'formspree-error') ? err.message : null;
-        if (timedOut) {
-          status.textContent = 'Wysyłka trwa zbyt długo — sprawdź połączenie i spróbuj ponownie, albo zadzwoń: 535 721 592.';
-        } else if (serverMessage) {
-          status.textContent = serverMessage + ' Możesz też zadzwonić: 535 721 592.';
+        if (formType === 'brief') {
+          // Jeden, stały komunikat dla briefu (04.10.2026) — patrz
+          // formGenericErrorMessages wyżej, niezależnie od przyczyny
+          // (timeout, błąd Formspree, cokolwiek innego). Dane w polach
+          // zostają: nie ma tu form.reset(), submitBtn wraca do stanu
+          // aktywnego w .finally() niżej.
+          status.textContent = formGenericErrorMessages.brief;
         } else {
-          status.textContent = formGenericErrorMessages[formType] || formGenericErrorMessages.brief;
+          var timedOut = err && err.name === 'AbortError';
+          var serverMessage = (!timedOut && err && err.message && err.message !== 'formspree-error') ? err.message : null;
+          if (timedOut) {
+            status.textContent = 'Wysyłka trwa zbyt długo, sprawdź połączenie i spróbuj ponownie, albo zadzwoń: 535 721 592.';
+          } else if (serverMessage) {
+            status.textContent = serverMessage + ' Możesz też zadzwonić: 535 721 592.';
+          } else {
+            status.textContent = formGenericErrorMessages[formType] || formGenericErrorMessages.brief;
+          }
         }
         status.className = 'form__status is-err';
         status.setAttribute('role', 'alert');
       }).finally(function () {
         if (timeoutId) { clearTimeout(timeoutId); }
-        if (submitBtn) { submitBtn.disabled = false; }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+        }
+        if (submitLabel) { submitLabel.textContent = submitLabelDefault; }
       });
     });
   }

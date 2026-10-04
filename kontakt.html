@@ -95,7 +95,7 @@
     </section>
 
     <!-- ============================ FORMULARZ ============================ -->
-    <section class="section brief">
+    <section class="section brief" id="brief-section">
       <div class="container">
 
         <!-- Formspree: hosting to Cloudflare Pages, nie Netlify — Netlify Forms
@@ -259,9 +259,32 @@
             <p class="form__required-note"><span class="req">*</span> pole wymagane</p>
           </fieldset>
 
-          <button type="submit" class="btn btn--primary">Wyślij brief</button>
+          <button type="submit" class="btn btn--primary" id="brief-submit">
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <span class="btn__label">Wyślij brief</span>
+          </button>
           <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
         </form>
+
+        <!-- Panel sukcesu dla briefu — podmienia formularz po udanym
+             zgłoszeniu (JS, script.js), patrz .brief-success w style.css.
+             Pusty/ukryty w spoczynku: treść (imię, e-mail) wpisuje JS tuż
+             przed pokazaniem, bo zależy od tego, co klient wpisał. Bez JS
+             formularz po prostu działa natywnie (przekierowanie Formspree
+             na dziekujemy.html) i ten panel nigdy się nie pokazuje — nie
+             blokuje niczego. tabindex="-1", żeby dało się na niego
+             programowo przenieść focus (ogłoszenie dla czytnika ekranu +
+             punkt odniesienia po scrollIntoView), ale nie wchodzi w
+             zwykły tab-order. -->
+        <div class="brief-success" id="brief-success" tabindex="-1">
+          <svg class="brief-success__icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle class="brief-success__icon-circle" cx="32" cy="32" r="28" fill="none" stroke-width="3"/>
+            <path class="brief-success__icon-check" d="M20 33 L28 41 L44 23" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h2 class="brief-success__title">Brief wysłany</h2>
+          <p class="brief-success__text" id="brief-success-text"></p>
+          <a href="index.html" class="btn btn--primary">Wróć na stronę główną</a>
+        </div>
 
         <p class="brief__back reveal">
           <a href="index.html">&larr; Wróć na stronę główną</a>
