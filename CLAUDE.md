@@ -432,6 +432,22 @@ istniejącej treści) w pierwszym akapicie, linkujące inline z powrotem do
 samego problemu (trener bez fizycznego miejsca kontra trener, który na
 fizycznym miejscu polega za bardzo).
 
+**Porządki SEO po Search Console (10.10.2026).** `strona-czy-booksy` i
+`trening-online-strona` mają teraz po 3 linki przychodzące w treści.
+Booksy: z `instagram-czy-strona`, `ile-kosztuje-strona-dla-trenera` (przy
+„kalendarzem do umawiania konsultacji”) i `trener-w-silowni-sieciowej`
+(nowe zdanie o liście trenerów w aplikacji rezerwacyjnej). Trening online:
+z `instagram-czy-strona`, `trener-w-silowni-sieciowej` i
+`jakie-zdjecia-tresci-przygotowac` (przy „plan treningowy online”).
+`strona-czy-booksy` dostał też treść, której nie ma w innych artykułach:
+tabelę „Booksy kontra własna strona w skrócie” (`.artykul__table`, na
+≤560px każdy wiersz układa się w blok z etykietami z `data-label`) i
+sekcję „Najczęstsze pytania” (3 × `.faq__item`, ten sam akordeon co
+`faq.html`). Wszystkie linki do strony głównej prowadzą na `/` (i
+`/#o-nas`, `/#portfolio`), nie na `index.html`; `_redirects` ma 301
+`/index.html → /` (bez pętli z regułą `/ /index.html 200`, sprawdzone w
+`wrangler dev`). Nowe linki do strony głównej też pisz jako `/`.
+
 **Workflow wklejania artykułu (obowiązuje dla każdego pliku, który zostanie
 wskazany jako gotowy artykuł):** źródło to plik roboczy Markdown w korzeniu
 repo (np. `artykul-<slug>-DRAFT.md`, wzorem `polityka-prywatnosci-DRAFT.md`)

@@ -1088,6 +1088,87 @@ summary:focus-visible {
 .artykul__body ol { margin-bottom: 1em; padding-left: 1.25em; }
 .artykul__body li { margin-bottom: 0.4em; }
 
+/* Tabela porównawcza w treści artykułu (pierwsza: strona-czy-booksy).
+   Płaska, tylko hairline między wierszami (Flat Canvas Rule), bez tła.
+   Wrapper przewija się poziomo, gdyby trzy kolumny nie zmieściły się
+   na wąskim telefonie, zamiast rozpychać całą stronę. */
+.artykul__table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1em;
+}
+.artykul__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.artykul__table caption {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.artykul__table th,
+.artykul__table td {
+  padding: 10px 12px 10px 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.artykul__table thead th {
+  font-weight: 600;
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+.artykul__table tbody th {
+  font-weight: 600;
+  color: var(--text);
+  min-width: 8.5em;
+}
+.artykul__table td { color: var(--muted); min-width: 10em; }
+
+/* Wąski telefon: trzy kolumny się nie mieszczą (zmierzone przy 375px:
+   433px treści na 335px miejsca, trzecia kolumna ucięta za krawędzią).
+   Każdy wiersz staje się blokiem: nagłówek wiersza na całą szerokość,
+   pod nim dwie komórki obok siebie z etykietą z data-label. */
+@media (max-width: 560px) {
+  .artykul__table thead {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .artykul__table tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .artykul__table th,
+  .artykul__table td {
+    min-width: 0;
+    padding: 0;
+    border-bottom: 0;
+  }
+  .artykul__table tbody th {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+  }
+  .artykul__table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+}
+
+/* FAQ na końcu artykułu: ten sam akordeon co faq.html, tylko w kolumnie
+   czytelniczej artykułu. */
+.artykul__faq { margin-bottom: 1em; }
+
 /* "Zobacz też" — link do jednego powiązanego artykułu, przed CTA.
    Hairline border u góry jako jedyny separator (bez panelu/tła, zgodnie z
    Flat Canvas Rule) — ten sam wzorzec co linia nad .footer__links. */

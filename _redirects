@@ -25,6 +25,14 @@
 # serwuje.
 / /index.html 200
 
+# 301 z /index.html na / (dodane 10.10.2026, porządki SEO po Search
+# Console): strona główna ma mieć jeden adres, „/". Wszystkie linki
+# wewnętrzne prowadzą już na „/", ta reguła łapie stare linki i zakładki
+# z /index.html. Bez pętli z regułą 200 wyżej: reguły dopasowują się do
+# ścieżki z żądania, a wewnętrzne przepisanie „/" na /index.html nie
+# przechodzi ponownie przez _redirects (sprawdzone w wrangler dev).
+/index.html / 301
+
 /proces /proces.html 301
 /faq /faq.html 301
 /kontakt /kontakt.html 301
