@@ -31,27 +31,54 @@
 const ALLOWED_ORIGIN = 'https://fitpage.pl';
 const ADMIN_EMAIL = 'kontakt@fitpage.pl';
 
-// Pola briefu przekazywane w kopii do administratora — w tej kolejności
-// (ta sama co pola na kontakt.html, dla czytelności), z własnym limitem
-// długości dla każdego (ten sam limit co atrybut maxlength w HTML, ale
-// wymuszony tu niezależnie — formularz i tak chroni przed nadmiarową
-// długością po stronie przeglądarki, serwer nie ufa temu i sprawdza
-// sam). Honeypot (_gotcha) i pola plumbingu Formspree (_subject, _next)
-// celowo nie są tu wymienione — script.js ich w ogóle nie wysyła w
-// obiekcie fields.
-const BRIEF_FIELD_DEFS = [
-  { key: 'imie_nazwisko', label: 'Imię i nazwisko', max: 100 },
-  { key: 'email', label: 'E-mail', max: 254 },
-  { key: 'telefon', label: 'Telefon', max: 20 },
-  { key: 'miasto_forma_zajec', label: 'Miasto/forma zajęć', max: 100 },
-  { key: 'specjalizacja', label: 'Specjalizacja', max: 2000 },
-  { key: 'oferta_pakiety', label: 'Oferta/pakiety', max: 2000 },
-  { key: 'ceny_na_stronie', label: 'Ceny na stronie', max: 100 },
-  { key: 'wyroznienie', label: 'Co Cię wyróżnia', max: 2000 },
-  { key: 'instagram_facebook', label: 'Instagram/Facebook', max: 200 },
-  { key: 'styl_strony', label: 'Styl strony', max: 100 },
-  { key: 'inspiracja', label: 'Inspiracja', max: 300 },
-  { key: 'wizja', label: 'Twoja wizja strony', max: 4000 }
+// Pola briefu w kopii do administratora, pogrupowane jak kroki formularza
+// na kontakt.html. max = ten sam limit co maxlength w HTML (serwer sprawdza
+// niezależnie). Pola wielokrotnego wyboru przychodzą już złączone przecinkiem.
+const BRIEF_SECTIONS = [
+  {
+    title: 'Krok 1: O Tobie',
+    fields: [
+      { key: 'imie_nazwisko', label: 'Imię i nazwisko', max: 100 },
+      { key: 'nazwa_dzialalnosci', label: 'Nazwa działalności', max: 150 },
+      { key: 'email', label: 'E-mail', max: 254 },
+      { key: 'telefon', label: 'Telefon', max: 20 },
+      { key: 'social_media', label: 'Instagram / TikTok / Facebook', max: 300 }
+    ]
+  },
+  {
+    title: 'Krok 2: Jak pracujesz',
+    fields: [
+      { key: 'miasto', label: 'Miasto', max: 100 },
+      { key: 'forma_zajec', label: 'Forma zajęć', max: 300 },
+      { key: 'nazwa_silowni_studia', label: 'Siłownia lub studio', max: 150 },
+      { key: 'specjalizacja', label: 'Specjalizacja', max: 500 },
+      { key: 'specjalizacja_inne', label: 'Inna specjalizacja', max: 200 },
+      { key: 'grupa_docelowa', label: 'Z kim najczęściej pracuje (grupa docelowa)', max: 2000 },
+      { key: 'wyroznienie', label: 'Wyróżnik', max: 2000 }
+    ]
+  },
+  {
+    title: 'Krok 3: Oferta i kontakt',
+    fields: [
+      { key: 'oferta_pakiety', label: 'Oferta / pakiety', max: 2000 },
+      { key: 'ceny_na_stronie', label: 'Ceny na stronie', max: 100 },
+      { key: 'kontakt_klientow', label: 'Kontakt od klientów przez', max: 300 },
+      { key: 'faq_klientow', label: 'Najczęstsze pytania klientów', max: 2000 }
+    ]
+  },
+  {
+    title: 'Krok 4: Materiały i termin',
+    fields: [
+      { key: 'materialy', label: 'Materiały, które już ma', max: 300 },
+      { key: 'domena', label: 'Domena', max: 200 },
+      { key: 'mail_domena', label: 'Mail na własnej domenie', max: 100 },
+      { key: 'termin', label: 'Termin', max: 100 },
+      { key: 'styl_strony', label: 'Styl strony', max: 100 },
+      { key: 'inspiracja', label: 'Inspiracja', max: 300 },
+      { key: 'wizja', label: 'Twoja wizja strony', max: 4000 },
+      { key: 'zgoda_marketing', label: 'Zgoda marketingowa', max: 10 }
+    ]
+  }
 ];
 
 export default {
@@ -122,9 +149,12 @@ async function handlePotwierdzKontakt(request, env) {
   // klucz nigdy nie wywraca całego żądania, tylko daje pustą wartość.
   const fields = {};
   const rawFields = (data.fields && typeof data.fields === 'object') ? data.fields : {};
-  for (const def of BRIEF_FIELD_DEFS) {
-    const raw = rawFields[def.key];
-    fields[def.key] = typeof raw === 'string' ? raw.trim().slice(0, def.max) : '';
+  for (const section of BRIEF_SECTIONS) {
+    for (const def of section.fields) {
+      let raw = rawFields[def.key];
+      if (Array.isArray(raw)) { raw = raw.filter((v) => typeof v === 'string').join(', '); }
+      fields[def.key] = typeof raw === 'string' ? raw.trim().slice(0, def.max) : '';
+    }
   }
   fields.zgoda_marketing = rawFields.zgoda_marketing ? 'Tak' : 'Nie';
 
@@ -276,38 +306,41 @@ function buildEmailHtml(imie) {
 </html>`;
 }
 
-// Kopia briefu do administratora — zwykła lista "etykieta: wartość" w
-// kolejności BRIEF_FIELD_DEFS, pole po polu, żeby dało się ją przeczytać
-// od razu w kliencie poczty bez przewijania do treści Formspree. Puste
-// opcjonalne pole dostaje jawny placeholder "(nie podano)" zamiast
-// zniknąć z maila — administrator widzi od razu, które pola brief
-// faktycznie wypełnił, nie tylko te, które wypełnił. Linki (np. w polu
-// "Inspiracja") trafiają tu jako zwykły tekst — nic w tej funkcji nie
-// zamienia URL-i na klikalne <a>, w wersji tekstowej i tak nie ma takiej
-// możliwości.
+// Kopia briefu do administratora: sekcje jak kroki formularza, puste pola pominięte.
+function filledSections(fields) {
+  return BRIEF_SECTIONS
+    .map((section) => ({
+      title: section.title,
+      rows: section.fields.filter((def) => fields[def.key]).map((def) => ({ label: def.label, value: fields[def.key] }))
+    }))
+    .filter((section) => section.rows.length);
+}
+
 function buildAdminEmailText(fields) {
-  const lines = ['Nowy brief z formularza kontaktowego fitpage.pl:', ''];
-  for (const def of BRIEF_FIELD_DEFS) {
-    lines.push(def.label + ': ' + (fields[def.key] || '(nie podano)'));
+  const lines = ['Nowy brief z formularza kontaktowego fitpage.pl'];
+  for (const section of filledSections(fields)) {
+    lines.push('', section.title.toUpperCase());
+    for (const row of section.rows) {
+      lines.push(row.label + ': ' + row.value);
+    }
   }
-  lines.push('Zgoda marketingowa: ' + fields.zgoda_marketing);
   lines.push('');
   lines.push('Odpowiedz bezpośrednio na tego maila (Reply-To ustawiony na adres z formularza).');
   return lines.join('\n');
 }
 
 function buildAdminEmailHtml(fields) {
-  const rows = BRIEF_FIELD_DEFS.map(function (def) {
-    const value = fields[def.key] ? escapeHtmlMultiline(fields[def.key]) : '<span style="color:#A7A094;">(nie podano)</span>';
-    return '<tr>'
-      + '<td style="padding:10px 0;border-top:1px solid rgba(31,61,43,0.12);font-size:13px;font-weight:700;color:#52594F;white-space:nowrap;vertical-align:top;">' + escapeHtml(def.label) + '</td>'
-      + '<td style="padding:10px 0 10px 16px;border-top:1px solid rgba(31,61,43,0.12);font-size:15px;line-height:1.5;color:#202821;">' + value + '</td>'
-      + '</tr>';
+  const cell = 'border-top:1px solid rgba(31,61,43,0.12);';
+  const sections = filledSections(fields).map(function (section) {
+    const heading = '<tr><td colspan="2" style="padding:22px 0 8px;font-family:Georgia,\'Times New Roman\',serif;font-size:17px;font-weight:700;color:#1F3D2B;">' + escapeHtml(section.title) + '</td></tr>';
+    const rows = section.rows.map(function (row) {
+      return '<tr>'
+        + '<td style="padding:10px 0;' + cell + 'font-size:13px;font-weight:700;color:#52594F;vertical-align:top;width:38%;">' + escapeHtml(row.label) + '</td>'
+        + '<td style="padding:10px 0 10px 16px;' + cell + 'font-size:15px;line-height:1.5;color:#202821;">' + escapeHtmlMultiline(row.value) + '</td>'
+        + '</tr>';
+    }).join('');
+    return heading + rows;
   }).join('');
-  const zgodaRow = '<tr>'
-    + '<td style="padding:10px 0;border-top:1px solid rgba(31,61,43,0.12);font-size:13px;font-weight:700;color:#52594F;white-space:nowrap;vertical-align:top;">Zgoda marketingowa</td>'
-    + '<td style="padding:10px 0 10px 16px;border-top:1px solid rgba(31,61,43,0.12);font-size:15px;line-height:1.5;color:#202821;">' + escapeHtml(fields.zgoda_marketing) + '</td>'
-    + '</tr>';
 
   return `<!doctype html>
 <html lang="pl">
@@ -319,10 +352,9 @@ function buildAdminEmailHtml(fields) {
           <tr>
             <td style="background-color:#FBF8F0;border:1px solid rgba(31,61,43,0.16);border-bottom:none;border-radius:14px 14px 0 0;padding:32px;">
               <p style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:700;color:#1F3D2B;">FitPage</p>
-              <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#202821;">Nowy brief z formularza kontaktowego fitpage.pl. Reply-To tego maila jest ustawiony na adres z formularza, więc możesz odpowiedzieć bezpośrednio.</p>
+              <p style="margin:0 0 4px;font-size:16px;line-height:1.6;color:#202821;">Nowy brief z formularza kontaktowego fitpage.pl. Reply-To tego maila jest ustawiony na adres z formularza, więc możesz odpowiedzieć bezpośrednio.</p>
               <table role="presentation" width="100%" style="border-collapse:collapse;">
-                ${rows}
-                ${zgodaRow}
+                ${sections}
               </table>
             </td>
           </tr>

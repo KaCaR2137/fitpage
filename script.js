@@ -203,16 +203,28 @@
   var briefSuccessText = document.getElementById('brief-success-text');
   var briefBackLink = document.querySelector('.brief__back');
 
-  // Grupa radio (np. ocena w gwiazdkach) nie ma wspólnego id — każdy input
-  // w grupie ma inny id, ale ten sam name, więc błąd wiążemy przez name.
+  // Grupa radio/checkboxów nie ma wspólnego id: każdy input w grupie ma
+  // inny id (albo żaden), ale ten sam name, więc błąd wiążemy przez name.
+  function isGroupField(field) {
+    return field.type === 'radio' || field.type === 'checkbox' && !!field.closest('[data-required-group]');
+  }
   function errorIdFor(field) {
-    return (field.type === 'radio' ? field.name : field.id) + '-error';
+    return (isGroupField(field) ? field.name : field.id) + '-error';
   }
 
   var fieldMessages = {
     'imie-nazwisko': 'Podaj imię i nazwisko.',
+    'nazwa': 'Podaj nazwę, pod którą działasz. Może to być samo imię i nazwisko.',
     'email': 'Podaj adres e-mail.',
     'telefon': 'Podaj numer telefonu.',
+    'miasto': 'Podaj miasto, w którym pracujesz.',
+    'forma_zajec': 'Zaznacz przynajmniej jedną formę zajęć.',
+    'specjalizacja': 'Zaznacz przynajmniej jedną specjalizację.',
+    'specjalizacja-inne': 'Wpisz, jaka to specjalizacja.',
+    'grupa-docelowa': 'Napisz, z kim najczęściej pracujesz.',
+    'kontakt_klientow': 'Zaznacz przynajmniej jeden sposób kontaktu.',
+    'mail_domena': 'Wybierz jedną z opcji.',
+    'termin': 'Wybierz termin.',
     'wizja': 'Napisz chociaż kilka zdań o Twojej wizji strony.',
     'zgoda-kontakt': 'Zaznacz zgodę, żeby wysłać brief.',
     'tresc-opinii': 'Napisz treść swojej opinii.',
@@ -221,7 +233,7 @@
   };
 
   function fieldErrorMessage(field) {
-    if (field.type === 'radio') { return fieldMessages[field.name] || 'Wybierz jedną z opcji.'; }
+    if (isGroupField(field)) { return fieldMessages[field.name] || 'Wybierz jedną z opcji.'; }
     if (field.type === 'email' && field.validity.typeMismatch) {
       return 'Podaj poprawny adres e-mail (np. jan@przyklad.pl).';
     }
@@ -230,12 +242,16 @@
 
   function clearFieldError(field) {
     field.removeAttribute('aria-invalid');
+    var group = field.closest('.form__radio-group');
+    if (group) { group.classList.remove('is-invalid'); }
     var errorEl = document.getElementById(errorIdFor(field));
     if (errorEl) { errorEl.textContent = ''; }
   }
 
   function showFieldError(field) {
     field.setAttribute('aria-invalid', 'true');
+    var group = field.closest('.form__radio-group');
+    if (group) { group.classList.add('is-invalid'); }
     var errorEl = document.getElementById(errorIdFor(field));
     if (errorEl) { errorEl.textContent = fieldErrorMessage(field); }
   }
@@ -264,9 +280,130 @@
   };
 
   if (form && status) {
-    var formFields = form.querySelectorAll(
-      '.form__row input, .form__row textarea, .form__consent > input[required], .form__rating-group input[required]'
-    );
+    var formFields = Array.prototype.slice.call(form.querySelectorAll(
+      '.form__row input, .form__row textarea, .form__consent > input[required], .form__rating-group input[required], .form__radio-group input[required]'
+    ));
+
+    // Grupa checkboxów "min. 1": błąd trzymamy na pierwszym polu grupy
+    // (setCustomValidity), żeby działało zwykłe checkValidity().
+    var requiredGroups = Array.prototype.slice.call(form.querySelectorAll('[data-required-group]'));
+    function syncGroup(group) {
+      var boxes = group.querySelectorAll('input[type="checkbox"]');
+      var anyChecked = Array.prototype.some.call(boxes, function (b) { return b.checked; });
+      boxes[0].setCustomValidity(anyChecked ? '' : 'min-1');
+      return boxes[0];
+    }
+    requiredGroups.forEach(function (group) {
+      var first = syncGroup(group);
+      formFields.push(first);
+      group.querySelectorAll('input[type="checkbox"]').forEach(function (box) {
+        box.addEventListener('change', function () {
+          syncGroup(group);
+          first.classList.add('is-touched');
+          validateField(first);
+        });
+      });
+    });
+
+    // Pola pokazywane po zaznaczeniu opcji (np. "Inne", "Domenę").
+    // Ukryte pole jest wyłączone, więc nie trafia ani do walidacji, ani do wysyłki.
+    var toggles = Array.prototype.slice.call(form.querySelectorAll('[data-toggles]'));
+    function syncToggle(input) {
+      var row = document.getElementById(input.dataset.toggles);
+      if (!row) { return; }
+      row.hidden = !input.checked;
+      row.querySelectorAll('input, textarea').forEach(function (field) {
+        field.disabled = !input.checked;
+        if (field.hasAttribute('data-required-when-shown')) { field.required = input.checked; }
+        if (!input.checked) { field.classList.remove('is-touched'); clearFieldError(field); }
+      });
+    }
+    toggles.forEach(function (input) {
+      syncToggle(input);
+      input.addEventListener('change', function () { syncToggle(input); });
+    });
+
+    // "Jeszcze nic" wyklucza pozostałe opcje w swojej grupie i odwrotnie.
+    form.querySelectorAll('[data-exclusive]').forEach(function (exclusive) {
+      var siblings = exclusive.closest('fieldset').querySelectorAll('input[type="checkbox"]');
+      siblings.forEach(function (box) {
+        box.addEventListener('change', function () {
+          if (!box.checked) { return; }
+          siblings.forEach(function (other) {
+            if ((box === exclusive) !== (other === exclusive) && other.checked) {
+              other.checked = false;
+              if (other.hasAttribute('data-toggles')) { syncToggle(other); }
+            }
+          });
+        });
+      });
+    });
+
+    function validateWithin(container) {
+      var firstInvalid = null;
+      requiredGroups.forEach(syncGroup);
+      formFields.forEach(function (field) {
+        if (field.disabled || !container.contains(field)) { return; }
+        field.classList.add('is-touched');
+        validateField(field);
+        if (!firstInvalid && !field.validity.valid) { firstInvalid = field; }
+      });
+      return firstInvalid;
+    }
+
+    // Tryb krokowy włącza dopiero JS; bez niego kroki są jedną długą stroną.
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.form__step'));
+    var currentStep = 0;
+    var progress = form.querySelector('.form__progress');
+    var progressLabel = form.querySelector('.form__progress-label');
+    var progressFill = form.querySelector('.form__progress-fill');
+    var stepped = steps.length > 1 && !!progress;
+
+    function stepTitle(step) {
+      var legend = step.querySelector('.form__step-title');
+      return legend ? legend.lastChild.textContent.trim() : '';
+    }
+
+    function showStep(index, moveFocus) {
+      currentStep = index;
+      steps.forEach(function (step, i) { step.classList.toggle('is-active', i === index); });
+      progressLabel.textContent = 'Krok ' + (index + 1) + ' z ' + steps.length + ': ' + stepTitle(steps[index]);
+      progressFill.style.width = ((index + 1) / steps.length * 100) + '%';
+      if (moveFocus) {
+        progress.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        steps[index].querySelector('.form__step-title').focus({ preventScroll: true });
+      }
+    }
+
+    function goNext() {
+      var invalid = validateWithin(steps[currentStep]);
+      if (invalid) { invalid.focus(); return; }
+      if (currentStep < steps.length - 1) { showStep(currentStep + 1, true); }
+    }
+
+    if (stepped) {
+      form.classList.add('is-stepped');
+      progress.hidden = false;
+      form.querySelectorAll('.form__step-nav, [data-step-prev]').forEach(function (el) { el.hidden = false; });
+      form.querySelectorAll('[data-step-next]').forEach(function (btn) { btn.addEventListener('click', goNext); });
+      form.querySelectorAll('[data-step-prev]').forEach(function (btn) {
+        btn.addEventListener('click', function () { showStep(Math.max(0, currentStep - 1), true); });
+      });
+      showStep(0, false);
+    }
+
+    // Pola wielokrotnego wyboru wysyłamy jako jedną wartość, po przecinku.
+    function collectFormData() {
+      var grouped = {};
+      var order = [];
+      new FormData(form).forEach(function (value, key) {
+        if (!grouped[key]) { grouped[key] = []; order.push(key); }
+        grouped[key].push(value);
+      });
+      var out = new FormData();
+      order.forEach(function (key) { out.append(key, grouped[key].join(', ')); });
+      return out;
+    }
 
     formFields.forEach(function (field) {
       field.addEventListener('input', function () {
@@ -283,19 +420,23 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      formFields.forEach(function (field) {
-        field.classList.add('is-touched');
-        validateField(field);
-      });
+      // Enter w polu na wcześniejszym kroku działa jak "Dalej".
+      if (stepped && currentStep < steps.length - 1) { goNext(); return; }
 
-      if (!form.checkValidity()) {
-        status.textContent = 'Popraw zaznaczone pola poniżej.';
+      var firstInvalid = validateWithin(form);
+      if (firstInvalid) {
+        if (stepped) {
+          var invalidStep = steps.findIndex(function (step) { return step.contains(firstInvalid); });
+          if (invalidStep !== currentStep && invalidStep > -1) { showStep(invalidStep, false); }
+        }
+        status.textContent = 'Popraw zaznaczone pola.';
         status.className = 'form__status is-err';
         status.setAttribute('role', 'alert');
-        var firstInvalid = form.querySelector(':invalid');
-        if (firstInvalid) { firstInvalid.focus(); }
+        firstInvalid.focus();
         return;
       }
+      status.textContent = '';
+      status.className = 'form__status';
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -311,10 +452,11 @@
       // zablokowany na stałe.
       var controller = ('AbortController' in window) ? new AbortController() : null;
       var timeoutId = controller && setTimeout(function () { controller.abort(); }, 15000);
+      var payload = collectFormData();
 
       fetch(form.action, {
         method: form.method,
-        body: new FormData(form),
+        body: payload,
         headers: { 'Accept': 'application/json' },
         signal: controller ? controller.signal : undefined
       }).then(function (res) {
@@ -351,7 +493,7 @@
               // zgłoszenie do Formspree powyżej, więc żadne pole nie
               // wymaga osobnego, ręcznego odczytu po id.
               var fields = {};
-              new FormData(form).forEach(function (value, key) {
+              payload.forEach(function (value, key) {
                 if (key === '_subject' || key === '_next' || key === '_gotcha') { return; }
                 fields[key] = value;
               });
@@ -410,6 +552,9 @@
             field.classList.remove('is-touched');
             clearFieldError(field);
           });
+          requiredGroups.forEach(syncGroup);
+          toggles.forEach(syncToggle);
+          if (stepped) { showStep(0, false); }
           return;
         }
         // Formspree zwraca przy błędzie JSON z opisem (np. błąd walidacji

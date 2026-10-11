@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
@@ -105,6 +105,8 @@
              na fitpage.pl (17.09.2026: potwierdzone, że domena żyje i
              serwuje tę samą stronę przez Cloudflare), nie na
              fitpage.kacperbarczak11.workers.dev jak wcześniej. -->
+        <p class="brief__intro reveal">Wypełnienie zajmuje około 5 minut. Im więcej wpiszesz, tym szybciej ruszymy z projektem.</p>
+
         <form class="form reveal" method="post" action="https://formspree.io/f/moeqzapr" data-form="brief" novalidate>
 
           <input type="hidden" name="_subject" value="Nowy brief ze strony FitPage">
@@ -115,155 +117,399 @@
             </label>
           </p>
 
-          <div class="form__row">
-            <label for="imie-nazwisko">Imię i nazwisko</label>
-            <input type="text" id="imie-nazwisko" name="imie_nazwisko" required autocomplete="name"
-                   maxlength="100" aria-describedby="imie-nazwisko-error">
-            <small class="form__error" id="imie-nazwisko-error" aria-live="polite"></small>
+          <!-- Pasek postępu pokazuje JS; bez JS wszystkie kroki są widoczne naraz. -->
+          <div class="form__progress" hidden>
+            <p class="form__progress-label" id="form-progress-label" aria-live="polite">Krok 1 z 4: O Tobie</p>
+            <div class="form__progress-track" aria-hidden="true"><span class="form__progress-fill"></span></div>
           </div>
 
-          <div class="form__row">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required autocomplete="email"
-                   maxlength="254" aria-describedby="email-error">
-            <small class="form__error" id="email-error" aria-live="polite"></small>
-          </div>
+          <fieldset class="form__step" data-step="1">
+            <legend class="form__step-title" tabindex="-1"><span class="form__step-count">Krok 1 z 4</span>O Tobie</legend>
 
-          <div class="form__row">
-            <label for="telefon">Numer telefonu</label>
-            <input type="tel" id="telefon" name="telefon" required autocomplete="tel"
-                   inputmode="tel" placeholder="+48 000 000 000" maxlength="20" aria-describedby="telefon-error">
-            <small class="form__error" id="telefon-error" aria-live="polite"></small>
-          </div>
+            <div class="form__row">
+              <label for="imie-nazwisko">Imię i nazwisko <span class="req">*</span></label>
+              <input type="text" id="imie-nazwisko" name="imie_nazwisko" required maxlength="100" autocomplete="name" aria-describedby="imie-nazwisko-error">
+              <small class="form__error" id="imie-nazwisko-error" aria-live="polite"></small>
+            </div>
 
-          <div class="form__row">
-            <label for="miasto-forma">Miasto/forma zajęć</label>
-            <input type="text" id="miasto-forma" name="miasto_forma_zajec" required autocomplete="address-level2"
-                   placeholder="np. Poznań, stacjonarnie i online" maxlength="100" aria-describedby="miasto-forma-error">
-            <small class="form__error" id="miasto-forma-error" aria-live="polite"></small>
-          </div>
+            <div class="form__row">
+              <label for="nazwa">Pod jaką nazwą działasz? <span class="req">*</span></label>
+              <input type="text" id="nazwa" name="nazwa_dzialalnosci" required maxlength="150" placeholder="np. Anna Kowalska Trening albo samo imię i nazwisko" autocomplete="organization" aria-describedby="nazwa-error">
+              <small class="form__error" id="nazwa-error" aria-live="polite"></small>
+            </div>
 
-          <div class="form__row">
-            <label for="specjalizacja">Specjalizacja <span class="form__optional">(opcjonalnie)</span></label>
-            <textarea id="specjalizacja" name="specjalizacja" rows="3" maxlength="2000"
-              placeholder="Kogo trenujesz i w czym się specjalizujesz? Np. redukcja wagi, przygotowanie motoryczne, powrót po kontuzji."></textarea>
-          </div>
+            <div class="form__row">
+              <label for="email">E-mail <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required maxlength="254" autocomplete="email" aria-describedby="email-error">
+              <small class="form__error" id="email-error" aria-live="polite"></small>
+            </div>
 
-          <div class="form__row">
-            <label for="oferta-pakiety">Oferta/pakiety <span class="form__optional">(opcjonalnie)</span></label>
-            <textarea id="oferta-pakiety" name="oferta_pakiety" rows="3" maxlength="2000"
-              placeholder="Jakie masz pakiety lub usługi? Np. pojedyncza sesja, karnet 4/8/12 sesji, plan online."></textarea>
-          </div>
+            <div class="form__row">
+              <label for="telefon">Numer telefonu <span class="req">*</span></label>
+              <input type="tel" id="telefon" name="telefon" required maxlength="20" placeholder="+48 000 000 000" autocomplete="tel" inputmode="tel" aria-describedby="telefon-error">
+              <small class="form__error" id="telefon-error" aria-live="polite"></small>
+            </div>
 
-          <fieldset class="form__radio-group">
-            <legend>Ceny na stronie <span class="form__optional">(opcjonalnie)</span></legend>
-            <label class="form__radio-option">
-              <input type="radio" name="ceny_na_stronie" value="Chcę pokazać konkretne ceny">
-              <span class="form__radio-dot" aria-hidden="true"></span>
-              <span class="form__radio-text">Chcę pokazać konkretne ceny</span>
-            </label>
-            <label class="form__radio-option">
-              <input type="radio" name="ceny_na_stronie" value="Wolę „Zapytaj o wycenę”">
-              <span class="form__radio-dot" aria-hidden="true"></span>
-              <span class="form__radio-text">Wolę „Zapytaj o wycenę”</span>
-            </label>
+            <div class="form__row">
+              <label for="social">Instagram / TikTok / Facebook <span class="form__optional">(opcjonalnie)</span></label>
+              <input type="text" id="social" name="social_media" maxlength="300" placeholder="link albo @nazwa">
+            </div>
+
+            <div class="form__step-nav" hidden>
+
+              <button type="button" class="btn btn--primary" data-step-next>Dalej</button>
+            </div>
           </fieldset>
 
-          <div class="form__row">
-            <label for="wyroznienie">Co Cię wyróżnia <span class="form__optional">(opcjonalnie)</span></label>
-            <textarea id="wyroznienie" name="wyroznienie" rows="3" maxlength="2000"
-              placeholder="Dlaczego klienci wybierają akurat Ciebie? Doświadczenie, podejście, certyfikaty."></textarea>
-          </div>
+          <fieldset class="form__step" data-step="2">
+            <legend class="form__step-title" tabindex="-1"><span class="form__step-count">Krok 2 z 4</span>Jak pracujesz</legend>
 
-          <div class="form__row">
-            <label for="social">Instagram/Facebook <span class="form__optional">(opcjonalnie)</span></label>
-            <input type="text" id="social" name="instagram_facebook" maxlength="200"
-                   placeholder="np. instagram.com/twojprofil">
-          </div>
+            <div class="form__row">
+              <label for="miasto">Miasto <span class="req">*</span></label>
+              <input type="text" id="miasto" name="miasto" required maxlength="100" placeholder="np. Poznań" autocomplete="address-level2" aria-describedby="miasto-error">
+              <small class="form__error" id="miasto-error" aria-live="polite"></small>
+            </div>
 
-          <fieldset class="form__radio-group">
-            <legend>Styl strony <span class="form__optional">(opcjonalnie)</span></legend>
-            <label class="form__radio-option">
-              <input type="radio" name="styl_strony" value="Poważnie i eksperckie">
-              <span class="form__radio-dot" aria-hidden="true"></span>
-              <span class="form__radio-text">Poważnie i eksperckie</span>
-            </label>
-            <label class="form__radio-option">
-              <input type="radio" name="styl_strony" value="Swobodnie i przyjaźnie">
-              <span class="form__radio-dot" aria-hidden="true"></span>
-              <span class="form__radio-text">Swobodnie i przyjaźnie</span>
-            </label>
-            <label class="form__radio-option">
-              <input type="radio" name="styl_strony" value="Coś pomiędzy">
-              <span class="form__radio-dot" aria-hidden="true"></span>
-              <span class="form__radio-text">Coś pomiędzy</span>
-            </label>
+            <fieldset class="form__radio-group" aria-describedby="forma_zajec-error" data-required-group>
+              <legend>Forma zajęć <span class="req">*</span></legend>
+              <small class="form__hint">Zaznacz wszystko, co pasuje.</small>
+              <label class="form__radio-option">
+                <input type="checkbox" name="forma_zajec" value="Na siłowni">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Na siłowni</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="forma_zajec" value="We własnym studiu">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">We własnym studiu</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="forma_zajec" value="Z dojazdem do klienta">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Z dojazdem do klienta</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="forma_zajec" value="Online">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Online</span>
+              </label>
+              <small class="form__error" id="forma_zajec-error" aria-live="polite"></small>
+            </fieldset>
+
+            <div class="form__row">
+              <label for="silownia">Nazwa siłowni lub studia <span class="form__optional">(opcjonalnie)</span></label>
+              <input type="text" id="silownia" name="nazwa_silowni_studia" maxlength="150">
+            </div>
+
+            <fieldset class="form__radio-group" aria-describedby="specjalizacja-error" data-required-group>
+              <legend>Specjalizacja <span class="req">*</span></legend>
+              <small class="form__hint">Zaznacz wszystko, co pasuje.</small>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Trening siłowy">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Trening siłowy</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Redukcja masy ciała">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Redukcja masy ciała</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Dietetyka">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Dietetyka</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Przygotowanie motoryczne">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Przygotowanie motoryczne</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Trening medyczny">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Trening medyczny</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Kobiety w ciąży i po porodzie">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Kobiety w ciąży i po porodzie</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Seniorzy">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Seniorzy</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="specjalizacja" value="Inne" data-toggles="specjalizacja-inne-row">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Inne</span>
+              </label>
+              <small class="form__error" id="specjalizacja-error" aria-live="polite"></small>
+            </fieldset>
+
+            <div class="form__row" id="specjalizacja-inne-row" data-conditional>
+              <label for="specjalizacja-inne">Jaka inna specjalizacja?</label>
+              <input type="text" id="specjalizacja-inne" name="specjalizacja_inne" maxlength="200" data-required-when-shown aria-describedby="specjalizacja-inne-error">
+              <small class="form__error" id="specjalizacja-inne-error" aria-live="polite"></small>
+            </div>
+
+            <div class="form__row">
+              <label for="grupa-docelowa">Z kim najczęściej pracujesz? <span class="req">*</span></label>
+              <textarea id="grupa-docelowa" name="grupa_docelowa" required maxlength="2000" placeholder="np. kobiety 30+, które chcą wrócić do formy po ciąży" aria-describedby="grupa-docelowa-error" rows="4"></textarea>
+              <small class="form__error" id="grupa-docelowa-error" aria-live="polite"></small>
+            </div>
+
+            <div class="form__row">
+              <label for="wyroznienie">Co Cię wyróżnia <span class="form__optional">(opcjonalnie)</span></label>
+              <textarea id="wyroznienie" name="wyroznienie" maxlength="2000" placeholder="Dlaczego klienci wybierają akurat Ciebie? Doświadczenie, podejście, certyfikaty." rows="4"></textarea>
+            </div>
+
+            <div class="form__step-nav" hidden>
+              <button type="button" class="btn btn--secondary" data-step-prev>Wstecz</button>
+              <button type="button" class="btn btn--primary" data-step-next>Dalej</button>
+            </div>
           </fieldset>
 
-          <div class="form__row">
-            <label for="inspiracja">Inspiracja <span class="form__optional">(opcjonalnie)</span></label>
-            <input type="text" id="inspiracja" name="inspiracja" maxlength="300"
-                   placeholder="Link do strony" aria-describedby="inspiracja-hint">
-            <small class="form__hint" id="inspiracja-hint">Widziałaś/eś jakąś stronę (dowolna branża), która Ci się podoba? Wklej link, jeśli masz.</small>
-          </div>
+          <fieldset class="form__step" data-step="3">
+            <legend class="form__step-title" tabindex="-1"><span class="form__step-count">Krok 3 z 4</span>Oferta i kontakt</legend>
 
-          <div class="form__row">
-            <label for="wizja">Twoja wizja strony <span class="form__optional">(opcjonalnie)</span></label>
-            <textarea id="wizja" name="wizja" rows="6" maxlength="4000"
-              placeholder="Chcesz dodać coś, co nie zmieściło się w polach powyżej? To dobre miejsce na dowolne uwagi."
-              aria-describedby="wizja-hint"></textarea>
-            <small class="form__hint" id="wizja-hint">Zupełnie opcjonalne. Reszta pól wyżej daje nam już niezły obraz sytuacji.</small>
-          </div>
+            <div class="form__row">
+              <label for="oferta-pakiety">Oferta / pakiety <span class="form__optional">(opcjonalnie)</span></label>
+              <textarea id="oferta-pakiety" name="oferta_pakiety" maxlength="2000" placeholder="np. pakiet 8 treningów, plan online, konsultacja dietetyczna" rows="4"></textarea>
+            </div>
 
-          <!-- RODO — klauzula informacyjna, uzupełniona realnymi danymi
-               FitPage (16.09.2026). Pełna treść, w tym odbiorcy danych i
-               informacja o transferze poza EOG (Formspree, Inc., USA),
-               w Polityce prywatności, do której ta klauzula linkuje. -->
-          <details class="form__rodo">
-            <summary>Informacja o przetwarzaniu danych osobowych (RODO)</summary>
-            <p>
-              Administratorem danych podanych w formularzu jest Kacper Barczak
-              (osoba fizyczna, bez zarejestrowanej działalności gospodarczej).
-              Dane podane w formularzu (dane kontaktowe oraz informacje o Twojej
-              działalności i wizji strony) przetwarzane są
-              w celu obsługi zapytania, przygotowania oferty i kontaktu, na podstawie
-              art. 6 ust. 1 lit. b oraz f RODO. Dane będą przechowywane przez
-              12 miesięcy od ostatniego kontaktu, a w przypadku zawartej współpracy
-              przez okres wynikający z przepisów podatkowych i rachunkowych.
-              Przysługuje Ci prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia
-              przetwarzania oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do
-              Prezesa Urzędu Ochrony Danych Osobowych. Podanie danych jest dobrowolne, ale
-              niezbędne do udzielenia odpowiedzi. Kontakt w sprawie danych: kontakt@fitpage.pl.
-              Pełne informacje, w tym o odbiorcach danych, znajdziesz w
-              <a href="polityka-prywatnosci.html">Polityce prywatności</a>.
-            </p>
-          </details>
+            <fieldset class="form__radio-group">
+              <legend>Ceny na stronie <span class="form__optional">(opcjonalnie)</span></legend>
+              <label class="form__radio-option">
+                <input type="radio" name="ceny_na_stronie" value="Chcę pokazać konkretne ceny">
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Chcę pokazać konkretne ceny</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="ceny_na_stronie" value="Wolę „Zapytaj o wycenę”">
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Wolę „Zapytaj o wycenę”</span>
+              </label>
+            </fieldset>
 
-          <fieldset class="form__consents">
-            <legend>Zgody</legend>
+            <fieldset class="form__radio-group" aria-describedby="kontakt_klientow-error" data-required-group>
+              <legend>Jak klienci mają się z Tobą kontaktować? <span class="req">*</span></legend>
+              <small class="form__hint">Zaznacz wszystko, co pasuje.</small>
+              <label class="form__radio-option">
+                <input type="checkbox" name="kontakt_klientow" value="Formularz na stronie">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Formularz na stronie</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="kontakt_klientow" value="Telefon">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Telefon</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="kontakt_klientow" value="WhatsApp">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">WhatsApp</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="kontakt_klientow" value="Wiadomość na Instagramie">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Wiadomość na Instagramie</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="kontakt_klientow" value="Booksy lub inny system rezerwacji">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Booksy lub inny system rezerwacji</span>
+              </label>
+              <small class="form__error" id="kontakt_klientow-error" aria-live="polite"></small>
+            </fieldset>
 
-            <label class="form__consent">
-              <input type="checkbox" id="zgoda-kontakt" name="zgoda_kontakt" required aria-describedby="zgoda-kontakt-error">
-              <span class="form__consent-box" aria-hidden="true"></span>
-              <span class="form__consent-text">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu obsługi zapytania i przygotowania oferty. <span class="req">*</span></span>
-            </label>
-            <small class="form__error" id="zgoda-kontakt-error" aria-live="polite"></small>
+            <div class="form__row">
+              <label for="faq-klientow">Najczęstsze pytania od klientów <span class="form__optional">(opcjonalnie)</span></label>
+              <textarea id="faq-klientow" name="faq_klientow" maxlength="2000" placeholder="wpisz 3-5 pytań, które słyszysz najczęściej" rows="4"></textarea>
+            </div>
 
-            <!-- TODO: doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt) -->
-            <label class="form__consent">
-              <input type="checkbox" name="zgoda_marketing">
-              <span class="form__consent-box" aria-hidden="true"></span>
-              <span class="form__consent-text">(Opcjonalnie) Chcę otrzymać ofertę handlową na podany adres e-mail lub telefon.</span>
-            </label>
-
-            <p class="form__required-note"><span class="req">*</span> pole wymagane</p>
+            <div class="form__step-nav" hidden>
+              <button type="button" class="btn btn--secondary" data-step-prev>Wstecz</button>
+              <button type="button" class="btn btn--primary" data-step-next>Dalej</button>
+            </div>
           </fieldset>
 
-          <button type="submit" class="btn btn--primary" id="brief-submit">
-            <span class="btn__spinner" aria-hidden="true"></span>
-            <span class="btn__label">Wyślij brief</span>
-          </button>
-          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          <fieldset class="form__step" data-step="4">
+            <legend class="form__step-title" tabindex="-1"><span class="form__step-count">Krok 4 z 4</span>Materiały i termin</legend>
+
+            <fieldset class="form__radio-group">
+              <legend>Co już masz? <span class="form__optional">(opcjonalnie)</span></legend>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Domenę" data-toggles="domena-row">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Domenę</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Logo">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Logo</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Zdjęcia z treningów">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Zdjęcia z treningów</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Zdjęcia portretowe">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Zdjęcia portretowe</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Opinie klientów">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Opinie klientów</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Metamorfozy klientów">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Metamorfozy klientów</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Certyfikaty">
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Certyfikaty</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="checkbox" name="materialy" value="Jeszcze nic" data-exclusive>
+                <span class="form__check-box" aria-hidden="true"></span>
+                <span class="form__radio-text">Jeszcze nic</span>
+              </label>
+            </fieldset>
+
+            <div class="form__row" id="domena-row" data-conditional>
+              <label for="domena">Jaka domena? <span class="form__optional">(opcjonalnie)</span></label>
+              <input type="text" id="domena" name="domena" maxlength="200" placeholder="np. annakowalska.pl">
+            </div>
+
+            <fieldset class="form__radio-group" aria-describedby="mail_domena-error">
+              <legend>Mail na własnej domenie, np. kontakt@twojadomena.pl <span class="req">*</span></legend>
+              <label class="form__radio-option">
+                <input type="radio" name="mail_domena" value="Chcę" required>
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Chcę</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="mail_domena" value="Nie potrzebuję" required>
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Nie potrzebuję</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="mail_domena" value="Nie wiem, doradź" required>
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Nie wiem, doradź</span>
+              </label>
+              <small class="form__error" id="mail_domena-error" aria-live="polite"></small>
+            </fieldset>
+
+            <fieldset class="form__radio-group" aria-describedby="termin-error">
+              <legend>Termin <span class="req">*</span></legend>
+              <label class="form__radio-option">
+                <input type="radio" name="termin" value="Jak najszybciej" required>
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Jak najszybciej</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="termin" value="W ciągu miesiąca" required>
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">W ciągu miesiąca</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="termin" value="Bez pośpiechu" required>
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Bez pośpiechu</span>
+              </label>
+              <small class="form__error" id="termin-error" aria-live="polite"></small>
+            </fieldset>
+
+            <fieldset class="form__radio-group">
+              <legend>Styl strony <span class="form__optional">(opcjonalnie)</span></legend>
+              <label class="form__radio-option">
+                <input type="radio" name="styl_strony" value="Poważnie i eksperckie">
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Poważnie i eksperckie</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="styl_strony" value="Swobodnie i przyjaźnie">
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Swobodnie i przyjaźnie</span>
+              </label>
+              <label class="form__radio-option">
+                <input type="radio" name="styl_strony" value="Coś pomiędzy">
+                <span class="form__radio-dot" aria-hidden="true"></span>
+                <span class="form__radio-text">Coś pomiędzy</span>
+              </label>
+            </fieldset>
+
+            <div class="form__row">
+              <label for="inspiracja">Inspiracja <span class="form__optional">(opcjonalnie)</span></label>
+              <input type="text" id="inspiracja" name="inspiracja" maxlength="300" placeholder="Link do strony" aria-describedby="inspiracja-hint">
+              <small class="form__hint" id="inspiracja-hint">Widziałaś/eś jakąś stronę (dowolna branża), która Ci się podoba? Wklej link, jeśli masz.</small>
+            </div>
+
+            <div class="form__row">
+              <label for="wizja">Twoja wizja strony <span class="form__optional">(opcjonalnie)</span></label>
+              <textarea id="wizja" name="wizja" maxlength="4000" placeholder="Chcesz dodać coś, co nie zmieściło się w polach powyżej? To dobre miejsce na dowolne uwagi." rows="4"></textarea>
+            </div>
+
+            <!-- RODO — klauzula informacyjna, uzupełniona realnymi danymi
+                 FitPage (16.09.2026). Pełna treść, w tym odbiorcy danych i
+                 informacja o transferze poza EOG (Formspree, Inc., USA),
+                 w Polityce prywatności, do której ta klauzula linkuje. -->
+            <details class="form__rodo">
+              <summary>Informacja o przetwarzaniu danych osobowych (RODO)</summary>
+              <p>
+                Administratorem danych podanych w formularzu jest Kacper Barczak
+                (osoba fizyczna, bez zarejestrowanej działalności gospodarczej).
+                Dane podane w formularzu (dane kontaktowe oraz informacje o Twojej
+                działalności i wizji strony) przetwarzane są
+                w celu obsługi zapytania, przygotowania oferty i kontaktu, na podstawie
+                art. 6 ust. 1 lit. b oraz f RODO. Dane będą przechowywane przez
+                12 miesięcy od ostatniego kontaktu, a w przypadku zawartej współpracy
+                przez okres wynikający z przepisów podatkowych i rachunkowych.
+                Przysługuje Ci prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia
+                przetwarzania oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do
+                Prezesa Urzędu Ochrony Danych Osobowych. Podanie danych jest dobrowolne, ale
+                niezbędne do udzielenia odpowiedzi. Kontakt w sprawie danych: kontakt@fitpage.pl.
+                Pełne informacje, w tym o odbiorcach danych, znajdziesz w
+                <a href="polityka-prywatnosci.html">Polityce prywatności</a>.
+              </p>
+            </details>
+
+            <fieldset class="form__consents">
+              <legend>Zgody</legend>
+
+              <label class="form__consent">
+                <input type="checkbox" id="zgoda-kontakt" name="zgoda_kontakt" required aria-describedby="zgoda-kontakt-error">
+                <span class="form__consent-box" aria-hidden="true"></span>
+                <span class="form__consent-text">Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu w celu obsługi zapytania i przygotowania oferty. <span class="req">*</span></span>
+              </label>
+              <small class="form__error" id="zgoda-kontakt-error" aria-live="polite"></small>
+
+              <!-- TODO: doprecyzować kanał i podstawę (art. 10 uśude / art. 172 pt) -->
+              <label class="form__consent">
+                <input type="checkbox" name="zgoda_marketing">
+                <span class="form__consent-box" aria-hidden="true"></span>
+                <span class="form__consent-text">(Opcjonalnie) Chcę otrzymać ofertę handlową na podany adres e-mail lub telefon.</span>
+              </label>
+
+              <p class="form__required-note"><span class="req">*</span> pole wymagane</p>
+            </fieldset>
+
+            <div class="form__step-nav form__step-nav--final">
+              <button type="button" class="btn btn--secondary" data-step-prev hidden>Wstecz</button>
+              <button type="submit" class="btn btn--primary" id="brief-submit">
+                <span class="btn__spinner" aria-hidden="true"></span>
+                <span class="btn__label">Wyślij brief</span>
+              </button>
+            </div>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </fieldset>
+
         </form>
 
         <!-- Panel sukcesu dla briefu — podmienia formularz po udanym
@@ -312,6 +558,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>
