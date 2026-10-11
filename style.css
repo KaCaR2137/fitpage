@@ -651,7 +651,11 @@ summary:focus-visible {
 .trainings__track {
   display: flex;
   width: max-content;
-  animation: trainings-scroll 32s linear infinite;
+  /* Jedna kopia listy = 3 przebiegi 8 dyscyplin, zmierzone 3568px (szersza
+     niż ekran 2560px, więc pętla nigdy nie odsłania pustego pasa). Tempo
+     bez zmian względem starej, 8-elementowej kopii (~1189px w 32s, czyli
+     ~37px/s): 3568 / 37,2 ≈ 96s. Przy zmianie listy przelicz tak samo. */
+  animation: trainings-scroll 96s linear infinite;
 }
 .trainings__list {
   display: flex;
@@ -693,8 +697,12 @@ summary:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .trainings__track { animation: none; }
-  .trainings__list[aria-hidden="true"] { display: none; }
+  /* Pasek stoi: bez animacji, bez kopii do pętli i bez powtórzeń, tylko
+     8 dyscyplin raz, zawijanych i wyśrodkowanych na każdej szerokości. */
+  .trainings__track { animation: none; width: auto; justify-content: center; }
+  .trainings__list { flex-wrap: wrap; justify-content: center; row-gap: 14px; }
+  .trainings__list[aria-hidden="true"],
+  .trainings__item[aria-hidden="true"] { display: none; }
 }
 
 /* ============================== ATUTY ============================== */

@@ -159,8 +159,12 @@ dostępie do treści. Pełny opis obu wariantów i uzasadnienie techniki w
    rodzajów treningu (trening siłowy, bieganie, pilates, balet, joga, boks,
    kolarstwo, pływanie), wzorowany na sekcji „Dla kogo” z marta-strona-trener.netlify.app.
    CSS-owa pętla bez JS: dwie kopie listy w jednym torze, `translateX(0 → -50%)`,
-   `32s linear infinite`; druga kopia `aria-hidden`. Zatrzymuje się pod
-   `prefers-reduced-motion`. Ikony neutralne, zielona kropka-separator jako jedyny akcent.
+   `96s linear infinite`; druga kopia `aria-hidden`. Każda kopia to 3 przebiegi
+   8 dyscyplin (3568px, szersza niż ekran 2560px; przy 1 przebiegu ~1189px
+   na szerokich ekranach zostawał pusty pas), powtórzenia w pierwszej kopii
+   też `aria-hidden`. Tempo ~37px/s jak przed zmianą. Pod
+   `prefers-reduced-motion` pasek stoi: 8 dyscyplin raz, zawinięte i
+   wyśrodkowane. Ikony neutralne, zielona kropka-separator jako jedyny akcent.
 4. O nas — tekst + dekoracyjny panel terminala obok, po prawej (zastąpił
    22.09.2026 mockup telefonu `mockup1.png` — patrz „Panel terminala"
    niżej). Układ `.o-nas__grid` (flex): mobile = kolumna (panel pod

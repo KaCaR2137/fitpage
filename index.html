@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
@@ -99,6 +99,11 @@
     <section class="trainings reveal" aria-label="Rodzaje treningów, dla których projektujemy strony">
       <div class="trainings__track">
 
+        <!-- Każda kopia to 3 przebiegi tych samych 8 dyscyplin (~3510px),
+             żeby jedna kopia była szersza niż ekran 2560px: inaczej druga
+             kopia kończy się przed zapętleniem i zostaje pusty pas.
+             Powtórzenia w pierwszej kopii mają aria-hidden, więc czytnik
+             ekranu czyta listę 8 dyscyplin raz. -->
         <ul class="trainings__list">
           <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
@@ -132,9 +137,137 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
             <span>Pływanie</span>
           </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
+            <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
+            <span>Bieganie</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 12c2 0 3.5-1 3.5-2.5S14 7 12 7s-3.5 1.5-3.5 3"/></svg>
+            <span>Pilates</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c0-3 2-5 5-6l7-3c2-1 4 0 4 2 0 1-1 2-2 2l-9 3c-2 1-3 2-3 4Z"/><path d="M4 18h3"/></svg>
+            <span>Balet</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c-4 0-6-3-6-6 2 0 4 1 6 3 2-2 4-3 6-3 0 3-2 6-6 6Z"/><path d="M12 14V6"/></svg>
+            <span>Joga</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12V8a3 3 0 0 1 6 0v1a2 2 0 0 1 4 0v3c0 3-2 6-5 6H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2Z"/></svg>
+            <span>Boks</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8M10 9h4M6 17h6l3-6"/></svg>
+            <span>Kolarstwo</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
+            <span>Pływanie</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
+            <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
+            <span>Bieganie</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 12c2 0 3.5-1 3.5-2.5S14 7 12 7s-3.5 1.5-3.5 3"/></svg>
+            <span>Pilates</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c0-3 2-5 5-6l7-3c2-1 4 0 4 2 0 1-1 2-2 2l-9 3c-2 1-3 2-3 4Z"/><path d="M4 18h3"/></svg>
+            <span>Balet</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c-4 0-6-3-6-6 2 0 4 1 6 3 2-2 4-3 6-3 0 3-2 6-6 6Z"/><path d="M12 14V6"/></svg>
+            <span>Joga</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12V8a3 3 0 0 1 6 0v1a2 2 0 0 1 4 0v3c0 3-2 6-5 6H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2Z"/></svg>
+            <span>Boks</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8M10 9h4M6 17h6l3-6"/></svg>
+            <span>Kolarstwo</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
+            <span>Pływanie</span>
+          </li>
         </ul>
 
         <ul class="trainings__list" aria-hidden="true">
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
+            <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
+            <span>Bieganie</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 12c2 0 3.5-1 3.5-2.5S14 7 12 7s-3.5 1.5-3.5 3"/></svg>
+            <span>Pilates</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c0-3 2-5 5-6l7-3c2-1 4 0 4 2 0 1-1 2-2 2l-9 3c-2 1-3 2-3 4Z"/><path d="M4 18h3"/></svg>
+            <span>Balet</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c-4 0-6-3-6-6 2 0 4 1 6 3 2-2 4-3 6-3 0 3-2 6-6 6Z"/><path d="M12 14V6"/></svg>
+            <span>Joga</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12V8a3 3 0 0 1 6 0v1a2 2 0 0 1 4 0v3c0 3-2 6-5 6H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2Z"/></svg>
+            <span>Boks</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8M10 9h4M6 17h6l3-6"/></svg>
+            <span>Kolarstwo</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
+            <span>Pływanie</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
+            <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
+            <span>Bieganie</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 12c2 0 3.5-1 3.5-2.5S14 7 12 7s-3.5 1.5-3.5 3"/></svg>
+            <span>Pilates</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c0-3 2-5 5-6l7-3c2-1 4 0 4 2 0 1-1 2-2 2l-9 3c-2 1-3 2-3 4Z"/><path d="M4 18h3"/></svg>
+            <span>Balet</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c-4 0-6-3-6-6 2 0 4 1 6 3 2-2 4-3 6-3 0 3-2 6-6 6Z"/><path d="M12 14V6"/></svg>
+            <span>Joga</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12V8a3 3 0 0 1 6 0v1a2 2 0 0 1 4 0v3c0 3-2 6-5 6H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2Z"/></svg>
+            <span>Boks</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8M10 9h4M6 17h6l3-6"/></svg>
+            <span>Kolarstwo</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
+            <span>Pływanie</span>
+          </li>
           <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
             <span>Trening siłowy</span>

@@ -638,7 +638,7 @@ A horizontal, infinitely-looping strip of 8 training-type icons + labels
 (trening siłowy, bieganie, pilates, balet, joga, boks, kolarstwo,
 pływanie), between the hero and "O nas" on the homepage. Two identical
 `<ul>` copies sit side by side in a flex track; the track animates
-`translateX(0) → translateX(-50%)` on a `32s linear infinite` loop — exactly
+`translateX(0) → translateX(-50%)` on a `96s linear infinite` loop (each copy repeats the 8 labels 3 times, 3568px, so one copy is wider than a 2560px screen) — exactly
 one copy's width, so the wrap is seamless. The second copy is `aria-hidden`
 so screen readers hear each label once. Icons are neutral (Text Primary,
 same stroke system as elsewhere); a small Bottle Green dot after each label
