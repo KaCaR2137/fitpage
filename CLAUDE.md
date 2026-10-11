@@ -432,6 +432,17 @@ istniejącej treści) w pierwszym akapicie, linkujące inline z powrotem do
 samego problemu (trener bez fizycznego miejsca kontra trener, który na
 fizycznym miejscu polega za bardzo).
 
+**Dziewiąty artykuł (11.10.2026):** `wizytowka-google-trener-personalny`,
+tekst wklejony w czacie, zdjęcie `artykulzdjecie.png` (już rozmyte od
+klienta, bez GaussianBlur; scrim 0.65 daje min. 6.36:1). Kroki zakładania
+jako `<ol>`, wyliczenia jako `<ul>`. Inline link → `jak-zdobyc-klientow-bez-reklam`
+(sekcja o opiniach, „nikt ich nie poprosił o opinię”), „Zobacz też” →
+`trener-w-silowni-sieciowej`. Linki przychodzące (owinięte istniejące
+fragmenty zdań, bez zmiany treści): z `trener-w-silowni-sieciowej` („Wpisuje
+w Google…”) i z `jak-zdobyc-klientow-bez-reklam` (sekcja 5, „gdzie klient
+sprawdza, kim jesteś”). CTA zostawione dosłownie w 1. os. l. poj.
+(„Pokażę Ci”), bo klient zastrzegł brak zmian treści.
+
 **Porządki SEO po Search Console (10.10.2026).** `strona-czy-booksy` i
 `trening-online-strona` mają teraz po 3 linki przychodzące w treści.
 Booksy: z `instagram-czy-strona`, `ile-kosztuje-strona-dla-trenera` (przy

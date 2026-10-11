@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Wizytówka Google dla trenera personalnego: jak ją założyć i jak połączyć ze stroną: FitPage</title>
+  <meta name="description" content="Wizytówka Google pokazuje Cię na mapie, zanim klient zobaczy jakąkolwiek stronę. Sprawdź, jak ją założyć bez własnego studia i połączyć ze stroną.">
+  <link rel="canonical" href="https://fitpage.pl/artykuly/wizytowka-google-trener-personalny.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../images/favicon-512.png">
+  <link rel="apple-touch-icon" href="../images/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="../images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="../images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
+    <picture>
+      <source srcset="../images/logo-fitpage.webp" type="image/webp">
+      <img src="../images/logo-fitpage.png" alt="" class="splash__logo-old">
+    </picture>
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <picture>
+          <source srcset="../images/logo-fitpage.webp" type="image/webp">
+          <img src="../images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="/#o-nas">O nas</a>
+          <a href="/#portfolio">Portfolio</a>
+          <a href="../proces.html">Proces</a>
+          <a href="../faq.html">FAQ</a>
+        </nav>
+        <a href="../kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================ NAGŁÓWEK ARTYKUŁU ============================ -->
+    <!-- Zdjęcie w tle: images/artykul-wizytowka-google-trener-personalny-hero.jpg
+         (oryginał artykulzdjecie.png, 1920x1080, dostarczone już rozmyte,
+         więc bez dodatkowego GaussianBlur, tylko standardowa konwersja:
+         sips do 1600px/JPEG ~60KB, plus .webp/10KB). Kontrast sprawdzony
+         piksel po pikselu (PIL, luminancja WCAG): ze scrimem 0.65 nawet
+         najjaśniejszy piksel daje 6.36:1, nad wymagane 4.5:1, bez
+         potrzeby dodatkowego przyciemniania. -->
+    <section class="hero hero--compact hero--cover" style="background-image: url('../images/artykul-wizytowka-google-trener-personalny-hero.jpg'); background-image: image-set(url('../images/artykul-wizytowka-google-trener-personalny-hero.webp') type('image/webp'), url('../images/artykul-wizytowka-google-trener-personalny-hero.jpg') type('image/jpeg'));">
+      <div class="hero__inner">
+        <p class="artykul__meta reveal">11 października 2026</p>
+        <h1 class="hero__title reveal">Wizytówka Google dla trenera personalnego: jak ją założyć i jak połączyć ze stroną</h1>
+      </div>
+    </section>
+
+    <!-- ============================ TREŚĆ ARTYKUŁU ============================ -->
+    <section class="section">
+      <div class="container reveal">
+
+        <article class="artykul">
+          <div class="artykul__body">
+            <p>Ktoś wpisuje w telefonie „trener personalny Jeżyce”. Zanim zobaczy jakąkolwiek stronę, Google pokazuje mu mapę i kilka wizytówek: nazwę, gwiazdki, zdjęcia, przycisk „Zadzwoń”. Wielu ludzi wybiera właśnie stamtąd i nigdy nie przewija niżej.</p>
+
+            <p>Jeśli nie masz wizytówki, w tym miejscu Cię nie ma. A założenie jej jest darmowe i zajmuje jedno popołudnie.</p>
+
+            <h2>Czym jest wizytówka Google</h2>
+            <p>To Profil Firmy w Google, wcześniej nazywany Google Moja Firma. Pojawia się w wynikach wyszukiwania i w Mapach Google. Pokazuje, czym się zajmujesz, gdzie działasz, jak się z Tobą skontaktować i co mówią o Tobie klienci.</p>
+
+            <p>Nie zastępuje strony. Jest jak szyld nad wejściem: przyciąga uwagę i kieruje dalej.</p>
+
+            <h2>Nie masz własnego studia? To nie problem</h2>
+            <p>Większość trenerów nie ma lokalu z szyldem. Trenują w siłowni sieciowej, w parku, u klientów w domu albo online. Google ma na to rozwiązanie: firmę działającą na określonym obszarze.</p>
+
+            <p>Zamiast adresu podajesz obszar, na którym pracujesz, na przykład Poznań i okolice. Adres i tak trzeba podać przy zakładaniu profilu, bo Google musi zweryfikować, że firma istnieje, ale nie będzie on widoczny dla klientów.</p>
+
+            <p>Jedno ważne zastrzeżenie: nie wpisuj adresu siłowni, w której trenujesz, jako swojego. To adres klubu, nie Twojej firmy. Google wymaga, żeby pod adresem pokazanym na profilu była Twoja placówka, a profile z nieprawdziwym adresem potrafią zostać zawieszone.</p>
+
+            <h2>Jak założyć wizytówkę krok po kroku</h2>
+            <ol>
+              <li>Wejdź na business.google.com/add i zaloguj się na konto Google. Najlepiej na to, którego używasz do pracy.</li>
+              <li>Wpisz nazwę. Swoje imię i nazwisko albo nazwę marki, pod którą działasz. Bez dopisków typu „najlepszy trener Poznań”. Nazwa ma być taka, jak w rzeczywistości, a upychanie w niej słów kluczowych jest niezgodne z zasadami Google.</li>
+              <li>Wybierz kategorię. Główna to „Trener personalny”. Jeśli robisz też coś innego, na przykład plany dietetyczne, dodasz to później w usługach.</li>
+              <li>Ustaw obszar działania zamiast adresu, jeśli nie przyjmujesz klientów we własnym lokalu. Możesz podać miasto, dzielnice albo kilka miejscowości.</li>
+              <li>Dodaj telefon i link do strony. Link to najważniejsze pole w całym profilu. To przez nie wizytówka przekazuje Ci klientów, którzy chcą wiedzieć więcej.</li>
+              <li>Przejdź weryfikację. Metody nie wybierasz sam, Google przydziela ją automatycznie. Obecnie najczęściej prosi o krótkie nagranie wideo, które pokazuje, że działasz naprawdę. Przygotuj się na to, zanim zaczniesz.</li>
+            </ol>
+
+            <h2>Co uzupełnić od razu</h2>
+            <p>Pusta wizytówka działa słabo. Zanim zaczniesz prosić o opinie, dodaj:</p>
+
+            <ul>
+              <li>opis: kim jesteś, z kim pracujesz, czym się wyróżniasz, prostym językiem,</li>
+              <li>zdjęcia: prawdziwe, z treningów, Ty przy pracy. Zdjęcie z sesji plus kilka z siłowni wystarczy na start,</li>
+              <li>usługi: trening personalny, prowadzenie online, plany treningowe, cokolwiek oferujesz,</li>
+              <li>godziny, w których można się z Tobą kontaktować.</li>
+            </ul>
+
+            <h2>Opinie, czyli najważniejsza część</h2>
+            <p>Gwiazdki to pierwsze, na co patrzy klient. I tu trenerzy mają przewagę, bo ich klienci często są naprawdę zadowoleni, tylko <a href="jak-zdobyc-klientow-bez-reklam.html">nikt ich nie poprosił o opinię</a>.</p>
+
+            <p>Jak to robić:</p>
+
+            <ul>
+              <li>Proś w dobrym momencie: po pierwszym efekcie, po pobitym rekordzie, po miesiącu współpracy, a nie na pierwszym treningu.</li>
+              <li>Wysyłaj bezpośredni link do dodania opinii. Znajdziesz go w panelu profilu. Im mniej klikania, tym więcej opinii.</li>
+              <li>Odpowiadaj na każdą opinię, także na te krytyczne. Klienci czytają odpowiedzi tak samo uważnie jak same opinie.</li>
+              <li>Nigdy nie kupuj opinii i nie pisz ich sam. To nieuczciwe wobec klientów i zakazane.</li>
+            </ul>
+
+            <h2>Wizytówka i strona: jak to połączyć</h2>
+            <p>Wizytówka i strona robią dwie różne rzeczy. Wizytówka sprawia, że ktoś Cię znajdzie i zobaczy gwiazdki. Strona sprawia, że zdecyduje się napisać.</p>
+
+            <p>Dlatego warto, żeby działały razem:</p>
+
+            <ul>
+              <li>link z wizytówki prowadzi na Twoją stronę, najlepiej od razu do miejsca, gdzie można umówić konsultację,</li>
+              <li>na stronie podajesz ten sam telefon, te same dane i ten sam obszar działania co w wizytówce, żeby Google widział spójną informację,</li>
+              <li>opinie z wizytówki możesz za zgodą klientów pokazać też na stronie.</li>
+            </ul>
+
+            <p>Sama wizytówka to dobry początek. Wizytówka połączona ze stroną, na której klient znajdzie Twoją metodę, ofertę i przycisk kontaktu, to coś, co faktycznie przynosi klientów.</p>
+          </div>
+
+          <div class="artykul__related reveal">
+            <p>Zobacz też</p>
+            <a href="trener-w-silowni-sieciowej.html">Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia daje klientów</a>
+          </div>
+
+          <div class="artykul__cta reveal">
+            <p>Jeśli chcesz, żeby Twoja strona dobrze współpracowała z wizytówką Google, umów bezpłatną konsultację. Pokażę Ci, jak to połączyć w Twoim przypadku.</p>
+            <a href="../kontakt.html" class="btn btn--primary">Umów bezpłatną konsultację</a>
+          </div>
+
+          <p class="artykul__back">
+            <a href="../artykuly.html">&larr; Wróć do listy artykułów</a>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="/#o-nas">O nas</a>
+      <a href="../proces.html">Proces tworzenia strony</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../artykuly.html">Artykuły</a>
+      <a href="../opinie.html">Opinie</a>
+      <a href="../kontakt.html">Kontakt</a>
+      <a href="../polityka-prywatnosci.html">Polityka prywatności</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

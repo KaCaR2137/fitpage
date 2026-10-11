@@ -557,6 +557,33 @@
         ],
         "createdAt": "2026-10-03T22:44:45.733Z",
         "reason": ".trainings nie wystepuje w tresci tego pliku (wspoldzielony style.css/script.js skanowany niezaleznie od realnego markupu) - sam marquee to udokumentowany, swiadomie ograniczony wyjatek w DESIGN.md (Trainings marquee), obecny tylko na index.html."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/wizytowka-google-trener-personalny.html"
+        ],
+        "createdAt": "2026-10-11T15:10:00.000Z",
+        "reason": "Udokumentowana zazieleniona poswiata na H1 (text-shadow, DESIGN.md Typography), ten sam wspoldzielony styl co kazda inna strona - pierwsze przeskanowanie na nowym pliku artykulu."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/wizytowka-google-trener-personalny.html"
+        ],
+        "createdAt": "2026-10-11T15:10:00.000Z",
+        "reason": "Udokumentowana 'Flat Canvas Rule' w DESIGN.md, ten sam kremowy #F7F3EA co kazda inna strona serwisu od poczatku projektu."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "artykuly/wizytowka-google-trener-personalny.html"
+        ],
+        "createdAt": "2026-10-11T15:10:00.000Z",
+        "reason": ".trainings nie wystepuje w tresci tego pliku (wspoldzielony style.css/script.js skanowany niezaleznie od realnego markupu) - sam marquee to udokumentowany, swiadomie ograniczony wyjatek w DESIGN.md (Trainings marquee), obecny tylko na index.html."
       }
     ]
   }
