@@ -1,0 +1,26 @@
+# FitPage
+
+> FitPage projektuje strony internetowe dla trenerów personalnych, instruktorów i coachów. Strony są czytelne na telefonie, szybkie i dopasowane do specjalizacji trenera. Działamy z Poznania, zdalnie w całej Polsce, a współpraca zaczyna się od bezpłatnej konsultacji.
+
+Kontakt: kontakt@fitpage.pl
+
+## Główne strony
+
+- [Strona główna](https://fitpage.pl/): oferta FitPage, portfolio realizacji i najważniejsze atuty współpracy.
+- [Proces tworzenia strony](https://fitpage.pl/proces.html): sześć etapów pracy, od analizy po wdrożenie strony.
+- [FAQ](https://fitpage.pl/faq.html): odpowiedzi na pytania o cenę, czas realizacji, treści, domenę i RODO.
+- [Umów konsultację](https://fitpage.pl/kontakt.html): formularz briefu, na podstawie którego przygotowujemy zakres prac i wycenę.
+- [Opinie](https://fitpage.pl/opinie.html): opinie klientów o współpracy z FitPage.
+- [Artykuły](https://fitpage.pl/artykuly.html): lista wszystkich poradników dla trenerów personalnych.
+
+## Artykuły
+
+- [Wizytówka Google dla trenera personalnego](https://fitpage.pl/artykuly/wizytowka-google-trener-personalny.html): jak założyć Profil Firmy w Google bez własnego studia i połączyć go ze stroną.
+- [Pracujesz w siłowni sieciowej? Po co Ci własna strona](https://fitpage.pl/artykuly/trener-w-silowni-sieciowej.html): dlaczego trener pracujący w klubie potrzebuje miejsca w sieci, które należy do niego.
+- [Strona czy Booksy?](https://fitpage.pl/artykuly/strona-czy-booksy.html): porównanie aplikacji rezerwacyjnej z własną stroną trenera personalnego.
+- [Trening online: dlaczego strona internetowa jest ważniejsza niż kiedykolwiek](https://fitpage.pl/artykuly/trening-online-strona.html): jak trener pracujący zdalnie buduje zaufanie bez wspólnego miejsca treningów.
+- [Jakie zdjęcia i treści przygotować przed zamówieniem strony](https://fitpage.pl/artykuly/jakie-zdjecia-tresci-przygotowac.html): checklist materiałów, które przyspieszają realizację strony.
+- [Instagram czy własna strona internetowa?](https://fitpage.pl/artykuly/instagram-czy-strona.html): co bardziej buduje zaufanie klienta i dlaczego warto mieć oba kanały.
+- [Jak zdobyć pierwszych klientów bez płatnych reklam](https://fitpage.pl/artykuly/jak-zdobyc-klientow-bez-reklam.html): pięć sposobów na pierwszych klientów, które kosztują czas, a nie pieniądze.
+- [Ile kosztuje strona internetowa dla trenera personalnego?](https://fitpage.pl/artykuly/ile-kosztuje-strona-dla-trenera.html): realne widełki cenowe na polskim rynku i od czego zależy cena.
+- [Jak wyróżnić się jako trener personalny](https://fitpage.pl/artykuly/jak-wyroznic-sie-jako-trener.html): pięć konkretnych sposobów, żeby klienci zapamiętali Cię z właściwego powodu.
