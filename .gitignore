@@ -9,3 +9,6 @@
 # lokalny cache Wranglera (npx wrangler ...) — nigdy nie commitować
 .wrangler/
 node_modules/
+
+# grafiki na Instagram, tylko lokalnie
+iggrafiki/
