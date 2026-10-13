@@ -127,6 +127,7 @@
           <!-- <a href="#portfolio">Portfolio</a> -->
           <a href="proces.html">Proces</a>
           <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
         </nav>
         <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
         <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
@@ -147,6 +148,54 @@
           Szybkie, czytelne na telefonie i dopasowane do Twojej specjalizacji.
         </p>
         <a href="kontakt.html" class="btn btn--primary btn--pulse reveal">Umów konsultację</a>
+      </div>
+    </section>
+
+    <!-- ============================ ATUTY ============================ -->
+    <section class="atuty" aria-label="Dlaczego FitPage">
+      <div class="container">
+        <ul class="atuty__grid">
+
+          <li class="atuty__item reveal">
+            <span class="atuty__icon atuty__icon--accent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="12" rx="3"/>
+                <path d="M8 17v3l4-3"/>
+              </svg>
+            </span>
+            <p class="atuty__text">Bezpłatna konsultacja</p>
+          </li>
+
+          <li class="atuty__item reveal">
+            <span class="atuty__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </span>
+            <p class="atuty__text">Cała Polska, zdalnie</p>
+          </li>
+
+          <li class="atuty__item reveal">
+            <span class="atuty__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 12a9 9 0 0 1 15.5-6.3M21 5v5h-5"/>
+                <path d="M21 12a9 9 0 0 1-15.5 6.3M3 19v-5h5"/>
+              </svg>
+            </span>
+            <p class="atuty__text">2 rundy poprawek projektu</p>
+          </li>
+
+          <li class="atuty__item reveal">
+            <span class="atuty__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/>
+              </svg>
+            </span>
+            <p class="atuty__text">Tylko trenerzy i&nbsp;instruktorzy</p>
+          </li>
+
+        </ul>
       </div>
     </section>
 
@@ -360,59 +409,62 @@
       </div>
     </section>
 
+    <!-- ============================ CO DOSTAJESZ ============================ -->
+    <section id="co-dostajesz" class="section co-dostajesz">
+      <div class="container co-dostajesz__grid">
+        <figure class="co-dostajesz__mockup reveal">
+          <picture>
+            <source srcset="mockup1.webp" type="image/webp">
+            <img src="mockup1.png" width="500" height="833" loading="lazy" decoding="async"
+                 alt="Strona trenerki personalnej na ekranie telefonu: zdjęcie z treningu, nagłówek „Ruch dopasowany do wieku i możliwości” i przycisk „Umów pierwsze zajęcia”.">
+          </picture>
+          <figcaption>Projekt pokazowy przygotowany przez nas jako wzór. Tak może wyglądać Twoja strona na telefonie.</figcaption>
+        </figure>
+
+        <div class="co-dostajesz__text">
+          <h2 class="section__title reveal">Co dostajesz</h2>
+          <dl class="co-dostajesz__lista">
+            <div class="co-dostajesz__punkt reveal">
+              <dt>Układ pod trenera, nie szablon</dt>
+              <dd>Oferta, o Tobie i kontakt w kolejności, w jakiej klient podejmuje decyzję. Dopasowane do Twojej specjalizacji.</dd>
+            </div>
+            <div class="co-dostajesz__punkt reveal">
+              <dt>Najpierw telefon</dt>
+              <dd>Większość Twoich klientów wejdzie z telefonu, więc od niego zaczynamy. Strona szybka, bez wtyczek.</dd>
+            </div>
+            <div class="co-dostajesz__punkt reveal">
+              <dt>Formularz zgodny z&nbsp;RODO</dt>
+              <dd>Klauzula informacyjna, wymagane zgody i ustalony okres przechowywania danych, zanim strona ruszy.</dd>
+            </div>
+            <div class="co-dostajesz__punkt reveal">
+              <dt>Twoja domena i SSL</dt>
+              <dd>Strona pod Twoim adresem, z krótką instrukcją, jak samodzielnie zmienić tekst czy zdjęcie.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================ O NAS ============================ -->
     <section id="o-nas" class="section o-nas">
-      <div class="container reveal">
+      <div class="container">
         <h2 class="section__title reveal">O nas</h2>
-        <!-- TODO: zastąpić realną treścią — konkretne lata doświadczenia,
-             liczba zrealizowanych stron, czym się wyróżniacie na tle innych -->
-        <div class="o-nas__grid">
-          <div class="o-nas__text">
-            <p class="reveal">Tworzymy strony internetowe i wizytówki cyfrowe stworzone z myślą o trenerach personalnych. Dbamy o wygląd i o funkcjonalność: od przejrzystej prezentacji oferty i sylwetki trenera, po łatwy kontakt i możliwość umówienia współpracy.</p>
-            <p class="reveal">Łączymy design, technologię i znajomość branży fitness, dzięki czemu nasze realizacje nie są przypadkowymi szablonami. Każdy element ma swoje zadanie: przyciągnąć uwagę, wzbudzić zaufanie i zachęcić potencjalnego klienta do wykonania kolejnego kroku.</p>
-            <p class="reveal">Ty zajmujesz się swoimi podopiecznymi. My zadbamy o to, jak prezentujesz się w internecie.</p>
-          </div>
-
-          <!-- Dekoracyjny panel terminala — treść (fragment CSS, sekwencja
-               git/deploy, wynik audytu impeccable) jest prawdziwa i związana
-               z projektem, ale panel niczego nie komunikuje ponad tekst obok
-               (kolumna .o-nas__text), więc cała figura jest aria-hidden.
-               Druga kopia kodu (.terminal__code[aria-hidden]) to tylko
-               techniczny duplikat do pętli przewijania — ten sam wzorzec co
-               druga, ukryta kopia listy w .trainings (patrz sekcja
-               "Treningi (pasek)" niżej), łącznie z identyczną regułą
-               prefers-reduced-motion, która ją chowa. -->
-          <figure class="o-nas__terminal reveal" aria-hidden="true">
-            <div class="terminal__bar">
-              <span class="terminal__dot terminal__dot--red"></span>
-              <span class="terminal__dot terminal__dot--yellow"></span>
-              <span class="terminal__dot terminal__dot--green"></span>
-              <span class="terminal__bar-title">fitpage — terminal</span>
-            </div>
-            <div class="terminal__body">
-              <div class="terminal__scroll">
-                <pre class="terminal__code"><span class="t-prompt">$</span> whoami
-trener personalny? Twoja strona czeka
-
-<span class="t-prompt">$</span> status
-gotowa · czytelna · Twoja
-
-<span class="t-prompt">$</span> echo <span class="t-str">"Umów bezpłatną konsultację"</span>
-<span class="t-prompt">$</span> open fitpage.pl/kontakt
-</pre><pre class="terminal__code" aria-hidden="true"><span class="t-prompt">$</span> whoami
-trener personalny? Twoja strona czeka
-
-<span class="t-prompt">$</span> status
-gotowa · czytelna · Twoja
-
-<span class="t-prompt">$</span> echo <span class="t-str">"Umów bezpłatną konsultację"</span>
-<span class="t-prompt">$</span> open fitpage.pl/kontakt
-</pre>
-              </div>
-            </div>
-          </figure>
+        <div class="o-nas__text">
+          <p class="reveal">Robimy strony tylko dla trenerów personalnych i instruktorów. Nasz standard powstał z analizy około 20 stron trenerów: co na nich działa, czego brakuje i w którym miejscu klient się gubi.</p>
+          <p class="reveal">Standard dopasowujemy do Twojej specjalizacji. Strona trenerki pracującej z&nbsp;seniorami wygląda inaczej niż strona trenera przygotowania motorycznego, ale obie prowadzą klienta do jednego: kontaktu z&nbsp;Tobą.</p>
+          <p class="reveal">Ty zajmujesz się swoimi podopiecznymi. My zadbamy o&nbsp;to, jak prezentujesz się w&nbsp;internecie.</p>
         </div>
 
+        <h3 class="proces-pasek__tytul reveal">Jak pracujemy</h3>
+        <ol class="proces-pasek reveal">
+          <li><span class="proces-pasek__nr" aria-hidden="true">1</span>Analiza</li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">2</span>Struktura</li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">3</span>Projekt</li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">4</span>Development</li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">5</span>Testy</li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">6</span>Wdrożenie</li>
+        </ol>
+        <p class="o-nas__wiecej reveal"><a href="proces.html">Zobacz, co dzieje się na każdym etapie &rarr;</a></p>
       </div>
     </section>
 
@@ -449,7 +501,7 @@ gotowa · czytelna · Twoja
     <section id="artykuly" class="section artykuly">
       <div class="container reveal">
         <h2 class="section__title reveal">Artykuły</h2>
-        <p class="reveal">
+        <p class="artykuly__intro reveal">
           Praktyczne teksty dla trenerów personalnych: o stronach internetowych,
           pozyskiwaniu klientów i budowaniu marki.
         </p>
@@ -513,70 +565,16 @@ gotowa · czytelna · Twoja
       </div>
     </section>
 
-    <!-- ============================ ATUTY ============================ -->
-    <section class="atuty" aria-label="Dlaczego FitPage">
-      <div class="container">
-        <ul class="atuty__grid">
-
-          <li class="atuty__item reveal">
-            <span class="atuty__icon atuty__icon--accent">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="12" rx="3"/>
-                <path d="M8 17v3l4-3"/>
-              </svg>
-            </span>
-            <p class="atuty__text">Bezpłatna konsultacja</p>
-          </li>
-
-          <li class="atuty__item reveal">
-            <span class="atuty__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-              </svg>
-            </span>
-            <p class="atuty__text">Cała Polska, zdalnie</p>
-          </li>
-
-          <li class="atuty__item reveal">
-            <span class="atuty__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 12a9 9 0 0 1 15.5-6.3M21 5v5h-5"/>
-                <path d="M21 12a9 9 0 0 1-15.5 6.3M3 19v-5h5"/>
-              </svg>
-            </span>
-            <p class="atuty__text">2 rundy poprawek w cenie</p>
-          </li>
-
-          <li class="atuty__item reveal">
-            <span class="atuty__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 18V5"/>
-                <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/>
-                <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/>
-                <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/>
-                <path d="M18 18a4 4 0 0 0 2-7.464"/>
-                <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/>
-                <path d="M6 18a4 4 0 0 1-2-7.464"/>
-                <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/>
-              </svg>
-            </span>
-            <p class="atuty__text">Trenerzy, instruktorzy, coache</p>
-          </li>
-
-        </ul>
-      </div>
-    </section>
-
     <!-- ============================ CTA (domykające) ============================ -->
     <section class="section cta-closing" aria-label="Umów konsultację">
       <div class="container cta-closing__inner reveal">
-        <h2 class="section__title">Gotowy zacząć?</h2>
+        <h2 class="section__title">Zaczynamy?</h2>
         <p class="cta-closing__text">
-          Bezpłatna, niezobowiązująca konsultacja. Porozmawiajmy o Twojej specjalizacji
-          i zobaczmy, jak może wyglądać Twoja strona.
+          Wypełniasz krótki brief o&nbsp;swojej działalności. Odpisujemy z&nbsp;propozycją zakresu
+          i&nbsp;wyceną, a potem umawiamy bezpłatną, niezobowiązującą rozmowę.
+          Nie musisz mieć gotowych tekstów ani zdjęć, ułożymy je razem w&nbsp;trakcie.
         </p>
-        <a href="kontakt.html" class="btn btn--primary btn--pulse">Umów konsultację</a>
+        <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
       </div>
     </section>
 
@@ -586,7 +584,7 @@ gotowa · czytelna · Twoja
   <footer class="footer">
     <nav class="footer__links container" aria-label="Skróty">
       <a href="#o-nas">O nas</a>
-      <a href="proces.html">Proces tworzenia strony</a>
+      <a href="proces.html">Proces</a>
       <a href="faq.html">FAQ</a>
       <a href="artykuly.html">Artykuły</a>
       <a href="opinie.html">Opinie</a>

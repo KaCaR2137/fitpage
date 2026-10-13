@@ -121,6 +121,16 @@ dostępie do treści. Pełny opis obu wariantów i uzasadnienie techniki w
 `DESIGN.md`, sekcja „Splash intro”.
 
 ## Strony
+**Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /
+Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz
+pod CTA w hero) → Treningi (pasek) → **Co dostajesz** (`#co-dostajesz`:
+`mockup1.png` podpisany jako projekt pokazowy + lista 4 punktów `<dl>`) →
+O nas (sam tekst o standardzie z analizy ~20 stron trenerów + pasek 6 etapów
+procesu z linkiem do `proces.html`; **panel terminala usunięty**) → Portfolio
+(ukryte, `hidden`) → Artykuły → CTA „Zaczynamy?” (opisuje, co się dzieje po
+kliknięciu). Pulsuje tylko CTA w hero, 3 razy. Splash skrócony: nowy 1s,
+stary 0,6s. Opis niżej jest historyczny tam, gdzie się z tym nie zgadza.
+
 **`index.html`** — sekcje w kolejności:
 1. Nav — logo (`.nav__logo-img` 44px + `.nav__logo-text` „FitPage”) + linki do
    sekcji (O nas, Portfolio, Proces, FAQ) + CTA „Umów konsultację” →

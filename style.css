@@ -216,9 +216,10 @@ summary:focus-visible {
   pointer-events: none; /* blokuje :hover, żeby przycisk nie "ożywał" wizualnie podczas wysyłki */
 }
 
-/* Pulsująca obwódka — WYŁĄCZNIE na głównym CTA "Umów konsultację": hero,
-   .nav__cta (współdzielony, więc pulsuje na każdej stronie) i domykający
-   blok CTA na końcu index.html. Świadomy wyjątek od The Lift-Means-
+/* Pulsująca obwódka — WYŁĄCZNIE na CTA "Umów konsultację" w hero, trzy
+   razy po wejściu, potem spokój (13.10.2026, /impeccable quieter: dwa
+   nieskończone pulsy naraz, w nav i w hero, przestały wskazywać jedną
+   akcję). .nav__cta i CTA domykające już nie pulsują. Świadomy wyjątek od The Lift-Means-
    Interactive Rule (DESIGN.md) — na wyraźne, szczegółowe życzenie
    (kolor, timing i krzywa podane wprost), nie odruchowy wybór. Reszta
    przycisków/linków (patrz niżej) dostaje tylko reakcję na hover/focus,
@@ -235,14 +236,11 @@ summary:focus-visible {
   100% { box-shadow: 0 0 0 10px rgba(31, 61, 43, 0); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .btn--pulse,
-  .nav__cta {
-    animation: cta-pulse 2s ease-in-out infinite;
+  .btn--pulse {
+    animation: cta-pulse 2s ease-in-out 1.2s 3;
   }
   .btn--pulse:hover,
-  .btn--pulse:focus-visible,
-  .nav__cta:hover,
-  .nav__cta:focus-visible {
+  .btn--pulse:focus-visible {
     animation-play-state: paused;
   }
 }
@@ -291,8 +289,8 @@ summary:focus-visible {
    koloru, mimo że `color`/żaden kolor obrazu nigdy nie jest animowany. */
 .splash--new {
   background-color: var(--accent);
-  animation: splash-bg 1.6s var(--ease) forwards,
-             splash-hide-new 1.6s var(--ease) forwards;
+  animation: splash-bg 1s var(--ease) forwards,
+             splash-hide-new 1s var(--ease) forwards;
 }
 .splash__inner {
   display: flex;
@@ -305,7 +303,7 @@ summary:focus-visible {
   width: 56px;
   height: 56px;
   flex-shrink: 0;
-  animation: splash-icon-scale 1.6s var(--ease) forwards;
+  animation: splash-icon-scale 1s var(--ease) forwards;
 }
 .splash__icon {
   position: absolute;
@@ -315,8 +313,8 @@ summary:focus-visible {
   height: 100%;
   object-fit: contain;
 }
-.splash__icon--cream { animation: splash-icon-cream 1.6s var(--ease) forwards; }
-.splash__icon--green { animation: splash-icon-green 1.6s var(--ease) forwards; }
+.splash__icon--cream { animation: splash-icon-cream 1s var(--ease) forwards; }
+.splash__icon--green { animation: splash-icon-green 1s var(--ease) forwards; }
 
 .splash__text-stack {
   position: relative;
@@ -331,13 +329,13 @@ summary:focus-visible {
 }
 .splash__text--cream {
   color: var(--canvas);
-  animation: splash-text-cream 1.6s var(--ease) forwards;
+  animation: splash-text-cream 1s var(--ease) forwards;
 }
 .splash__text--green {
   position: absolute;
   inset: 0;
   color: var(--accent);
-  animation: splash-text-green 1.6s var(--ease) forwards;
+  animation: splash-text-green 1s var(--ease) forwards;
 }
 
 /* Procenty poniżej odpowiadają konkretnym milisekundom na osi 1.6s:
@@ -405,12 +403,12 @@ summary:focus-visible {
 .splash--old {
   display: none;
   background-color: var(--canvas);
-  animation: splash-hide-old 1.44s var(--ease) forwards;
+  animation: splash-hide-old 0.6s var(--ease) forwards;
 }
 .splash__logo-old {
   width: 125px; /* 96px + 30% */
   height: auto;
-  animation: splash-logo-old 1.44s var(--ease) forwards; /* 1.2s + 20% */
+  animation: splash-logo-old 0.6s var(--ease) forwards; /* skrócone z 1.44s 13.10.2026 */
 }
 @keyframes splash-logo-old {
   0%   { opacity: 0; transform: scale(0.6); }
@@ -587,7 +585,7 @@ summary:focus-visible {
   background: transparent;
   color: var(--text);
   text-align: center;
-  padding: 96px 20px 104px;
+  padding: 96px 20px 48px;
 }
 .hero__inner { max-width: 760px; margin-inline: auto; }
 .hero__title {
@@ -769,166 +767,108 @@ summary:focus-visible {
   margin-bottom: 1.75em;
 }
 
-/* ============================== O NAS ============================== */
-/* Przed odsłonięciem (.reveal, poniżej ekranu) telefon jest przesunięty o
-   42px w prawo (translateX), a jego poświata ::before wystaje jeszcze
-   ~24% szerokości poza figurę — razem ~9px poza viewport na telefonie 390px
-   (zmierzone: scrollWidth 399 przy oknie 390), więc strona główna dawała
-   się przesuwać na boki, dopóki nie doscrollowało się do tej sekcji.
-   `clip` przycina tylko poziomo i nie tworzy kontenera przewijania
-   (overflow-y zostaje visible — cień/poświata telefonu nie są ucinane od
-   góry i dołu, jak przy `hidden`); `hidden` przed nim to fallback dla
-   przeglądarek bez `clip` (Safari < 16). */
-.o-nas {
-  overflow-x: hidden;
-  overflow-x: clip;
+/* ============================== CO DOSTAJESZ ============================== */
+/* Makieta telefonu (projekt pokazowy, podpisany jako taki) obok listy
+   tego, co trener dostaje. Lista to <dl> z hairline'ami, nie siatka kart
+   z ikonami. Mobile: makieta nad listą, od 900px obok siebie. */
+.co-dostajesz__grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
 }
+.co-dostajesz__mockup {
+  margin: 0 auto;
+  max-width: 260px;
+  text-align: center;
+}
+.co-dostajesz__mockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 22px 30px rgba(31, 45, 36, 0.18));
+}
+.co-dostajesz__mockup figcaption {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.co-dostajesz__lista { margin: 0; }
+.co-dostajesz__punkt {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+.co-dostajesz__punkt:last-child { border-bottom: 1px solid var(--border); }
+.co-dostajesz__punkt dt {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+}
+.co-dostajesz__punkt dd {
+  margin: 6px 0 0;
+  max-width: 52ch;
+  color: var(--muted);
+}
+
+/* ============================== O NAS ============================== */
 .o-nas p {
   max-width: 680px;
   color: var(--muted);
   text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14); /* dziedziczy też na <strong> */
 }
 .o-nas strong { color: var(--text); }
-
-/* układ: tekst + telefon obok (mobile-first: kolumna) */
-.o-nas__grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-}
-.o-nas__text { min-width: 0; }
 .o-nas__text p:last-child { margin-bottom: 0; }
 
-/* --- Panel terminala (zastąpił mockup telefonu 22.09.2026) ---
-   Pozioma "landscape" karta, nie wąska ramka telefonu — stąd max-width
-   znacznie szerszy niż poprzednie 220/250px. Ciemny panel niezależny od
-   jasnej palety strony (dosłowny, statyczny fragment kodu/terminala jako
-   ilustracja, nie UI strony), więc kolory tokenów są wpisane na sztywno,
-   nie przez zmienne --text/--muted/itd. */
-.o-nas__terminal {
-  position: relative;
+/* Pasek procesu: 6 etapów z proces.html w jednym rzędzie (desktop) albo
+   w dwóch kolumnach (telefon). Numer niesie kolejność, więc zostaje. */
+.proces-pasek__tytul {
+  margin: 48px 0 18px;
+  font-size: 1.15rem;
+}
+.proces-pasek {
+  list-style: none;
   margin: 0;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 420px;
-  border-radius: 16px;
-  background: #1A1A1A;
-  box-shadow: 0 22px 46px rgba(31, 45, 36, 0.22); /* ten sam cień co wcześniej pod telefonem */
-  overflow: hidden;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
-/* ta sama miękka poświata co wcześniej pod telefonem, teraz pod panelem */
-.o-nas__terminal::before {
-  content: "";
-  position: absolute;
-  inset: -10% -16%;
-  background: radial-gradient(closest-side, rgba(31, 61, 43, 0.10), transparent 72%);
-  z-index: -1;
-  pointer-events: none;
-}
-.terminal__bar {
+.proces-pasek li {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 12px 14px;
-  background: #242424;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--text);
 }
-.terminal__dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
+.proces-pasek__nr {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
-}
-.terminal__dot--red    { background: #FF5F57; }
-.terminal__dot--yellow { background: #FEBC2E; }
-.terminal__dot--green  { background: #28C840; }
-.terminal__bar-title {
-  margin-left: 4px;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  /* 0.45 dawało 4.3:1 na tle #242424 — pod progiem AA 4.5:1 (zmierzone
-     22.09.2026, audyt). 0.55 daje ~5.4:1, z zapasem nad minimum (0.47). */
-  color: rgba(255, 255, 255, 0.55);
-}
-/* okno o stałej wysokości + overflow: hidden — .terminal__scroll wewnątrz
-   jest wyższy niż to okno i przesuwa się w pionie (patrz niżej), reszta
-   po prostu zostaje przycięta, tak jak prawdziwy terminal pokazuje tylko
-   fragment długiego logu na raz */
-.terminal__body {
-  position: relative;
-  height: 260px;
-  overflow: hidden;
-}
-/* delikatne rozmycie na krawędziach — tekst nie "wjeżdża"/"wyjeżdża" ostro */
-.terminal__body::before,
-.terminal__body::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 32px;
-  z-index: 1;
-  pointer-events: none;
-}
-.terminal__body::before { top: 0;    background: linear-gradient(#1A1A1A, transparent); }
-.terminal__body::after  { bottom: 0; background: linear-gradient(transparent, #1A1A1A); }
-
-/* Dwie identyczne kopie treści w kolumnie (patrz HTML) — translateY(-50%)
-   przesuwa o dokładnie połowę WŁASNEJ wysokości .terminal__scroll, czyli o
-   wysokość jednej kopii, więc pętla jest bez szwu, ten sam trik co
-   translateX(-50%) w .trainings-scroll (patrz sekcja "Treningi" wyżej),
-   tylko w pionie zamiast w poziomie. linear, bez easingu — stałe tempo,
-   bez przyspieszeń/zwolnień przy każdym powtórzeniu pętli. */
-.terminal__scroll {
-  /* 22.09.2026: treść zredukowana do krótkiego CTA (~210px/kopia, wcześniej
-     ~558px z kodem/git/audytem) — przy okazji zwolnione tempo z ~19px/s do
-     ~9.5px/s (210px/22s). Poprzednia treść była ambientowym tłem (kod, nie
-     do czytania słowo w słowo), więc mogła przelatywać szybciej; ta jest
-     realną wiadomością (CTA), ma być czytelna w trakcie przewijania, nie
-     tylko dekoracyjna. Przy kolejnej zmianie treści przelicz proporcjonalnie
-     do NOWEGO celu (czytelność vs ambient), nie kopiuj tej liczby wprost. */
-  animation: terminal-scroll 22s linear infinite;
-}
-.terminal__code {
-  margin: 0;
-  padding: 18px;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: 0.8rem;
-  line-height: 1.7;
-  white-space: pre;
-  color: #D4D4D4; /* domyślny tekst kodu, reszta tokenów przez klasy niżej */
-  /* Panel ma stałą szerokość (patrz .o-nas__terminal), a niektóre linie
-     (np. komunikat commita) są dłuższe niż mieści się na wąskim telefonie —
-     .terminal__body przycina je poziomo (overflow: hidden), więc bez tej
-     maski koniec zdania ucinał się na ostro na krawędzi panelu. Maska daje
-     mu ten sam płynny zanik co pionowe krawędzie (.terminal__body::before/
-     ::after) — dla linii, które mieszczą się w całości, nie zmienia
-     wyglądu (blaknie tylko ostatnie 24px tła, nie tekstu). */
-  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent 100%);
-          mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent 100%);
+  font-weight: 700;
 }
-
-/* kolory tokenów — paleta zbliżona do VS Code Dark+, tylko w tym panelu
-   (nie dotyczy reszty strony, stąd wartości wpisane wprost, nie zmienne).
-   Treść od 22.09.2026 (CTA: whoami/status/echo/open) używa tylko tych
-   dwóch klas — .t-c/.t-kw/.t-var/.t-fn/.t-ok/.t-muted zostały usunięte
-   razem z poprzednią treścią (tokeny CSS, git, script.js, audyt), która
-   je jedyna wykorzystywała; jeśli treść znów urośnie o inne typy tokenów,
-   dopisz analogiczną klasę zamiast nadużywać tych dwóch do wszystkiego. */
-.t-str    { color: #CE9178; } /* string/wartość w cudzysłowie */
-.t-prompt { color: #6A9955; } /* znak "$" zachęty terminala */
-
-@keyframes terminal-scroll {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-50%); }
+.o-nas__wiecej { margin: 20px 0 0; }
+.o-nas__wiecej a {
+  display: inline-block;
+  padding: 10px 0;
+  color: var(--accent-strong);
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 3px;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .terminal__scroll { animation: none; }
-  .terminal__code[aria-hidden="true"] { display: none; }
-}
+.o-nas__wiecej a:hover,
+.o-nas__wiecej a:focus-visible { text-decoration: underline; }
 
 /* ============================== PORTFOLIO ============================== */
 /* auto-fit (nie auto-fill) + justify-content: center — z jedną kartą
@@ -980,6 +920,7 @@ summary:focus-visible {
    patrz DESIGN.md "The Lift-Means-Interactive Rule"). Cień/lekkie uniesienie
    pojawia się wyłącznie na hover/focus, żeby zasygnalizować klikalność bez
    łamania tej zasady. */
+.artykuly__intro { max-width: 62ch; }
 .artykuly__grid {
   list-style: none;
   margin: 0;
@@ -2040,13 +1981,15 @@ summary:focus-visible {
 }
 .footer__logo { font-weight: 800; letter-spacing: -0.03em; color: var(--on-accent); }
 .footer p { margin: 0; }
+/* linki w wierszach stopki: większy obszar dotyku */
+.footer p a { display: inline-block; padding: 8px 0; }
 
 /* rząd skrótów (O nas / Proces / FAQ / Kontakt) — na samym dole strony */
 .footer__links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px 24px;
+  gap: 0 24px;
   margin: 0 auto 18px;
   padding-bottom: 18px;
   border-bottom: 1px solid rgba(251, 248, 240, 0.14);
@@ -2054,6 +1997,7 @@ summary:focus-visible {
 }
 .footer__links a {
   display: inline-block;
+  padding: 9px 0; /* cel dotyku ~44px wysokości */
   color: var(--on-accent);
   text-decoration: none;
   transition: transform 0.18s var(--ease);
@@ -2147,7 +2091,8 @@ summary:focus-visible {
     align-items: stretch;
     gap: 0;
     padding: 8px 20px 16px;
-    background: rgba(247, 243, 234, 0.98);
+    background: var(--canvas);
+    box-shadow: 0 14px 24px rgba(31, 45, 36, 0.10);
   }
   .nav.is-open .nav__links { display: flex; }
   .nav__links a {
@@ -2206,19 +2151,20 @@ summary:focus-visible {
 
 /* --- >= 900px --- */
 @media (min-width: 900px) {
-  .hero:not(.hero--compact) { padding: 120px 20px 130px; }
+  .hero:not(.hero--compact) { padding: 120px 20px 64px; }
   .hero--compact { padding: 96px 20px 76px; }
 
-  /* O nas: tekst z lewej, panel terminala z prawej. Martwa reguła
-     .o-nas__visual (usunięta 22.09.2026, przy /impeccable document) —
-     ta klasa zniknęła z HTML razem z mockupem telefonu, ale ten jeden
-     breakpoint ją przeoczył. .o-nas__terminal ma już max-width: 420px
-     w bazowej regule (patrz sekcja "O nas — panel terminala" wyżej),
-     wspólne dla mobile i tego breakpointu — nic tu nie trzeba nadpisywać. */
-  .o-nas__grid {
-    flex-direction: row;
-    align-items: center;
-    gap: 52px;
+  /* Co dostajesz: makieta z lewej, lista z prawej */
+  .co-dostajesz__grid {
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 72px;
   }
-  .o-nas__text { flex: 1 1 auto; }
+  .co-dostajesz__mockup { max-width: none; }
+  .proces-pasek { grid-template-columns: repeat(6, 1fr); }
+  .proces-pasek li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
 }
