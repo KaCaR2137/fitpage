@@ -6,7 +6,7 @@ Kontakt: kontakt@fitpage.pl
 
 ## Główne strony
 
-- [Strona główna](https://fitpage.pl/): oferta FitPage, portfolio realizacji i najważniejsze atuty współpracy.
+- [Strona główna](https://fitpage.pl/): oferta FitPage i najważniejsze atuty współpracy.
 - [Proces tworzenia strony](https://fitpage.pl/proces.html): sześć etapów pracy, od analizy po wdrożenie strony.
 - [FAQ](https://fitpage.pl/faq.html): odpowiedzi na pytania o cenę, czas realizacji, treści, domenę i RODO.
 - [Umów konsultację](https://fitpage.pl/kontakt.html): formularz briefu, na podstawie którego przygotowujemy zakres prac i wycenę.
