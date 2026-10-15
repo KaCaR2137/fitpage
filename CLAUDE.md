@@ -356,6 +356,20 @@ ekranu telefonu 390px, przez co nic nie sugerowało, że pod spodem jest więcej
 artykułów; od 480px w górę wraca pełny, nieprzycięty rozmiar (patrz DESIGN.md,
 sekcja Article card, po pełne wartości).
 
+**Karty z okładkami (15.10.2026, nadpisuje opis kart wyżej).** Karta =
+kwadratowa okładka `images/artykuly/<slug>.webp` (1200x1200, `loading="lazy"`,
+width/height ustawione) z pigułkami kategorii (`.artykul-card__tags`, zieleń
+`--accent` z kremowym tekstem) w lewym górnym rogu, pod nią tytuł i
+`<time>` + „· N min czytania” (słowa w `.artykul__body` do „Zobacz też”,
+200 słów/min, w górę). Bez leadu. Siatka: 1 kolumna, od 700px 2 kolumny.
+Strona główna pokazuje teraz **4** najnowsze (2 pełne rzędy), nie 3.
+Każdy artykuł ma pod hero `.artykul__cover` z `<slug>-og.jpg`/`-og.webp`
+(1200x630), a og:image/twitter:image wskazują na `-og.jpg`; JSON-LD
+`image` to tablica [og.jpg, kwadrat .webp, stare zdjęcie hero]. Źródła
+okładek leżą w `iggrafiki/okladki-artykulow/` (poza repo), do repo trafiają
+kopie w `images/artykuly/`. Nowy artykuł: skopiuj obie okładki, wygeneruj
+`-og.webp` (Pillow, quality 80), dopisz kategorie i czas czytania.
+
 **`artykuly/<slug>.html`** (np. `artykuly/jak-wyroznic-sie-jako-trener.html`) —
 szablon pojedynczego artykułu, w podkatalogu `artykuly/` (stąd `../` przed
 każdym odnośnikiem do stylu/skryptu/obrazów/innych stron w nav i stopce —

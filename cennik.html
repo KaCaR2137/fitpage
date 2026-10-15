@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Strona dla trenera personalnego: cena i pakiety | FitPage</title>
+  <meta name="description" content="Strona dla trenera personalnego: cena od 990 zł. Trzy pakiety z cenami „od”, czas realizacji i opieka po starcie. Sprawdź, co dostajesz w każdym.">
+  <link rel="canonical" href="https://fitpage.pl/cennik.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="FitPage">
+  <meta property="og:title" content="Strona dla trenera personalnego: cena i pakiety | FitPage">
+  <meta property="og:description" content="Strona dla trenera personalnego: cena od 990 zł. Trzy pakiety z cenami „od”, czas realizacji i opieka po starcie. Sprawdź, co dostajesz w każdym.">
+  <meta property="og:url" content="https://fitpage.pl/cennik.html">
+  <meta property="og:image" content="https://fitpage.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FitPage: strony internetowe dla trenerów personalnych">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strona dla trenera personalnego: cena i pakiety | FitPage">
+  <meta name="twitter:description" content="Strona dla trenera personalnego: cena od 990 zł. Trzy pakiety z cenami „od”, czas realizacji i opieka po starcie. Sprawdź, co dostajesz w każdym.">
+  <meta name="twitter:image" content="https://fitpage.pl/images/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://fitpage.pl/cennik.html#webpage",
+        "url": "https://fitpage.pl/cennik.html",
+        "name": "Strona dla trenera personalnego: cena i pakiety | FitPage",
+        "description": "Strona dla trenera personalnego: cena od 990 zł. Trzy pakiety z cenami „od”, czas realizacji i opieka po starcie. Sprawdź, co dostajesz w każdym.",
+        "inLanguage": "pl-PL",
+        "isPartOf": {
+          "@id": "https://fitpage.pl/#website"
+        },
+        "about": {
+          "@id": "https://fitpage.pl/#organization"
+        }
+      },
+      {
+        "@type": "OfferCatalog",
+        "@id": "https://fitpage.pl/cennik.html#cennik",
+        "name": "Cennik FitPage",
+        "url": "https://fitpage.pl/cennik.html",
+        "provider": {
+          "@id": "https://fitpage.pl/#organization"
+        },
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Pakiety stron",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "name": "Pakiet Start",
+                "description": "Strona jednostronicowa (o mnie, oferta z cenami, opinie, formularz kontaktowy), podpięcie wizytówki Google, wersja mobilna, podstawowe SEO. Realizacja około 7 dni.",
+                "price": "990",
+                "priceCurrency": "PLN",
+                "url": "https://fitpage.pl/cennik.html",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "minPrice": "990",
+                  "priceCurrency": "PLN"
+                },
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Pakiet Start",
+                  "provider": {
+                    "@id": "https://fitpage.pl/#organization"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Pakiet Trener",
+                "description": "Wszystko z pakietu Start oraz podstrony, metamorfozy, FAQ, zapisy online (kalendarz lub Booksy), lokalne SEO i Search Console. Realizacja około 14 dni.",
+                "price": "1890",
+                "priceCurrency": "PLN",
+                "url": "https://fitpage.pl/cennik.html",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "minPrice": "1890",
+                  "priceCurrency": "PLN"
+                },
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Pakiet Trener",
+                  "provider": {
+                    "@id": "https://fitpage.pl/#organization"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Pakiet Online",
+                "description": "Dla trenerów i dietetyków online: sprzedaż planów lub prowadzenia, płatności online, zapis na newsletter. Realizacja około 21 dni.",
+                "price": "2990",
+                "priceCurrency": "PLN",
+                "url": "https://fitpage.pl/cennik.html",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "minPrice": "2990",
+                  "priceCurrency": "PLN"
+                },
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Pakiet Online",
+                  "provider": {
+                    "@id": "https://fitpage.pl/#organization"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Opieka nad stroną",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "name": "Opieka",
+                "description": "Hosting, domena, SSL, kopie zapasowe, drobne zmiany do 30 minut w miesiącu. Pierwsze 3 miesiące w cenie strony.",
+                "price": "79",
+                "priceCurrency": "PLN",
+                "url": "https://fitpage.pl/cennik.html",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "79",
+                  "priceCurrency": "PLN",
+                  "unitCode": "MON",
+                  "referenceQuantity": {
+                    "@type": "QuantitativeValue",
+                    "value": 1,
+                    "unitCode": "MON"
+                  }
+                },
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Opieka",
+                  "provider": {
+                    "@id": "https://fitpage.pl/#organization"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Opieka Plus",
+                "description": "Wszystko z Opieki oraz zmiany do 2 godzin w miesiącu, miesięczny raport z Google i 2 posty w miesiącu na wizytówce Google.",
+                "price": "149",
+                "priceCurrency": "PLN",
+                "url": "https://fitpage.pl/cennik.html",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "149",
+                  "priceCurrency": "PLN",
+                  "unitCode": "MON",
+                  "referenceQuantity": {
+                    "@type": "QuantitativeValue",
+                    "value": 1,
+                    "unitCode": "MON"
+                  }
+                },
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Opieka Plus",
+                  "provider": {
+                    "@id": "https://fitpage.pl/#organization"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fitpage.pl/cennik.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Jak wygląda płatność?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "50% płacisz na start prac, pozostałe 50% przed publikacją strony."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ile trwa realizacja?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Start to około 7 dni, Trener około 14 dni, Online około 21 dni. Termin zależy też od tego, jak szybko dostarczysz teksty i zdjęcia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy strona jest moja?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak. Jeśli zrezygnujesz z opieki, dostajesz pliki strony i domenę."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co jeśli potrzebuję czegoś spoza pakietu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wyceniamy to indywidualnie. Napisz, czego potrzebujesz, a podamy cenę przed rozpoczęciem prac."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
+    <picture>
+      <source srcset="images/logo-fitpage.webp" type="image/webp">
+      <img src="images/logo-fitpage.png" alt="" class="splash__logo-old">
+    </picture>
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="/#o-nas">O nas</a>
+          <!-- <a href="/#portfolio">Portfolio</a> -->
+          <a href="proces.html">Proces</a>
+          <a href="cennik.html">Cennik</a>
+          <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
+        </nav>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Cennik stron dla trenerów personalnych</h1>
+        <p class="hero__subtitle reveal">
+          Ile kosztuje strona dla trenera personalnego? Masz tu trzy pakiety z&nbsp;cenami „od”.
+          Dokładną kwotę podajemy po briefie, kiedy znamy zakres.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ PAKIETY ============================ -->
+    <section class="section cennik" aria-labelledby="pakiety-tytul">
+      <div class="container">
+        <h2 id="pakiety-tytul" class="section__title reveal">Pakiety</h2>
+        <p class="cennik__promo reveal">Pierwsze 5 projektów 20% taniej w&nbsp;zamian za zgodę na pokazanie w&nbsp;portfolio.</p>
+
+        <div class="cennik__pakiety">
+          <article class="pakiet reveal">
+            <h3 class="pakiet__nazwa">Start</h3>
+            <p class="pakiet__cena"><span>od</span> 990&nbsp;zł</p>
+            <p class="pakiet__opis">Jedna strona, na której klient znajdzie wszystko, czego potrzebuje do decyzji.</p>
+            <ul class="pakiet__lista">
+                <li>Strona jednostronicowa: o mnie, oferta z&nbsp;cenami, opinie, formularz kontaktowy</li>
+                <li>Podpięcie wizytówki Google</li>
+                <li>Wersja mobilna</li>
+                <li>Podstawowe SEO</li>
+            </ul>
+            <p class="pakiet__czas">Realizacja ok. 7 dni</p>
+            <a href="kontakt.html" class="btn btn--secondary pakiet__btn">Wybieram Start</a>
+          </article>
+
+          <article class="pakiet pakiet--wyrozniony reveal">
+            <p class="pakiet__plakietka">Najczęściej wybierany</p>
+            <h3 class="pakiet__nazwa">Trener</h3>
+            <p class="pakiet__cena"><span>od</span> 1890&nbsp;zł</p>
+            <p class="pakiet__opis">Wszystko ze Start, plus:</p>
+            <ul class="pakiet__lista">
+                <li>Podstrony</li>
+                <li>Metamorfozy podopiecznych</li>
+                <li>FAQ</li>
+                <li>Zapisy online (kalendarz lub Booksy)</li>
+                <li>Lokalne SEO i&nbsp;Search Console</li>
+            </ul>
+            <p class="pakiet__czas">Realizacja ok. 14 dni</p>
+            <a href="kontakt.html" class="btn btn--primary pakiet__btn">Wybieram Trener</a>
+          </article>
+
+          <article class="pakiet reveal">
+            <h3 class="pakiet__nazwa">Online</h3>
+            <p class="pakiet__cena"><span>od</span> 2990&nbsp;zł</p>
+            <p class="pakiet__opis">Dla trenerów i dietetyków, którzy prowadzą podopiecznych online.</p>
+            <ul class="pakiet__lista">
+                <li>Sprzedaż planów lub prowadzenia</li>
+                <li>Płatności online</li>
+                <li>Zapis na newsletter</li>
+            </ul>
+            <p class="pakiet__czas">Realizacja ok. 21 dni</p>
+            <a href="kontakt.html" class="btn btn--secondary pakiet__btn">Wybieram Online</a>
+          </article>
+        </div>
+
+        <!-- ============================ OPIEKA ============================ -->
+        <h2 class="section__title cennik__opieka-tytul reveal">Opieka po starcie</h2>
+        <p class="cennik__lead reveal">Pierwsze 3 miesiące Opieki masz w&nbsp;cenie strony. Potem sam decydujesz, czy ją zostawić.</p>
+        <div class="cennik__opieka">
+          <div class="opieka reveal">
+            <div class="opieka__glowa">
+              <h3 class="pakiet__nazwa">Opieka</h3>
+              <p class="opieka__cena">79&nbsp;zł<span>/mies.</span></p>
+            </div>
+            <ul class="pakiet__lista">
+                <li>Hosting, domena i certyfikat SSL</li>
+                <li>Kopie zapasowe</li>
+                <li>Drobne zmiany do 30 minut w&nbsp;miesiącu</li>
+            </ul>
+          </div>
+          <div class="opieka reveal">
+            <div class="opieka__glowa">
+              <h3 class="pakiet__nazwa">Opieka Plus</h3>
+              <p class="opieka__cena">149&nbsp;zł<span>/mies.</span></p>
+            </div>
+            <ul class="pakiet__lista">
+                <li>Wszystko z&nbsp;Opieki</li>
+                <li>Zmiany do 2 godzin w&nbsp;miesiącu</li>
+                <li>Miesięczny raport z&nbsp;Google</li>
+                <li>2 posty w&nbsp;miesiącu na Twojej wizytówce Google</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ CENNIKA ============================ -->
+    <section class="section faq" aria-labelledby="cennik-faq-tytul">
+      <div class="container">
+        <h2 id="cennik-faq-tytul" class="section__title reveal">Pytania o&nbsp;cenę i&nbsp;współpracę</h2>
+        <div class="faq__list">
+
+          <details class="faq__item reveal">
+            <summary>Jak wygląda płatność?</summary>
+            <p>50% płacisz na start prac, pozostałe 50% przed publikacją strony.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Ile trwa realizacja?</summary>
+            <p>Start to około 7 dni, Trener około 14 dni, Online około 21 dni. Termin zależy też od tego, jak szybko dostarczysz teksty i zdjęcia.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Czy strona jest moja?</summary>
+            <p>Tak. Jeśli zrezygnujesz z opieki, dostajesz pliki strony i domenę.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Co jeśli potrzebuję czegoś spoza pakietu?</summary>
+            <p>Wyceniamy to indywidualnie. Napisz, czego potrzebujesz, a podamy cenę przed rozpoczęciem prac.</p>
+          </details>
+
+        </div>
+        <p class="brief__back reveal">
+          <a href="faq.html">Więcej pytań i&nbsp;odpowiedzi &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ CTA (domykające) ============================ -->
+    <section class="section cta-closing" aria-label="Umów konsultację">
+      <div class="container cta-closing__inner reveal">
+        <h2 class="section__title">Nie wiesz, który pakiet wybrać?</h2>
+        <p class="cta-closing__text">
+          Wypełnij krótki brief o&nbsp;swojej działalności. Odpiszemy z&nbsp;propozycją pakietu
+          i&nbsp;wyceną, a potem umówimy bezpłatną, niezobowiązującą rozmowę.
+        </p>
+        <a href="kontakt.html" class="btn btn--primary">Przejdź do formularza</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="/#o-nas">O nas</a>
+      <a href="proces.html">Proces</a>
+      <a href="cennik.html">Cennik</a>
+      <a href="faq.html">FAQ</a>
+      <a href="artykuly.html">Artykuły</a>
+      <a href="opinie.html">Opinie</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
+      <p>Poznań, działamy w całej Polsce · <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>
+      <p><a href="https://www.instagram.com/fitpage.pl/" rel="me">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61595516211350" rel="me">Facebook</a> · <a href="https://www.tiktok.com/@fitpage.pl" rel="me">TikTok</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>

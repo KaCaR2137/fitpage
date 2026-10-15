@@ -379,13 +379,13 @@
         "rule": "overused-font",
         "value": "inter",
         "createdAt": "2026-09-14T08:46:04.093Z",
-        "reason": "User explicitly named both fonts by name in the request ('nagłówki na Fraunces', 'treść/body na Inter') — a direct, specific pin, not a reflexive AI default the agent reached for. Per the skill's own 'brief wins' principle, an explicit named-font instruction overrides the saturated-pattern warning."
+        "reason": "user confirmed: STYL.md for FitPage Instagram graphics mandates Inter (also the site's body font)"
       },
       {
         "rule": "overused-font",
         "value": "fraunces",
         "createdAt": "2026-09-14T08:46:04.112Z",
-        "reason": "User explicitly named both fonts by name in the request ('nagłówki na Fraunces', 'treść/body na Inter') — a direct, specific pin, not a reflexive AI default the agent reached for. Per the skill's own 'brief wins' principle, an explicit named-font instruction overrides the saturated-pattern warning."
+        "reason": "user confirmed: STYL.md for FitPage Instagram graphics mandates Fraunces (also the site's brand font)"
       },
       {
         "rule": "dark-glow",
@@ -584,6 +584,21 @@
         ],
         "createdAt": "2026-10-11T15:10:00.000Z",
         "reason": ".trainings nie wystepuje w tresci tego pliku (wspoldzielony style.css/script.js skanowany niezaleznie od realnego markupu) - sam marquee to udokumentowany, swiadomie ograniczony wyjatek w DESIGN.md (Trainings marquee), obecny tylko na index.html."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "jetbrains mono",
+        "createdAt": "2026-10-13T13:49:26.641Z",
+        "reason": "user confirmed: same font, lowercase match from CSS"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "iggrafiki/3/karuzela.html"
+        ],
+        "createdAt": "2026-10-13T13:50:38.256Z",
+        "reason": "user confirmed: STYL.md mandates cream #F7F3EA background, FitPage brand canvas"
       }
     ]
   }

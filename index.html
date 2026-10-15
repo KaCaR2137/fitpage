@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=5">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -126,6 +126,7 @@
           <a href="#o-nas">O nas</a>
           <!-- <a href="#portfolio">Portfolio</a> -->
           <a href="proces.html">Proces</a>
+          <a href="cennik.html">Cennik</a>
           <a href="faq.html">FAQ</a>
           <a href="artykuly.html">Artykuły</a>
         </nav>
@@ -468,6 +469,41 @@
       </div>
     </section>
 
+    <!-- ============================ CENNIK (skrót, pełny na cennik.html) ============================ -->
+    <section id="cennik" class="section cennik" aria-labelledby="cennik-tytul">
+      <div class="container">
+        <h2 id="cennik-tytul" class="section__title reveal">Cennik</h2>
+        <p class="cennik__lead reveal">Trzy pakiety z&nbsp;cenami „od”. Dokładną kwotę podajemy po briefie.</p>
+        <p class="cennik__promo reveal">Pierwsze 5 projektów 20% taniej w&nbsp;zamian za zgodę na pokazanie w&nbsp;portfolio.</p>
+
+        <div class="cennik__pakiety cennik__pakiety--skrot">
+          <article class="pakiet reveal">
+            <h3 class="pakiet__nazwa">Start</h3>
+            <p class="pakiet__cena"><span>od</span> 990&nbsp;zł</p>
+            <p class="pakiet__opis">Strona jednostronicowa z&nbsp;ofertą, opiniami i&nbsp;formularzem, podpięta do wizytówki Google.</p>
+            <p class="pakiet__czas">Realizacja ok. 7 dni</p>
+          </article>
+          <article class="pakiet pakiet--wyrozniony reveal">
+            <p class="pakiet__plakietka">Najczęściej wybierany</p>
+            <h3 class="pakiet__nazwa">Trener</h3>
+            <p class="pakiet__cena"><span>od</span> 1890&nbsp;zł</p>
+            <p class="pakiet__opis">Wszystko ze Start, plus podstrony, metamorfozy, FAQ, zapisy online i&nbsp;lokalne SEO.</p>
+            <p class="pakiet__czas">Realizacja ok. 14 dni</p>
+          </article>
+          <article class="pakiet reveal">
+            <h3 class="pakiet__nazwa">Online</h3>
+            <p class="pakiet__cena"><span>od</span> 2990&nbsp;zł</p>
+            <p class="pakiet__opis">Dla trenerów i&nbsp;dietetyków online: sprzedaż planów lub prowadzenia, płatności online, newsletter.</p>
+            <p class="pakiet__czas">Realizacja ok. 21 dni</p>
+          </article>
+        </div>
+
+        <p class="cennik__wiecej reveal">
+          <a href="cennik.html" class="btn btn--secondary">Zobacz pełny cennik</a>
+        </p>
+      </div>
+    </section>
+
     <!-- ============================ PORTFOLIO ============================ -->
     <!-- Ukryte do czasu kolejnych realizacji: usuń "hidden", żeby przywrócić -->
     <section id="portfolio" class="section portfolio" hidden>
@@ -509,53 +545,54 @@
         <div class="artykuly__grid">
 
           <article class="artykul-card reveal">
-            <p class="artykul__meta">14 października 2026</p>
+            <div class="artykul-card__media">
+              <img src="images/artykuly/reklama-trenera-personalnego.webp" alt="Ilustracja: reklama trenera personalnego" width="1200" height="1200" loading="lazy" decoding="async" class="artykul-card__img">
+              <ul class="artykul-card__tags" aria-label="Kategorie"><li>Marketing</li></ul>
+            </div>
             <h3 class="artykul-card__title">
               <a href="artykuly/reklama-trenera-personalnego.html">Reklama trenera personalnego: co działa, zanim zaczniesz płacić</a>
             </h3>
-            <a href="artykuly/reklama-trenera-personalnego.html" class="artykul-card__lead">
-              Reklama trenera personalnego działa dopiero wtedy, gdy ma dokąd prowadzić.
-              Sprawdź, co przygotować i jak zrobić pierwszy, tani test na Meta.
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
-              </svg>
-            </a>
+            <p class="artykul__meta"><time datetime="2026-10-14">14 października 2026</time> · 4 min czytania</p>
           </article>
 
           <article class="artykul-card reveal">
-            <p class="artykul__meta">11 października 2026</p>
+            <div class="artykul-card__media">
+              <img src="images/artykuly/wizytowka-google-trener-personalny.webp" alt="Ilustracja: wizytówka Google trenera personalnego" width="1200" height="1200" loading="lazy" decoding="async" class="artykul-card__img">
+              <ul class="artykul-card__tags" aria-label="Kategorie"><li>Google</li></ul>
+            </div>
             <h3 class="artykul-card__title">
               <a href="artykuly/wizytowka-google-trener-personalny.html">Wizytówka Google dla trenera personalnego: jak ją założyć i jak połączyć ze stroną</a>
             </h3>
-            <a href="artykuly/wizytowka-google-trener-personalny.html" class="artykul-card__lead">
-              Wizytówka Google pokazuje Cię na mapie, zanim klient zobaczy jakąkolwiek stronę.
-              Sprawdź, jak ją założyć bez własnego studia i połączyć ze stroną.
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
-              </svg>
-            </a>
+            <p class="artykul__meta"><time datetime="2026-10-11">11 października 2026</time> · 4 min czytania</p>
           </article>
 
           <article class="artykul-card reveal">
-            <p class="artykul__meta">4 października 2026</p>
+            <div class="artykul-card__media">
+              <img src="images/artykuly/trener-w-silowni-sieciowej.webp" alt="Ilustracja: trener personalny w siłowni sieciowej" width="1200" height="1200" loading="lazy" decoding="async" class="artykul-card__img">
+              <ul class="artykul-card__tags" aria-label="Kategorie"><li>Biznes trenera</li></ul>
+            </div>
             <h3 class="artykul-card__title">
               <a href="artykuly/trener-w-silowni-sieciowej.html">Pracujesz w siłowni sieciowej? Po co Ci własna strona, skoro siłownia daje klientów</a>
             </h3>
-            <a href="artykuly/trener-w-silowni-sieciowej.html" class="artykul-card__lead">
-              Siłownia daje Ci klientów, ale nie zabierzesz jej ze sobą, gdy coś się zmieni.
-              Sprawdź, po co trenerowi pracującemu w klubie własna strona.
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
-              </svg>
-            </a>
+            <p class="artykul__meta"><time datetime="2026-10-04">4 października 2026</time> · 4 min czytania</p>
           </article>
 
-          <!-- Podgląd pokazuje 3 najnowsze artykuły, zawsze w tej kolejności
-               (od najnowszego). Przy kolejnym artykule: dopisz jego kartę tu
-               na samej górze i usuń najstarszą z tych trzech (obecnie
-               "Pracujesz w siłowni sieciowej?...", 04.10.2026); ten podgląd ma
-               być lustrem trzech najnowszych, nie rosnąć bez końca, pełna,
-               rosnąca lista zostaje wyłącznie na artykuly.html. -->
+          <article class="artykul-card reveal">
+            <div class="artykul-card__media">
+              <img src="images/artykuly/strona-czy-booksy.webp" alt="Ilustracja: kalendarz rezerwacji kontra strona trenera" width="1200" height="1200" loading="lazy" decoding="async" class="artykul-card__img">
+              <ul class="artykul-card__tags" aria-label="Kategorie"><li>Strona</li></ul>
+            </div>
+            <h3 class="artykul-card__title">
+              <a href="artykuly/strona-czy-booksy.html">Strona czy Booksy? Co lepiej sprawdzi się u trenera personalnego</a>
+            </h3>
+            <p class="artykul__meta"><time datetime="2026-10-01">1 października 2026</time> · 5 min czytania</p>
+          </article>
+
+          <!-- Podgląd pokazuje 4 najnowsze artykuły (2 pełne rzędy w siatce
+               2-kolumnowej), od najnowszego. Przy kolejnym artykule: dopisz
+               jego kartę tu na samej górze i usuń najstarszą z czterech
+               (obecnie "Strona czy Booksy", 2026-10-01).
+               Pełna, rosnąca lista zostaje wyłącznie na artykuly.html. -->
 
         </div>
 
@@ -585,6 +622,7 @@
     <nav class="footer__links container" aria-label="Skróty">
       <a href="#o-nas">O nas</a>
       <a href="proces.html">Proces</a>
+      <a href="cennik.html">Cennik</a>
       <a href="faq.html">FAQ</a>
       <a href="artykuly.html">Artykuły</a>
       <a href="opinie.html">Opinie</a>

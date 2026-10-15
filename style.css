@@ -915,91 +915,97 @@ summary:focus-visible {
 .card__link svg { width: 16px; height: 16px; }
 
 /* ============================== ARTYKUŁY ============================== */
-/* Ta sama siatka co portfolio, ale karta wzorowana na .krok (Surface Card,
-   bez cienia w spoczynku — cień w spoczynku jest zastrzeżony dla portfolio,
-   patrz DESIGN.md "The Lift-Means-Interactive Rule"). Cień/lekkie uniesienie
-   pojawia się wyłącznie na hover/focus, żeby zasygnalizować klikalność bez
-   łamania tej zasady. */
+/* Karta z dużym kwadratowym obrazkiem na górze, pod nim tytuł i data z
+   czasem czytania. Bez tła/obramowania karty: obrazek sam wyznacza jej
+   kształt, a tekst siedzi wprost na canvasie. Cień pojawia się tylko na
+   obrazku i tylko na hover/focus (DESIGN.md, "The Lift-Means-Interactive
+   Rule"). Siatka: 1 kolumna na telefonie, 2 od 700px. */
 .artykuly__intro { max-width: 62ch; }
 .artykuly__grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: grid;
-  gap: 12px; /* ciaśniej na mobile — patrz >=480px niżej dla pełnego odstępu */
-  /* auto-fit (nie auto-fill) + 1fr jako górna granica: puste "widmowe"
-     tory kolumn zapadają się do zera zamiast zostawiać widoczną dziurę,
-     a rzeczywiste karty rozciągają się i wypełniają cały wiersz — przy
-     2 kartach wychodzą ~508px, przy 3 dokładnie mieszczą się obok siebie
-     (~331px każda) na szerokości .container (1080px). */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
+  gap: 36px;
 }
 .artykul-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4px; /* mobile: ciaśniejszy odstęp data/tytuł/lead/link, patrz >=480px */
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px; /* mobile: mniejszy niż docelowe 24px (>=480px) — patrz media query */
-  transition: transform 0.18s var(--ease),
-              box-shadow 0.18s var(--ease),
-              border-color 0.18s var(--ease);
+  gap: 6px;
 }
-.artykul-card:hover,
-.artykul-card:focus-within {
+.artykul-card__media {
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.artykul-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.artykul-card:hover .artykul-card__media,
+.artykul-card:focus-within .artykul-card__media {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
-  border-color: var(--accent);
 }
-/* Na wąskich ekranach karta artykułu potrafiła zająć niemal cały pierwszy
-   ekran (jedna pozycja = nagłówek + tekst na całą wysokość) — mniejszy
-   padding, węższy odstęp i przycięty do 3 linii lead (niezależnie od
-   długości tekstu przyszłych artykułów) trzymają kartę w rozsądnej
-   wysokości, żeby zmieściły się fragmenty co najmniej dwóch kart naraz. */
-.artykul-card__title { font-size: 1rem; margin: 0.2em 0 0.1em; }
+.artykul-card:hover .artykul-card__img,
+.artykul-card:focus-within .artykul-card__img { transform: scale(1.03); }
+
+/* pigułki kategorii w lewym górnym rogu obrazka: ciemna zieleń z kremowym
+   tekstem, bo okładki mają jasne, kremowe tło */
+.artykul-card__tags {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.artykul-card__tags li {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  padding: 7px 12px;
+  border-radius: 999px;
+}
+
+.artykul-card__title { font-size: 1.15rem; line-height: 1.3; margin: 0; }
 .artykul-card__title a {
   text-decoration: none;
   color: var(--text);
+  transition: color 0.15s;
 }
-.artykul-card__title a:hover { color: var(--accent-strong); }
+.artykul-card:hover .artykul-card__title a { color: var(--accent-strong); }
 .artykul-card__title a::after {
   /* powiększa klikalny obszar do całej karty bez zagnieżdżania linków */
   content: "";
   position: absolute;
   inset: 0;
 }
-/* Cały teaser to teraz link (usunięty osobny "Czytaj dalej") — sam tekst
-   niesie akcję, ze strzałką na końcu jako jedynym wskaźnikiem. Świadomie
-   nie pełny .btn: przy 3 kartach obok siebie trzy wypełnione zielone
-   przyciski naraz złamałyby "The One Mark Rule" (akcent ma być rzadki);
-   kolorowy tekst na hover to ten sam ugruntowany wzorzec co "Zobacz
-   wszystkie artykuły" czy "Wróć do listy artykułów". position:relative +
-   z-index:1, żeby wygrać z ::after tytułu (patrz wyżej) i zostać realnie
-   klikalne, nie tylko wizualnie. */
-.artykul-card__lead {
-  position: relative;
-  z-index: 1;
-  display: -webkit-box;
-  color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.45;
-  margin: 0;
-  text-decoration: none;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  transition: color 0.15s;
+
+@media (min-width: 700px) {
+  .artykuly__grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
+  .artykul-card__title { font-size: 1.35rem; }
 }
-.artykul-card__lead:hover { color: var(--accent-strong); }
-.artykul-card__lead svg {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-left: 4px;
-  vertical-align: -2px;
-  flex-shrink: 0;
+
+@media (prefers-reduced-motion: reduce) {
+  .artykul-card__media,
+  .artykul-card__img { transition: none; }
+  .artykul-card:hover .artykul-card__media,
+  .artykul-card:focus-within .artykul-card__media,
+  .artykul-card:hover .artykul-card__img,
+  .artykul-card:focus-within .artykul-card__img { transform: none; }
 }
 
 /* metadata (data publikacji) — współdzielona przez kartę na liście i
@@ -1014,6 +1020,14 @@ summary:focus-visible {
    miejsce WYŁĄCZNIE po prawej stronie, bo kolumna była przyklejona do
    lewej krawędzi kontenera zamiast wyśrodkowana. */
 .artykul { max-width: 65ch; margin-inline: auto; }
+/* okładka artykułu (1200x630) nad treścią, zaokrąglona jak reszta strony */
+.artykul__cover { margin: 0; }
+.artykul__cover-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
 .artykul__body { margin-top: 32px; }
 .artykul__body p,
 .artykul__body ul,
@@ -1920,6 +1934,158 @@ summary:focus-visible {
 .polityka ul { margin-bottom: 1em; padding-left: 1.25em; }
 .polityka li { margin-bottom: 0.4em; }
 
+/* ============================== CENNIK ============================== */
+/* Pakiety na cennik.html i skrót na index.html (15.10.2026). Karty z
+   hairline'em jak .faq__item, bez cieni. Wyróżniony pakiet (Trener) dostaje
+   obwódkę w akcencie i plakietkę; tylko on ma wypełniony przycisk, reszta
+   .btn--secondary, żeby nie było trzech zielonych przycisków obok siebie.
+   Mobile: jedna kolumna, od 900px trzy obok siebie. */
+.cennik__lead {
+  max-width: 62ch;
+  color: var(--muted);
+}
+.cennik__promo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 28px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg);
+  border-radius: 0 10px 10px 0;
+  font-weight: 600;
+  color: var(--text);
+}
+.cennik__pakiety {
+  display: grid;
+  gap: 16px;
+  align-items: stretch;
+}
+.pakiet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.pakiet--wyrozniony {
+  border: 2px solid var(--accent);
+  padding: 23px 21px; /* -1px za grubszą obwódkę, żeby treść nie skakała */
+}
+/* plakietka siedzi na górnej krawędzi karty, żeby nie spychała nazwy
+   i ceny niżej niż w sąsiednich kartach (ceny stoją w jednej linii) */
+.pakiet__plakietka {
+  position: absolute;
+  top: 0;
+  left: 21px;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.pakiet__nazwa {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+.pakiet__cena {
+  margin: 6px 0 12px;
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--accent);
+}
+.pakiet__cena span {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.pakiet__opis {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+.pakiet__lista {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+.pakiet__lista li {
+  position: relative;
+  padding: 7px 0 7px 26px;
+  border-top: 1px solid var(--border);
+}
+.pakiet__lista li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.95em;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--accent-strong);
+  border-bottom: 2px solid var(--accent-strong);
+  transform: translateY(-50%) rotate(-45deg);
+}
+.pakiet__czas {
+  margin: auto 0 0; /* dociska do dołu karty, żeby terminy stały w jednej linii */
+  padding-top: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.pakiet__btn {
+  margin-top: 18px;
+  text-align: center;
+}
+.cennik__wiecej { margin: 28px 0 0; }
+
+.cennik__opieka-tytul { margin-top: 56px; }
+.cennik__opieka {
+  display: grid;
+  gap: 16px;
+}
+.opieka {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.opieka .pakiet__lista { margin-bottom: 0; }
+.opieka__glowa {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.opieka__cena {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.opieka__cena span {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+@media (min-width: 700px) {
+  .cennik__opieka { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .cennik__pakiety { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* ============================== FAQ ============================== */
 .faq__list {
   display: grid;
@@ -2057,23 +2223,6 @@ summary:focus-visible {
     text-align: left;
   }
 
-  /* karta artykułu wraca do pełnego, "spacious" rozmiaru — mniejsze
-     wersje wyżej (padding/gap/font-size) są tylko dla wąskich ekranów,
-     gdzie jedna karta potrafiła zająć niemal cały pierwszy widok */
-  .artykuly__grid { gap: 24px; }
-  .artykul-card { gap: 10px; padding: 24px; }
-  .artykul-card__title { font-size: 1.15rem; }
-  .artykul-card__lead {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    /* przycięcie do 3 linii jest zabezpieczeniem tylko dla wąskich kart —
-       na szerszych kolumnach (280-400px) oryginalny lead miał się mieścić
-       w całości bez ucinania, więc od tego breakpointu w górę wracamy do
-       naturalnego przepływu tekstu */
-    display: block;
-    -webkit-line-clamp: unset;
-    overflow: visible;
-  }
   .artykul__meta { font-size: 0.9rem; }
 }
 
