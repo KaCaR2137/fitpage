@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -149,10 +149,13 @@
       <div class="hero__inner">
         <h1 class="hero__title reveal">Niech Twoja forma nie będzie jedyną wizytówką</h1>
         <p class="hero__subtitle reveal">
-          Projektuję strony, które pomagają trenerom personalnym zdobywać nowych klientów.
+          Projektuję strony, które pomagają trenerom, instruktorom i dietetykom zdobywać nowych klientów.
           Szybkie, czytelne na telefonie i dopasowane do Twojej specjalizacji.
         </p>
-        <a href="kontakt.html" class="btn btn--primary btn--pulse reveal">Umów konsultację</a>
+        <div class="hero__akcje reveal">
+          <a href="kontakt.html" class="btn btn--primary btn--pulse">Umów konsultację</a>
+          <a href="#cennik" class="btn btn--secondary hero__cennik">Zobacz cennik</a>
+        </div>
       </div>
     </section>
 
@@ -197,7 +200,7 @@
                 <path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/>
               </svg>
             </span>
-            <p class="atuty__text">Tylko trenerzy i&nbsp;instruktorzy</p>
+            <p class="atuty__text">Tylko branża sportowa i&nbsp;dietetyczna</p>
           </li>
 
         </ul>
@@ -455,10 +458,13 @@
       <div class="container">
         <h2 class="section__title reveal">O mnie</h2>
         <div class="o-nas__text">
-          <p class="reveal">FitPage prowadzę sam. Robię strony tylko dla trenerów personalnych i instruktorów. Mój standard powstał z analizy około 20 stron trenerów: co na nich działa, czego brakuje i w którym miejscu klient się gubi.</p>
+          <p class="reveal">FitPage prowadzę sam. Robię strony tylko dla trenerów, instruktorów i dietetyków. Mój standard powstał z analizy około 20 stron trenerów: co na nich działa, czego brakuje i w którym miejscu klient się gubi.</p>
           <p class="reveal">Rozmowę, projekt, kodowanie, publikację i opiekę po starcie robię osobiście. Nie przekazuję Twojej strony nikomu dalej, więc od początku do końca rozmawiasz z osobą, która ją faktycznie buduje.</p>
-          <p class="reveal">Standard dopasowuję do Twojej specjalizacji. Strona trenerki pracującej z&nbsp;seniorami wygląda inaczej niż strona trenera przygotowania motorycznego, ale obie prowadzą klienta do jednego: kontaktu z&nbsp;Tobą.</p>
-          <p class="reveal">Ty zajmujesz się swoimi podopiecznymi. Ja zadbam o&nbsp;to, jak prezentujesz się w&nbsp;internecie.</p>
+          <div id="o-mnie-wiecej" class="o-nas__reszta">
+            <p class="reveal">Standard dopasowuję do Twojej specjalizacji. Strona trenerki pracującej z&nbsp;seniorami wygląda inaczej niż strona trenera przygotowania motorycznego, ale obie prowadzą klienta do jednego: kontaktu z&nbsp;Tobą.</p>
+            <p class="reveal">Ty zajmujesz się swoimi podopiecznymi. Ja zadbam o&nbsp;to, jak prezentujesz się w&nbsp;internecie.</p>
+          </div>
+          <button type="button" class="o-nas__czytaj" aria-expanded="false" aria-controls="o-mnie-wiecej" hidden>Czytaj dalej</button>
         </div>
 
         <h3 class="proces-pasek__tytul reveal">Jak pracuję</h3>
@@ -504,6 +510,8 @@
             <a href="kontakt.html?pakiet=Online" class="btn btn--secondary pakiet__btn">Wybieram Online</a>
           </article>
         </div>
+        <div class="cennik__kropki" hidden></div>
+        <p class="cennik__vat reveal">Ceny netto, do faktury doliczany jest VAT 23%.</p>
 
         <p class="cennik__wiecej reveal">
           <a href="cennik.html" class="btn btn--secondary">Zobacz pełny cennik</a>
@@ -603,8 +611,11 @@
 
         </div>
 
-        <p class="brief__back reveal">
+        <p class="brief__back artykuly__link reveal">
           <a href="artykuly.html">Zobacz wszystkie artykuły &rarr;</a>
+        </p>
+        <p class="artykuly__wszystkie">
+          <a href="artykuly.html" class="btn btn--secondary">Wszystkie artykuły</a>
         </p>
       </div>
     </section>
@@ -644,6 +655,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>

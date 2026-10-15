@@ -122,9 +122,14 @@
 
   var noAnimation = reduceMotion || !('IntersectionObserver' in window);
 
+  // Telefon: bez kaskady i z wcześniejszym startem (15% wysokości ekranu
+  // przed wejściem), żeby przy szybkim przewijaniu treść nie była wyszarzona.
+  var mobileReveal = window.matchMedia('(max-width: 768px)').matches;
+  var staggerStep = mobileReveal ? 0 : 90;
+
   function revealWithStagger(elements) {
     elements.forEach(function (el, index) {
-      if (index > 0) { el.style.transitionDelay = (index * 90) + 'ms'; }
+      if (index > 0 && staggerStep) { el.style.transitionDelay = (index * staggerStep) + 'ms'; }
       markRevealed(el);
     });
   }
@@ -158,17 +163,84 @@
             })
           : [el];
         var index = siblings.indexOf(el);
-        if (index > 0) { el.style.transitionDelay = (index * 90) + 'ms'; }
+        if (index > 0 && staggerStep) { el.style.transitionDelay = (index * staggerStep) + 'ms'; }
 
         markRevealed(el);
         observer.unobserve(el);
       });
-    }, {
+    }, mobileReveal ? {
+      threshold: 0,
+      rootMargin: '0px 0px 15% 0px'
+    } : {
       threshold: 0.12,
       rootMargin: '0px 0px -40px 0px'
     });
 
     scrollReveals.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ---------------------- 5a. O mnie: "Czytaj dalej" (telefon) ---------------------- */
+  var oMnieTekst = document.querySelector('.o-nas__text');
+  var czytajBtn = document.querySelector('.o-nas__czytaj');
+  if (oMnieTekst && czytajBtn) {
+    oMnieTekst.classList.add('o-nas__tekst-zwiniety');
+    czytajBtn.hidden = false;
+    czytajBtn.addEventListener('click', function () {
+      var zwiniety = oMnieTekst.classList.toggle('o-nas__tekst-zwiniety');
+      czytajBtn.setAttribute('aria-expanded', String(!zwiniety));
+      czytajBtn.textContent = zwiniety ? 'Czytaj dalej' : 'Zwiń';
+    });
+  }
+
+  /* ---------------------- 5b. Cennik: pasek z kropkami (telefon) ----------------------
+     Na telefonie karty stoją w poziomym pasku (CSS). Kropki pod spodem
+     pokazują, która karta jest na środku, i przewijają do wybranej. Na
+     start pasek ustawia się na wyróżnionym pakiecie. */
+  var pasekCen = document.querySelector('.cennik__pakiety--skrot');
+  var kropki = document.querySelector('.cennik__kropki');
+  if (pasekCen && kropki) {
+    var karty = Array.prototype.slice.call(pasekCen.querySelectorAll('.pakiet'));
+    var telefonCennik = window.matchMedia('(max-width: 768px)');
+
+    var przyciski = karty.map(function (karta, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      var nazwa = karta.querySelector('.pakiet__nazwa');
+      b.setAttribute('aria-label', 'Pakiet ' + (nazwa ? nazwa.textContent.trim() : String(i + 1)));
+      b.addEventListener('click', function () { pokazKarte(i, true); zaznacz(i); });
+      kropki.appendChild(b);
+      return b;
+    });
+    kropki.hidden = false;
+
+    var pokazKarte = function (i, plynnie) {
+      var karta = karty[i];
+      var cel = karta.offsetLeft - (pasekCen.clientWidth - karta.offsetWidth) / 2;
+      pasekCen.scrollTo({ left: cel, behavior: plynnie && !reduceMotion ? 'smooth' : 'auto' });
+    };
+
+    var zaznacz = function (wybrana) {
+      var najblizsza = 0;
+      if (typeof wybrana === 'number') {
+        najblizsza = wybrana;
+      } else {
+        var srodek = pasekCen.scrollLeft + pasekCen.clientWidth / 2;
+        var odleglosc = Infinity;
+        karty.forEach(function (karta, i) {
+          var d = Math.abs(karta.offsetLeft + karta.offsetWidth / 2 - srodek);
+          if (d < odleglosc) { odleglosc = d; najblizsza = i; }
+        });
+      }
+      przyciski.forEach(function (b, i) {
+        if (i === najblizsza) { b.setAttribute('aria-current', 'true'); } else { b.removeAttribute('aria-current'); }
+      });
+    };
+
+    pasekCen.addEventListener('scroll', function () { zaznacz(); }, { passive: true });
+
+    var start = karty.indexOf(pasekCen.querySelector('.pakiet--wyrozniony'));
+    if (telefonCennik.matches && start > -1) { pokazKarte(start, false); }
+    zaznacz();
   }
 
   /* ---------------------- 6. Formularze (kontakt + opinia) ----------------------

@@ -362,6 +362,20 @@ ekranu telefonu 390px, przez co nic nie sugerowało, że pod spodem jest więcej
 artykułów; od 480px w górę wraca pełny, nieprzycięty rozmiar (patrz DESIGN.md,
 sekcja Article card, po pełne wartości).
 
+**Telefon do 768px (15.10.2026), blok na końcu `style.css`, desktop bez
+zmian.** Strona główna na 390px: 4851px (było 7573px). Sekcje ok. 56px
+odstępu, hero z dwoma przyciskami na pełną szerokość (drugi "Zobacz
+cennik" -> #cennik, tylko telefon), "O mnie" 2 akapity + "Czytaj dalej"
+(`.o-nas__reszta`, aria-expanded), cennik jako poziomy pasek ze
+scroll-snap (start na "Trener", kropki `.cennik__kropki` z JS), artykuły
+jako lista z miniaturą 96x96 (3 najnowsze, przycisk "Wszystkie
+artykuły"), reveal 200ms bez kaskady i z rootMargin 15%. Dopisek
+`.cennik__vat` "Ceny netto, do faktury doliczany jest VAT 23%." pod
+cennikiem na głównej, też na desktopie. Teksty na telefonie min. 14px,
+cele dotyku min. 44px. Elementy tylko-telefon (`.hero__cennik`,
+`.o-nas__czytaj`, `.cennik__kropki`, `.artykuly__wszystkie`) mają bazowe
+`display: none`, bo JS zdejmuje im `hidden`.
+
 **Karty z okładkami (15.10.2026, nadpisuje opis kart wyżej).** Karta =
 kwadratowa okładka `images/artykuly/<slug>.webp` (1200x1200, `loading="lazy"`,
 width/height ustawione) z pigułkami kategorii (`.artykul-card__tags`, zieleń

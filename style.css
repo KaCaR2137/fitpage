@@ -2305,7 +2305,7 @@ summary:focus-visible {
   .nav__logo { gap: 8px; }
   .nav__logo-text { font-size: 1.1rem; }
   .nav__right { gap: 4px; }
-  .nav__cta { padding: 12px 12px; font-size: 0.8rem; } /* 12px pion: przy 0.8rem daje pełne 44px */
+  .nav__cta { padding: 11px 10px; font-size: 0.875rem; } /* 11px pion przy 0.875rem daje pełne 44px */
 }
 
 /* --- <= 349px : najwęższe telefony (320-349px) ---
@@ -2349,5 +2349,177 @@ summary:focus-visible {
     align-items: flex-start;
     gap: 12px;
     padding: 16px;
+  }
+}
+
+/* ===================================================================
+   TELEFON (do 768px): krótsza strona, kompaktowe artykuły, cennik
+   w poziomym pasku, zwijane "O mnie", szybsze odsłanianie.
+   Desktop bez zmian, poza dopiskiem o VAT pod cennikiem.
+   =================================================================== */
+
+/* dopisek o VAT pod cenami (telefon i desktop) */
+.cennik__vat {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* elementy tylko na telefon */
+.hero__cennik,
+.artykuly__wszystkie,
+.o-nas__czytaj,
+.cennik__kropki { display: none; }
+
+@media (max-width: 768px) {
+  /* 1. odstępy: ok. 56px między treścią kolejnych sekcji */
+  .section { padding: 12px 0; }
+  .section > .container { padding-top: 16px; padding-bottom: 16px; }
+  .hero { padding: 48px 20px 32px; }
+  .atuty { padding: 24px 0 32px; }
+  .co-dostajesz__grid { gap: 28px; }
+  .co-dostajesz__mockup { max-width: 180px; }
+  .co-dostajesz__mockup figcaption { margin-top: 12px; font-size: 0.875rem; }
+  .proces-pasek__tytul { margin-top: 32px; }
+
+  /* 9. hero: dwa przyciski na pełną szerokość, jeden pod drugim */
+  .hero__akcje { display: flex; flex-direction: column; gap: 12px; }
+  .hero__akcje .btn { display: block; width: 100%; text-align: center; }
+  .hero__cennik { display: block; }
+
+  /* 4. O mnie: 2 akapity + "Czytaj dalej" */
+  .o-nas__tekst-zwiniety .o-nas__reszta { display: none; }
+  .o-nas__czytaj {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 600;
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  .o-nas__text p:last-of-type { margin-bottom: 0; }
+
+  /* 3. cennik: poziomy pasek ze scroll-snap, karta ok. 85% */
+  .cennik__pakiety--skrot {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    margin: 20px -20px 0;
+    padding: 16px 7.5% 4px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .cennik__pakiety--skrot::-webkit-scrollbar { display: none; }
+  /* boczny padding 7.5% + karta na całą szerokość pola = ok. 85% ekranu */
+  .cennik__pakiety--skrot .pakiet {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+  /* karty poza ekranem w poziomie nie mogą czekać na odsłonięcie */
+  .js .cennik__pakiety--skrot .reveal { opacity: 1; transform: none; transition: none; }
+  .cennik__pakiety--skrot .pakiet:hover,
+  .cennik__pakiety--skrot .pakiet:focus-within { transform: none; }
+  .cennik__kropki {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .cennik__kropki button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .cennik__kropki button::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  .cennik__kropki button[aria-current="true"]::before {
+    background: var(--accent);
+    transform: scale(1.25);
+  }
+  .cennik__vat { text-align: center; }
+  .cennik__wiecej { margin-top: 16px; text-align: center; }
+
+  /* 2. artykuły: kompaktowa lista, 3 najnowsze */
+  .artykuly__grid { grid-template-columns: 1fr; gap: 16px; }
+  .artykuly__grid .artykul-card:nth-child(n+4) { display: none; }
+  .artykul-card {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: 14px;
+    row-gap: 4px;
+    align-items: start;
+  }
+  .artykul-card__media { display: contents; }
+  .artykul-card__img {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 96px;
+    height: 96px;
+    margin: 0;
+    border-radius: 10px;
+  }
+  .artykul-card:hover .artykul-card__img,
+  .artykul-card:focus-within .artykul-card__img { transform: none; }
+  .artykul-card__tags {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .artykul-card__tags li { font-size: 0.875rem; padding: 4px 10px; }
+  .artykul-card__title {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  .artykul-card .artykul__meta { grid-column: 2; grid-row: 3; }
+  .artykuly__link { display: none; }
+  .artykuly__wszystkie { display: block; margin: 20px 0 0; }
+  .artykuly__wszystkie .btn { display: block; text-align: center; }
+
+  /* 7. czytelność: nic poniżej 14px */
+  .artykul__meta { font-size: 0.875rem; }
+  .pakiet__plakietka { font-size: 0.875rem; }
+  .nav__cta { font-size: 0.875rem; }
+
+  /* 8. cele dotyku min. 44px */
+  .brief__back a,
+  .o-nas__wiecej a,
+  .footer__links a,
+  .footer p a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .footer p a { padding-block: 0; }
+
+}
+
+/* 5. odsłanianie na telefonie: krótko (200ms), bez kaskady */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    transform: translateY(12px);
+    transition-duration: 0.2s;
   }
 }
