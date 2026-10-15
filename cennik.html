@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -139,7 +139,7 @@
               {
                 "@type": "Offer",
                 "name": "Opieka",
-                "description": "Hosting, domena, SSL, kopie zapasowe, drobne zmiany do 30 minut w miesiącu. Pierwsze 3 miesiące w cenie strony.",
+                "description": "Hosting, SSL, kopie zapasowe, obsługa domeny (konfiguracja i przypomnienie o odnowieniu), drobne zmiany do 30 minut w miesiącu. Pierwsze 3 miesiące w cenie strony.",
                 "price": "79",
                 "priceCurrency": "PLN",
                 "url": "https://fitpage.pl/cennik.html",
@@ -217,7 +217,15 @@
             "name": "Czy strona jest moja?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Tak. Jeśli zrezygnujesz z opieki, dostajesz pliki strony i domenę."
+              "text": "Tak. Domena od początku jest zarejestrowana na Ciebie, a jeśli zrezygnujesz z opieki, dostajesz też pliki strony."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kto płaci za domenę?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Domenę rejestrujemy na Ciebie, więc to Ty jesteś jej właścicielem. Opłatę roczną płacisz bezpośrednio rejestratorowi, za domenę .pl to zwykle około 100-150 zł rocznie. Konfigurację i podpięcie domeny pod stronę robimy my."
             }
           },
           {
@@ -322,7 +330,7 @@
                 <li>Podstawowe SEO</li>
             </ul>
             <p class="pakiet__czas">Realizacja ok. 7 dni</p>
-            <a href="kontakt.html" class="btn btn--secondary pakiet__btn">Wybieram Start</a>
+            <a href="kontakt.html?pakiet=Start" class="btn btn--secondary pakiet__btn">Wybieram Start</a>
           </article>
 
           <article class="pakiet pakiet--wyrozniony reveal">
@@ -338,7 +346,7 @@
                 <li>Lokalne SEO i&nbsp;Search Console</li>
             </ul>
             <p class="pakiet__czas">Realizacja ok. 14 dni</p>
-            <a href="kontakt.html" class="btn btn--primary pakiet__btn">Wybieram Trener</a>
+            <a href="kontakt.html?pakiet=Trener" class="btn btn--primary pakiet__btn">Wybieram Trener</a>
           </article>
 
           <article class="pakiet reveal">
@@ -351,7 +359,7 @@
                 <li>Zapis na newsletter</li>
             </ul>
             <p class="pakiet__czas">Realizacja ok. 21 dni</p>
-            <a href="kontakt.html" class="btn btn--secondary pakiet__btn">Wybieram Online</a>
+            <a href="kontakt.html?pakiet=Online" class="btn btn--secondary pakiet__btn">Wybieram Online</a>
           </article>
         </div>
 
@@ -365,10 +373,12 @@
               <p class="opieka__cena">79&nbsp;zł<span>/mies.</span></p>
             </div>
             <ul class="pakiet__lista">
-                <li>Hosting, domena i certyfikat SSL</li>
+                <li>Hosting i&nbsp;certyfikat SSL</li>
                 <li>Kopie zapasowe</li>
+                <li>Obsługa domeny (konfiguracja i&nbsp;przypomnienie o&nbsp;odnowieniu)</li>
                 <li>Drobne zmiany do 30 minut w&nbsp;miesiącu</li>
             </ul>
+            <a href="kontakt.html?pakiet=Opieka" class="btn btn--secondary pakiet__btn">Wybieram Opiekę</a>
           </div>
           <div class="opieka reveal">
             <div class="opieka__glowa">
@@ -381,6 +391,7 @@
                 <li>Miesięczny raport z&nbsp;Google</li>
                 <li>2 posty w&nbsp;miesiącu na Twojej wizytówce Google</li>
             </ul>
+            <a href="kontakt.html?pakiet=Opieka%20Plus" class="btn btn--secondary pakiet__btn">Wybieram Opiekę Plus</a>
           </div>
         </div>
       </div>
@@ -404,7 +415,12 @@
 
           <details class="faq__item reveal">
             <summary>Czy strona jest moja?</summary>
-            <p>Tak. Jeśli zrezygnujesz z opieki, dostajesz pliki strony i domenę.</p>
+            <p>Tak. Domena od początku jest zarejestrowana na Ciebie, a jeśli zrezygnujesz z opieki, dostajesz też pliki strony.</p>
+          </details>
+
+          <details class="faq__item reveal">
+            <summary>Kto płaci za domenę?</summary>
+            <p>Domenę rejestrujemy na Ciebie, więc to Ty jesteś jej właścicielem. Opłatę roczną płacisz bezpośrednio rejestratorowi, za domenę .pl to zwykle około 100-150 zł rocznie. Konfigurację i podpięcie domeny pod stronę robimy my.</p>
           </details>
 
           <details class="faq__item reveal">
@@ -453,6 +469,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

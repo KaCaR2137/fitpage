@@ -2045,7 +2045,48 @@ summary:focus-visible {
   margin-top: 18px;
   text-align: center;
 }
+/* Cała karta pakietu/opieki jest klikalna: ::after przycisku "Wybieram ..."
+   rozciąga się na kartę (bez zagnieżdżania linków), a karta reaguje na
+   hover/focus uniesieniem i obwódką, jak karty artykułów. */
+.pakiet,
+.opieka {
+  transition: transform 0.18s var(--ease),
+              box-shadow 0.18s var(--ease),
+              border-color 0.18s var(--ease);
+}
+.pakiet__btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+.pakiet:hover,
+.pakiet:focus-within,
+.opieka:hover,
+.opieka:focus-within {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pakiet,
+  .opieka { transition: none; }
+  .pakiet:hover,
+  .pakiet:focus-within,
+  .opieka:hover,
+  .opieka:focus-within { transform: none; }
+}
 .cennik__wiecej { margin: 28px 0 0; }
+/* notka nad briefem, gdy ktoś przyszedł z przycisku w cenniku */
+.brief__pakiet {
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg);
+  border-radius: 0 10px 10px 0;
+  font-weight: 600;
+  color: var(--text);
+}
 
 .cennik__opieka-tytul { margin-top: 56px; }
 .cennik__opieka {
@@ -2053,11 +2094,15 @@ summary:focus-visible {
   gap: 16px;
 }
 .opieka {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
-.opieka .pakiet__lista { margin-bottom: 0; }
+.opieka .pakiet__lista { margin-bottom: 18px; }
+.opieka .pakiet__btn { margin-top: auto; } /* przycisk na dole, równo w obu kartach */
 .opieka__glowa {
   display: flex;
   align-items: baseline;

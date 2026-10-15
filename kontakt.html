@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -122,11 +122,14 @@
              serwuje tę samą stronę przez Cloudflare), nie na
              fitpage.kacperbarczak11.workers.dev jak wcześniej. -->
         <p class="brief__intro reveal">Wypełnienie zajmuje około 5 minut. Im więcej wpiszesz, tym szybciej ruszymy z projektem.</p>
+        <p class="brief__pakiet" id="brief-pakiet" hidden></p>
 
         <form class="form reveal" method="post" action="https://formspree.io/f/moeqzapr" data-form="brief" novalidate>
 
           <input type="hidden" name="_subject" value="Nowy brief ze strony FitPage">
           <input type="hidden" name="_next" value="https://fitpage.pl/dziekujemy.html">
+          <!-- wypełniane przez script.js z ?pakiet= (przyciski "Wybieram ..." w cenniku) -->
+          <input type="hidden" name="wybrany_pakiet" id="wybrany-pakiet" value="">
           <p class="form__honeypot" aria-hidden="true">
             <label>Nie wypełniaj tego pola
               <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -577,6 +580,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

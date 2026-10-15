@@ -183,6 +183,23 @@
      potem fetch na form.action z inline potwierdzeniem, bez przeładowania. */
   var form = document.querySelector('.form');
   var status = document.getElementById('form-status');
+
+  // Pakiet wybrany w cenniku (?pakiet=Trener z przycisków "Wybieram ...")
+  // trafia do ukrytego pola briefu i do krótkiej notki nad formularzem.
+  // Tylko znane nazwy, żeby z adresu nie dało się wstrzyknąć dowolnego tekstu.
+  var pakietInput = document.getElementById('wybrany-pakiet');
+  var pakietNote = document.getElementById('brief-pakiet');
+  if (pakietInput) {
+    var pakiety = ['Start', 'Trener', 'Online', 'Opieka', 'Opieka Plus'];
+    var wybrany = new URLSearchParams(window.location.search).get('pakiet');
+    if (pakiety.indexOf(wybrany) !== -1) {
+      pakietInput.value = wybrany;
+      if (pakietNote) {
+        pakietNote.textContent = 'Wybrany pakiet: ' + wybrany + '. Jeśli zmienisz zdanie, napisz o tym w uwagach na końcu.';
+        pakietNote.hidden = false;
+      }
+    }
+  }
   var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
   var formType = form ? (form.dataset.form || 'brief') : null;
 
