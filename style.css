@@ -703,53 +703,6 @@ summary:focus-visible {
   .trainings__item[aria-hidden="true"] { display: none; }
 }
 
-/* ============================== ATUTY ============================== */
-/* Pasek 4 atutów — bez panelu, jak wszystkie sekcje teraz. Odstęp od
-   sąsiadów przez sam padding, bez linii/obramowania. Zieleń punktowo:
-   tylko pierścień ikony „Bezpłatna konsultacja" jest akcentowy, reszta
-   neutralna (--text). */
-.atuty {
-  padding: 40px 0;
-}
-.atuty__grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px 20px;
-}
-.atuty__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-align: center;
-}
-.atuty__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.atuty__icon svg { width: 22px; height: 22px; }
-.atuty__icon--accent {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-.atuty__text {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--muted);
-}
-
 /* ============================== CTA (domykające) ============================== */
 /* Ostatnia sekcja przed stopką — Atuty (najsilniejszy blok zaufania na
    stronie) dotąd wpadały prosto w ciemną stopkę bez żadnego wezwania do
@@ -2329,7 +2282,6 @@ summary:focus-visible {
   .section { padding: 56px 0; }
   .section__title { font-size: 2rem; }
   .kroki__grid { grid-template-columns: repeat(3, 1fr); }
-  .atuty__grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* --- >= 900px --- */
@@ -2376,7 +2328,6 @@ summary:focus-visible {
   .section { padding: 12px 0; }
   .section > .container { padding-top: 16px; padding-bottom: 16px; }
   .hero { padding: 48px 20px 32px; }
-  .atuty { padding: 24px 0 32px; }
   .co-dostajesz__grid { gap: 28px; }
   .co-dostajesz__mockup { max-width: 180px; }
   .co-dostajesz__mockup figcaption { margin-top: 12px; font-size: 0.875rem; }
