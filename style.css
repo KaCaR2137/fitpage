@@ -588,6 +588,7 @@ summary:focus-visible {
   padding: 96px 20px 48px;
 }
 .hero__inner { max-width: 760px; margin-inline: auto; }
+.hero__notka { margin: 16px 0 0; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
 .hero__title {
   font-size: clamp(1.9rem, 6vw, 3.1rem);
   margin-bottom: 0.4em;
