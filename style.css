@@ -1944,21 +1944,10 @@ summary:focus-visible {
   max-width: 62ch;
   color: var(--muted);
 }
-.cennik__promo {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin: 0 0 28px;
-  padding: 12px 16px;
-  border-left: 3px solid var(--accent);
-  background: var(--bg);
-  border-radius: 0 10px 10px 0;
-  font-weight: 600;
-  color: var(--text);
-}
 .cennik__pakiety {
   display: grid;
   gap: 16px;
+  margin-top: 28px; /* miejsce na plakietkę "Najczęściej wybierany" nad kartą */
   align-items: stretch;
 }
 .pakiet {
