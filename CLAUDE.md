@@ -7,10 +7,16 @@ Uniwersalny standard: skill `strona-wizytowka-trenera`. Ten plik = specyfika
 tego zlecenia.
 
 ## Ton / narracja
-Wszystkie teksty w **1. os. liczby mnogiej** („projektujemy”, „pomagamy”,
-„odezwiemy się”) — FitPage występuje jako zespół, nie pojedyncza osoba.
-Sekcja „O nas”. Wyjątek: treść zgód w formularzu (mówi w nich odwiedzający —
-„wyrażam zgodę”) oraz zwroty do odwiedzającego pozostają w 2. os. („Twojej”, „możesz”).
+**Od 15.10.2026: 1. os. liczby pojedynczej, rodzaj męski** („projektuję”,
+„pomagam”, „odezwę się”, „przygotowałem”). FitPage to jednoosobowa marka
+i strona mówi to wprost: sekcja „O mnie” (`#o-mnie`, link „O mnie” w nav
+i stopce) zaczyna się od „FitPage prowadzę sam”, a JSON-LD organizacji ma
+`founder` (Kacper Barczak). Wcześniej obowiązywała 1. os. l. mnogiej
+(„zespół”), już nieaktualne. Zostaje „my” obejmujące klienta i mnie razem
+(„umówimy się na rozmowę”, „ułożymy je razem”, „Zaczynamy?”). Klasy CSS
+`.o-nas*` zostały bez zmian (wewnętrzne nazwy). Wyjątek: treść zgód w
+formularzu (mówi w nich odwiedzający, „wyrażam zgodę”) oraz zwroty do
+odwiedzającego pozostają w 2. os. („Twojej”, „możesz”).
 
 ## Stack
 Czysty HTML/CSS/JS, bez frameworków i build stepu. Pliki: `index.html`,

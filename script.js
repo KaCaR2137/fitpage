@@ -283,8 +283,8 @@
   // briefu idzie teraz przez panel .brief-success, patrz niżej) — zostawiony
   // na wypadek, gdyby panel kiedyś zniknął z DOM na jakiejś stronie.
   var formSuccessMessages = {
-    brief: 'Dziękuję! Brief dotarł, odezwiemy się wkrótce z propozycją zakresu i wyceną.',
-    opinia: 'Dziękujemy za opinię! Po weryfikacji pojawi się na stronie.'
+    brief: 'Dziękuję! Brief dotarł, odezwę się wkrótce z propozycją zakresu i wyceną.',
+    opinia: 'Dziękuję za opinię! Po weryfikacji pojawi się na stronie.'
   };
   // Błąd briefu (04.10.2026): jeden, stały komunikat zamiast rozróżniania
   // timeoutu/treści błędu Formspree/przypadku ogólnego jak wcześniej — to
