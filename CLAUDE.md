@@ -549,6 +549,23 @@ zdjęcia. Sprawdzić kontrast tekstu piksel po pikselu (PIL, jak przy
 poprzednich zdjęciach) — jeśli najciemniejszy scrim (0.65) i najjaśniejszy
 realny fragment zdjęcia i tak dają >=4.5:1, nic nie trzeba dostrajać.
 
+**`szablony.html` + `szablony/` (18.10.2026)** — podstrona „Wybierz styl
+swojej strony” (indeksowana, w sitemap, link „Przykładowe style” w stopce
+wszystkich stron, „Zobacz przykładowe style” pod cennikiem na `index.html`
+i `cennik.html`, zajawka z 4 miniaturami po „Co dostajesz”). 4 szablony
+w `szablony/` (`mocny`/`jasny`/`dynamiczny`/`minimalny`, marki fikcyjne
+Atlas/Lumi/Puls/Rytm, `noindex`, wszystkie linki `href="#"` bez akcji,
+plakietka „Przykładowy projekt FitPage · marka fikcyjna”). Każdy ma
+własny, samodzielny `<style>` (nie używa `style.css`) i jeden krój
+lokalnie w `szablony/fonts/` (woff2, para latin + latin-ext z
+`unicode-range`, z paczek Fontsource). Miniatury `images/szablony/<slug>.jpg`
++ `.webp` (720×450) to zrzuty widoku 1440×900, po zmianie szablonu
+wygeneruj je ponownie. „Podgląd” otwiera `<dialog class="podglad">` z
+iframe (telefon 390px, komputer 1440px przeskalowane), bez JS to zwykły
+link do szablonu. „Chcę w tym stylu” → `kontakt.html?styl=<slug>`, które
+ustawia select „Wybrany styl” (`wybrany_styl`, krok 4 briefu) i notkę
+`#brief-styl` nad formularzem. `.assetsignore` odsłania `szablony/`.
+
 **`polityka-prywatnosci.html`** — **Żywa i podlinkowana** (stopka, wszystkie
 strony — jako ostatni link, po Kontakt) — `noindex` usunięty (16.09.2026).
 Treść wklejona z `polityka-prywatnosci-DRAFT.md` (sam plik roboczy zostaje w

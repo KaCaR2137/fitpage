@@ -10,6 +10,7 @@
       przez współdzielony IntersectionObserver + klasa .widoczna, ze
       staggered transitionDelay dla rodzeństwa.
    6. Formularze (kontakt + opinia) — walidacja per-pole + wysyłka (Formspree).
+   7. Podgląd stylów na szablony.html (okno z iframe, telefon/komputer).
    =================================================================== */
 (function () {
   'use strict';
@@ -269,6 +270,22 @@
       if (pakietNote) {
         pakietNote.textContent = 'Wybrany pakiet: ' + wybrany + '. Jeśli zmienisz zdanie, napisz o tym w uwagach na końcu.';
         pakietNote.hidden = false;
+      }
+    }
+  }
+
+  // Styl wybrany na szablony.html (?styl=mocny z przycisków "Chcę w tym
+  // stylu") ustawia pole "Wybrany styl". Tak samo tylko znane wartości.
+  var stylSelect = document.getElementById('wybrany-styl');
+  var stylNote = document.getElementById('brief-styl');
+  if (stylSelect) {
+    var style = { mocny: 'Mocny', jasny: 'Jasny', dynamiczny: 'Dynamiczny', minimalny: 'Minimalny' };
+    var stylParam = new URLSearchParams(window.location.search).get('styl');
+    if (stylParam && Object.prototype.hasOwnProperty.call(style, stylParam)) {
+      stylSelect.value = style[stylParam];
+      if (stylNote) {
+        stylNote.textContent = 'Wybrany styl: ' + style[stylParam] + '. Możesz go zmienić w ostatnim kroku briefu.';
+        stylNote.hidden = false;
       }
     }
   }
@@ -689,6 +706,95 @@
         }
         if (submitLabel) { submitLabel.textContent = submitLabelDefault; }
       });
+    });
+  }
+  /* ----------------------------- 7. Podgląd stylów ----------------------------- */
+  // Bez JS "Podgląd" to zwykły link do szablonu. Z JS otwiera <dialog>
+  // z iframe: telefon = 390px, komputer = 1440px przeskalowane do okna,
+  // więc szablon pokazuje swój prawdziwy układ dla danej szerokości.
+  var podglad = document.querySelector('.podglad');
+  if (podglad && typeof podglad.showModal === 'function') {
+    var ramka = podglad.querySelector('.podglad__ramka');
+    var scena = podglad.querySelector('.podglad__scena');
+    var tytul = podglad.querySelector('.podglad__tytul');
+    var wybierz = podglad.querySelector('.podglad__wybierz');
+    var trybBtns = Array.prototype.slice.call(podglad.querySelectorAll('[data-tryb]'));
+    var zamknij = podglad.querySelector('.podglad__zamknij');
+    var tryb = 'komputer';
+    var wyzwalacz = null;
+
+    var ustawRamke = function () {
+      var szer = tryb === 'telefon' ? 390 : 1440;
+      var odstep = tryb === 'telefon' ? 20 : 0;
+      var w = scena.clientWidth;
+      var h = scena.clientHeight;
+      var skala = Math.min(1, (w - 2 * odstep) / szer);
+      ramka.style.width = szer + 'px';
+      ramka.style.height = Math.round((h - 2 * odstep) / skala) + 'px';
+      ramka.style.transform = 'scale(' + skala + ')';
+      ramka.style.left = Math.round((w - szer * skala) / 2) + 'px';
+      ramka.style.top = odstep + 'px';
+    };
+
+    var ustawTryb = function (nowy) {
+      tryb = nowy;
+      podglad.classList.toggle('podglad--telefon', tryb === 'telefon');
+      trybBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.tryb === tryb ? 'true' : 'false');
+      });
+      ustawRamke();
+    };
+
+    var focusowalne = function () {
+      return Array.prototype.slice.call(podglad.querySelectorAll('button, a[href]'))
+        .filter(function (el) { return el.offsetParent !== null; });
+    };
+
+    document.querySelectorAll('[data-podglad]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        wyzwalacz = link;
+        tytul.textContent = 'Styl ' + link.dataset.nazwa;
+        ramka.title = 'Podgląd stylu ' + link.dataset.nazwa;
+        wybierz.href = 'kontakt.html?styl=' + link.dataset.podglad;
+        ramka.src = link.getAttribute('href');
+        docEl.classList.add('podglad-otwarty');
+        podglad.showModal();
+        ustawTryb(window.innerWidth < 700 ? 'telefon' : 'komputer');
+        zamknij.focus();
+      });
+    });
+
+    trybBtns.forEach(function (b) {
+      b.addEventListener('click', function () { ustawTryb(b.dataset.tryb); });
+    });
+    zamknij.addEventListener('click', function () { podglad.close(); });
+    // klik w tło (poza oknem) też zamyka
+    podglad.addEventListener('click', function (e) {
+      if (e.target === podglad) { podglad.close(); }
+    });
+    podglad.addEventListener('close', function () {
+      docEl.classList.remove('podglad-otwarty');
+      ramka.removeAttribute('src');
+      if (wyzwalacz) { wyzwalacz.focus(); }
+    });
+    // Tab i Shift+Tab krążą tylko po przyciskach okna
+    podglad.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') { return; }
+      var el = focusowalne();
+      if (!el.length) { return; }
+      var pierwszy = el[0];
+      var ostatni = el[el.length - 1];
+      if (e.shiftKey && document.activeElement === pierwszy) {
+        e.preventDefault();
+        ostatni.focus();
+      } else if (!e.shiftKey && document.activeElement === ostatni) {
+        e.preventDefault();
+        pierwszy.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (podglad.open) { ustawRamke(); }
     });
   }
 })();

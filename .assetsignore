@@ -20,6 +20,8 @@
 !images/**
 !artykuly/
 !artykuly/**
+!szablony/
+!szablony/**
 !robots.txt
 !sitemap.xml
 !llms.txt

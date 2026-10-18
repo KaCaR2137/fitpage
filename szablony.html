@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Przykładowe strony dla trenerów i projekty stron fitness | FitPage</title>
+  <meta name="description" content="Zobacz przykładowe strony dla trenerów w czterech stylach: mocny, jasny, dynamiczny i minimalny. Wybierz kierunek projektu strony fitness, zanim wypełnisz brief.">
+  <link rel="canonical" href="https://fitpage.pl/szablony.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=10">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="FitPage">
+  <meta property="og:title" content="Przykładowe strony dla trenerów i projekty stron fitness | FitPage">
+  <meta property="og:description" content="Zobacz przykładowe strony dla trenerów w czterech stylach: mocny, jasny, dynamiczny i minimalny. Wybierz kierunek projektu strony fitness, zanim wypełnisz brief.">
+  <meta property="og:url" content="https://fitpage.pl/szablony.html">
+  <meta property="og:image" content="https://fitpage.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FitPage: strony internetowe dla trenerów personalnych">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Przykładowe strony dla trenerów i projekty stron fitness | FitPage">
+  <meta name="twitter:description" content="Zobacz przykładowe strony dla trenerów w czterech stylach: mocny, jasny, dynamiczny i minimalny. Wybierz kierunek projektu strony fitness, zanim wypełnisz brief.">
+  <meta name="twitter:image" content="https://fitpage.pl/images/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://fitpage.pl/szablony.html#webpage",
+        "url": "https://fitpage.pl/szablony.html",
+        "name": "Przykładowe strony dla trenerów i projekty stron fitness | FitPage",
+        "description": "Zobacz przykładowe strony dla trenerów w czterech stylach: mocny, jasny, dynamiczny i minimalny. Wybierz kierunek projektu strony fitness, zanim wypełnisz brief.",
+        "inLanguage": "pl-PL",
+        "isPartOf": { "@id": "https://fitpage.pl/#website" },
+        "about": { "@id": "https://fitpage.pl/#organization" },
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Styl Mocny", "url": "https://fitpage.pl/szablony.html#styl-mocny", "image": "https://fitpage.pl/images/szablony/mocny.jpg" },
+            { "@type": "ListItem", "position": 2, "name": "Styl Jasny", "url": "https://fitpage.pl/szablony.html#styl-jasny", "image": "https://fitpage.pl/images/szablony/jasny.jpg" },
+            { "@type": "ListItem", "position": 3, "name": "Styl Dynamiczny", "url": "https://fitpage.pl/szablony.html#styl-dynamiczny", "image": "https://fitpage.pl/images/szablony/dynamiczny.jpg" },
+            { "@type": "ListItem", "position": 4, "name": "Styl Minimalny", "url": "https://fitpage.pl/szablony.html#styl-minimalny", "image": "https://fitpage.pl/images/szablony/minimalny.jpg" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
+    <picture>
+      <source srcset="images/logo-fitpage.webp" type="image/webp">
+      <img src="images/logo-fitpage.png" alt="" class="splash__logo-old">
+    </picture>
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="/#o-mnie">O mnie</a>
+          <!-- <a href="/#portfolio">Portfolio</a> -->
+          <a href="proces.html">Proces</a>
+          <a href="cennik.html">Cennik</a>
+          <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
+        </nav>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Wybierz styl swojej strony</h1>
+        <p class="hero__subtitle reveal">
+          To przykładowe kierunki, a każdą stronę i tak projektuję indywidualnie, pod Twoją specjalizację i&nbsp;klientów.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ STYLE ============================ -->
+    <section class="section style-stron" aria-label="Przykładowe style stron">
+      <div class="container">
+        <div class="style__grid">
+
+          <article class="styl-card reveal" id="styl-mocny">
+            <picture class="styl-card__img">
+              <source srcset="images/szablony/mocny.webp" type="image/webp">
+              <img src="images/szablony/mocny.jpg" width="720" height="450" loading="lazy" decoding="async"
+                   alt="Podgląd stylu Mocny: czarne tło, wielki kondensowany nagłówek i limonkowy akcent.">
+            </picture>
+            <h2 class="styl-card__nazwa">Mocny</h2>
+            <p class="styl-card__opis">Czarne tło, duża kondensowana typografia i&nbsp;jeden ostry akcent, dla marki, która ma brzmieć pewnie i&nbsp;konkretnie.</p>
+            <div class="styl-card__akcje">
+              <a href="szablony/mocny.html" class="btn btn--secondary" data-podglad="mocny" data-nazwa="Mocny">Podgląd</a>
+              <a href="kontakt.html?styl=mocny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </article>
+
+          <article class="styl-card reveal" id="styl-jasny">
+            <picture class="styl-card__img">
+              <source srcset="images/szablony/jasny.webp" type="image/webp">
+              <img src="images/szablony/jasny.jpg" width="720" height="450" loading="lazy" decoding="async"
+                   alt="Podgląd stylu Jasny: kremowe tło, pastelowe kształty i zaokrąglona nawigacja.">
+            </picture>
+            <h2 class="styl-card__nazwa">Jasny</h2>
+            <p class="styl-card__opis">Kremowe tło, pastele, zaokrąglone karty i&nbsp;przyjazny krój, ciepło i&nbsp;lekko, bez onieśmielania.</p>
+            <div class="styl-card__akcje">
+              <a href="szablony/jasny.html" class="btn btn--secondary" data-podglad="jasny" data-nazwa="Jasny">Podgląd</a>
+              <a href="kontakt.html?styl=jasny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </article>
+
+          <article class="styl-card reveal" id="styl-dynamiczny">
+            <picture class="styl-card__img">
+              <source srcset="images/szablony/dynamiczny.webp" type="image/webp">
+              <img src="images/szablony/dynamiczny.jpg" width="720" height="450" loading="lazy" decoding="async"
+                   alt="Podgląd stylu Dynamiczny: kobaltowe tło ścięte po skosie, pochylony nagłówek i pomarańczowe pasy.">
+            </picture>
+            <h2 class="styl-card__nazwa">Dynamiczny</h2>
+            <p class="styl-card__opis">Ukośne cięcia, mocny kobalt z&nbsp;pomarańczem i&nbsp;ruch przy wejściu, czyli energia od pierwszego ekranu.</p>
+            <div class="styl-card__akcje">
+              <a href="szablony/dynamiczny.html" class="btn btn--secondary" data-podglad="dynamiczny" data-nazwa="Dynamiczny">Podgląd</a>
+              <a href="kontakt.html?styl=dynamiczny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </article>
+
+          <article class="styl-card reveal" id="styl-minimalny">
+            <picture class="styl-card__img">
+              <source srcset="images/szablony/minimalny.webp" type="image/webp">
+              <img src="images/szablony/minimalny.jpg" width="720" height="450" loading="lazy" decoding="async"
+                   alt="Podgląd stylu Minimalny: jasne ecru, szeryfowy nagłówek i cienkie linie.">
+            </picture>
+            <h2 class="styl-card__nazwa">Minimalny</h2>
+            <p class="styl-card__opis">Ecru, dużo przestrzeni, cienkie linie i&nbsp;szeryfowe nagłówki, dla spokojnej, eleganckiej marki.</p>
+            <div class="styl-card__akcje">
+              <a href="szablony/minimalny.html" class="btn btn--secondary" data-podglad="minimalny" data-nazwa="Minimalny">Podgląd</a>
+              <a href="kontakt.html?styl=minimalny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="faq__cta reveal">
+          <p>Żaden nie pasuje w&nbsp;100%? To normalne. Wybierz najbliższy albo opisz swój pomysł w&nbsp;briefie.</p>
+          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        </div>
+
+        <p class="brief__back reveal">
+          <a href="/">&larr; Wróć na stronę główną</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Okno podglądu: iframe szablonu w szerokości telefonu albo komputera -->
+    <dialog class="podglad" aria-labelledby="podglad-tytul">
+      <div class="podglad__pasek">
+        <h2 class="podglad__tytul" id="podglad-tytul">Podgląd stylu</h2>
+        <div class="podglad__tryb" role="group" aria-label="Szerokość podglądu">
+          <button type="button" class="podglad__tryb-btn" data-tryb="telefon" aria-pressed="false">Telefon</button>
+          <button type="button" class="podglad__tryb-btn" data-tryb="komputer" aria-pressed="true">Komputer</button>
+        </div>
+        <a href="kontakt.html" class="btn btn--primary podglad__wybierz">Chcę w tym stylu</a>
+        <button type="button" class="podglad__zamknij" aria-label="Zamknij podgląd">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="podglad__scena">
+        <iframe class="podglad__ramka" title="Podgląd szablonu" tabindex="-1"></iframe>
+      </div>
+    </dialog>
+
+  </main>
+
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="/#o-mnie">O mnie</a>
+      <a href="proces.html">Proces</a>
+      <a href="cennik.html">Cennik</a>
+      <a href="szablony.html">Przykładowe style</a>
+      <a href="faq.html">FAQ</a>
+      <a href="artykuly.html">Artykuły</a>
+      <a href="opinie.html">Opinie</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
+      <p>Poznań, działam w całej Polsce · <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>
+      <p><a href="https://www.instagram.com/fitpage.pl/" rel="me">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61595516211350" rel="me">Facebook</a> · <a href="https://www.tiktok.com/@fitpage.pl" rel="me">TikTok</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=6"></script>
+</body>
+</html>
