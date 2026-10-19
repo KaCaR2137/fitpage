@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('fitpageSplashShown')) {
+          document.documentElement.classList.add('splash-repeat');
+        } else {
+          sessionStorage.setItem('fitpageSplashShown', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Przykładowe strony dla trenerów i projekty stron fitness: FitPage</title>
+  <meta name="description" content="Projekty stron fitness w czterech stylach: mocny, jasny, dynamiczny i minimalny. Zobacz przykładowe strony dla trenerów i wybierz kierunek przed briefem.">
+  <link rel="canonical" href="https://fitpage.pl/szablony.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=10">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="FitPage">
+  <meta property="og:title" content="Przykładowe strony dla trenerów i projekty stron fitness: FitPage">
+  <meta property="og:description" content="Projekty stron fitness w czterech stylach: mocny, jasny, dynamiczny i minimalny. Zobacz przykładowe strony dla trenerów i wybierz kierunek przed briefem.">
+  <meta property="og:url" content="https://fitpage.pl/szablony.html">
+  <meta property="og:image" content="https://fitpage.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FitPage: strony internetowe dla trenerów personalnych">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Przykładowe strony dla trenerów i projekty stron fitness: FitPage">
+  <meta name="twitter:description" content="Projekty stron fitness w czterech stylach: mocny, jasny, dynamiczny i minimalny. Zobacz przykładowe strony dla trenerów i wybierz kierunek przed briefem.">
+  <meta name="twitter:image" content="https://fitpage.pl/images/og-image.png">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <!-- ============================ SPLASH (logo na wejściu) ============================ -->
+  <div class="splash splash--new" aria-hidden="true">
+    <div class="splash__inner">
+      <span class="splash__icon-stack">
+        <picture>
+          <source srcset="images/logo-fitpage-cream.webp" type="image/webp">
+          <img src="images/logo-fitpage-cream.png" alt="" class="splash__icon splash__icon--cream">
+        </picture>
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="splash__icon splash__icon--green">
+        </picture>
+      </span>
+      <span class="splash__text-stack">
+        <span class="splash__text splash__text--cream">FitPage</span>
+        <span class="splash__text splash__text--green">FitPage</span>
+      </span>
+    </div>
+  </div>
+  <div class="splash splash--old" aria-hidden="true">
+    <picture>
+      <source srcset="images/logo-fitpage.webp" type="image/webp">
+      <img src="images/logo-fitpage.png" alt="" class="splash__logo-old">
+    </picture>
+  </div>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo">
+        <picture>
+          <source srcset="images/logo-fitpage.webp" type="image/webp">
+          <img src="images/logo-fitpage.png" alt="" class="nav__logo-img">
+        </picture>
+        <span class="nav__logo-text">FitPage</span>
+      </a>
+
+      <div class="nav__right">
+        <nav id="nav-menu" class="nav__links" aria-label="Nawigacja główna">
+          <a href="/#o-mnie">O mnie</a>
+          <!-- <a href="/#portfolio">Portfolio</a> -->
+          <a href="proces.html">Proces</a>
+          <a href="cennik.html">Cennik</a>
+          <a href="faq.html">FAQ</a>
+          <a href="artykuly.html">Artykuły</a>
+        </nav>
+        <a href="kontakt.html" class="nav__cta">Umów konsultację</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
+    <section class="hero hero--compact">
+      <div class="hero__inner">
+        <h1 class="hero__title reveal">Wybierz styl swojej strony</h1>
+        <p class="hero__subtitle reveal">
+          To przykładowe kierunki, każdą stronę i tak projektuję indywidualnie.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ STYLE ============================ -->
+    <section class="section szablony" aria-label="Przykładowe style">
+      <div class="container">
+        <ul class="szablony__lista">
+          <li class="szablon reveal" id="mocny">
+            <div class="szablon__miniatura">
+              <picture>
+                <source type="image/webp" srcset="images/szablony/mocny-400.webp 400w, images/szablony/mocny-800.webp 800w" sizes="(min-width: 700px) 520px, 100vw">
+                <img src="images/szablony/mocny-800.jpg" srcset="images/szablony/mocny-400.jpg 400w, images/szablony/mocny-800.jpg 800w" sizes="(min-width: 700px) 520px, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Podgląd strony w stylu Mocny: czarne tło, wielki wąski napis z ostatnim słowem w limonkowym kolorze i rosnące słupki">
+              </picture>
+            </div>
+            <h2 class="szablon__nazwa">Mocny</h2>
+            <p class="szablon__opis">Ciemne tło, duża typografia, jeden ostry akcent. Dla tych, którzy mówią krótko i konkretnie.</p>
+            <div class="szablon__akcje">
+              <a href="szablony/mocny.html" class="btn btn--secondary" data-podglad="mocny" data-nazwa="Mocny">Podgląd</a>
+              <a href="kontakt.html?styl=mocny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </li>
+          <li class="szablon reveal" id="jasny">
+            <div class="szablon__miniatura">
+              <picture>
+                <source type="image/webp" srcset="images/szablony/jasny-400.webp 400w, images/szablony/jasny-800.webp 800w" sizes="(min-width: 700px) 520px, 100vw">
+                <img src="images/szablony/jasny-800.jpg" srcset="images/szablony/jasny-400.jpg 400w, images/szablony/jasny-800.jpg 800w" sizes="(min-width: 700px) 520px, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Podgląd strony w stylu Jasny: kremowe tło, zaokrąglony pasek menu, miękki nagłówek i pastelowe koła">
+              </picture>
+            </div>
+            <h2 class="szablon__nazwa">Jasny</h2>
+            <p class="szablon__opis">Kremowe tło, pastele, zaokrąglone kształty i miękkie cienie. Ciepło, przyjaźnie i bez presji.</p>
+            <div class="szablon__akcje">
+              <a href="szablony/jasny.html" class="btn btn--secondary" data-podglad="jasny" data-nazwa="Jasny">Podgląd</a>
+              <a href="kontakt.html?styl=jasny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </li>
+          <li class="szablon reveal" id="dynamiczny">
+            <div class="szablon__miniatura">
+              <picture>
+                <source type="image/webp" srcset="images/szablony/dynamiczny-400.webp 400w, images/szablony/dynamiczny-800.webp 800w" sizes="(min-width: 700px) 520px, 100vw">
+                <img src="images/szablony/dynamiczny-800.jpg" srcset="images/szablony/dynamiczny-400.jpg 400w, images/szablony/dynamiczny-800.jpg 800w" sizes="(min-width: 700px) 520px, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Podgląd strony w stylu Dynamiczny: kobaltowe tło z ukośnym cięciem, szeroki napis z pomarańczowym wyróżnieniem i linia pulsu">
+              </picture>
+            </div>
+            <h2 class="szablon__nazwa">Dynamiczny</h2>
+            <p class="szablon__opis">Mocny kobalt, ukośne cięcia sekcji i subtelna animacja wejścia. Dużo energii i poczucie ruchu od pierwszego ekranu.</p>
+            <div class="szablon__akcje">
+              <a href="szablony/dynamiczny.html" class="btn btn--secondary" data-podglad="dynamiczny" data-nazwa="Dynamiczny">Podgląd</a>
+              <a href="kontakt.html?styl=dynamiczny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </li>
+          <li class="szablon reveal" id="minimalny">
+            <div class="szablon__miniatura">
+              <picture>
+                <source type="image/webp" srcset="images/szablony/minimalny-400.webp 400w, images/szablony/minimalny-800.webp 800w" sizes="(min-width: 700px) 520px, 100vw">
+                <img src="images/szablony/minimalny-800.jpg" srcset="images/szablony/minimalny-400.jpg 400w, images/szablony/minimalny-800.jpg 800w" sizes="(min-width: 700px) 520px, 100vw" width="800" height="500" loading="lazy" decoding="async" alt="Podgląd strony w stylu Minimalny: białe tło, duży szeryfowy nagłówek i cienka falista linia w szaroniebieskim kolorze">
+              </picture>
+            </div>
+            <h2 class="szablon__nazwa">Minimalny</h2>
+            <p class="szablon__opis">Chłodna biel, szaroniebieski akcent, dużo przestrzeni, cienkie linie i szeryfowe nagłówki. Spokojnie, elegancko i bez zbędnych słów.</p>
+            <div class="szablon__akcje">
+              <a href="szablony/minimalny.html" class="btn btn--secondary" data-podglad="minimalny" data-nazwa="Minimalny">Podgląd</a>
+              <a href="kontakt.html?styl=minimalny" class="btn btn--primary">Chcę w tym stylu</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="faq__cta reveal">
+          <p>Nie wiesz, który styl wybrać? Ustalimy to razem na konsultacji.</p>
+          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        </div>
+
+        <p class="brief__back reveal">
+          <a href="/">&larr; Wróć na stronę główną</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ PODGLĄD (okno) ============================ -->
+    <dialog class="podglad" aria-labelledby="podglad-tytul">
+      <div class="podglad__pasek">
+        <h2 class="podglad__tytul" id="podglad-tytul">Podgląd</h2>
+        <div class="podglad__widok" role="group" aria-label="Widok podglądu">
+          <button type="button" class="podglad__przelacznik" data-widok="telefon" aria-pressed="true">Telefon</button>
+          <button type="button" class="podglad__przelacznik" data-widok="komputer" aria-pressed="false">Komputer</button>
+        </div>
+        <a href="kontakt.html" class="btn btn--primary podglad__wybierz">Chcę w tym stylu</a>
+        <button type="button" class="podglad__zamknij" aria-label="Zamknij podgląd">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="podglad__scena">
+        <div class="podglad__ramka">
+          <iframe class="podglad__iframe" title="Podgląd szablonu" src="about:blank"></iframe>
+        </div>
+      </div>
+      <span class="podglad__straznik" tabindex="0"></span>
+    </dialog>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <nav class="footer__links container" aria-label="Skróty">
+      <a href="/#o-mnie">O mnie</a>
+      <a href="proces.html">Proces</a>
+      <a href="cennik.html">Cennik</a>
+      <a href="faq.html">FAQ</a>
+      <a href="artykuly.html">Artykuły</a>
+      <a href="szablony.html">Przykładowe style</a>
+      <a href="opinie.html">Opinie</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </nav>
+    <div class="container footer__inner">
+      <span class="footer__logo">FitPage</span>
+      <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
+      <p>Poznań, działam w całej Polsce · <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>
+      <p><a href="https://www.instagram.com/fitpage.pl/" rel="me">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61595516211350" rel="me">Facebook</a> · <a href="https://www.tiktok.com/@fitpage.pl" rel="me">TikTok</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=6"></script>
+</body>
+</html>

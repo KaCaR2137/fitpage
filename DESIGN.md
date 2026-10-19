@@ -881,6 +881,32 @@ link there is full-opacity Ivory, **not** Leaf Green — Leaf Green's contrast
 against Pine Black falls to ~2.6:1, well under AA, so the footer is the one
 place that does not reuse the standard link color.
 
+### Style templates page (`szablony.html`) and modal preview
+The page itself follows this system unchanged: compact hero, cards on the
+Canvas with a hairline-bordered `16 / 10` thumbnail (`14px` radius), Fraunces
+names, a `.btn--secondary` "Podgląd" next to a `.btn--primary` "Chcę w tym
+stylu". The preview is a native `<dialog class="podglad">`: Canvas fill,
+hairline bar on top, segmented Telefon / Komputer toggle (pill, Bottle Green
+for the pressed state), Pine Black backdrop at `0.6`. On phones it fills the
+screen; from `900px` it is inset `24px` with the standard `--shadow`.
+
+### Exception: the sample templates in `szablony/`
+`szablony/mocny.html`, `jasny.html`, `dynamiczny.html` and `minimalny.html`
+are **deliberately outside this design system**. Each one is a fictional
+brand (Atlas, Lumi, Puls, Rytm) whose job is to look unlike FitPage and
+unlike each other, so a client can pick a direction before the brief. Their
+palettes, fonts (Oswald, Nunito, Archivo, Cormorant Garamond, self-hosted
+in `szablony/fonty/`), radii and type ramps live in each file's own `:root`
+and are not drift. Rules that still apply to them: WCAG AA contrast, `44px`
+touch targets, no horizontal scroll from `320px`, headings that scale with
+the viewport (`min(vw, rem)`) so 200% text never pushes them off screen,
+motion only under `prefers-reduced-motion: no-preference`, the thin
+in-flow "Przykładowy projekt FitPage · marka fikcyjna" bar at the very top
+(never `position: fixed`), a different hero headline per template, and no
+profession or discipline named in the copy. Design-system detector findings
+(`design-system-color`, `design-system-font-size`, `design-system-radius`)
+on these four files are expected and not to be "fixed" toward FitPage.
+
 ## Do's and Don'ts
 
 ### Do:

@@ -9,6 +9,7 @@ Kontakt: kontakt@fitpage.pl
 - [Strona główna](https://fitpage.pl/): oferta FitPage i najważniejsze atuty współpracy.
 - [Proces tworzenia strony](https://fitpage.pl/proces.html): sześć etapów pracy, od analizy po wdrożenie strony.
 - [Cennik](https://fitpage.pl/cennik.html): trzy pakiety stron z cenami „od” (ceny netto: Start od 990 zł, Trener od 1890 zł, Online od 2990 zł), opieka po starcie i zasady płatności.
+- [Przykładowe style](https://fitpage.pl/szablony.html): cztery przykładowe kierunki wyglądu strony (mocny, jasny, dynamiczny, minimalny) do wyboru przed briefem.
 - [FAQ](https://fitpage.pl/faq.html): odpowiedzi na pytania o cenę, czas realizacji, treści, domenę i RODO.
 - [Umów konsultację](https://fitpage.pl/kontakt.html): formularz briefu, na podstawie którego przygotowuję zakres prac i wycenę.
 - [Opinie](https://fitpage.pl/opinie.html): opinie klientów o współpracy z FitPage.

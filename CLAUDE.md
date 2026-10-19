@@ -728,6 +728,33 @@ ma krótki opis + rozwijane `<details class="krok__more">` („Więcej”) z dod
 informacjami. **Bez przycisków CTA i bez listy odnośników** — tylko link „Wróć na
 stronę główną”. Wejście: link w stopce oraz „Proces” w nav (obie → `proces.html`).
 
+**`szablony.html` (od 19.10.2026)** — „Wybierz styl swojej strony”, 4 karty
+(miniatura WebP/JPG z `images/szablony/<slug>-400|800`, nazwa, opis,
+„Podgląd” i „Chcę w tym stylu” → `kontakt.html?styl=<slug>`). „Podgląd”
+to link do szablonu; z JS otwiera `<dialog class="podglad">` z iframe,
+przełącznikiem Telefon (390px) / Komputer (1440px, skalowane), Esc/X/klik
+w tło, pętla Tab (strażnik za iframe), fokus wraca na przycisk (script.js,
+ostatnia sekcja). Szablony w `szablony/` (mocny = Atlas, jasny = Lumi,
+dynamiczny = Puls, minimalny = Rytm): samodzielne pliki z CSS w środku,
+`noindex`, linki `href="#"` blokowane skryptem, cienki pasek
+„Przykładowy projekt FitPage · marka fikcyjna” na samej górze, w zwykłym
+przepływie (nie fixed, jedna linia od 360px), w kolorach szablonu. Każdy
+szablon ma inny nagłówek hero, a opisy na `szablony.html` mówią o
+charakterze stylu, bez zawodów i dyscyplin. Fonty w `szablony/fonty/` (Oswald,
+Nunito, Archivo, Cormorant Garamond; fontTools: Latin + Latin Ext-A,
+przycięte osie, licencje OFL obok). Miniatury = zrzut 1440x900 z
+headless Chrome, bez plakietki. Zmiana szablonu = nowy zrzut miniatury.
+Na `index.html` pasek „Zobacz przykładowe style” po „Co dostajesz” (na
+telefonie przewijany w bok, ok. 280px) i link pod cennikiem (też na
+`cennik.html`). Brief: pole `wybrany_styl` (select, domyślnie pusta opcja „Wybierz z
+listy”, żeby pominięte pole nie udawało odpowiedzi), `?styl=` je ustawia
+i dopisuje notkę w `.brief__pakiet`. Nagłówki szablonów mają
+`font-size: min(vw, rem)`, żeby przy powiększonym tekście nie wychodziły
+poza ekran; wyjątek szablonów od systemu opisany w DESIGN.md.
+Link „Przykładowe style” w stopce wszystkich stron, wpis w sitemap.xml,
+`_redirects`, `llms.txt`, `!szablony/**` w `.assetsignore`. Wersje plików:
+`style.css?v=10`, `script.js?v=6`.
+
 ## Paleta — motyw jasny
 Świadomy wybór (nie domyślny jasny/ciemny wariant) — patrz `DESIGN.md`,
 Creative North Star „The Morning Session”. Tło: płaski kremowy canvas

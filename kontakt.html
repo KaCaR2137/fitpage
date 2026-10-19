@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -445,6 +445,19 @@
               <small class="form__error" id="termin-error" aria-live="polite"></small>
             </fieldset>
 
+            <div class="form__row">
+              <label for="wybrany-styl">Wybrany styl <span class="form__optional">(opcjonalnie)</span></label>
+              <select id="wybrany-styl" name="wybrany_styl" aria-describedby="wybrany-styl-hint">
+                <option value="" selected>Wybierz z listy</option>
+                <option value="Mocny">Mocny</option>
+                <option value="Jasny">Jasny</option>
+                <option value="Dynamiczny">Dynamiczny</option>
+                <option value="Minimalny">Minimalny</option>
+                <option value="Nie wiem jeszcze">Nie wiem jeszcze</option>
+              </select>
+              <small class="form__hint" id="wybrany-styl-hint"><a href="szablony.html" target="_blank" rel="noopener">Zobacz przykładowe style</a> (otworzy się w nowej karcie)</small>
+            </div>
+
             <fieldset class="form__radio-group">
               <legend>Styl strony <span class="form__optional">(opcjonalnie)</span></legend>
               <label class="form__radio-option">
@@ -568,6 +581,7 @@
       <a href="cennik.html">Cennik</a>
       <a href="faq.html">FAQ</a>
       <a href="artykuly.html">Artykuły</a>
+      <a href="szablony.html">Przykładowe style</a>
       <a href="opinie.html">Opinie</a>
       <a href="kontakt.html">Kontakt</a>
       <a href="polityka-prywatnosci.html">Polityka prywatności</a>
@@ -580,6 +594,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

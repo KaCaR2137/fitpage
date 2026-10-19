@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fitpage.pl/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://fitpage.pl/proces.html</loc>
@@ -63,6 +63,10 @@
   <url>
     <loc>https://fitpage.pl/artykuly/wizytowka-google-trener-personalny.html</loc>
     <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://fitpage.pl/szablony.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://fitpage.pl/opinie.html</loc>

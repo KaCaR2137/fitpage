@@ -272,6 +272,20 @@
       }
     }
   }
+  // Styl wybrany na szablony.html (?styl=mocny z przycisków "Chcę w tym stylu").
+  var stylSelect = document.getElementById('wybrany-styl');
+  if (stylSelect) {
+    var style = { mocny: 'Mocny', jasny: 'Jasny', dynamiczny: 'Dynamiczny', minimalny: 'Minimalny' };
+    var stylZAdresu = new URLSearchParams(window.location.search).get('styl');
+    if (stylZAdresu && Object.prototype.hasOwnProperty.call(style, stylZAdresu)) {
+      stylSelect.value = style[stylZAdresu];
+      if (pakietNote) {
+        var notka = 'Wybrany styl: ' + style[stylZAdresu] + '. Możesz go zmienić w ostatnim kroku briefu.';
+        pakietNote.textContent = pakietNote.hidden ? notka : pakietNote.textContent + ' ' + notka;
+        pakietNote.hidden = false;
+      }
+    }
+  }
   var submitBtn = form ? form.querySelector('button[type="submit"]') : null;
   var formType = form ? (form.dataset.form || 'brief') : null;
 
@@ -691,4 +705,102 @@
       });
     });
   }
+})();
+
+/* Podgląd szablonu w oknie (szablony.html). Bez JS przycisk "Podgląd"
+   otwiera szablon jako zwykłą stronę. */
+(function () {
+  var okno = document.querySelector('.podglad');
+  if (!okno || typeof okno.showModal !== 'function') { return; }
+
+  var tytul = okno.querySelector('.podglad__tytul');
+  var scena = okno.querySelector('.podglad__scena');
+  var ramka = okno.querySelector('.podglad__ramka');
+  var iframe = okno.querySelector('.podglad__iframe');
+  var wybierz = okno.querySelector('.podglad__wybierz');
+  var zamknij = okno.querySelector('.podglad__zamknij');
+  var przelaczniki = Array.prototype.slice.call(okno.querySelectorAll('.podglad__przelacznik'));
+  var SZEROKOSCI = { telefon: 390, komputer: 1440 };
+  var widok = 'telefon';
+  var otwierajacy = null;
+
+  function dopasuj() {
+    var styl = getComputedStyle(scena);
+    var w = scena.clientWidth - parseFloat(styl.paddingLeft) - parseFloat(styl.paddingRight);
+    var h = scena.clientHeight - parseFloat(styl.paddingTop) - parseFloat(styl.paddingBottom);
+    var baza = SZEROKOSCI[widok];
+    var skala = Math.min(1, w / baza);
+    ramka.style.width = Math.floor(baza * skala) + 'px';
+    ramka.style.height = h + 'px';
+    iframe.style.width = baza + 'px';
+    iframe.style.height = Math.ceil(h / skala) + 'px';
+    iframe.style.transform = skala < 1 ? 'scale(' + skala + ')' : 'none';
+  }
+
+  function ustawWidok(nowy) {
+    widok = nowy;
+    przelaczniki.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.widok === nowy ? 'true' : 'false');
+    });
+    okno.classList.toggle('podglad--telefon', nowy === 'telefon');
+    dopasuj();
+  }
+
+  document.querySelectorAll('[data-podglad]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      otwierajacy = link;
+      var nazwa = link.dataset.nazwa;
+      tytul.textContent = 'Podgląd: ' + nazwa;
+      iframe.title = 'Podgląd szablonu w stylu ' + nazwa;
+      iframe.src = link.getAttribute('href');
+      wybierz.href = 'kontakt.html?styl=' + link.dataset.podglad;
+      okno.showModal();
+      ustawWidok(window.matchMedia('(min-width: 900px)').matches ? 'komputer' : 'telefon');
+      zamknij.focus();
+    });
+  });
+
+  przelaczniki.forEach(function (b) {
+    b.addEventListener('click', function () { ustawWidok(b.dataset.widok); });
+  });
+
+  zamknij.addEventListener('click', function () { okno.close(); });
+
+  // Klik w tło poza oknem zamyka podgląd.
+  okno.addEventListener('click', function (e) {
+    if (e.target !== okno) { return; }
+    var r = okno.getBoundingClientRect();
+    var wSrodku = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    if (!wSrodku) { okno.close(); }
+  });
+
+  // Tab i Shift+Tab krążą wewnątrz okna.
+  okno.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') { return; }
+    var elementy = Array.prototype.slice.call(okno.querySelectorAll('button, a[href], iframe'));
+    if (document.activeElement === iframe && !e.shiftKey) { return; }
+    var pierwszy = elementy[0];
+    var ostatni = elementy[elementy.length - 1];
+    if (e.shiftKey && document.activeElement === pierwszy) {
+      e.preventDefault();
+      ostatni.focus();
+    } else if (!e.shiftKey && document.activeElement === ostatni) {
+      e.preventDefault();
+      pierwszy.focus();
+    }
+  });
+
+  okno.querySelector('.podglad__straznik').addEventListener('focus', function () {
+    okno.querySelector('.podglad__przelacznik').focus();
+  });
+
+  okno.addEventListener('close', function () {
+    iframe.src = 'about:blank';
+    if (otwierajacy) { otwierajacy.focus(); }
+  });
+
+  window.addEventListener('resize', function () {
+    if (okno.open) { dopasuj(); }
+  });
 })();

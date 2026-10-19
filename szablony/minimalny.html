@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light">
+  <title>Rytm: przykładowy projekt w stylu Minimalny | FitPage</title>
+  <meta name="description" content="Przykładowy projekt strony w stylu Minimalny: chłodna biel, dużo przestrzeni, cienkie linie i szeryfowe nagłówki. Marka fikcyjna.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="preload" href="fonty/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: "Cormorant Garamond";
+      src: url("fonty/cormorant-garamond.woff2") format("woff2");
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #FFFFFF;
+      --pas: #EEF1F2;
+      --text: #1B1F22;
+      --muted: #5F676C;
+      --line: #D9DEE0;
+      --akcent: #3E5C6B;
+      --serif: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: clip;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--akcent); outline-offset: 4px; }
+
+    .wrap { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+    @media (min-width: 900px) { .wrap { padding-inline: 64px; } }
+
+    .maly { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    /* Nawigacja */
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 88px; border-bottom: 1px solid var(--line); }
+    .logo { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--serif); font-size: 1.75rem; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; }
+    .nav__links { display: none; }
+    .nav__menu {
+      display: inline-flex;
+      align-items: center;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 2px;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      background: none;
+      color: var(--text);
+      font-family: var(--sans);
+      cursor: pointer;
+    }
+    @media (min-width: 900px) {
+      .nav__menu { display: none; }
+      .nav__links { display: flex; gap: 28px; }
+      .nav__links a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; color: var(--muted); }
+      .nav__links a:hover { color: var(--text); }
+    }
+
+    /* Przycisk */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 52px;
+      padding: 0 26px;
+      border: 1px solid var(--text);
+      color: var(--text);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn:hover { background: var(--text); color: var(--bg); }
+
+    /* Hero */
+    .hero { padding: 80px 0 88px; }
+    .hero h1 {
+      margin: 0;
+      max-width: 13ch;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: min(12vw, 6.4rem);
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    .hero__fala, .cta__kolo { color: var(--akcent); }
+    .hero__fala { display: block; width: 100%; height: 48px; margin: 48px 0 40px; }
+    .hero__dol { display: grid; gap: 32px; }
+    .hero__podtytul { margin: 0; max-width: 38ch; color: var(--muted); }
+    @media (min-width: 900px) {
+      .hero { padding: 152px 0 144px; }
+      .hero__fala { height: 64px; margin: 72px 0 56px; }
+      .hero__dol { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 64px; }
+    }
+
+    /* Oferta */
+    .oferta { padding: 72px 0 96px; background: var(--pas); }
+    .oferta__glowa { display: grid; gap: 12px; margin-bottom: 56px; }
+    .oferta h2, .cta h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: min(9vw, 3.6rem); line-height: 1.05; }
+    .oferta__glowa .maly { margin: 0; color: var(--muted); }
+    .karty { list-style: none; margin: 0; padding: 0; display: grid; }
+    .karta { display: grid; gap: 12px; padding: 32px 0 36px; border-top: 1px solid var(--line); }
+    .karta:last-child { border-bottom: 1px solid var(--line); }
+    .karta__nr { font-family: var(--serif); font-size: 1.1rem; color: var(--akcent); }
+    .karta h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 2rem; line-height: 1.1; }
+    .karta p { margin: 0; color: var(--muted); max-width: 32ch; }
+    .karta__cena { padding-top: 8px; color: var(--text) !important; font-family: var(--serif); font-size: 1.5rem; }
+    .karta__cena span { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+    @media (min-width: 900px) {
+      .oferta { padding: 120px 0 152px; }
+      .oferta__glowa { grid-template-columns: minmax(0, 1fr) auto; align-items: end; margin-bottom: 80px; }
+      .karty { grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .karta { padding: 48px 40px 56px; border-top: 0; align-content: start; }
+      .karta:last-child { border-bottom: 0; }
+      .karta + .karta { border-left: 1px solid var(--line); }
+      .karta:first-child { padding-left: 0; }
+      .karta:last-child { padding-right: 0; }
+      .karta__cena { margin-top: 24px; }
+    }
+
+    /* CTA */
+    .cta { padding: 88px 0 120px; text-align: center; }
+    .cta__kolo { display: block; width: 72px; height: 72px; margin: 0 auto 40px; }
+    .cta p { margin: 20px auto 40px; max-width: 36ch; color: var(--muted); }
+    @media (min-width: 900px) { .cta { padding: 144px 0 176px; } }
+
+    /* Plakietka */
+    .plakietka {
+      margin: 0;
+      padding: 6px 24px;
+      background: var(--pas);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <p class="plakietka">Przykładowy projekt FitPage · marka fikcyjna</p>
+  <header class="wrap">
+    <div class="nav__inner">
+      <a href="#" class="logo">Rytm</a>
+      <nav class="nav__links maly" aria-label="Menu">
+        <a href="#">Podejście</a>
+        <a href="#">Oferta</a>
+        <a href="#">Kontakt</a>
+      </nav>
+      <button type="button" class="nav__menu maly">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Mniej, ale regularnie.</h1>
+        <svg class="hero__fala" viewBox="0 0 1000 64" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 32 C 62.5 0, 62.5 0, 125 32 S 187.5 64, 250 32 S 312.5 0, 375 32 S 437.5 64, 500 32 S 562.5 0, 625 32 S 687.5 64, 750 32 S 812.5 0, 875 32 S 937.5 64, 1000 32" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <div class="hero__dol">
+          <p class="hero__podtytul">Krótkie, uważne spotkania w rytmie, który da się utrzymać. Bez zrywów i bez pośpiechu, za to tydzień po tygodniu.</p>
+          <a href="#" class="btn">Umów spotkanie
+            <svg width="28" height="10" viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5h27M23 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="oferta" aria-labelledby="oferta-tytul">
+      <div class="wrap">
+        <div class="oferta__glowa">
+          <h2 id="oferta-tytul">Formy współpracy</h2>
+          <p class="maly">Trzy możliwości</p>
+        </div>
+        <ul class="karty">
+          <li class="karta">
+            <span class="karta__nr">I.</span>
+            <h3>Konsultacja</h3>
+            <p>Rozmowa i krótka obserwacja ruchu. Ustalamy, od czego zacząć.</p>
+            <p class="karta__cena"><span>od</span>180 zł</p>
+          </li>
+          <li class="karta">
+            <span class="karta__nr">II.</span>
+            <h3>Plan</h3>
+            <p>Cztery tygodnie prostych ćwiczeń, opisanych tak, żeby nie trzeba było zgadywać.</p>
+            <p class="karta__cena"><span>od</span>320 zł</p>
+          </li>
+          <li class="karta">
+            <span class="karta__nr">III.</span>
+            <h3>Opieka</h3>
+            <p>Regularne spotkania i drobne korekty. Bez pośpiechu, za to konsekwentnie.</p>
+            <p class="karta__cena"><span>od</span>520 zł</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-tytul">
+      <div class="wrap">
+        <svg class="cta__kolo" viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="35" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="36" cy="36" r="3" fill="currentColor"/></svg>
+        <h2 id="cta-tytul">Zacznijmy spokojnie.</h2>
+        <p>Pierwsze spotkanie to rozmowa. Bez zobowiązań, bez planu narzuconego z góry.</p>
+        <a href="#" class="btn">Napisz wiadomość
+          <svg width="28" height="10" viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5h27M23 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('a[href="#"]')) { e.preventDefault(); }
+    });
+  </script>
+</body>
+</html>

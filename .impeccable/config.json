@@ -599,6 +599,75 @@
         ],
         "createdAt": "2026-10-13T13:50:38.256Z",
         "reason": "user confirmed: STYL.md mandates cream #F7F3EA background, FitPage brand canvas"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "oswald",
+        "createdAt": "2026-10-19T08:08:37.889Z",
+        "reason": "brief: każdy przykładowy szablon w szablony/ ma mieć 1 własny krój, inny niż FitPage"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "nunito",
+        "createdAt": "2026-10-19T08:08:37.907Z",
+        "reason": "brief: każdy przykładowy szablon w szablony/ ma mieć 1 własny krój, inny niż FitPage"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "archivo",
+        "createdAt": "2026-10-19T08:08:37.926Z",
+        "reason": "brief: każdy przykładowy szablon w szablony/ ma mieć 1 własny krój, inny niż FitPage"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "cormorant garamond",
+        "createdAt": "2026-10-19T08:08:37.944Z",
+        "reason": "brief: każdy przykładowy szablon w szablony/ ma mieć 1 własny krój, inny niż FitPage"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "szablony/jasny.html"
+        ],
+        "createdAt": "2026-10-19T08:24:38.901Z",
+        "reason": "brief: styl Jasny ma mieć kremowe tło"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "szablony/minimalny.html"
+        ],
+        "createdAt": "2026-10-19T08:24:38.925Z",
+        "reason": "brief: styl Minimalny ma mieć tło biel/ecru"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "szablony/mocny.html"
+        ],
+        "createdAt": "2026-10-19T08:24:38.944Z",
+        "reason": "fałszywy alarm: .wrap w sekcji cta ma 20/48px paddingu"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "szablony/minimalny.html"
+        ],
+        "createdAt": "2026-10-19T08:24:38.966Z",
+        "reason": "fałszywy alarm: nav ma 88px wysokości, treść wyśrodkowana nad linią"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "szablony/dynamiczny.html"
+        ],
+        "createdAt": "2026-10-19T08:24:43.593Z",
+        "reason": "fałszywy alarm: .gora i .cta mają duży padding, treść w .wrap z 20/48px"
       }
     ]
   }

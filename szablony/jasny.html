@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light">
+  <title>Lumi: przykładowy projekt w stylu Jasny | FitPage</title>
+  <meta name="description" content="Przykładowy projekt strony w stylu Jasny: kremowe tło, pastelowe kolory, zaokrąglone kształty i miękkie cienie. Marka fikcyjna.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="preload" href="fonty/nunito.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: "Nunito";
+      src: url("fonty/nunito.woff2") format("woff2");
+      font-weight: 400 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #FFF7EE;
+      --surface: #FFFFFF;
+      --text: #3B2F2A;
+      --muted: #6D5F57;
+      --accent: #B4503A;
+      --accent-hover: #9C412D;
+      --on-accent: #FFFFFF;
+      --brzoskwinia: #FFD9C4;
+      --mieta: #CDEBDD;
+      --liliowy: #E4DCF6;
+      --maslo: #FFEFB8;
+      --cien: 0 18px 40px -18px rgba(120, 72, 48, 0.28), 0 2px 6px rgba(120, 72, 48, 0.06);
+      --font: "Nunito", "Avenir Next", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      overflow-x: clip;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 999px; }
+
+    .wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-inline: 20px; }
+    @media (min-width: 900px) { .wrap { padding-inline: 40px; } }
+
+    /* Nawigacja */
+    .nav { padding-top: 16px; }
+    .nav__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 12px;
+      padding: 8px 8px 8px 20px;
+      background: var(--surface);
+      border-radius: 32px;
+      box-shadow: var(--cien);
+    }
+    .logo { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; text-decoration: none; }
+    .logo__kropka { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 10px 0 0 var(--maslo); margin-right: 10px; }
+    .nav__links { display: none; }
+    .nav__menu {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    @media (max-width: 379px) {
+      .nav__inner { gap: 8px; padding-left: 16px; }
+      .logo { font-size: 1.35rem; }
+      .nav .btn--maly { padding: 0 14px; font-size: 0.9rem; }
+    }
+    @media (min-width: 900px) {
+      .nav__menu { display: none; }
+      .nav__links { display: flex; gap: 4px; }
+      .nav__links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; font-weight: 700; text-decoration: none; color: var(--muted); }
+      .nav__links a:hover { background: var(--bg); color: var(--text); }
+    }
+
+    /* Przyciski */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 10px 24px -10px rgba(180, 80, 58, 0.55);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+    .btn--maly { min-height: 44px; padding: 0 20px; font-size: 0.95rem; box-shadow: none; }
+
+    /* Hero */
+    .hero { padding: 48px 0 64px; }
+    .hero__grid { display: grid; gap: 40px; align-items: center; }
+    .hero__tekst { text-align: center; }
+    .hero__etykieta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--mieta);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .hero h1 { margin: 0; font-weight: 800; font-size: min(10vw, 4.2rem); line-height: 1.05; letter-spacing: -0.03em; }
+    .hero__podtytul { margin: 20px auto 32px; max-width: 34ch; color: var(--muted); font-size: 1.15rem; }
+    .hero__ilustracja .k-brzoskwinia { fill: var(--brzoskwinia); }
+    .hero__ilustracja .k-mieta { fill: var(--mieta); }
+    .hero__ilustracja .k-liliowy { fill: var(--liliowy); }
+    .hero__ilustracja .k-maslo { fill: var(--maslo); }
+    .hero__ilustracja .k-tlo { fill: var(--surface); }
+    .hero__ilustracja .k-linia { fill: none; stroke: var(--accent); }
+    .hero__ilustracja .k-kropka { fill: var(--text); }
+    .hero__ilustracja { display: block; width: 100%; max-width: 320px; height: auto; margin-inline: auto; }
+    @media (min-width: 900px) {
+      .hero { padding: 80px 0 104px; }
+      .hero__grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 64px; }
+      .hero__tekst { text-align: left; }
+      .hero__podtytul { margin-inline: 0; }
+      .hero__ilustracja { max-width: 500px; }
+    }
+
+    /* Oferta */
+    .oferta { padding: 24px 0 72px; }
+    .oferta h2, .cta h2 { margin: 0 0 12px; font-weight: 800; font-size: min(8.2vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; text-align: center; }
+    .oferta__lead { margin: 0 auto 40px; max-width: 40ch; text-align: center; color: var(--muted); }
+    .karty { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+    .karta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--cien);
+    }
+    .karta { position: relative; overflow: hidden; }
+    .karta::before { content: ""; position: absolute; top: -56px; right: -56px; width: 140px; height: 140px; border-radius: 50%; }
+    .karta:nth-child(1)::before { background: var(--brzoskwinia); }
+    .karta:nth-child(2)::before { background: var(--mieta); }
+    .karta:nth-child(3)::before { background: var(--liliowy); }
+    .karta > * { position: relative; }
+    .karta h3 { padding-top: 40px; }
+    .karta h3 { margin: 0; font-weight: 800; font-size: 1.4rem; }
+    .karta p { margin: 0; color: var(--muted); }
+    .karta__cena { margin-top: auto !important; padding-top: 14px; color: var(--text) !important; font-weight: 800; font-size: 1.6rem; }
+    .karta__cena small { font-size: 1rem; font-weight: 700; color: var(--muted); }
+    @media (min-width: 760px) {
+      .karty { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+      .karta { padding: 36px 32px; }
+      .karta:nth-child(2) { transform: translateY(24px); }
+    }
+    @media (min-width: 900px) { .oferta { padding: 32px 0 120px; } }
+
+    /* CTA */
+    .cta { padding: 0 0 88px; }
+    .cta__panel {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 24px;
+      border-radius: 36px;
+      background: var(--mieta);
+      text-align: center;
+    }
+    .cta__panel p { position: relative; margin: 0 auto 28px; max-width: 36ch; color: var(--text); }
+    .cta__panel h2 { position: relative; }
+    .cta__panel .btn { position: relative; }
+    .cta__kolo { position: absolute; border-radius: 50%; }
+    .cta__kolo--1 { width: 220px; height: 220px; left: -80px; top: -90px; background: var(--maslo); }
+    .cta__kolo--2 { width: 160px; height: 160px; right: -50px; bottom: -70px; background: var(--brzoskwinia); }
+    @media (min-width: 900px) { .cta__panel { padding: 88px 48px; } }
+
+    /* Plakietka */
+    .plakietka {
+      margin: 0;
+      padding: 6px 20px;
+      background: var(--maslo);
+      color: var(--text);
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn { transition: none; }
+      .btn:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <p class="plakietka">Przykładowy projekt FitPage · marka fikcyjna</p>
+  <header class="nav">
+    <div class="wrap">
+      <div class="nav__inner">
+        <a href="#" class="logo"><span class="logo__kropka" aria-hidden="true"></span>lumi</a>
+        <nav class="nav__links" aria-label="Menu">
+          <a href="#">Jak pracuję</a>
+          <a href="#">Oferta</a>
+          <a href="#">Opinie</a>
+          <a href="#">Kontakt</a>
+        </nav>
+        <a href="#" class="btn btn--maly nav__cta">Napisz do mnie</a>
+        <button type="button" class="nav__menu" aria-label="Menu">
+          <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M1 1h18M1 7h18M1 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__tekst">
+          <p class="hero__etykieta">Spokojne tempo, bez presji</p>
+          <h1>Ruch, który zostaje na dłużej</h1>
+          <p class="hero__podtytul">Małe kroki, które mieszczą się w Twoim tygodniu. Zaczynamy od tego, co lubisz, i budujemy nawyk, który nie męczy.</p>
+          <a href="#" class="btn">Umów pierwszą rozmowę</a>
+        </div>
+        <svg class="hero__ilustracja" viewBox="0 0 440 400" role="img" aria-label="Pastelowe koła i miękka, falująca linia">
+          <circle class="k-brzoskwinia" cx="250" cy="190" r="150"/>
+          <circle class="k-mieta" cx="130" cy="270" r="96"/>
+          <circle class="k-liliowy" cx="345" cy="300" r="66"/>
+          <circle class="k-maslo" cx="330" cy="88" r="38"/>
+          <rect class="k-tlo" x="96" y="128" width="248" height="128" rx="64"/>
+          <path d="M132 206c22-40 44-40 66 0s44 40 66 0 44-40 52-14" class="k-linia" stroke-width="10" stroke-linecap="round"/>
+          <circle class="k-kropka" cx="132" cy="206" r="9"/>
+          <circle class="k-kropka" cx="318" cy="190" r="9"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="oferta" aria-labelledby="oferta-tytul">
+      <div class="wrap">
+        <h2 id="oferta-tytul">Jak możemy zacząć</h2>
+        <p class="oferta__lead">Trzy proste formy współpracy. Możesz zacząć od jednej i zmienić zdanie w każdej chwili.</p>
+        <ul class="karty">
+          <li class="karta">
+            <h3>Konsultacja</h3>
+            <p>Spokojna rozmowa o tym, jak się czujesz, czego potrzebujesz i ile masz czasu.</p>
+            <p class="karta__cena"><small>od</small> 120 zł</p>
+          </li>
+          <li class="karta">
+            <h3>Plan</h3>
+            <p>Plan na cztery tygodnie, z ćwiczeniami, które zrobisz w domu albo na sali.</p>
+            <p class="karta__cena"><small>od</small> 260 zł</p>
+          </li>
+          <li class="karta">
+            <h3>Opieka</h3>
+            <p>Jesteśmy w stałym kontakcie. Co tydzień sprawdzamy, co działa, a co zmienić.</p>
+            <p class="karta__cena"><small>od</small> 450 zł</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-tytul">
+      <div class="wrap">
+        <div class="cta__panel">
+          <span class="cta__kolo cta__kolo--1" aria-hidden="true"></span>
+          <span class="cta__kolo cta__kolo--2" aria-hidden="true"></span>
+          <h2 id="cta-tytul">Zacznijmy od rozmowy</h2>
+          <p>Bez zobowiązań i bez oceniania. Powiesz, czego szukasz, a ja podpowiem, od czego zacząć.</p>
+          <a href="#" class="btn">Napisz do mnie</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('a[href="#"]')) { e.preventDefault(); }
+    });
+  </script>
+</body>
+</html>
