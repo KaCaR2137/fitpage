@@ -741,12 +741,6 @@ summary:focus-visible {
   height: auto;
   filter: drop-shadow(0 22px 30px rgba(31, 45, 36, 0.18));
 }
-.co-dostajesz__mockup figcaption {
-  margin-top: 18px;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--muted);
-}
 .co-dostajesz__lista { margin: 0; }
 .co-dostajesz__punkt {
   padding: 18px 0;
@@ -786,7 +780,7 @@ summary:focus-visible {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 .proces-pasek li {
@@ -2307,6 +2301,10 @@ summary:focus-visible {
   }
 }
 
+@media (max-width: 359px) {
+  .proces-pasek li { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px; }
+}
+
 /* ===================================================================
    TELEFON (do 768px): krótsza strona, kompaktowe artykuły, cennik
    w poziomym pasku, zwijane "O mnie", szybsze odsłanianie.
@@ -2333,7 +2331,6 @@ summary:focus-visible {
   .hero { padding: 48px 20px 32px; }
   .co-dostajesz__grid { gap: 28px; }
   .co-dostajesz__mockup { max-width: 180px; }
-  .co-dostajesz__mockup figcaption { margin-top: 12px; font-size: 0.875rem; }
   .proces-pasek__tytul { margin-top: 32px; }
 
   /* 9. hero: dwa przyciski na pełną szerokość, jeden pod drugim */

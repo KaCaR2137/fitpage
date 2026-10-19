@@ -130,7 +130,7 @@ dostępie do treści. Pełny opis obu wariantów i uzasadnienie techniki w
 **Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /
 Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz
 pod CTA w hero) → Treningi (pasek) → **Co dostajesz** (`#co-dostajesz`:
-`mockup1.png` podpisany jako projekt pokazowy + lista 4 punktów `<dl>`) →
+`mockup1.png` bez podpisu (usunięty 19.10.2026) + lista 4 punktów `<dl>`) →
 O nas (sam tekst o standardzie z analizy ~20 stron trenerów + pasek 6 etapów
 procesu z linkiem do `proces.html`; **panel terminala usunięty**) → Portfolio
 (ukryte, `hidden`) → Artykuły → CTA „Zaczynamy?” (opisuje, co się dzieje po
