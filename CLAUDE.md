@@ -491,6 +491,18 @@ w Google…”) i z `jak-zdobyc-klientow-bez-reklam` (sekcja 5, „gdzie klient
 sprawdza, kim jesteś”). CTA zostawione dosłownie w 1. os. l. poj.
 („Pokażę Ci”), bo klient zastrzegł brak zmian treści.
 
+**Jedenasty artykuł (19.10.2026):** `strona-dla-dietetyka`, z
+`artykul-strona-dla-dietetyka-DRAFT.md` (nagłówek pliku: title, opis, data,
+tag Strona, 5 min, okładki w `images/artykuly/`). Pierwszy artykuł dla
+dietetyków. Zdjęcie w tle `tlodoartykulu19.jpg` (ostre od klienta, kadr
+16:9, 1600x900, lekki GaussianBlur 6 na prośbę „nie za mocno”), scrim 0.65
+daje min. 5.70:1. Sekcja „Najczęstsze pytania” jako `<details>` +
+dodatkowo `FAQPage` w JSON-LD. Linki w treści tylko z tekstu klienta
+(cennik, szablony, kontakt), bez dopisywania nowych; „Zobacz też” →
+`strona-czy-booksy`. Bez bloku `.artykul__cta`, bo podsumowanie już kończy
+się linkiem do konsultacji, a tekstu nie wolno było zmieniać. Na głównej
+wypadła karta „Strona czy Booksy”.
+
 **Porządki SEO po Search Console (10.10.2026).** `strona-czy-booksy` i
 `trening-online-strona` mają teraz po 3 linki przychodzące w treści.
 Booksy: z `instagram-czy-strona`, `ile-kosztuje-strona-dla-trenera` (przy
