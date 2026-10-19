@@ -2410,9 +2410,10 @@ summary:focus-visible {
   .cennik__vat { text-align: center; }
   .cennik__wiecej { margin-top: 16px; text-align: center; }
 
-  /* 2. artykuły: kompaktowa lista, 3 najnowsze */
+  /* 2. artykuły: kompaktowa lista; na stronie głównej tylko 3 najnowsze
+     (#artykuly to sekcja tylko na index.html, artykuly.html pokazuje wszystkie) */
   .artykuly__grid { grid-template-columns: 1fr; gap: 16px; }
-  .artykuly__grid .artykul-card:nth-child(n+4) { display: none; }
+  #artykuly .artykuly__grid .artykul-card:nth-child(n+4) { display: none; }
   .artykul-card {
     display: grid;
     grid-template-columns: 96px minmax(0, 1fr);
