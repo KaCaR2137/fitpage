@@ -148,7 +148,7 @@ single dark anchor at the very bottom of the page.
   mark — ink, a stamp — not a wash of color.
 - **Leaf Green** (`#2C6B47`): the hover/active shift of the accent, and the
   resting color of every text link (card links, "back" links, "Więcej"
-  toggles, FAQ `+`/`–` marker, success status text) *outside the footer*.
+  toggles, the FAQ plus icon and the open question, success status text) *outside the footer*.
   Inside the footer, links use Ivory instead — Leaf Green doesn't clear
   contrast against Pine Black (see Footer, under Components).
 
@@ -165,7 +165,7 @@ single dark anchor at the very bottom of the page.
   light (so it carried dark text); now the accent is dark, so it carries light
   text instead.
 - **Surface Card** (`rgba(31,61,43,0.05)`): cards, step cards, inputs, the RODO
-  box, FAQ items — small component-level surfaces, tinted from the accent hue
+  box — small component-level surfaces, tinted from the accent hue
   for cohesion rather than plain gray.
 - **Hairline** (`rgba(31,61,43,0.16)`) / **Hairline Faint**
   (`rgba(31,61,43,0.10)`): borders and dividers. Because fills are nearly
@@ -402,7 +402,7 @@ the faux-bold there is the least noticeable instance if it needs revisiting.
 
 Flat ground with shadow-on-lift. Sections carry no surface at all — no fill, no
 blur, no border — so there is no "ground" to speak of below the small component
-cards. Those cards (portfolio, steps, FAQ, form fields) are the only remaining
+cards. Those cards (portfolio, steps, form fields) are the only remaining
 surfaces, and they stay flat at rest too: faint tinted fill, hairline border,
 nothing else. There is one deliberate exception: portfolio cards carry a single
 soft ambient shadow at rest to anchor them on the canvas. Every other shadow on
@@ -474,7 +474,7 @@ overwriting `box-shadow` every frame.
 
 ## Shapes
 
-- **Radius ladder:** `6px` (consent checkbox) · `10px` (inputs, FAQ items, RODO
+- **Radius ladder:** `6px` (consent checkbox) · `10px` (inputs, RODO
   box) · `14px` (`--radius`; portfolio and step cards) · `999px` pills (primary
   button, nav CTA) · `50%` (the 40px circular step-number badge, the 44px atuty
   icon circles). Corners are always soft; no sharp edges anywhere. Sections
@@ -528,6 +528,19 @@ component and do not give an action a boxy radius.
   same way. **Exception:** footer links skip the `box-shadow` — the
   green-tinted `--shadow` token is invisible against Pine Black, so only
   `translateY` + underline carry the hover cue there.
+
+### FAQ list (`.faq__list` / `.faq__item`)
+One component everywhere (faq.html, cennik.html, articles): no fill, no card,
+questions separated by 1px hairlines (`--border`), one above the first and one
+below the last. Native `<details name="...">`, so only one answer is open per
+list. The whole `<summary>` row is the target: weight 600, min 56px, ~20px
+vertical padding, a 16px plus drawn from two bars on the right that turns 45°
+into an × when open (200ms). Open state: a 3px Leaf Green bar on the left and
+the question in Leaf Green. Answer in Text Muted, max 65ch, 20px bottom
+padding, height animated through `::details-content` + `interpolate-size`
+where supported (plain show/hide elsewhere). Hover (pointer devices only):
+Surface Card fill on the row; `:focus-visible`: 2px inset accent outline. No
+motion under `prefers-reduced-motion`.
 
 ### Cards / Containers
 - **Sections themselves are not containers.** `.section > .container` carries no
@@ -938,7 +951,7 @@ on these four files are expected and not to be "fixed" toward FitPage.
 - **Don't** give a section its own background, border, blur, or radius of any
   kind — no panel, no card, no translucent fill. Sections are pure spacing.
   (The footer, `#16211B`, is the sole opaque exception, and the small
-  component-level cards — portfolio, steps, FAQ, form fields — keep their own
+  component-level cards — portfolio, steps, form fields — keep their own
   faint fill; neither is a section-level panel.)
 - **Don't** use Bottle Green for large fills or runs of text; its scarcity is
   the point.

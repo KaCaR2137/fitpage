@@ -668,6 +668,78 @@
         ],
         "createdAt": "2026-10-19T08:24:43.593Z",
         "reason": "fałszywy alarm: .gora i .cta mają duży padding, treść w .wrap z 20/48px"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "faq.html"
+        ],
+        "createdAt": "2026-10-19T18:17:34.084Z",
+        "reason": "brief: otwarte pytanie FAQ ma mieć 3px pionową kreskę w kolorze akcentu po lewej"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "cennik.html"
+        ],
+        "createdAt": "2026-10-19T18:17:34.103Z",
+        "reason": "brief: otwarte pytanie FAQ ma mieć 3px pionową kreskę w kolorze akcentu po lewej"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "artykuly/strona-czy-booksy.html"
+        ],
+        "createdAt": "2026-10-19T18:17:34.121Z",
+        "reason": "brief: otwarte pytanie FAQ ma mieć 3px pionową kreskę w kolorze akcentu po lewej"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "artykuly/strona-dla-dietetyka.html"
+        ],
+        "createdAt": "2026-10-19T18:17:34.140Z",
+        "reason": "brief: otwarte pytanie FAQ ma mieć 3px pionową kreskę w kolorze akcentu po lewej"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "faq.html"
+        ],
+        "createdAt": "2026-10-19T18:17:43.292Z",
+        "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, treść wierszy ma 20px paddingu"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "cennik.html"
+        ],
+        "createdAt": "2026-10-19T18:17:43.311Z",
+        "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, treść wierszy ma 20px paddingu"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "artykuly/strona-czy-booksy.html"
+        ],
+        "createdAt": "2026-10-19T18:17:43.330Z",
+        "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, treść wierszy ma 20px paddingu"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "artykuly/strona-dla-dietetyka.html"
+        ],
+        "createdAt": "2026-10-19T18:17:43.349Z",
+        "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, treść wierszy ma 20px paddingu"
       }
     ]
   }
