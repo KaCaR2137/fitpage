@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=19">
+  <link rel="stylesheet" href="style.css?v=20">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -231,42 +231,104 @@
     <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
     <section class="hero hero--compact hero--oferta">
       <div class="hero__inner">
-        <h1 class="hero__title reveal">Strona internetowa dla dietetyka</h1>
-        <p class="hero__subtitle reveal">Pacjent przychodzi z konkretnym problemem i chce szybko sprawdzić, czy mu pomożesz. Projektuję strony gabinetów i dietetyków online, które odpowiadają na to, zanim zapyta.</p>
-        <div class="hero__akcje reveal">
-          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        <div class="hero__tekst">
+          <h1 class="hero__title reveal">Strona internetowa dla dietetyka</h1>
+          <p class="hero__subtitle reveal">Pacjent przychodzi z konkretnym problemem i chce szybko sprawdzić, czy mu pomożesz. Projektuję strony gabinetów i dietetyków online, które odpowiadają na to, zanim zapyta.</p>
+          <div class="hero__akcje reveal">
+            <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+          </div>
+          <p class="hero__notka reveal">Zaczynasz od krótkiego briefu, ok. 5 minut. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
         </div>
-        <p class="hero__notka reveal">Zaczynasz od krótkiego briefu, ok. 5 minut. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <div class="scena scena--dietetyk reveal" aria-hidden="true">
+          <div class="scena__plotno">
+            <svg class="scena__talerz" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#FBF8F0" stroke="#1F3D2B" stroke-width="1.6"/><circle cx="50" cy="50" r="40" fill="none" stroke="#1F3D2B" stroke-opacity=".18" stroke-width=".8"/><path d="M50 50 L50 16 A34 34 0 0 1 79.44 67 Z" fill="#7FA87A"/><path d="M50 50 L79.44 67 A34 34 0 0 1 20.56 67 Z" fill="#E08C4E"/><path d="M50 50 L20.56 67 A34 34 0 0 1 50 16 Z" fill="#E8C77A"/><circle cx="50" cy="50" r="1.8" fill="#1F3D2B"/></svg>
+            <div class="telefon">
+              <div class="telefon__ekran">
+                <p class="telefon__pasek"><span>Anna · dietetyk</span><span class="telefon__menu"></span></p>
+                <p class="telefon__etykieta">GABINET · ONLINE</p>
+                <p class="telefon__haslo">Jedz normalnie, bez liczenia kalorii.</p>
+                <p class="telefon__cena">Konsultacja od <b>150&nbsp;zł</b></p>
+                <span class="telefon__btn">Umów konsultację</span>
+                <span class="telefon__o-mnie"><i></i><span><i></i><i></i></span></span>
+                <span class="telefon__linie"><i></i><i></i></span>
+              </div>
+            </div>
+            <p class="karta-ui karta-ui--1 karta-ui--mono">Insulinooporność · online</p>
+            <p class="karta-ui karta-ui--2"><span class="karta-ui__kroki"><span>1 rozmowa</span>→<span>2 plan</span>→<span>3 opieka</span></span></p>
+            <p class="karta-ui karta-ui--3 karta-ui--opinia"><span class="karta-ui__gwiazdki">★★★★★</span>„Pierwsza dieta, której się trzymam”</p>
+          </div>
+          <p class="scena__podpis">przykładowy projekt · marka fikcyjna</p>
+        </div>
       </div>
     </section>
 
     <!-- ============================ CZEGO POTRZEBUJE STRONA ============================ -->
-    <section class="section co-dostajesz" aria-labelledby="potrzeby-tytul">
-      <div class="container co-dostajesz__grid">
-        <div class="co-dostajesz__text">
-          <div>
-            <h2 id="potrzeby-tytul" class="section__title reveal">Czego potrzebuje strona dietetyka</h2>
-            <p class="oferta__dopisek reveal">Pełną listę z przykładami i błędami, których warto unikać, opisałem w artykule <a href="artykuly/strona-dla-dietetyka.html">Co powinna mieć strona dietetyka: 7 elementów</a>.</p>
-          </div>
-          <dl class="co-dostajesz__lista">
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Specjalizacja, nie ogólniki</dt>
-              <dd>Insulinooporność, dieta sportowa, żywienie dzieci. Konkret zamiast hasła „zdrowe odżywianie” pokazuje, z czym możesz pomóc.</dd>
-            </div>
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Cennik konsultacji i planów</dt>
-              <dd>Konsultacja, plan żywienia, opieka miesięczna. Ceny jako zwykły tekst na stronie, czytelne na telefonie, a nie plik PDF.</dd>
-            </div>
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Kwalifikacje i przebieg wizyty</dt>
-              <dd>Wykształcenie i kursy z nazwy, Twoje prawdziwe zdjęcie i krótko: co przygotować na pierwszą wizytę i kiedy pacjent dostaje jadłospis.</dd>
-            </div>
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Formularz bez danych o zdrowiu</dt>
-              <dd>Dane o zdrowiu to szczególna kategoria w RODO. Formularz pyta tylko o kontakt i cel, a szczegóły zbierasz już w trakcie współpracy.</dd>
-            </div>
-          </dl>
+    <section class="section potrzeby" aria-labelledby="potrzeby-tytul">
+      <div class="container">
+        <div class="potrzeby__glowa">
+          <h2 id="potrzeby-tytul" class="section__title reveal">Czego potrzebuje strona dietetyka</h2>
+          <p class="oferta__dopisek reveal">Pełną listę z przykładami i błędami, których warto unikać, opisałem w artykule <a href="artykuly/strona-dla-dietetyka.html">Co powinna mieć strona dietetyka: 7 elementów</a>.</p>
         </div>
+        <ul class="potrzeby__lista">
+          <li class="potrzeba potrzeba--szeroka reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui__mono">Anna · dietetyk</span>
+                <span class="ui__tytul">Z czym mogę pomóc</span>
+                <span class="ui__chipy"><span class="ui__chip ui__chip--skresl">zdrowe odżywianie</span><span class="ui__strzalka">→</span><span class="ui__chip ui__chip--on">Insulinooporność</span><span class="ui__chip">Dieta sportowa</span><span class="ui__chip">Żywienie dzieci</span></span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Specjalizacja, nie ogólniki</h3>
+              <p>Insulinooporność, dieta sportowa, żywienie dzieci. Konkret zamiast hasła „zdrowe odżywianie” pokazuje, z czym możesz pomóc.</p>
+            </div>
+          </li>
+          <li class="potrzeba potrzeba--piasek reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui__mono">Cennik</span>
+                <span class="ui__wiersz"><span>Konsultacja</span><b>150 zł</b></span>
+                <span class="ui__wiersz"><span>Plan żywienia</span><b>250 zł</b></span>
+                <span class="ui__wiersz"><span>Opieka miesięczna</span><b>390 zł</b></span>
+              </div>
+              <span class="ui__plik">PDF</span>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Cennik konsultacji i planów</h3>
+              <p>Konsultacja, plan żywienia, opieka miesięczna. Ceny jako zwykły tekst na stronie, czytelne na telefonie, a nie plik PDF.</p>
+            </div>
+          </li>
+          <li class="potrzeba reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui__profil"><span class="ui__awatar">A</span><span><b>mgr dietetyki</b><small>kurs dietoterapii insulinooporności</small></span></span>
+                <span class="ui__mono">Pierwsza wizyta</span>
+                <span class="ui__wiersz"><span>Wywiad i pomiary</span><b>60 min</b></span>
+                <span class="ui__wiersz"><span>Jadłospis</span><b>do 7 dni</b></span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Kwalifikacje i przebieg wizyty</h3>
+              <p>Wykształcenie i kursy z nazwy, Twoje prawdziwe zdjęcie i krótko: co przygotować na pierwszą wizytę i kiedy pacjent dostaje jadłospis.</p>
+            </div>
+          </li>
+          <li class="potrzeba potrzeba--szeroka potrzeba--odwrocona potrzeba--piasek reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui__mono">Umów konsultację</span>
+                <span class="ui__pole">Imię</span>
+                <span class="ui__pole">E-mail lub telefon</span>
+                <span class="ui__pole">Cel konsultacji</span>
+                <span class="ui__pole ui__pole--skresl">Choroby, wyniki badań</span>
+                <span class="ui__znaczek">✓ zgodne z RODO</span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Formularz bez danych o zdrowiu</h3>
+              <p>Dane o zdrowiu to szczególna kategoria w RODO. Formularz pyta tylko o kontakt i cel, a szczegóły zbierasz już w trakcie współpracy.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -294,15 +356,45 @@
     </section>
 
     <!-- ============================ PROCES (skrót) ============================ -->
-    <section class="section" aria-labelledby="proces-tytul">
+    <section class="section sekcja-ciemna oferta-proces" aria-labelledby="proces-tytul">
       <div class="container">
         <h2 id="proces-tytul" class="section__title reveal">Od rozmowy do publikacji</h2>
-        <ol class="proces-pasek reveal">
-          <li><span class="proces-pasek__nr" aria-hidden="true">1</span><a href="proces.html#etap-1">Bezpłatna rozmowa</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">2</span><a href="proces.html#etap-2">Plan i materiały</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">3</span><a href="proces.html#etap-3">Projekt</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">4</span><a href="proces.html#etap-4">Budowa i testy</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">5</span><a href="proces.html#etap-5">Publikacja</a></li>
+        <ol class="os">
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">1</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dzień 1</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-1">Bezpłatna rozmowa</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">2</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 1-2</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-2">Plan i materiały</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">3</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 3-6</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-3">Projekt</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">4</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 6-20</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-4">Budowa i testy</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">5</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dzień 7-21</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-5">Publikacja</a></h3>
+            </div>
+          </li>
         </ol>
         <p class="o-nas__wiecej reveal"><a href="proces.html">Zobacz, co dzieje się na każdym etapie &rarr;</a></p>
       </div>
@@ -315,23 +407,29 @@
           <h2 id="style-tytul" class="section__title">Style, które pasują do gabinetu</h2>
           <a href="szablony.html" class="style-pasek__link">Wszystkie style &rarr;</a>
         </div>
-        <ul class="style-pasek__lista style-pasek__lista--dwa reveal">
+        <ul class="oferta-style reveal">
           <li>
             <a href="szablony.html#jasny">
-              <picture>
-                <source type="image/webp" srcset="images/szablony/jasny-400.webp">
-                <img src="images/szablony/jasny-400.jpg" width="400" height="250" loading="lazy" decoding="async" alt="">
-              </picture>
-              <span>Jasny</span>
+              <span class="przegladarka">
+                <span class="przegladarka__pasek" aria-hidden="true"><i></i><i></i><i></i><span class="przegladarka__adres">fitpage.pl/szablony/jasny</span></span>
+                <picture>
+                  <source type="image/webp" srcset="images/szablony/jasny-400.webp 400w, images/szablony/jasny-800.webp 800w" sizes="(min-width: 1080px) 510px, (min-width: 700px) 46vw, 100vw">
+                  <img src="images/szablony/jasny-800.jpg" width="800" height="500" loading="lazy" decoding="async" alt="">
+                </picture>
+              </span>
+              <span class="oferta-style__nazwa"><span>Jasny</span><span aria-hidden="true">&rarr;</span></span>
             </a>
           </li>
           <li>
             <a href="szablony.html#minimalny">
-              <picture>
-                <source type="image/webp" srcset="images/szablony/minimalny-400.webp">
-                <img src="images/szablony/minimalny-400.jpg" width="400" height="250" loading="lazy" decoding="async" alt="">
-              </picture>
-              <span>Minimalny</span>
+              <span class="przegladarka">
+                <span class="przegladarka__pasek" aria-hidden="true"><i></i><i></i><i></i><span class="przegladarka__adres">fitpage.pl/szablony/minimalny</span></span>
+                <picture>
+                  <source type="image/webp" srcset="images/szablony/minimalny-400.webp 400w, images/szablony/minimalny-800.webp 800w" sizes="(min-width: 1080px) 510px, (min-width: 700px) 46vw, 100vw">
+                  <img src="images/szablony/minimalny-800.jpg" width="800" height="500" loading="lazy" decoding="async" alt="">
+                </picture>
+              </span>
+              <span class="oferta-style__nazwa"><span>Minimalny</span><span aria-hidden="true">&rarr;</span></span>
             </a>
           </li>
         </ul>
@@ -368,12 +466,36 @@
     </section>
 
     <!-- ============================ CTA ============================ -->
-    <section class="section cta-closing" aria-label="Umów konsultację">
-      <div class="container cta-closing__inner reveal">
-        <h2 class="section__title">Zaczynamy?</h2>
-        <p class="cta-closing__text">Napisz, z czym przychodzą do Ciebie pacjenci. Odpiszę z propozycją zakresu i wyceną, a pierwsza rozmowa jest bezpłatna.</p>
-        <div class="cta-closing__akcje">
-          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+    <section class="section cta-closing cta-venn sekcja-ciemna sekcja-ciemna--do-stopki" aria-label="Umów konsultację">
+      <div class="container cta-closing__inner">
+        <h2 class="section__title reveal">Zaczynamy?</h2>
+        <p class="cta-closing__text reveal">Napisz, z czym przychodzą do Ciebie pacjenci. Odpiszę z propozycją zakresu i wyceną, a pierwsza rozmowa jest bezpłatna.</p>
+        <div class="venn reveal">
+          <svg class="venn__svg" viewBox="0 0 640 480" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <defs><clipPath id="venn-prawe"><circle cx="400" cy="240" r="230"/></clipPath></defs>
+            <circle class="venn__soczewka" cx="240" cy="240" r="230" fill="currentColor" fill-opacity=".1" stroke="none" clip-path="url(#venn-prawe)"/>
+            <g class="venn__kolo venn__kolo--l">
+              <circle cx="240" cy="240" r="230" stroke-width="2" opacity=".9"/>
+              <g transform="translate(90 236) scale(.6)" stroke-width="5.5">
+                <rect x="-84" y="-66" width="168" height="112" rx="9"/>
+                <path d="M-104 58 H104 L93 76 H-93 Z"/>
+                <path d="M-30 -27 L-50 -8 L-30 11"/>
+                <path d="M30 -27 L50 -8 L30 11"/>
+                <path d="M11 -33 L-11 17"/>
+              </g>
+            </g>
+            <g class="venn__kolo venn__kolo--p">
+              <circle cx="400" cy="240" r="230" stroke-width="2" opacity=".9"/>
+              <g transform="translate(550 240)" stroke-width="3.3">
+                <circle r="62"/>
+                <circle r="46" opacity=".55"/>
+                <path d="M0 0 V-46 M0 0 L39.8 23 M0 0 L-39.8 23"/>
+              </g>
+            </g>
+          </svg>
+          <a href="kontakt.html" class="btn venn__btn">Umów konsultację</a>
+        </div>
+        <div class="cta-closing__akcje reveal">
           <a href="cennik.html" class="btn btn--secondary">Zobacz cennik</a>
         </div>
         <p class="cta-closing__podpis">Odpisuję osobiście, Kacper Barczak. Wolisz napisać od razu? <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>

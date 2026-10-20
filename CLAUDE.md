@@ -180,6 +180,27 @@ wejściu na główną podstrony pokazują lżejszy wariant.
 - Linki „Strona dla trenera” i „Strona dla dietetyka” w stopce wszystkich stron,
   wpisy w sitemap.xml, llms.txt i `_redirects`. `style.css?v=19`.
 
+**Podstrony ofertowe z ilustracjami (20.10.2026).** Obie podstrony dostały
+ilustracje w stylu okładek artykułów, wyłącznie HTML/CSS/SVG inline (sekcja
+„PODSTRONY OFERTOWE: ilustracje” na końcu `style.css`). Treść, FAQ i JSON-LD
+bez zmian (sprawdzone porównaniem z poprzednią wersją).
+- Hero: od 900px tekst | scena (`.scena`, `aria-hidden`): telefon `.telefon`
+  (wnętrze w jednostkach `cqi`, obrót 4°) z przykładową stroną „Ola · trenerka
+  personalna” / „Anna · dietetyk” + 3 pływające `.karta-ui`, u dietetyka talerz
+  SVG z okładki. Podpis „przykładowy projekt · marka fikcyjna”. Do 560px telefon
+  188px, prosto, jedna karta.
+- „Czego potrzebuje strona…”: `<ul class="potrzeby__lista">`, punkty `.potrzeba`
+  z ilustracją UI (`.ui*`), od 900px szeroki / dwa obok siebie / szeroki odwrócony;
+  `dt` zamienione na `h3`, teksty 1:1.
+- Proces: ten sam komponent `.os`/`.etap` co proces.html (termin + nazwa-link),
+  na ciemnozielonej `.sekcja-ciemna` z łukiem (`border-radius: 50% / 56px`).
+- Style: `.oferta-style`, miniatury 800px w ramce przeglądarki, hover.
+- CTA: `.cta-venn` na zieleni z łukiem u góry, dwa koła (laptop `</>` + sztanga,
+  u dietetyka talerz), „Umów konsultację” w części wspólnej.
+- Ruch: unoszenie kart (`translate`, nie `transform`) i rozjazd kół przy
+  `.reveal` tylko pod `prefers-reduced-motion: no-preference`. `style.css?v=20`
+  na wszystkich stronach.
+
 ## Strony
 **Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /
 Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz

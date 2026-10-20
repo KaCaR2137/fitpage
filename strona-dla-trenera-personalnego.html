@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=19">
+  <link rel="stylesheet" href="style.css?v=20">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -231,42 +231,101 @@
     <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
     <section class="hero hero--compact hero--oferta">
       <div class="hero__inner">
-        <h1 class="hero__title reveal">Strona internetowa dla trenera personalnego</h1>
-        <p class="hero__subtitle reveal">Klient znajduje Cię w Google albo na Instagramie, a decyzję podejmuje na Twojej stronie. Projektuję strony, które prowadzą go prosto do zapisu na pierwszy trening.</p>
-        <div class="hero__akcje reveal">
-          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        <div class="hero__tekst">
+          <h1 class="hero__title reveal">Strona internetowa dla trenera personalnego</h1>
+          <p class="hero__subtitle reveal">Klient znajduje Cię w Google albo na Instagramie, a decyzję podejmuje na Twojej stronie. Projektuję strony, które prowadzą go prosto do zapisu na pierwszy trening.</p>
+          <div class="hero__akcje reveal">
+            <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+          </div>
+          <p class="hero__notka reveal">Zaczynasz od krótkiego briefu, ok. 5 minut. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
         </div>
-        <p class="hero__notka reveal">Zaczynasz od krótkiego briefu, ok. 5 minut. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <div class="scena scena--trener reveal" aria-hidden="true">
+          <div class="scena__plotno">
+            <div class="telefon">
+              <div class="telefon__ekran">
+                <p class="telefon__pasek"><span>Ola · trenerka personalna</span><span class="telefon__menu"></span></p>
+                <p class="telefon__etykieta">TRENING PERSONALNY · JEŻYCE</p>
+                <p class="telefon__haslo">Wróć do formy bez bólu.</p>
+                <div class="telefon__foto"><svg viewBox="0 0 48 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12h20"/><rect x="8" y="5" width="6" height="14" rx="2"/><rect x="34" y="5" width="6" height="14" rx="2"/><path d="M4 9v6M44 9v6"/></svg></div>
+                <p class="telefon__cena">Pierwszy trening od <b>99&nbsp;zł</b></p>
+                <span class="telefon__btn">Zapisz się</span>
+                <span class="telefon__linie"><i></i><i></i></span>
+              </div>
+            </div>
+            <p class="karta-ui karta-ui--1"><span class="karta-ui__gwiazdki">★</span>5,0 · 43 opinie</p>
+            <p class="karta-ui karta-ui--2"><span class="karta-ui__kropka"></span>Wolne terminy: wt 18:00</p>
+            <p class="karta-ui karta-ui--3 karta-ui--mono">Redukcja · Siła · Powrót po kontuzji</p>
+          </div>
+          <p class="scena__podpis">przykładowy projekt · marka fikcyjna</p>
+        </div>
       </div>
     </section>
 
     <!-- ============================ CZEGO POTRZEBUJE STRONA ============================ -->
-    <section class="section co-dostajesz" aria-labelledby="potrzeby-tytul">
-      <div class="container co-dostajesz__grid">
-        <div class="co-dostajesz__text">
-          <div>
-            <h2 id="potrzeby-tytul" class="section__title reveal">Czego potrzebuje strona trenera</h2>
-            <p class="oferta__dopisek reveal">Więcej o tym, jak odróżnić się od innych trenerów, piszę w artykule <a href="artykuly/jak-wyroznic-sie-jako-trener.html">Jak wyróżnić się jako trener personalny</a>.</p>
-          </div>
-          <dl class="co-dostajesz__lista">
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Specjalizacja w pierwszym zdaniu</dt>
-              <dd>Z kim pracujesz i w czym pomagasz: redukcja, siła, powrót po kontuzji, seniorzy. Klient od razu wie, czy trafił dobrze.</dd>
-            </div>
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Ceny treningów</dt>
-              <dd>Pojedynczy trening, pakiety, prowadzenie online. Cena „od” wystarczy, żeby klient pisał już z decyzją, a nie z pytaniem o koszt.</dd>
-            </div>
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Zdjęcia z sali i metamorfozy</dt>
-              <dd>Prawdziwe zdjęcia z treningów i efekty podopiecznych, zawsze za ich zgodą. Zdjęcia z banku nie budują zaufania.</dd>
-            </div>
-            <div class="co-dostajesz__punkt reveal">
-              <dt>Zapis na pierwszy trening</dt>
-              <dd>Jeden wyraźny przycisk, kalendarz albo krótki formularz, a obok miejsce treningów: siłownia, plener albo online.</dd>
-            </div>
-          </dl>
+    <section class="section potrzeby" aria-labelledby="potrzeby-tytul">
+      <div class="container">
+        <div class="potrzeby__glowa">
+          <h2 id="potrzeby-tytul" class="section__title reveal">Czego potrzebuje strona trenera</h2>
+          <p class="oferta__dopisek reveal">Więcej o tym, jak odróżnić się od innych trenerów, piszę w artykule <a href="artykuly/jak-wyroznic-sie-jako-trener.html">Jak wyróżnić się jako trener personalny</a>.</p>
         </div>
+        <ul class="potrzeby__lista">
+          <li class="potrzeba potrzeba--szeroka reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui__mono">Ola · trenerka personalna</span>
+                <span class="ui__tytul">Pomagam wrócić do formy po kontuzji.</span>
+                <span class="ui__chipy"><span class="ui__chip">Redukcja</span><span class="ui__chip">Siła</span><span class="ui__chip ui__chip--on">Po kontuzji</span><span class="ui__chip">Seniorzy</span></span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Specjalizacja w pierwszym zdaniu</h3>
+              <p>Z kim pracujesz i w czym pomagasz: redukcja, siła, powrót po kontuzji, seniorzy. Klient od razu wie, czy trafił dobrze.</p>
+            </div>
+          </li>
+          <li class="potrzeba potrzeba--piasek reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui__mono">Cennik</span>
+                <span class="ui__wiersz"><span>Trening 1:1</span><b>od 140 zł</b></span>
+                <span class="ui__wiersz"><span>Pakiet 10 treningów</span><b>od 1200 zł</b></span>
+                <span class="ui__wiersz"><span>Prowadzenie online</span><b>od 290 zł</b><small>/mies.</small></span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Ceny treningów</h3>
+              <p>Pojedynczy trening, pakiety, prowadzenie online. Cena „od” wystarczy, żeby klient pisał już z decyzją, a nie z pytaniem o koszt.</p>
+            </div>
+          </li>
+          <li class="potrzeba reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui">
+                <span class="ui-pp"><span>przed</span><span>po 12 tyg.</span></span>
+                <span class="ui__mono">Metamorfoza · Kasia, 34 lata</span>
+                <span class="ui__znaczek">✓ za zgodą podopiecznej</span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Zdjęcia z sali i metamorfozy</h3>
+              <p>Prawdziwe zdjęcia z treningów i efekty podopiecznych, zawsze za ich zgodą. Zdjęcia z banku nie budują zaufania.</p>
+            </div>
+          </li>
+          <li class="potrzeba potrzeba--szeroka potrzeba--odwrocona potrzeba--piasek reveal">
+            <div class="potrzeba__ilustracja" aria-hidden="true">
+              <div class="ui ui--waska">
+                <span class="ui__mono">Pierwszy trening</span>
+                <span class="ui__sloty"><span class="ui__slot ui__slot--zajety">pn 7:00</span><span class="ui__slot ui__slot--on">wt 18:00</span><span class="ui__slot">czw 19:00</span></span>
+              </div>
+              <span class="ui__btn">Zapisz się<svg class="ui__kursor" viewBox="0 0 20 24"><path d="M2 2l15 11-6.5 1.2 3.6 7.2-3 1.4-3.5-7.3L2 20z" fill="#202821" stroke="#FFFDF8" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+              <div class="ui ui--waska">
+                <span class="ui__pinezka"><svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 28s9-9.2 9-16a9 9 0 0 0-18 0c0 6.8 9 16 9 16z" fill="currentColor" fill-opacity=".12"/><circle cx="12" cy="12" r="3.2"/></svg><span><b>Siłownia, Poznań Jeżyce</b><small>plener · online</small></span></span>
+              </div>
+            </div>
+            <div class="potrzeba__tekst">
+              <h3>Zapis na pierwszy trening</h3>
+              <p>Jeden wyraźny przycisk, kalendarz albo krótki formularz, a obok miejsce treningów: siłownia, plener albo online.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -296,15 +355,45 @@
     </section>
 
     <!-- ============================ PROCES (skrót) ============================ -->
-    <section class="section" aria-labelledby="proces-tytul">
+    <section class="section sekcja-ciemna oferta-proces" aria-labelledby="proces-tytul">
       <div class="container">
         <h2 id="proces-tytul" class="section__title reveal">Jak powstaje strona trenera</h2>
-        <ol class="proces-pasek reveal">
-          <li><span class="proces-pasek__nr" aria-hidden="true">1</span><a href="proces.html#etap-1">Bezpłatna rozmowa</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">2</span><a href="proces.html#etap-2">Plan i materiały</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">3</span><a href="proces.html#etap-3">Projekt</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">4</span><a href="proces.html#etap-4">Budowa i testy</a></li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">5</span><a href="proces.html#etap-5">Publikacja</a></li>
+        <ol class="os">
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">1</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dzień 1</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-1">Bezpłatna rozmowa</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">2</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 1-2</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-2">Plan i materiały</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">3</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 3-6</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-3">Projekt</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">4</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 6-20</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-4">Budowa i testy</a></h3>
+            </div>
+          </li>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">5</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dzień 7-21</p>
+              <h3 class="etap__nazwa"><a href="proces.html#etap-5">Publikacja</a></h3>
+            </div>
+          </li>
         </ol>
         <p class="o-nas__wiecej reveal"><a href="proces.html">Zobacz, co dzieje się na każdym etapie &rarr;</a></p>
       </div>
@@ -317,23 +406,29 @@
           <h2 id="style-tytul" class="section__title">Style, które pasują do trenera</h2>
           <a href="szablony.html" class="style-pasek__link">Wszystkie style &rarr;</a>
         </div>
-        <ul class="style-pasek__lista style-pasek__lista--dwa reveal">
+        <ul class="oferta-style reveal">
           <li>
             <a href="szablony.html#mocny">
-              <picture>
-                <source type="image/webp" srcset="images/szablony/mocny-400.webp">
-                <img src="images/szablony/mocny-400.jpg" width="400" height="250" loading="lazy" decoding="async" alt="">
-              </picture>
-              <span>Mocny</span>
+              <span class="przegladarka">
+                <span class="przegladarka__pasek" aria-hidden="true"><i></i><i></i><i></i><span class="przegladarka__adres">fitpage.pl/szablony/mocny</span></span>
+                <picture>
+                  <source type="image/webp" srcset="images/szablony/mocny-400.webp 400w, images/szablony/mocny-800.webp 800w" sizes="(min-width: 1080px) 510px, (min-width: 700px) 46vw, 100vw">
+                  <img src="images/szablony/mocny-800.jpg" width="800" height="500" loading="lazy" decoding="async" alt="">
+                </picture>
+              </span>
+              <span class="oferta-style__nazwa"><span>Mocny</span><span aria-hidden="true">&rarr;</span></span>
             </a>
           </li>
           <li>
             <a href="szablony.html#dynamiczny">
-              <picture>
-                <source type="image/webp" srcset="images/szablony/dynamiczny-400.webp">
-                <img src="images/szablony/dynamiczny-400.jpg" width="400" height="250" loading="lazy" decoding="async" alt="">
-              </picture>
-              <span>Dynamiczny</span>
+              <span class="przegladarka">
+                <span class="przegladarka__pasek" aria-hidden="true"><i></i><i></i><i></i><span class="przegladarka__adres">fitpage.pl/szablony/dynamiczny</span></span>
+                <picture>
+                  <source type="image/webp" srcset="images/szablony/dynamiczny-400.webp 400w, images/szablony/dynamiczny-800.webp 800w" sizes="(min-width: 1080px) 510px, (min-width: 700px) 46vw, 100vw">
+                  <img src="images/szablony/dynamiczny-800.jpg" width="800" height="500" loading="lazy" decoding="async" alt="">
+                </picture>
+              </span>
+              <span class="oferta-style__nazwa"><span>Dynamiczny</span><span aria-hidden="true">&rarr;</span></span>
             </a>
           </li>
         </ul>
@@ -370,12 +465,40 @@
     </section>
 
     <!-- ============================ CTA ============================ -->
-    <section class="section cta-closing" aria-label="Umów konsultację">
-      <div class="container cta-closing__inner reveal">
-        <h2 class="section__title">Zaczynamy?</h2>
-        <p class="cta-closing__text">Opowiedz mi, z kim pracujesz. Odpiszę z propozycją zakresu i wyceną, a pierwsza rozmowa jest bezpłatna.</p>
-        <div class="cta-closing__akcje">
-          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+    <section class="section cta-closing cta-venn sekcja-ciemna sekcja-ciemna--do-stopki" aria-label="Umów konsultację">
+      <div class="container cta-closing__inner">
+        <h2 class="section__title reveal">Zaczynamy?</h2>
+        <p class="cta-closing__text reveal">Opowiedz mi, z kim pracujesz. Odpiszę z propozycją zakresu i wyceną, a pierwsza rozmowa jest bezpłatna.</p>
+        <div class="venn reveal">
+          <svg class="venn__svg" viewBox="0 0 640 480" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <defs><clipPath id="venn-prawe"><circle cx="400" cy="240" r="230"/></clipPath></defs>
+            <circle class="venn__soczewka" cx="240" cy="240" r="230" fill="currentColor" fill-opacity=".1" stroke="none" clip-path="url(#venn-prawe)"/>
+            <g class="venn__kolo venn__kolo--l">
+              <circle cx="240" cy="240" r="230" stroke-width="2" opacity=".9"/>
+              <g transform="translate(90 236) scale(.6)" stroke-width="5.5">
+                <rect x="-84" y="-66" width="168" height="112" rx="9"/>
+                <path d="M-104 58 H104 L93 76 H-93 Z"/>
+                <path d="M-30 -27 L-50 -8 L-30 11"/>
+                <path d="M30 -27 L50 -8 L30 11"/>
+                <path d="M11 -33 L-11 17"/>
+              </g>
+            </g>
+            <g class="venn__kolo venn__kolo--p">
+              <circle cx="400" cy="240" r="230" stroke-width="2" opacity=".9"/>
+              <g transform="translate(550 240) scale(.6)" stroke-width="5.5">
+                <path d="M-52 0 H52"/>
+                <rect x="-70" y="-50" width="18" height="100" rx="5"/>
+                <rect x="-90" y="-36" width="16" height="72" rx="5"/>
+                <path d="M-104 0 H-92"/>
+                <rect x="52" y="-50" width="18" height="100" rx="5"/>
+                <rect x="74" y="-36" width="16" height="72" rx="5"/>
+                <path d="M92 0 H104"/>
+              </g>
+            </g>
+          </svg>
+          <a href="kontakt.html" class="btn venn__btn">Umów konsultację</a>
+        </div>
+        <div class="cta-closing__akcje reveal">
           <a href="cennik.html" class="btn btn--secondary">Zobacz cennik</a>
         </div>
         <p class="cta-closing__podpis">Odpisuję osobiście, Kacper Barczak. Wolisz napisać od razu? <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>
