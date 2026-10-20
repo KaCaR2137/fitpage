@@ -198,8 +198,15 @@ bez zmian (sprawdzone porównaniem z poprzednią wersją).
 - CTA: `.cta-venn` na zieleni z łukiem u góry, dwa koła (laptop `</>` + sztanga,
   u dietetyka talerz), „Umów konsultację” w części wspólnej.
 - Ruch: unoszenie kart (`translate`, nie `transform`) i rozjazd kół przy
-  `.reveal` tylko pod `prefers-reduced-motion: no-preference`. `style.css?v=20`
-  na wszystkich stronach.
+  `.reveal` tylko pod `prefers-reduced-motion: no-preference`.
+- Po audycie (20.10.2026): karty unoszą się raz i wracają w ciągu 5 s (bez
+  pętli, WCAG 2.2.2); w telefonie pasek adresu `przyklad-ola.fitpage.pl` /
+  `przyklad-anna.fitpage.pl` zamiast podpisu pod sceną (makieta = przykład,
+  nie opinie o FitPage); cały blok etapu na osi to cel kliknięcia (min. 44px);
+  siatka stylów `minmax(0, 1fr)` (było przewijanie w bok na 320px); gwiazdki
+  i ptaszki to maski SVG, nie glify; kolory makiet jako zmienne w `:root`
+  sekcji ilustracji. Wyjątek ciemnych pasm opisany w DESIGN.md.
+  `style.css?v=21` na wszystkich stronach.
 
 ## Strony
 **Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /

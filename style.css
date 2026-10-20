@@ -3021,6 +3021,10 @@ html:has(.podglad[open]) { overflow: hidden; }
   --talerz-zielen: #7FA87A;
   --talerz-zolty: #E8C77A;
   --talerz-pomarancz: #E08C4E;
+  --telefon-ramka: #18211B;
+  --pasek-przegladarki: #EFE8D8;
+  --gwiazdki: #B8872A;
+  --zielen-na-ciemnym: #A8CDB4; /* tekst pomocniczy na --accent, ok. 6.9:1 */
 }
 
 /* ---- Hero: tekst + scena ---- */
@@ -3038,7 +3042,7 @@ html:has(.podglad[open]) { overflow: hidden; }
   aspect-ratio: 9 / 18;
   padding: 3.4%;
   border-radius: 15% / 7.5%;
-  background: #18211B;
+  background: var(--telefon-ramka);
   box-shadow: 0 30px 60px rgba(31, 45, 36, 0.22), 0 6px 14px rgba(31, 45, 36, 0.12);
   transform: rotate(4deg);
 }
@@ -3048,12 +3052,26 @@ html:has(.podglad[open]) { overflow: hidden; }
   gap: 5.5cqi;
   height: 100%;
   overflow: hidden;
-  padding: 9cqi 7cqi 7cqi;
+  padding: 5cqi 7cqi 7cqi;
   border-radius: 11cqi;
   background: var(--on-accent);
   color: var(--accent);
 }
 .telefon__ekran > * { margin: 0; }
+/* pasek adresu: makieta to przykładowa strona, nie opinie o FitPage */
+.telefon__adres {
+  align-self: center;
+  max-width: 100%;
+  padding: 1.6cqi 4.5cqi;
+  border-radius: 999px;
+  background: rgba(31, 61, 43, 0.07);
+  font-family: var(--font-mono);
+  font-size: 3.6cqi;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .telefon__pasek {
   display: flex;
   align-items: center;
@@ -3074,7 +3092,7 @@ html:has(.podglad[open]) { overflow: hidden; }
     linear-gradient(currentColor 0 0) bottom / 100% 0.9cqi no-repeat;
 }
 .telefon__etykieta {
-  margin-top: 3cqi !important;
+  margin-top: 3cqi;
   font-family: var(--font-mono);
   font-size: 3.7cqi;
   letter-spacing: 0.06em;
@@ -3110,7 +3128,7 @@ html:has(.podglad[open]) { overflow: hidden; }
   font-weight: 600;
   text-align: center;
 }
-.telefon__linie { display: grid; gap: 2.6cqi; margin-top: auto !important; }
+.telefon__linie { display: grid; gap: 2.6cqi; margin-top: auto; }
 .telefon__linie i { display: block; height: 2.4cqi; border-radius: 2cqi; background: rgba(31, 61, 43, 0.1); }
 .telefon__linie i:last-child { width: 64%; }
 .telefon__o-mnie { display: flex; align-items: center; gap: 4cqi; padding: 4cqi; border-radius: 5cqi; background: rgba(31, 61, 43, 0.06); }
@@ -3139,13 +3157,21 @@ html:has(.podglad[open]) { overflow: hidden; }
   white-space: nowrap;
 }
 .karta-ui--mono { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; }
-.karta-ui__gwiazdki { color: #B8872A; letter-spacing: 1px; }
+/* gwiazdki rysowane maską SVG, liczba w --n */
+.karta-ui__gwiazdki {
+  flex-shrink: 0;
+  width: calc(var(--n, 1) * 15px);
+  height: 14px;
+  background: var(--gwiazdki);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E") left / 15px 14px repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E") left / 15px 14px repeat-x;
+}
 .karta-ui__kropka { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-strong); box-shadow: 0 0 0 4px rgba(44, 107, 71, 0.15); }
 .karta-ui__kroki { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; }
 .karta-ui__kroki span { padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; }
 .karta-ui__kroki span:first-child { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .karta-ui--opinia { display: grid; gap: 2px; white-space: normal; width: 210px; font-weight: 500; }
-.karta-ui--opinia .karta-ui__gwiazdki { font-size: 0.8rem; }
+.karta-ui--opinia { justify-items: start; gap: 6px; }
 
 .scena--trener .karta-ui--1 { top: 9%; left: -3%; rotate: -4deg; }
 .scena--trener .karta-ui--2 { top: 31%; right: -6%; rotate: 3deg; }
@@ -3165,10 +3191,14 @@ html:has(.podglad[open]) { overflow: hidden; }
 .scena--dietetyk .karta-ui--2 { bottom: 5%; left: -4%; rotate: 2deg; }
 .scena--dietetyk .karta-ui--3 { top: 66%; right: -8%; rotate: 3deg; }
 
+/* Jedno uniesienie i powrót po wejściu (2 przebiegi alternate = koniec
+   w pozycji wyjściowej), całość do 5 s, potem spokój. Bez pętli bez końca:
+   ruch dłuższy niż 5 s wymagałby pauzy (WCAG 2.2.2), jak pasek dyscyplin
+   na głównej. */
 @media (prefers-reduced-motion: no-preference) {
-  .karta-ui { animation: karta-unosi 5.5s ease-in-out infinite alternate; }
-  .karta-ui--2 { animation-duration: 6.5s; animation-delay: -2s; }
-  .karta-ui--3 { animation-duration: 7s; animation-delay: -4s; }
+  .karta-ui { animation: karta-unosi 2s ease-in-out 0.4s 2 alternate both; }
+  .karta-ui--2 { animation-duration: 2.2s; }
+  .karta-ui--3 { animation-duration: 2.3s; }
 }
 /* translate (osobna właściwość), nie transform — żeby nie gryzło się z obrotem */
 @keyframes karta-unosi { from { translate: 0 0; } to { translate: 0 -10px; } }
@@ -3282,6 +3312,7 @@ html:has(.podglad[open]) { overflow: hidden; }
 .ui__strzalka { font-size: 1.1rem; color: var(--accent-strong); }
 .ui__wiersz {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 10px;
   padding: 8px 0;
@@ -3330,6 +3361,14 @@ html:has(.podglad[open]) { overflow: hidden; }
   color: var(--accent-strong);
   font-size: 0.72rem;
   font-weight: 600;
+}
+.ui__znaczek::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .ui__pole {
   display: block;
@@ -3433,14 +3472,22 @@ html:has(.podglad[open]) { overflow: hidden; }
 .oferta-proces .o-nas__wiecej a { color: var(--on-accent); text-decoration: underline; text-decoration-color: rgba(251, 248, 240, 0.4); }
 .sekcja-ciemna .etap__nr { background: var(--on-accent); color: var(--accent); box-shadow: 0 0 0 6px var(--accent); }
 .sekcja-ciemna .etap:not(:last-child)::after { background: rgba(251, 248, 240, 0.28); }
-.sekcja-ciemna .etap__czas { color: #A8CDB4; }
+.sekcja-ciemna .etap__czas { color: var(--zielen-na-ciemnym); }
 .sekcja-ciemna .etap__nazwa { margin: 0; }
 .sekcja-ciemna .etap__nazwa a { color: var(--on-accent); text-decoration: none; text-underline-offset: 4px; }
+/* cały blok etapu (termin + nazwa) jest celem kliknięcia, min. 44px wysokości */
+.oferta-proces .etap__tresc { position: relative; min-height: 44px; }
+.oferta-proces .etap__nazwa a::after { content: ""; position: absolute; inset: -6px -12px; border-radius: 10px; }
+.oferta-proces .etap__nazwa a:focus-visible { outline: none; }
+@media (hover: hover) {
+  .oferta-proces .etap__tresc:hover .etap__nazwa a { text-decoration: underline; }
+}
+.oferta-proces .etap__nazwa a:focus-visible::after { outline: 2px solid var(--on-accent); outline-offset: 0; }
 .sekcja-ciemna .etap__nazwa a:hover,
 .sekcja-ciemna .etap__nazwa a:focus-visible { text-decoration: underline; }
 
 /* ---- Style: miniatury w ramce przeglądarki ---- */
-.oferta-style { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 28px; }
+.oferta-style { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
 .oferta-style a { display: block; color: var(--text); text-decoration: none; }
 .przegladarka {
   display: block;
@@ -3457,11 +3504,12 @@ html:has(.podglad[open]) { overflow: hidden; }
   gap: 6px;
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
-  background: #EFE8D8;
+  background: var(--pasek-przegladarki);
 }
 .przegladarka__pasek i { width: 9px; height: 9px; border-radius: 50%; background: rgba(31, 61, 43, 0.22); }
 .przegladarka__adres {
   flex: 0 1 auto;
+  min-width: 0;
   margin-left: 10px;
   padding: 3px 12px;
   border-radius: 999px;

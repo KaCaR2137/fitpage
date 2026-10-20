@@ -208,6 +208,18 @@ on the site references its colors, and the Flat Canvas / One Mark rules
 above still govern every other surface unchanged. See "Terminal panel
 (signature)" under Components for the full color list.
 
+**Scoped exception (20.10.2026): two Bottle Green bands on the offer pages.**
+On `strona-dla-trenera-personalnego.html` and `strona-dla-dietetyka.html`
+only, two sections repaint in Bottle Green (`.sekcja-ciemna`): the process
+timeline and the closing CTA. They enter and leave the canvas through a
+shallow arc (`border-radius: 50% / 56px`, 28px up to 768px), never a hard
+edge; the CTA band arcs in at the top and runs flat into the footer
+(`.sekcja-ciemna--do-stopki`). On these bands text is Ivory, secondary text
+Ivory at 0.8 alpha or `--zielen-na-ciemnym` (#A8CDB4, about 6.9:1), focus
+rings Ivory, and the primary button inverts (Ivory fill, Bottle Green
+label). This was a client request for rhythm on long sales pages. It is not
+a licence to band other pages: everywhere else the Flat Canvas Rule holds.
+
 ## Typography
 
 **Heading Font:** Fraunces (600–700), a webfont from Google Fonts. **Body /
@@ -893,6 +905,22 @@ stylu". The preview is a native `<dialog class="podglad">`: Canvas fill,
 hairline bar on top, segmented Telefon / Komputer toggle (pill, Bottle Green
 for the pressed state), Pine Black backdrop at `0.6`. On phones it fills the
 screen; from `900px` it is inset `24px` with the standard `--shadow`.
+
+### Offer-page illustrations (`.scena`, `.ui`, `.venn`)
+Built only in HTML, CSS and inline SVG, in the language of the article
+covers (`images/artykuly`), all `aria-hidden`:
+- **Phone mockup** (`.telefon`): `--telefon-ramka` frame, Ivory screen,
+  inner sizes in `cqi` so one mockup scales from 188px to ~240px. A small
+  address pill (`przyklad-ola.fitpage.pl`) marks it as a sample site, not
+  FitPage's own reviews. Rotated 4° from 900px, upright on phones.
+- **Floating cards** (`.karta-ui`): `--karta` fill, hairline, soft offset
+  shadow. One rise-and-return within 5 s after load (`translate`, so it
+  never fights the rotation), still under reduced motion.
+- **Mini UI** (`.ui*`): price rows, chips, slots, pin, form fields, before
+  and after slider. Stars and ticks are drawn with SVG masks, never glyphs.
+  Plate colors `--talerz-*` come from the dietitian article cover.
+- **Venn CTA** (`.venn`): two 230-unit circles 160 apart, laptop `</>` left,
+  barbell or plate right, the real button in the lens.
 
 ### Exception: the sample templates in `szablony/`
 `szablony/mocny.html`, `jasny.html`, `dynamiczny.html` and `minimalny.html`
