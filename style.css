@@ -946,6 +946,14 @@ summary:focus-visible {
   .artykuly__grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
   .artykul-card__title { font-size: 1.35rem; }
 }
+/* od 1024px trzy kolumny i niższe okładki 4:3; na głównej jeden pełny
+   rząd, czyli 3 najnowsze (jak na telefonie) */
+@media (min-width: 1024px) {
+  .artykuly__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 28px; }
+  .artykul-card__img { aspect-ratio: 4 / 3; }
+  .artykul-card__title { font-size: 1.2rem; }
+  #artykuly .artykuly__grid .artykul-card:nth-child(n+4) { display: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .artykul-card__media,
