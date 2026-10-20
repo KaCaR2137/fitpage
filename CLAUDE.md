@@ -126,6 +126,19 @@ jednoklasowa reguła media i bez tego by ją przebił), zero opóźnienia w
 dostępie do treści. Pełny opis obu wariantów i uzasadnienie techniki w
 `DESIGN.md`, sekcja „Splash intro”.
 
+**Intro na stronie głównej (od 20.10.2026, tylko `index.html`).** Zamiast
+splasha: dwa koła z laptopem `</>` i sztangą (SVG 1:1 z
+`~/fitpage/iggrafiki/okladka-fb-zrodlo.html`, wzór `tlologo.jpg`) wjeżdżają z
+boków na tle `#1F3D2B`, część wspólna się rozjaśnia, w niej logo kremowe i
+napis FitPage, nakładka znika; razem 1,8 s. Raz na sesję
+(`sessionStorage.fitpageIntroShown`), nigdy przy reduced motion, klik/dotyk
+albo klawisz zamyka od razu. Nakładka siedzi w `<template id="intro-szablon">`
+i trafia do DOM tylko wtedy, gdy ma grać (krótki skrypt na początku
+`<body>`), więc kolejne wejścia nic nie pobierają. Style: sekcja INTRO w
+`style.css`. Sprawdzone: LCP ten sam element i czas z intro i bez. Pozostałe
+strony mają dalej stary splash; index ustawia `fitpageSplashShown`, więc po
+wejściu na główną podstrony pokazują lżejszy wariant.
+
 ## Strony
 **Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /
 Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz

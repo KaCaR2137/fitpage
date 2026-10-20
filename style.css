@@ -245,6 +245,70 @@ summary:focus-visible {
   }
 }
 
+/* ============================== INTRO (strona główna) ============================== */
+/* Raz na sesję, tylko index.html: dwa koła z ikonami wjeżdżają z boków,
+   część wspólna się rozjaśnia, pojawia się logo, nakładka znika (1,8 s).
+   Nakładka trafia do DOM tylko wtedy, gdy intro ma się odtworzyć
+   (<template> + krótki skrypt na początku <body>). */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--accent);
+  color: var(--canvas);
+  cursor: pointer;
+  animation: intro-znika 0.5s var(--ease) 1.3s forwards;
+}
+.intro--koniec { animation: intro-znika 0.15s ease forwards; }
+.intro__scena {
+  --w: min(760px, 92vw);
+  position: relative;
+  width: var(--w);
+}
+.intro__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.intro__kolo--l { animation: intro-z-lewej 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.intro__kolo--p { animation: intro-z-prawej 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.intro__soczewka { opacity: 0; animation: intro-pojawia 0.35s ease 0.55s forwards; }
+.intro__srodek {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--w) * 0.016);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: intro-logo 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.65s forwards;
+}
+.intro__srodek img {
+  display: block;
+  width: calc(var(--w) * 0.084);
+  height: auto;
+  opacity: 0.8;
+}
+.intro__srodek span {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: calc(var(--w) * 0.053);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+@keyframes intro-z-lewej { from { opacity: 0; transform: translateX(-640px); } to { opacity: 1; transform: none; } }
+@keyframes intro-z-prawej { from { opacity: 0; transform: translateX(640px); } to { opacity: 1; transform: none; } }
+@keyframes intro-pojawia { to { opacity: 1; } }
+@keyframes intro-logo {
+  from { opacity: 0; transform: translate(-50%, -44%) scale(0.94); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+@keyframes intro-znika { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none !important; }
+}
+
 /* ============================== SPLASH ============================== */
 /* Pełnoekranowa nakładka na wejściu — dwa warianty na każdej stronie,
    .splash--new i .splash--old, oba w DOM naraz, tylko jeden naraz widoczny
