@@ -109,7 +109,6 @@ h4, h5, h6 { font-weight: 600; }
    nie ozdoba. */
 .hero__title,
 .section__title,
-.krok__title,
 .brief-success__title {
   text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14);
 }
@@ -1258,80 +1257,125 @@ summary:focus-visible {
   color: var(--muted);
 }
 
-/* ============================== PROCES / KROKI ============================== */
-/* align-items: stretch (domyślne dla grid, więc nieużywane wprost) —
-   wcześniej było "start", żeby rozwinięty krok rósł bez rozciągania
-   sąsiadów, ale to zostawiało panele w tym samym rzędzie o różnej
-   wysokości w spoczynku, ilekroć widoczny akapit miał inną liczbę linii
-   (zmierzone w przeglądarce: przy 900px szerokości panel 1. "Analiza"
-   277px vs panel 2. "Struktura" 252px — złapane i zgłoszone jako
-   nierówne panele). Stretch wyrównuje karty w każdym rzędzie do
-   najwyższej niezależnie od szerokości ekranu; skutek uboczny: rozwinięcie
-   „Więcej” w jednej karcie teraz podciąga wysokość sąsiadów w tym samym
-   rzędzie zamiast rosnąć w izolacji — świadomie zaakceptowany kompromis,
-   bo równe panele w spoczynku są ważniejsze niż ten szczegół accordionu. */
-.kroki__grid {
+/* ============================== PROCES (proces.html) ============================== */
+/* Nagłówek: rozmyty kolaż miniatur szablonów pod zieloną warstwą marki
+   (0.78 daje min. 5.7:1 dla jasnego tekstu). */
+.hero--proces {
+  background-image: url("images/proces-hero-800.jpg");
+  background-image: image-set(url("images/proces-hero-800.webp") type("image/webp"), url("images/proces-hero-800.jpg") type("image/jpeg"));
+}
+@media (min-width: 800px) {
+  .hero--proces {
+    background-image: url("images/proces-hero.jpg");
+    background-image: image-set(url("images/proces-hero.webp") type("image/webp"), url("images/proces-hero.jpg") type("image/jpeg"));
+  }
+}
+.hero--proces::before { background: rgba(31, 61, 43, 0.78); }
+.hero--proces .hero__subtitle { color: var(--on-accent); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35); }
+@media (min-width: 900px) { .hero--proces { padding-block: 112px 96px; } }
+
+/* Oś czasu: telefon pionowa z linią po lewej, od 900px linia na środku
+   i etapy naprzemiennie po obu stronach */
+.os {
+  --nr: 40px;
+  --os-gap: 36px;
   list-style: none;
-  margin: 0;
+  margin: 8px 0 0;
   padding: 0;
   display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr;
+  gap: var(--os-gap);
 }
-.krok {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 24px;
+/* linia tylko między kolejnymi numerami, kończy się na ostatnim etapie */
+.etap:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: var(--nr);
+  bottom: calc(-1 * var(--os-gap));
+  left: calc(var(--nr) / 2 - 1px);
+  width: 2px;
+  background: var(--border);
 }
-.krok__num {
+.etap {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--nr) minmax(0, 1fr);
+  gap: 18px;
+}
+.etap__nr {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 12px;
+  width: var(--nr);
+  height: var(--nr);
   border-radius: 50%;
   background: var(--accent);
   color: var(--on-accent);
   font-weight: 700;
+  box-shadow: 0 0 0 6px var(--canvas);
 }
-.krok__title { font-size: 1.1rem; margin-bottom: 0.3em; }
-.krok > p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-
-.krok:target {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
-}
-
-/* --- rozwijane „Więcej” w każdym kroku --- */
-.krok__more { margin-top: 14px; }
-.krok__more > summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  list-style: none;
-  font-size: 0.82rem;
+.etap__czas {
+  margin: 0 0 4px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--accent-strong);
 }
-.krok__more > summary::-webkit-details-marker { display: none; }
-.krok__more > summary::after {
-  content: "+";
-  font-size: 1.1rem;
-  line-height: 1;
+.etap__nazwa { margin: 0 0 12px; font-size: 1.3rem; }
+.etap__role { margin: 0; display: grid; gap: 10px; }
+.etap__role div { display: grid; gap: 2px; }
+.etap__role dt { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.etap__role dd { margin: 0; color: var(--muted); }
+@media (min-width: 900px) {
+  .os { --os-gap: 8px; max-width: 980px; margin-inline: auto; }
+  .etap:not(:last-child)::after { left: calc(50% - 1px); }
+  .etap {
+    grid-template-columns: minmax(0, 1fr) var(--nr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  .etap__nr { grid-column: 2; grid-row: 1; }
+  .etap__tresc { grid-row: 1; padding-top: 6px; }
+  .etap:nth-child(odd) .etap__tresc { grid-column: 1; text-align: right; }
+  .etap:nth-child(even) .etap__tresc { grid-column: 3; }
+  .etap:nth-child(odd) .etap__role div { justify-items: end; }
 }
-.krok__more[open] > summary::after { content: "\2013"; } /* – */
-.krok__more-body { margin-top: 10px; }
-.krok__more-body p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-.krok__more[open] .krok__more-body { animation: krok-more-in 0.25s var(--ease); }
-@keyframes krok-more-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: none; }
+
+/* Co przygotować */
+.przygotuj__grid { display: grid; gap: 24px; }
+.przygotuj__lead { margin: 0; color: var(--muted); max-width: 40ch; }
+.przygotuj__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
 }
-@media (prefers-reduced-motion: reduce) {
-  .krok__more[open] .krok__more-body { animation: none; }
+.przygotuj__lista li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+.przygotuj__lista li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+}
+@media (min-width: 900px) {
+  .przygotuj__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
+}
+
+/* CTA z dwoma przyciskami */
+.cta-closing__akcje { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
+.cta-closing__akcje .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; }
+@media (max-width: 480px) {
+  .cta-closing__akcje .btn { flex: 1 1 100%; }
 }
 
 /* ============================== FORMULARZ ============================== */
@@ -2398,7 +2442,6 @@ summary:focus-visible {
 @media (min-width: 700px) {
   .section { padding: 56px 0; }
   .section__title { font-size: 2rem; }
-  .kroki__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* --- >= 900px --- */

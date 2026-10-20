@@ -15,8 +15,8 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
-  <title>Proces tworzenia strony: FitPage</title>
-  <meta name="description" content="Jak powstaje strona w FitPage: od analizy przez strukturę, projekt i development, po testy i wdrożenie. Pracuję zdalnie z trenerami z całej Polski.">
+  <title>Jak powstaje strona dla trenera i dietetyka: 5 etapów | FitPage</title>
+  <meta name="description" content="Od bezpłatnej rozmowy do publikacji w około 7-14 dni. Zobacz 5 etapów tworzenia strony dla trenera, instruktora i dietetyka: co robię ja, a co Ty.">
   <link rel="canonical" href="https://fitpage.pl/proces.html">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
@@ -24,20 +24,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="preload" as="image" type="image/webp" href="images/proces-hero-800.webp" imagesrcset="images/proces-hero-800.webp 800w, images/proces-hero.webp 1600w" imagesizes="100vw">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
-  <meta property="og:title" content="Proces tworzenia strony: FitPage">
-  <meta property="og:description" content="Jak powstaje strona w FitPage: od analizy przez strukturę, projekt i development, po testy i wdrożenie. Pracuję zdalnie z trenerami z całej Polski.">
+  <meta property="og:title" content="Jak powstaje strona dla trenera i dietetyka: 5 etapów | FitPage">
+  <meta property="og:description" content="Od bezpłatnej rozmowy do publikacji w około 7-14 dni. Zobacz 5 etapów tworzenia strony dla trenera, instruktora i dietetyka: co robię ja, a co Ty.">
   <meta property="og:url" content="https://fitpage.pl/proces.html">
   <meta property="og:image" content="https://fitpage.pl/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="FitPage: strony internetowe dla trenerów personalnych">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Proces tworzenia strony: FitPage">
-  <meta name="twitter:description" content="Jak powstaje strona w FitPage: od analizy przez strukturę, projekt i development, po testy i wdrożenie. Pracuję zdalnie z trenerami z całej Polski.">
+  <meta name="twitter:title" content="Jak powstaje strona dla trenera i dietetyka: 5 etapów | FitPage">
+  <meta name="twitter:description" content="Od bezpłatnej rozmowy do publikacji w około 7-14 dni. Zobacz 5 etapów tworzenia strony dla trenera, instruktora i dietetyka: co robię ja, a co Ty.">
   <meta name="twitter:image" content="https://fitpage.pl/images/og-image.png">
 </head>
 <body>
@@ -100,100 +101,105 @@
   <main id="main-content">
 
     <!-- ============================ NAGŁÓWEK PODSTRONY ============================ -->
-    <section class="hero hero--compact">
+    <section class="hero hero--compact hero--cover hero--proces">
       <div class="hero__inner">
-        <h1 class="hero__title reveal">Proces tworzenia strony</h1>
+        <h1 class="hero__title reveal">Jak powstaje Twoja strona</h1>
         <p class="hero__subtitle reveal">
-          Od rozmowy do wdrożenia. Pracuję zdalnie z trenerami z całej Polski.
+          Od pierwszej rozmowy do publikacji w około 7-14 dni. Pracuję zdalnie z trenerami, instruktorami i dietetykami z całej Polski.
         </p>
       </div>
     </section>
 
     <!-- ============================ ETAPY ============================ -->
-    <section class="section proces">
+    <section class="section proces" aria-labelledby="etapy-tytul">
       <div class="container">
-
-        <!-- TODO: przejrzeć treść „Więcej” w każdym etapie wg realnej oferty FitPage -->
-        <ol class="kroki__grid">
-
-          <li id="proces-analiza" class="krok reveal">
-            <span class="krok__num">1</span>
-            <h2 class="krok__title">Analiza</h2>
-            <p>Poznaję Twoją działalność, ofertę i cel strony: kogo trenujesz i kogo chcesz przyciągnąć.</p>
-            <details class="krok__more">
-              <summary>Więcej</summary>
-              <div class="krok__more-body">
-                <p>Przeglądam Twoje obecne kanały (Instagram, wizytówka Google, poprzednia strona) oraz konkurencję w Twojej niszy i okolicy. Ustalam jedną główną akcję, do której ma prowadzić strona (np. wypełnienie formularza, telefon albo zapis na trening próbny), i grupę, do której strona ma mówić.</p>
-              </div>
-            </details>
+        <h2 id="etapy-tytul" class="section__title reveal">Pięć etapów</h2>
+        <ol class="os">
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">1</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dzień 1</p>
+              <h3 class="etap__nazwa">Bezpłatna rozmowa</h3>
+              <dl class="etap__role">
+                <div><dt>Co robię ja</dt><dd>Poznaję Twoją ofertę i cel strony.</dd></div>
+                <div><dt>Co robisz Ty</dt><dd>Opowiadasz, kogo chcesz przyciągnąć.</dd></div>
+              </dl>
+            </div>
           </li>
-
-          <li id="proces-struktura" class="krok reveal">
-            <span class="krok__num">2</span>
-            <h2 class="krok__title">Struktura</h2>
-            <p>Układam sekcje, argumenty i treść tak, żeby prowadziły odwiedzającego do kontaktu.</p>
-            <details class="krok__more">
-              <summary>Więcej</summary>
-              <div class="krok__more-body">
-                <p>Rozpisuję kolejność sekcji i nagłówki, tak aby w kilka sekund było jasne, dla kogo jesteś i co oferujesz. Przygotowuję szkielet treści (wireframe) oraz listę materiałów do dostarczenia: teksty, zdjęcia, opinie, cennik.</p>
-              </div>
-            </details>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">2</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 1-2</p>
+              <h3 class="etap__nazwa">Plan i materiały</h3>
+              <dl class="etap__role">
+                <div><dt>Co robię ja</dt><dd>Rozpisuję sekcje strony i listę potrzebnych materiałów.</dd></div>
+                <div><dt>Co robisz Ty</dt><dd>Przesyłasz zdjęcia, cennik i opinie.</dd></div>
+              </dl>
+            </div>
           </li>
-
-          <li id="proces-projekt" class="krok reveal">
-            <span class="krok__num">3</span>
-            <h2 class="krok__title">Projekt</h2>
-            <p>Przygotowuję wygląd zgodny z Twoją marką: kolory, typografia, układ, zdjęcia.</p>
-            <details class="krok__more">
-              <summary>Więcej</summary>
-              <div class="krok__more-body">
-                <p>Dobieram kolorystykę, typografię i styl zdjęć. Projektuję wersję na telefon i na komputer, a propozycję pokazuję do akceptacji. Poprawki nanoszę w ustalonej liczbie rund (domyślnie dwie).</p>
-              </div>
-            </details>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">3</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 3-6</p>
+              <h3 class="etap__nazwa">Projekt</h3>
+              <dl class="etap__role">
+                <div><dt>Co robię ja</dt><dd>Pokazuję wygląd strony na telefonie i na komputerze.</dd></div>
+                <div><dt>Co robisz Ty</dt><dd>Zgłaszasz uwagi, dwie rundy poprawek są w cenie.</dd></div>
+              </dl>
+            </div>
           </li>
-
-          <li id="proces-development" class="krok reveal">
-            <span class="krok__num">4</span>
-            <h2 class="krok__title">Development</h2>
-            <p>Buduję stronę, podłączam formularz kontaktowy oraz potrzebne integracje.</p>
-            <details class="krok__more">
-              <summary>Więcej</summary>
-              <div class="krok__more-body">
-                <p>Koduję stronę bez zbędnych wtyczek, z naciskiem na szybkość ładowania. Podłączam formularz z powiadomieniami e-mail, przyciski „zadzwoń”, mapę oraz integracje, jeśli są potrzebne (np. Google Analytics, Meta Pixel, kalendarz rezerwacji). Konfiguruję podstawowe SEO: tytuły, opisy, dane strukturalne.</p>
-              </div>
-            </details>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">4</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dni 6-12</p>
+              <h3 class="etap__nazwa">Budowa i testy</h3>
+              <dl class="etap__role">
+                <div><dt>Co robię ja</dt><dd>Koduję stronę, podłączam formularz i sprawdzam ją na telefonach.</dd></div>
+                <div><dt>Co robisz Ty</dt><dd>Nic, czekasz na gotową stronę.</dd></div>
+              </dl>
+            </div>
           </li>
-
-          <li id="proces-testy" class="krok reveal">
-            <span class="krok__num">5</span>
-            <h2 class="krok__title">Testy</h2>
-            <p>Sprawdzam działanie na telefonach, tabletach i komputerach oraz zgodność formularza z RODO.</p>
-            <details class="krok__more">
-              <summary>Więcej</summary>
-              <div class="krok__more-body">
-                <p>Testuję stronę na różnych przeglądarkach i rozdzielczościach, sprawdzam formularz i wszystkie linki oraz poprawność klauzuli informacyjnej i zgód. Weryfikuję wynik w narzędziach wydajności (np. PageSpeed) i poprawiam, co się da.</p>
-              </div>
-            </details>
+          <li class="etap reveal">
+            <span class="etap__nr" aria-hidden="true">5</span>
+            <div class="etap__tresc">
+              <p class="etap__czas">Dzień 7-14</p>
+              <h3 class="etap__nazwa">Publikacja</h3>
+              <dl class="etap__role">
+                <div><dt>Co robię ja</dt><dd>Uruchamiam stronę pod Twoją domeną i przekazuję Ci instrukcję.</dd></div>
+                <div><dt>Co robisz Ty</dt><dd>Zaczynasz wysyłać link klientom.</dd></div>
+              </dl>
+            </div>
           </li>
-
-          <li id="proces-wdrozenie" class="krok reveal">
-            <span class="krok__num">6</span>
-            <h2 class="krok__title">Wdrożenie</h2>
-            <p>Publikuję stronę pod Twoją domeną i przekazuję dostępy oraz krótką instrukcję obsługi.</p>
-            <details class="krok__more">
-              <summary>Więcej</summary>
-              <div class="krok__more-body">
-                <p>Publikuję stronę pod Twoją domeną, ustawiam certyfikat SSL i przekierowania. Przekazuję dostępy oraz instrukcję samodzielnej edycji treści. Jeśli chcesz, ustalamy zakres opieki po wdrożeniu (aktualizacje, drobne zmiany).</p>
-              </div>
-            </details>
-          </li>
-
         </ol>
+      </div>
+    </section>
 
-        <p class="brief__back reveal">
-          <a href="/">&larr; Wróć na stronę główną</a>
-        </p>
+    <!-- ============================ CO PRZYGOTOWAĆ ============================ -->
+    <section class="section przygotuj" aria-labelledby="przygotuj-tytul">
+      <div class="container przygotuj__grid">
+        <div class="przygotuj__glowa reveal">
+          <h2 id="przygotuj-tytul" class="section__title">Co przygotować</h2>
+          <p class="przygotuj__lead">Brakujące rzeczy pomogę dobrać, nie musisz mieć wszystkiego na start.</p>
+        </div>
+        <ul class="przygotuj__lista reveal">
+          <li>Logo, jeśli je masz</li>
+          <li>5-10 zdjęć z pracy z klientami albo z treningu</li>
+          <li>Oferta i ceny</li>
+          <li>2-3 opinie klientów</li>
+          <li>Dane kontaktowe</li>
+        </ul>
+      </div>
+    </section>
 
+    <!-- ============================ CTA ============================ -->
+    <section class="section cta-closing" aria-label="Umów konsultację">
+      <div class="container cta-closing__inner reveal">
+        <h2 class="section__title">Zaczynamy?</h2>
+        <p class="cta-closing__text">Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <div class="cta-closing__akcje">
+          <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+          <a href="cennik.html" class="btn btn--secondary">Zobacz cennik</a>
+        </div>
       </div>
     </section>
 

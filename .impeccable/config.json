@@ -740,6 +740,15 @@
         ],
         "createdAt": "2026-10-19T18:17:43.349Z",
         "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, treść wierszy ma 20px paddingu"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "proces.html"
+        ],
+        "createdAt": "2026-10-20T13:45:58.354Z",
+        "reason": "reguła .faq__item::before ze wspólnego style.css (kreska otwartego pytania FAQ z briefu), na proces.html nie ma FAQ"
       }
     ]
   }
