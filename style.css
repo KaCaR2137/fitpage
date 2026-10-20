@@ -3026,13 +3026,6 @@ html:has(.podglad[open]) { overflow: hidden; }
 /* ---- Hero: tekst + scena ---- */
 .scena { margin: 40px auto 0; width: min(100%, 440px); text-align: left; }
 .scena__plotno { position: relative; aspect-ratio: 44 / 50; }
-.scena__podpis {
-  margin: 14px 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-align: center;
-}
 
 /* Telefon: wnętrze skaluje się jednostkami cqi (szerokość telefonu), więc
    ta sama makieta działa w 190px na telefonie i w 240px na desktopie. */

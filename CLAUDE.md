@@ -187,7 +187,7 @@ bez zmian (sprawdzone porównaniem z poprzednią wersją).
 - Hero: od 900px tekst | scena (`.scena`, `aria-hidden`): telefon `.telefon`
   (wnętrze w jednostkach `cqi`, obrót 4°) z przykładową stroną „Ola · trenerka
   personalna” / „Anna · dietetyk” + 3 pływające `.karta-ui`, u dietetyka talerz
-  SVG z okładki. Podpis „przykładowy projekt · marka fikcyjna”. Do 560px telefon
+  SVG z okładki. Bez podpisu pod sceną (usunięty na życzenie klienta). Do 560px telefon
   188px, prosto, jedna karta.
 - „Czego potrzebuje strona…”: `<ul class="potrzeby__lista">`, punkty `.potrzeba`
   z ilustracją UI (`.ui*`), od 900px szeroki / dwa obok siebie / szeroki odwrócony;
