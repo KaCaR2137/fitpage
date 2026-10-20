@@ -758,6 +758,87 @@
         ],
         "createdAt": "2026-10-20T14:41:02.802Z",
         "reason": "reguła .faq__item::before ze wspólnego style.css (kreska otwartego pytania FAQ z briefu), na index.html nie ma FAQ"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "strona-dla-trenera-personalnego.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.661Z",
+        "reason": "brief: otwarte pytanie FAQ ma 3px kreskę w kolorze akcentu"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "strona-dla-trenera-personalnego.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.688Z",
+        "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, wiersze mają 20px paddingu"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "strona-dla-trenera-personalnego.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.713Z",
+        "reason": "tło marki #F7F3EA z DESIGN.md, jak na pozostałych stronach"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "strona-dla-trenera-personalnego.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.739Z",
+        "reason": "cień .btn--primary przy hover z DESIGN.md, jak na pozostałych stronach"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "strona-dla-dietetyka.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.765Z",
+        "reason": "brief: otwarte pytanie FAQ ma 3px kreskę w kolorze akcentu"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "strona-dla-dietetyka.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.790Z",
+        "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, wiersze mają 20px paddingu"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "strona-dla-dietetyka.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.828Z",
+        "reason": "tło marki #F7F3EA z DESIGN.md, jak na pozostałych stronach"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "strona-dla-dietetyka.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.852Z",
+        "reason": "cień .btn--primary przy hover z DESIGN.md, jak na pozostałych stronach"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-20T15:08:43.877Z",
+        "reason": "fałszywy alarm: górna linia .dla-kogo__lista to hairline listy, linki mają 20px paddingu"
       }
     ]
   }

@@ -161,6 +161,25 @@ wejściu na główną podstrony pokazują lżejszy wariant.
   gdy elementy stoją jeden pod drugim (do 899px); wiersz dopiero od 900px.
 - `style.css?v=18`, `script.js?v=7`.
 
+**SEO, część 1 (20.10.2026): podstrony ofertowe pod zawody.**
+- `strona-dla-trenera-personalnego.html` (fraza „strona internetowa dla trenera
+  personalnego”) i `strona-dla-dietetyka.html` („strona internetowa dla
+  dietetyka”): hero z H1, „Czego potrzebuje strona …” (4 punkty), „Co dostajesz”
+  (Trener od 1890 zł / Start od 990 zł, ceny z cennika), skrót procesu z linkami
+  do `proces.html#etap-N`, 2 miniatury stylów (trener: Mocny, Dynamiczny;
+  dietetyk: Jasny, Minimalny), 5 pytań FAQ pod zawód (`name="faq-<slug>"`),
+  CTA. JSON-LD: Service + BreadcrumbList + FAQPage. Treść różna na obu stronach.
+- Artykuł `artykuly/strona-dla-dietetyka.html` przemianowany na „Co powinna mieć
+  strona dietetyka: 7 elementów”, żeby nie konkurował z podstroną; linkuje do niej.
+  Artykuły o trenerach (jak-wyroznic, jak-zdobyc, trener-w-silowni) linkują do
+  podstrony trenera w istniejących fragmentach zdań.
+- Strona główna: title „Strony internetowe dla trenerów i dietetyków | FitPage”,
+  H1 to mały nadtytuł `.hero__nadtytul` nad hasłem, hasło to `<p class="hero__title">`
+  (wygląd bez zmian, sprawdzone w computed styles). Sekcja „Dla kogo projektuję”
+  `.dla-kogo` z linkami do obu podstron.
+- Linki „Strona dla trenera” i „Strona dla dietetyka” w stopce wszystkich stron,
+  wpisy w sitemap.xml, llms.txt i `_redirects`. `style.css?v=19`.
+
 ## Strony
 **Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /
 Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz

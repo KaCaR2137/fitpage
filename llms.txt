@@ -7,6 +7,8 @@ Kontakt: kontakt@fitpage.pl
 ## Główne strony
 
 - [Strona główna](https://fitpage.pl/): oferta FitPage i najważniejsze atuty współpracy.
+- [Strona internetowa dla trenera personalnego](https://fitpage.pl/strona-dla-trenera-personalnego.html): czego potrzebuje strona trenera, pakiet Trener od 1890 zł netto (Start od 990 zł), proces i pytania trenerów.
+- [Strona internetowa dla dietetyka](https://fitpage.pl/strona-dla-dietetyka.html): strona dla gabinetu i dietetyka online, pakiet Start od 990 zł netto, formularz bez danych o zdrowiu, pytania dietetyków.
 - [Proces tworzenia strony](https://fitpage.pl/proces.html): pięć etapów, od bezpłatnej rozmowy po publikację strony w około 7-21 dni (zależnie od pakietu), z podziałem na to, co robię ja, a co klient, i listą materiałów do przygotowania.
 - [Cennik](https://fitpage.pl/cennik.html): trzy pakiety stron z cenami „od” (ceny netto: Start od 990 zł, Trener od 1890 zł, Online od 2990 zł), opieka po starcie i zasady płatności.
 - [Przykładowe style](https://fitpage.pl/szablony.html): cztery przykładowe kierunki wyglądu strony (mocny, jasny, dynamiczny, minimalny) do wyboru przed briefem.
@@ -17,7 +19,7 @@ Kontakt: kontakt@fitpage.pl
 
 ## Artykuły
 
-- [Strona internetowa dla dietetyka: co musi mieć, żeby pacjent się umówił](https://fitpage.pl/artykuly/strona-dla-dietetyka.html): siedem elementów strony dietetyka, które przekonują pacjenta do umówienia konsultacji, i błędy, których warto unikać.
+- [Co powinna mieć strona dietetyka: 7 elementów](https://fitpage.pl/artykuly/strona-dla-dietetyka.html): siedem elementów strony dietetyka, które przekonują pacjenta do umówienia konsultacji, i błędy, których warto unikać.
 - [Reklama trenera personalnego: co działa, zanim zaczniesz płacić](https://fitpage.pl/artykuly/reklama-trenera-personalnego.html): co przygotować przed płatną reklamą i jak zrobić pierwszy test na Meta.
 - [Wizytówka Google dla trenera personalnego](https://fitpage.pl/artykuly/wizytowka-google-trener-personalny.html): jak założyć Profil Firmy w Google bez własnego studia i połączyć go ze stroną.
 - [Pracujesz w siłowni sieciowej? Po co Ci własna strona](https://fitpage.pl/artykuly/trener-w-silowni-sieciowej.html): dlaczego trener pracujący w klubie potrzebuje miejsca w sieci, które należy do niego.

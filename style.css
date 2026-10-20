@@ -659,6 +659,21 @@ summary:focus-visible {
   filter: drop-shadow(0 22px 30px rgba(31, 45, 36, 0.18));
 }
 .hero__notka { margin: 16px 0 0; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
+.hero__nadtytul {
+  margin: 0 0 14px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--accent-strong);
+}
+p.hero__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
 .hero__title {
   font-size: clamp(1.9rem, 6vw, 3.1rem);
   margin-bottom: 0.4em;
@@ -834,6 +849,64 @@ summary:focus-visible {
   color: var(--accent-strong);
   font-weight: 600;
 }
+
+/* ============================== DLA KOGO ============================== */
+.dla-kogo__lista { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+.dla-kogo__lista li { border-bottom: 1px solid var(--border); }
+.dla-kogo__link {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 20px 48px 20px 16px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color 0.18s var(--ease);
+}
+.dla-kogo__link::after {
+  content: "\2192";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  font-size: 1.25rem;
+  color: var(--accent-strong);
+  transform: translateY(-50%);
+  transition: transform 0.18s var(--ease);
+}
+.dla-kogo__nazwa { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; line-height: 1.25; }
+.dla-kogo__opis { color: var(--muted); }
+.dla-kogo__link:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 4px; }
+@media (hover: hover) {
+  .dla-kogo__link:hover { background: var(--bg); }
+  .dla-kogo__link:hover .dla-kogo__nazwa { color: var(--accent-strong); }
+  .dla-kogo__link:hover::after { transform: translate(4px, -50%); }
+}
+@media (min-width: 900px) {
+  .dla-kogo__lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
+  .dla-kogo__lista li:first-child { border-bottom: 1px solid var(--border); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dla-kogo__link, .dla-kogo__link::after { transition: none; }
+}
+
+/* ============================== PODSTRONY OFERTOWE ============================== */
+.oferta__dopisek { margin: 12px 0 0; color: var(--muted); font-size: 0.9375rem; }
+.oferta__dopisek a,
+.oferta-pakiet__inne a { color: var(--accent-strong); font-weight: 600; }
+.oferta-pakiet__grid { display: grid; gap: 24px; }
+.oferta-pakiet__cena { margin: 0; font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--accent); }
+.oferta-pakiet__cena span { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--muted); }
+.oferta-pakiet__cena { white-space: nowrap; }
+.oferta-pakiet__czas { margin: 8px 0 0; color: var(--muted); }
+.oferta-pakiet__inne { margin: 20px 0 0; color: var(--muted); max-width: 60ch; }
+@media (min-width: 900px) {
+  .oferta-pakiet__grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 2fr); gap: 56px; align-items: start; }
+}
+.style-pasek__lista.style-pasek__lista--dwa { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 720px; }
+@media (max-width: 768px) {
+  .style-pasek__lista.style-pasek__lista--dwa li { flex-basis: 47%; }
+}
+.hero--oferta .hero__akcje { margin-top: 28px; }
+.oferta-pakiet__nazwa { margin: 0 0 4px; font-weight: 600; color: var(--muted); }
 
 /* ============================== CO DOSTAJESZ ============================== */
 /* Makieta telefonu (projekt pokazowy, podpisany jako taki) obok listy
