@@ -651,6 +651,13 @@ summary:focus-visible {
   padding: 96px 20px 48px;
 }
 .hero__inner { max-width: 760px; margin-inline: auto; }
+.hero__makieta { max-width: 240px; margin: 40px auto 0; }
+.hero__makieta img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 22px 30px rgba(31, 45, 36, 0.18));
+}
 .hero__notka { margin: 16px 0 0; font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
 .hero__title {
   font-size: clamp(1.9rem, 6vw, 3.1rem);
@@ -660,7 +667,6 @@ summary:focus-visible {
   font-size: clamp(1rem, 2.4vw, 1.2rem);
   color: var(--muted);
   margin-bottom: 2em;
-  text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14); /* ta sama poświata co nagłówki */
 }
 
 /* wariant kompaktowy — nagłówek podstrony (np. kontakt.html) */
@@ -707,8 +713,41 @@ summary:focus-visible {
    między pozycjami — zgodnie z The One Mark Rule (akcent rzadko, nie jako
    wypełnienie całego paska). */
 .trainings {
+  position: relative;
   overflow: hidden;
   padding: 28px 0;
+}
+.trainings:hover .trainings__track,
+.trainings:focus-within .trainings__track,
+.trainings--stop .trainings__track { animation-play-state: paused; }
+.trainings__pauza {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--canvas);
+  color: var(--text);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.trainings__pauza:hover { border-color: var(--accent-strong); color: var(--accent-strong); }
+.trainings__ikona-start,
+.trainings--stop .trainings__ikona-pauza { display: none; }
+.trainings--stop .trainings__ikona-start { display: block; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 .trainings__track {
   display: flex;
@@ -717,7 +756,7 @@ summary:focus-visible {
      niż ekran 2560px, więc pętla nigdy nie odsłania pustego pasa). Tempo
      bez zmian względem starej, 8-elementowej kopii (~1189px w 32s, czyli
      ~37px/s): 3568 / 37,2 ≈ 96s. Przy zmianie listy przelicz tak samo. */
-  animation: trainings-scroll 96s linear infinite;
+  animation: trainings-scroll 108s linear infinite;
 }
 .trainings__list {
   display: flex;
@@ -762,6 +801,7 @@ summary:focus-visible {
   /* Pasek stoi: bez animacji, bez kopii do pętli i bez powtórzeń, tylko
      8 dyscyplin raz, zawijanych i wyśrodkowanych na każdej szerokości. */
   .trainings__track { animation: none; width: auto; justify-content: center; }
+  .trainings__pauza { display: none; }
   .trainings__list { flex-wrap: wrap; justify-content: center; row-gap: 14px; }
   .trainings__list[aria-hidden="true"],
   .trainings__item[aria-hidden="true"] { display: none; }
@@ -780,30 +820,26 @@ summary:focus-visible {
 .cta-closing__inner { max-width: 560px; margin-inline: auto; }
 .cta-closing .section__title { margin-bottom: 0.5em; }
 .cta-closing__text {
-  color: var(--muted);
+  max-width: 48ch;
+  margin-inline: auto;
   margin-bottom: 1.75em;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.cta-closing__podpis { margin: 20px 0 0; font-size: 0.9375rem; color: var(--muted); }
+.cta-closing__podpis a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent-strong);
+  font-weight: 600;
 }
 
 /* ============================== CO DOSTAJESZ ============================== */
 /* Makieta telefonu (projekt pokazowy, podpisany jako taki) obok listy
    tego, co trener dostaje. Lista to <dl> z hairline'ami, nie siatka kart
    z ikonami. Mobile: makieta nad listą, od 900px obok siebie. */
-.co-dostajesz__grid {
-  display: grid;
-  gap: 40px;
-  align-items: center;
-}
-.co-dostajesz__mockup {
-  margin: 0 auto;
-  max-width: 260px;
-  text-align: center;
-}
-.co-dostajesz__mockup img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 22px 30px rgba(31, 45, 36, 0.18));
-}
+.co-dostajesz__grid { display: grid; gap: 24px; }
 .co-dostajesz__lista { margin: 0; }
 .co-dostajesz__punkt {
   padding: 18px 0;
@@ -827,9 +863,11 @@ summary:focus-visible {
 .o-nas p {
   max-width: 680px;
   color: var(--muted);
-  text-shadow: 0 1px 3px rgba(31, 45, 36, 0.14); /* dziedziczy też na <strong> */
 }
 .o-nas strong { color: var(--text); }
+.o-nas__kto { font-size: 1.05rem; color: var(--text); }
+.o-nas__portret { margin: 0 0 24px; max-width: 220px; }
+.o-nas__portret img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
 .o-nas__text p:last-child { margin-bottom: 0; }
 
 /* Pasek procesu: 6 etapów z proces.html w jednym rzędzie (desktop) albo
@@ -847,6 +885,7 @@ summary:focus-visible {
   gap: 10px;
 }
 .proces-pasek li {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -855,6 +894,15 @@ summary:focus-visible {
   border-radius: 10px;
   font-weight: 600;
   color: var(--text);
+  transition: border-color 0.18s var(--ease), background-color 0.18s var(--ease);
+}
+.proces-pasek a { color: inherit; text-decoration: none; }
+.proces-pasek a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.proces-pasek a:focus-visible { outline: none; }
+.proces-pasek li:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (hover: hover) {
+  .proces-pasek li:hover { border-color: var(--accent-strong); background: var(--bg); }
+  .proces-pasek li:hover a { color: var(--accent-strong); }
 }
 .proces-pasek__nr {
   display: inline-flex;
@@ -2295,6 +2343,15 @@ summary:focus-visible {
 }
 .footer__logo { font-weight: 800; letter-spacing: -0.03em; color: var(--on-accent); }
 .footer p { margin: 0; }
+.footer__razem { white-space: nowrap; }
+@media (max-width: 899px) {
+  .footer__razem { display: block; }
+  .footer__kropka { display: none; }
+}
+@media (min-width: 900px) {
+  .footer__inner { flex-direction: row; justify-content: space-between; text-align: left; }
+  .footer__inner p:not(:first-of-type) { white-space: nowrap; }
+}
 /* linki w wierszach stopki: większy obszar dotyku */
 .footer p a { display: inline-block; padding: 8px 0; }
 
@@ -2365,11 +2422,7 @@ summary:focus-visible {
 
 /* --- >= 480px --- */
 @media (min-width: 480px) {
-  .footer__inner {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
+
 
   .artykul__meta { font-size: 0.9rem; }
 }
@@ -2449,12 +2502,23 @@ summary:focus-visible {
   .hero:not(.hero--compact) { padding: 120px 20px 64px; }
   .hero--compact { padding: 96px 20px 76px; }
 
-  /* Co dostajesz: makieta z lewej, lista z prawej */
-  .co-dostajesz__grid {
-    grid-template-columns: 300px minmax(0, 1fr);
-    gap: 72px;
+  /* Co dostajesz: tytuł z lewej, cztery punkty 2x2 */
+  .co-dostajesz__text { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2fr); gap: 56px; align-items: start; }
+  .co-dostajesz__text .section__title { margin: 0; }
+  .co-dostajesz__lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
+  .co-dostajesz__punkt:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+
+  /* Hero: tekst z lewej, makieta strony trenera z prawej */
+  .hero--podzielony .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: 64px;
+    max-width: var(--maxw);
+    text-align: left;
   }
-  .co-dostajesz__mockup { max-width: none; }
+  .hero--podzielony .hero__akcje { justify-content: flex-start; }
+  .hero--podzielony .hero__makieta { max-width: 300px; margin: 0; justify-self: center; }
   .proces-pasek { grid-template-columns: repeat(5, 1fr); }
   .proces-pasek li {
     flex-direction: column;
@@ -2490,21 +2554,30 @@ summary:focus-visible {
 .hero__cennik,
 .artykuly__wszystkie,
 .o-nas__czytaj,
-.cennik__kropki { display: none; }
+.cennik__kropki,
+.style-pasek__kropki { display: none; }
 
 @media (max-width: 768px) {
   /* 1. odstępy: ok. 56px między treścią kolejnych sekcji */
   .section { padding: 12px 0; }
   .section > .container { padding-top: 16px; padding-bottom: 16px; }
   .hero { padding: 48px 20px 32px; }
-  .co-dostajesz__grid { gap: 28px; }
-  .co-dostajesz__mockup { max-width: 180px; }
+  .hero__makieta { max-width: 190px; margin-top: 28px; }
   .proces-pasek__tytul { margin-top: 32px; }
 
   /* 9. hero: dwa przyciski na pełną szerokość, jeden pod drugim */
   .hero__akcje { display: flex; flex-direction: column; gap: 12px; }
   .hero__akcje .btn { display: block; width: 100%; text-align: center; }
-  .hero__cennik { display: block; }
+  .hero__cennik {
+    display: inline-flex;
+    align-self: center;
+    align-items: center;
+    min-height: 44px;
+    color: var(--accent-strong);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 
   /* 4. O mnie: 2 akapity + "Czytaj dalej" */
   .o-nas__tekst-zwiniety .o-nas__reszta { display: none; }
@@ -2547,12 +2620,14 @@ summary:focus-visible {
   .js .cennik__pakiety--skrot .reveal { opacity: 1; transform: none; transition: none; }
   .cennik__pakiety--skrot .pakiet:hover,
   .cennik__pakiety--skrot .pakiet:focus-within { transform: none; }
-  .cennik__kropki {
+  .cennik__kropki,
+  .style-pasek__kropki {
     display: flex;
     justify-content: center;
     margin-top: 4px;
   }
-  .cennik__kropki button {
+  .cennik__kropki button,
+  .style-pasek__kropki button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2563,7 +2638,8 @@ summary:focus-visible {
     background: none;
     cursor: pointer;
   }
-  .cennik__kropki button::before {
+  .cennik__kropki button::before,
+  .style-pasek__kropki button::before {
     content: "";
     width: 8px;
     height: 8px;
@@ -2571,7 +2647,8 @@ summary:focus-visible {
     background: var(--border);
     transition: background-color 0.2s, transform 0.2s;
   }
-  .cennik__kropki button[aria-current="true"]::before {
+  .cennik__kropki button[aria-current="true"]::before,
+  .style-pasek__kropki button[aria-current="true"]::before {
     background: var(--accent);
     transform: scale(1.25);
   }
@@ -2606,7 +2683,7 @@ summary:focus-visible {
     grid-column: 2;
     grid-row: 1;
   }
-  .artykul-card__tags li { font-size: 0.875rem; padding: 4px 10px; }
+  .artykul-card__tags li { font-size: 0.875rem; padding: 6px 10px; background: transparent; color: var(--accent-strong); box-shadow: inset 0 0 0 1px var(--border); }
   .artykul-card__title {
     grid-column: 2;
     grid-row: 2;
@@ -2620,7 +2697,7 @@ summary:focus-visible {
 
   /* 7. czytelność: nic poniżej 14px */
   .artykul__meta { font-size: 0.875rem; }
-  .pakiet__plakietka { font-size: 0.875rem; }
+  .pakiet__plakietka { font-size: 0.875rem; padding: 6px 12px; }
   .nav__cta { font-size: 0.875rem; }
 
   /* 8. cele dotyku min. 44px */

@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -179,8 +179,9 @@
   <main id="main-content">
 
     <!-- ============================ HERO ============================ -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero hero--podzielony">
       <div class="hero__inner">
+        <div class="hero__tekst">
         <h1 class="hero__title reveal">Niech Twoja forma nie będzie jedyną wizytówką</h1>
         <p class="hero__subtitle reveal">
           Projektuję strony, które pomagają trenerom, instruktorom i dietetykom zdobywać nowych klientów.
@@ -188,27 +189,47 @@
         </p>
         <div class="hero__akcje reveal">
           <a href="kontakt.html" class="btn btn--primary btn--pulse">Umów konsultację</a>
-          <a href="#cennik" class="btn btn--secondary hero__cennik">Zobacz cennik</a>
+          <a href="#cennik" class="hero__cennik">Zobacz cennik</a>
         </div>
-        <p class="hero__notka reveal">Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <p class="hero__notka reveal">Zaczynasz od krótkiego briefu, ok. 5 minut. Odpisuję z&nbsp;wyceną, a pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        </div>
+        <figure class="hero__makieta reveal">
+          <picture>
+            <source srcset="mockup1.webp" type="image/webp">
+            <img src="mockup1.png" width="500" height="833" fetchpriority="high" decoding="async"
+                 alt="Przykładowa strona trenerki personalnej na ekranie telefonu: zdjęcie z treningu, nagłówek „Ruch dopasowany do wieku i możliwości” i przycisk „Umów pierwsze zajęcia”.">
+          </picture>
+        </figure>
       </div>
     </section>
 
     <!-- ============================ TRENINGI (pasek) ============================ -->
-    <section class="trainings reveal" aria-label="Rodzaje treningów, dla których projektuję strony">
+    <section class="trainings reveal" aria-label="Dla kogo projektuję strony: trening i dietetyka">
+      <button type="button" class="trainings__pauza" aria-pressed="false" hidden>
+        <svg class="trainings__ikona-pauza" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="trainings__ikona-start" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10-6.5a1 1 0 0 0 0-1.7l-10-6.5A1 1 0 0 0 8 5.5Z"/></svg>
+        <span class="visually-hidden">Zatrzymaj przewijanie paska</span>
+      </button>
       <div class="trainings__track">
 
-        <!-- Każda kopia to 3 przebiegi tych samych 8 dyscyplin (~3510px),
+        <!-- Każda kopia to 3 przebiegi tych samych 9 dyscyplin (~3510px),
              żeby jedna kopia była szersza niż ekran 2560px: inaczej druga
              kopia kończy się przed zapętleniem i zostaje pusty pas.
              Powtórzenia w pierwszej kopii mają aria-hidden, więc czytnik
-             ekranu czyta listę 8 dyscyplin raz. -->
+             ekranu czyta listę 9 dyscyplin raz. -->
         <ul class="trainings__list">
           <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
             <span>Trening siłowy</span>
           </li>
           <li class="trainings__item">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-2-1.6-7-1.2-7 4 0 4 2.8 8 5 8 .9 0 1.3-.5 2-.5s1.1.5 2 .5c2.2 0 5-4 5-8 0-5.2-5-5.6-7-4Z"/><path d="M12 8c0-2 1-3.6 3-4.5"/></svg>
+
+            <span>Dietetyka</span>
+
+          </li>
+          <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
             <span>Bieganie</span>
           </li>
@@ -241,6 +262,13 @@
             <span>Trening siłowy</span>
           </li>
           <li class="trainings__item" aria-hidden="true">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-2-1.6-7-1.2-7 4 0 4 2.8 8 5 8 .9 0 1.3-.5 2-.5s1.1.5 2 .5c2.2 0 5-4 5-8 0-5.2-5-5.6-7-4Z"/><path d="M12 8c0-2 1-3.6 3-4.5"/></svg>
+
+            <span>Dietetyka</span>
+
+          </li>
+          <li class="trainings__item" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
             <span>Bieganie</span>
           </li>
@@ -271,6 +299,13 @@
           <li class="trainings__item" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
             <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item" aria-hidden="true">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-2-1.6-7-1.2-7 4 0 4 2.8 8 5 8 .9 0 1.3-.5 2-.5s1.1.5 2 .5c2.2 0 5-4 5-8 0-5.2-5-5.6-7-4Z"/><path d="M12 8c0-2 1-3.6 3-4.5"/></svg>
+
+            <span>Dietetyka</span>
+
           </li>
           <li class="trainings__item" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
@@ -308,36 +343,11 @@
             <span>Trening siłowy</span>
           </li>
           <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
-            <span>Bieganie</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 12c2 0 3.5-1 3.5-2.5S14 7 12 7s-3.5 1.5-3.5 3"/></svg>
-            <span>Pilates</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c0-3 2-5 5-6l7-3c2-1 4 0 4 2 0 1-1 2-2 2l-9 3c-2 1-3 2-3 4Z"/><path d="M4 18h3"/></svg>
-            <span>Balet</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c-4 0-6-3-6-6 2 0 4 1 6 3 2-2 4-3 6-3 0 3-2 6-6 6Z"/><path d="M12 14V6"/></svg>
-            <span>Joga</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12V8a3 3 0 0 1 6 0v1a2 2 0 0 1 4 0v3c0 3-2 6-5 6H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2Z"/></svg>
-            <span>Boks</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8M10 9h4M6 17h6l3-6"/></svg>
-            <span>Kolarstwo</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
-            <span>Pływanie</span>
-          </li>
-          <li class="trainings__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
-            <span>Trening siłowy</span>
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-2-1.6-7-1.2-7 4 0 4 2.8 8 5 8 .9 0 1.3-.5 2-.5s1.1.5 2 .5c2.2 0 5-4 5-8 0-5.2-5-5.6-7-4Z"/><path d="M12 8c0-2 1-3.6 3-4.5"/></svg>
+
+            <span>Dietetyka</span>
+
           </li>
           <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
@@ -370,6 +380,52 @@
           <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
             <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-2-1.6-7-1.2-7 4 0 4 2.8 8 5 8 .9 0 1.3-.5 2-.5s1.1.5 2 .5c2.2 0 5-4 5-8 0-5.2-5-5.6-7-4Z"/><path d="M12 8c0-2 1-3.6 3-4.5"/></svg>
+
+            <span>Dietetyka</span>
+
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
+            <span>Bieganie</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 12c2 0 3.5-1 3.5-2.5S14 7 12 7s-3.5 1.5-3.5 3"/></svg>
+            <span>Pilates</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c0-3 2-5 5-6l7-3c2-1 4 0 4 2 0 1-1 2-2 2l-9 3c-2 1-3 2-3 4Z"/><path d="M4 18h3"/></svg>
+            <span>Balet</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c-4 0-6-3-6-6 2 0 4 1 6 3 2-2 4-3 6-3 0 3-2 6-6 6Z"/><path d="M12 14V6"/></svg>
+            <span>Joga</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12V8a3 3 0 0 1 6 0v1a2 2 0 0 1 4 0v3c0 3-2 6-5 6H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2Z"/></svg>
+            <span>Boks</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h4l4 8M10 9h4M6 17h6l3-6"/></svg>
+            <span>Kolarstwo</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/><path d="M2 15c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0"/></svg>
+            <span>Pływanie</span>
+          </li>
+          <li class="trainings__item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><path d="M5 8v8M3 9v6M19 8v8M21 9v6"/></svg>
+            <span>Trening siłowy</span>
+          </li>
+          <li class="trainings__item">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8c-2-1.6-7-1.2-7 4 0 4 2.8 8 5 8 .9 0 1.3-.5 2-.5s1.1.5 2 .5c2.2 0 5-4 5-8 0-5.2-5-5.6-7-4Z"/><path d="M12 8c0-2 1-3.6 3-4.5"/></svg>
+
+            <span>Dietetyka</span>
+
           </li>
           <li class="trainings__item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="5" r="2"/><path d="M8 20l3-6 4 2 3-7M11 14l-3-3 2-4"/></svg>
@@ -407,14 +463,6 @@
     <!-- ============================ CO DOSTAJESZ ============================ -->
     <section id="co-dostajesz" class="section co-dostajesz">
       <div class="container co-dostajesz__grid">
-        <figure class="co-dostajesz__mockup reveal">
-          <picture>
-            <source srcset="mockup1.webp" type="image/webp">
-            <img src="mockup1.png" width="500" height="833" loading="lazy" decoding="async"
-                 alt="Strona trenerki personalnej na ekranie telefonu: zdjęcie z treningu, nagłówek „Ruch dopasowany do wieku i możliwości” i przycisk „Umów pierwsze zajęcia”.">
-          </picture>
-        </figure>
-
         <div class="co-dostajesz__text">
           <h2 class="section__title reveal">Co dostajesz</h2>
           <dl class="co-dostajesz__lista">
@@ -431,7 +479,7 @@
               <dd>Klauzula informacyjna, wymagane zgody i ustalony okres przechowywania danych, zanim strona ruszy.</dd>
             </div>
             <div class="co-dostajesz__punkt reveal">
-              <dt>Twoja domena i SSL</dt>
+              <dt>Twoja domena i bezpieczne połączenie (SSL)</dt>
               <dd>Strona pod Twoim adresem, z krótką instrukcją, jak samodzielnie zmienić tekst czy zdjęcie.</dd>
             </div>
           </dl>
@@ -484,6 +532,7 @@
             </a>
           </li>
         </ul>
+        <div class="style-pasek__kropki" hidden></div>
       </div>
     </section>
 
@@ -491,11 +540,15 @@
     <section id="o-mnie" class="section o-nas">
       <div class="container">
         <h2 class="section__title reveal">O mnie</h2>
+        <!-- Portret: po dostarczeniu zdjęcia wstaw tu
+             <figure class="o-nas__portret"><picture>...</picture></figure>
+             (kadr 4:5, WebP + JPG, alt "Kacper Barczak"). Styl już jest w style.css. -->
         <div class="o-nas__text">
+          <p class="o-nas__kto reveal"><strong>Kacper Barczak</strong>, Poznań</p>
           <p class="reveal">FitPage prowadzę sam. Robię strony tylko dla trenerów, instruktorów i dietetyków. Mój standard powstał z analizy około 20 stron trenerów: co na nich działa, czego brakuje i w którym miejscu klient się gubi.</p>
-          <p class="reveal">Rozmowę, projekt, kodowanie, publikację i opiekę po starcie robię osobiście. Nie przekazuję Twojej strony nikomu dalej, więc od początku do końca rozmawiasz z osobą, która ją faktycznie buduje.</p>
+          <p class="reveal">Standard dopasowuję do Twojej specjalizacji. Strona trenerki pracującej z&nbsp;seniorami wygląda inaczej niż strona trenera przygotowania motorycznego, ale obie prowadzą klienta do jednego: kontaktu z&nbsp;Tobą.</p>
           <div id="o-mnie-wiecej" class="o-nas__reszta">
-            <p class="reveal">Standard dopasowuję do Twojej specjalizacji. Strona trenerki pracującej z&nbsp;seniorami wygląda inaczej niż strona trenera przygotowania motorycznego, ale obie prowadzą klienta do jednego: kontaktu z&nbsp;Tobą.</p>
+            <p class="reveal">Rozmowę, projekt, kodowanie, publikację i opiekę po starcie robię osobiście. Nie przekazuję Twojej strony nikomu dalej, więc od początku do końca rozmawiasz z osobą, która ją faktycznie buduje.</p>
             <p class="reveal">Ty zajmujesz się swoimi podopiecznymi. Ja zadbam o&nbsp;to, jak prezentujesz się w&nbsp;internecie.</p>
           </div>
           <button type="button" class="o-nas__czytaj" aria-expanded="false" aria-controls="o-mnie-wiecej" hidden>Czytaj dalej</button>
@@ -503,11 +556,11 @@
 
         <h3 class="proces-pasek__tytul reveal">Jak pracuję</h3>
         <ol class="proces-pasek reveal">
-          <li><span class="proces-pasek__nr" aria-hidden="true">1</span>Bezpłatna rozmowa</li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">2</span>Plan i materiały</li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">3</span>Projekt</li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">4</span>Budowa i testy</li>
-          <li><span class="proces-pasek__nr" aria-hidden="true">5</span>Publikacja</li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">1</span><a href="proces.html#etap-1">Bezpłatna rozmowa</a></li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">2</span><a href="proces.html#etap-2">Plan i materiały</a></li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">3</span><a href="proces.html#etap-3">Projekt</a></li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">4</span><a href="proces.html#etap-4">Budowa i testy</a></li>
+          <li><span class="proces-pasek__nr" aria-hidden="true">5</span><a href="proces.html#etap-5">Publikacja</a></li>
         </ol>
         <p class="o-nas__wiecej reveal"><a href="proces.html">Zobacz, co dzieje się na każdym etapie &rarr;</a></p>
       </div>
@@ -517,7 +570,7 @@
     <section id="cennik" class="section cennik" aria-labelledby="cennik-tytul">
       <div class="container">
         <h2 id="cennik-tytul" class="section__title reveal">Cennik</h2>
-        <p class="cennik__lead reveal">Trzy pakiety z&nbsp;cenami „od” (netto). Dokładną kwotę podaję po briefie.</p>
+        <p class="cennik__lead reveal">Trzy pakiety z&nbsp;cenami „od” (netto). Dokładną kwotę podaję po krótkim briefie, a wybór pakietu jeszcze do niczego nie zobowiązuje. Odpowiedzi na częste pytania znajdziesz w&nbsp;<a href="faq.html">FAQ</a>.</p>
 
         <div class="cennik__pakiety cennik__pakiety--skrot">
           <article class="pakiet reveal">
@@ -528,10 +581,10 @@
             <a href="kontakt.html?pakiet=Start" class="btn btn--secondary pakiet__btn">Wybieram Start</a>
           </article>
           <article class="pakiet pakiet--wyrozniony reveal">
-            <p class="pakiet__plakietka">Najczęściej wybierany</p>
+            <p class="pakiet__plakietka">Polecam trenerom</p>
             <h3 class="pakiet__nazwa">Trener</h3>
             <p class="pakiet__cena"><span>od</span> 1890&nbsp;zł <span>netto</span></p>
-            <p class="pakiet__opis">Wszystko ze Start, plus podstrony, metamorfozy, FAQ, zapisy online i&nbsp;lokalne SEO.</p>
+            <p class="pakiet__opis">Wszystko ze Start, plus podstrony, metamorfozy, FAQ, zapisy online i&nbsp;widoczność w&nbsp;Google w&nbsp;Twoim mieście.</p>
             <p class="pakiet__czas">Realizacja ok. 14 dni</p>
             <a href="kontakt.html?pakiet=Trener" class="btn btn--primary pakiet__btn">Wybieram Trener</a>
           </article>
@@ -637,11 +690,10 @@
             <p class="artykul__meta"><time datetime="2026-10-04">4 października 2026</time> · 4 min czytania</p>
           </article>
 
-          <!-- Podgląd pokazuje 4 najnowsze artykuły (2 pełne rzędy w siatce
-               2-kolumnowej), od najnowszego. Przy kolejnym artykule: dopisz
-               jego kartę tu na samej górze i usuń najstarszą z czterech
-               (obecnie "Pracujesz w siłowni sieciowej", 2026-10-04).
-               Pełna, rosnąca lista zostaje wyłącznie na artykuly.html. -->
+          <!-- Podgląd: 4 najnowsze karty w HTML, od najnowszego. Widać 3
+               (telefon i od 1024px) albo 4 (700-1023px, 2x2). Przy kolejnym
+               artykule dopisz jego kartę tu na górze i usuń najstarszą.
+               Pełna lista zostaje na artykuly.html. -->
 
         </div>
 
@@ -664,6 +716,7 @@
           Nie musisz mieć gotowych tekstów ani zdjęć, ułożymy je razem w&nbsp;trakcie.
         </p>
         <a href="kontakt.html" class="btn btn--primary">Umów konsultację</a>
+        <p class="cta-closing__podpis">Odpisuję osobiście, Kacper Barczak. Wolisz napisać od razu? <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>
       </div>
     </section>
 
@@ -685,11 +738,11 @@
     <div class="container footer__inner">
       <span class="footer__logo">FitPage</span>
       <p>&copy; <span id="year"></span> FitPage: strony internetowe dla trenerów personalnych.</p>
-      <p>Poznań, działam w całej Polsce · <a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></p>
+      <p>Poznań, działam w całej Polsce <span class="footer__razem"><span class="footer__kropka" aria-hidden="true">· </span><a href="mailto:kontakt@fitpage.pl">kontakt@fitpage.pl</a></span></p>
       <p><a href="https://www.instagram.com/fitpage.pl/" rel="me">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61595516211350" rel="me">Facebook</a> · <a href="https://www.tiktok.com/@fitpage.pl" rel="me">TikTok</a></p>
     </div>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

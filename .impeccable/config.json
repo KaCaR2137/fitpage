@@ -749,6 +749,15 @@
         ],
         "createdAt": "2026-10-20T13:45:58.354Z",
         "reason": "reguła .faq__item::before ze wspólnego style.css (kreska otwartego pytania FAQ z briefu), na proces.html nie ma FAQ"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-20T14:41:02.802Z",
+        "reason": "reguła .faq__item::before ze wspólnego style.css (kreska otwartego pytania FAQ z briefu), na index.html nie ma FAQ"
       }
     ]
   }

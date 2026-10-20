@@ -139,6 +139,28 @@ i trafia do DOM tylko wtedy, gdy ma grać (krótki skrypt na początku
 strony mają dalej stary splash; index ustawia `fitpageSplashShown`, więc po
 wejściu na główną podstrony pokazują lżejszy wariant.
 
+**Poprawki po krytyce strony głównej (20.10.2026, `.impeccable/critique/2026-10-20T14-32-57Z__index-html.md`).**
+- Hero `.hero--podzielony`: od 900px tekst z lewej, makieta `mockup1` z prawej
+  (`fetchpriority="high"`, to teraz LCP); na telefonie makieta pod tekstem,
+  „Zobacz cennik” jako link tekstowy, nie drugi przycisk. Pod CTA dopisek o
+  krótkim briefie (ok. 5 minut). „Co dostajesz” bez makiety: tytuł + 4 punkty 2x2.
+- Pakiet Trener: plakietka „Polecam trenerom” zamiast „Najczęściej wybierany”
+  (nie ma historii klientów, PRODUCT.md), też na `cennik.html`. Lead cennika:
+  wybór pakietu nie zobowiązuje + link do FAQ; „lokalne SEO” opisane słowami.
+  Na telefonie pasek cennika startuje od Start (wcześniej od Trener).
+- Pasek dyscyplin: doszła Dietetyka (9 pozycji, 108 s), pauza na hover/fokus
+  i przycisk pauzy (`.trainings__pauza`, aria-pressed), ukryty przy reduced motion.
+- „O mnie”: „Kacper Barczak, Poznań” na górze, akapit o specjalizacjach przed
+  „Czytaj dalej”; komentarz w HTML i style `.o-nas__portret` czekają na portret.
+  CTA na dole: „Odpisuję osobiście, Kacper Barczak” + e-mail.
+- „Jak pracuję”: kafelki to linki do `proces.html#etap-1..5`.
+- Bez `text-shadow` na zwykłych akapitach (tylko nagłówki). Tagi artykułów na
+  telefonie jako obrysowane pigułki, pigułki z 6px paddingu. Kropki pod
+  miniaturami stylów na telefonie (script.js 5d).
+- Stopka (wszystkie strony): kropka przed e-mailem w `.footer__kropka`, ukryta,
+  gdy elementy stoją jeden pod drugim (do 899px); wiersz dopiero od 900px.
+- `style.css?v=18`, `script.js?v=7`.
+
 ## Strony
 **Aktualna kolejność (13.10.2026, po krytyce impeccable 24/36):** Nav (O nas /
 Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz

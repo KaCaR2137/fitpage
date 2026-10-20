@@ -195,7 +195,7 @@
   /* ---------------------- 5b. Cennik: pasek z kropkami (telefon) ----------------------
      Na telefonie karty stoją w poziomym pasku (CSS). Kropki pod spodem
      pokazują, która karta jest na środku, i przewijają do wybranej. Na
-     start pasek ustawia się na wyróżnionym pakiecie. */
+     start pasek pokazuje pierwszy, najtańszy pakiet. */
   var pasekCen = document.querySelector('.cennik__pakiety--skrot');
   var kropki = document.querySelector('.cennik__kropki');
   if (pasekCen && kropki) {
@@ -238,9 +238,49 @@
 
     pasekCen.addEventListener('scroll', function () { zaznacz(); }, { passive: true });
 
-    var start = karty.indexOf(pasekCen.querySelector('.pakiet--wyrozniony'));
-    if (telefonCennik.matches && start > -1) { pokazKarte(start, false); }
+    if (telefonCennik.matches) { pokazKarte(0, false); }
     zaznacz();
+  }
+
+  /* ---------------------- 5c. Pasek dyscyplin: pauza ---------------------- */
+  var pasekDyscyplin = document.querySelector('.trainings');
+  var pauza = pasekDyscyplin ? pasekDyscyplin.querySelector('.trainings__pauza') : null;
+  if (pauza && !reduceMotion) {
+    var etykieta = pauza.querySelector('.visually-hidden');
+    pauza.hidden = false;
+    pauza.addEventListener('click', function () {
+      var stop = pasekDyscyplin.classList.toggle('trainings--stop');
+      pauza.setAttribute('aria-pressed', String(stop));
+      etykieta.textContent = stop ? 'Wznów przewijanie paska' : 'Zatrzymaj przewijanie paska';
+    });
+  }
+
+  /* ---------------------- 5d. Przykładowe style: kropki (telefon) ---------------------- */
+  var pasekStyli = document.querySelector('.style-pasek__lista');
+  var kropkiStyli = document.querySelector('.style-pasek__kropki');
+  if (pasekStyli && kropkiStyli) {
+    var styleKarty = Array.prototype.slice.call(pasekStyli.children);
+    var kropkiS = styleKarty.map(function (li, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      var nazwa = li.querySelector('span');
+      b.setAttribute('aria-label', 'Styl ' + (nazwa ? nazwa.textContent.trim() : String(i + 1)));
+      b.addEventListener('click', function () {
+        pasekStyli.scrollTo({ left: li.offsetLeft - pasekStyli.offsetLeft - 20, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+      kropkiStyli.appendChild(b);
+      return b;
+    });
+    var zaznaczStyl = function () {
+      var max = pasekStyli.scrollWidth - pasekStyli.clientWidth;
+      var i = max > 0 ? Math.round(pasekStyli.scrollLeft / max * (styleKarty.length - 1)) : 0;
+      kropkiS.forEach(function (b, j) {
+        if (j === i) { b.setAttribute('aria-current', 'true'); } else { b.removeAttribute('aria-current'); }
+      });
+    };
+    pasekStyli.addEventListener('scroll', zaznaczStyl, { passive: true });
+    kropkiStyli.hidden = false;
+    zaznaczStyl();
   }
 
   /* ---------------------- 6. Formularze (kontakt + opinia) ----------------------
