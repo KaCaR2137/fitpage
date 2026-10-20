@@ -374,18 +374,9 @@ the faux-bold there is the least noticeable instance if it needs revisiting.
   error, not a feature — centering, not stretching, is the fix here. Once
   a second real portfolio project ships, the two cards will sit side by
   side from the left as before; the centering only affects the 1-2 card
-  case. Process steps are `1fr` → `repeat(3, 1fr)` at 700px, `align-items:
-  stretch` (grid default — reversed from `start` on 17.09.2026). `start`
-  let an expanded step grow without stretching its neighbours, but it also
-  left same-row cards at uneven resting heights whenever their always-visible
-  paragraph wrapped to a different number of lines — measured in-browser:
-  at 900px, step 1 "Analiza" rendered 277px tall next to step 2 "Struktura"
-  at 252px, an inconsistency a real visitor flagged. `stretch` equalizes
-  every row to its tallest card at any width; the accepted trade-off is
-  that expanding one step's "Więcej" now pulls its row-mates' bottom edge
-  down with it (empty space inside the shorter cards) instead of growing in
-  isolation — verified this reads as a cohesive block, not broken, not a
-  jagged row. "O nas" is a centered flex column → row at 900px; the
+  case. Process (`proces.html`) is a five-stage timeline, not a card grid: a
+  vertical line with numbered dots on phones, centred and alternating from
+  900px; the home page repeats the same five stages as a compact strip. "O nas" is a centered flex column → row at 900px; the
   terminal panel that replaced the phone mockup here (22.09.2026) caps at
   `420px` at both tiers, not two different widths — see Components →
   Terminal panel for its shape and colors.

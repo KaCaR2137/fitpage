@@ -144,7 +144,7 @@ wejściu na główną podstrony pokazują lżejszy wariant.
 Proces / FAQ / Artykuły + CTA, na wszystkich stronach) → Hero → Atuty (zaraz
 pod CTA w hero) → Treningi (pasek) → **Co dostajesz** (`#co-dostajesz`:
 `mockup1.png` bez podpisu (usunięty 19.10.2026) + lista 4 punktów `<dl>`) →
-O nas (sam tekst o standardzie z analizy ~20 stron trenerów + pasek 6 etapów
+O nas (sam tekst o standardzie z analizy ~20 stron trenerów + pasek 5 etapów
 procesu z linkiem do `proces.html`; **panel terminala usunięty**) → Portfolio
 (ukryte, `hidden`) → Artykuły → CTA „Zaczynamy?” (opisuje, co się dzieje po
 kliknięciu). Pulsuje tylko CTA w hero, 3 razy. Splash skrócony: nowy 1s,
@@ -746,12 +746,15 @@ wspólnego id) — `errorIdFor()` w `script.js` rozróżnia oba przypadki.
 `dziekujemy.html` ale z treścią neutralną wobec opinii, nie briefu.
 `<meta name="robots" content="noindex">`, bez wpisu w nav/stopce.
 
-**`proces.html`** — podstrona „Proces tworzenia strony” (wzór:
-leadpage.pl/strony-internetowe/). Kompaktowy hero + 6 etapów (Analiza / Struktura /
-Projekt / Development / Testy / Wdrożenie) w `.kroki__grid` / `.krok`. Każdy etap
-ma krótki opis + rozwijane `<details class="krok__more">` („Więcej”) z dodatkowymi
-informacjami. **Bez przycisków CTA i bez listy odnośników** — tylko link „Wróć na
-stronę główną”. Wejście: link w stopce oraz „Proces” w nav (obie → `proces.html`).
+**`proces.html`** (przebudowana 20.10.2026) — „Jak powstaje Twoja strona”.
+Nagłówek `.hero--cover.hero--proces`: rozmyty kolaż miniatur szablonów
+(`images/proces-hero*.webp/jpg`, 800 i 1600px, z preload) pod zieloną
+warstwą 0.78 (min. 5.7:1). Oś czasu `.os` / `.etap` z 5 etapami (Bezpłatna
+rozmowa, Plan i materiały, Projekt, Budowa i testy, Publikacja; czas,
+„Co robię ja”, „Co robisz Ty”), na telefonie pionowa, od 900px naprzemienna
+wokół linii na środku. Sekcja „Co przygotować” (lista z hairline'ami) i CTA
+`.cta-closing` z przyciskami do kontaktu i cennika. Te same 5 etapów w
+pasku „Jak pracuję” na stronie głównej. Wejście: „Proces” w nav i stopce.
 
 **`szablony.html` (od 19.10.2026)** — „Wybierz styl swojej strony”, 4 karty
 (miniatura WebP/JPG z `images/szablony/<slug>-400|800`, nazwa, opis,

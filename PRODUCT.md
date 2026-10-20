@@ -35,8 +35,9 @@ FitPage earns repeatable paid commissions from the sport and nutrition niche.
 
 Not a generic "cheap website" shop: a **repeatable standard for one niche**. A fixed
 section structure, trainer-specific copy patterns, and a GDPR checklist derived from
-analysis of ~20 real trainer websites, plus a defined six-step delivery process
-(Analiza → Struktura → Projekt → Development → Testy → Wdrożenie). The standard is
+analysis of ~20 real trainer websites, plus a defined five-step delivery process in about 7-14 days
+(Bezpłatna rozmowa → Plan i materiały → Projekt → Budowa i testy → Publikacja),
+described on `proces.html` and in the "Jak pracuję" strip on the home page. The standard is
 modular and adapts to the client's sub-niche (e.g. seniors, motor preparation,
 online coaching, dietetics). A neighbouring freelancer competing on
 price alone could not truthfully claim the same niche-specific standard and process.

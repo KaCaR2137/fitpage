@@ -2455,13 +2455,18 @@ summary:focus-visible {
     gap: 72px;
   }
   .co-dostajesz__mockup { max-width: none; }
-  .proces-pasek { grid-template-columns: repeat(6, 1fr); }
+  .proces-pasek { grid-template-columns: repeat(5, 1fr); }
   .proces-pasek li {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
     padding: 16px;
   }
+}
+
+/* 5 etapów w 2 kolumnach: ostatni na całą szerokość, bez dziury obok */
+@media (max-width: 899px) {
+  .proces-pasek li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 @media (max-width: 359px) {
