@@ -700,7 +700,8 @@
         "rule": "side-tab",
         "value": "*",
         "files": [
-          "artykuly/strona-dla-dietetyka.html"
+          "artykuly/strona-dla-dietetyka.html",
+          "artykuly/strona-dla-studia-fitness.html"
         ],
         "createdAt": "2026-10-19T18:17:34.140Z",
         "reason": "brief: otwarte pytanie FAQ ma mieć 3px pionową kreskę w kolorze akcentu po lewej"
@@ -736,7 +737,8 @@
         "rule": "cramped-padding",
         "value": "*",
         "files": [
-          "artykuly/strona-dla-dietetyka.html"
+          "artykuly/strona-dla-dietetyka.html",
+          "artykuly/strona-dla-studia-fitness.html"
         ],
         "createdAt": "2026-10-19T18:17:43.349Z",
         "reason": "fałszywy alarm: górna linia .faq__list to hairline listy, treść wierszy ma 20px paddingu"
@@ -839,6 +841,24 @@
         ],
         "createdAt": "2026-10-20T15:08:43.877Z",
         "reason": "fałszywy alarm: górna linia .dla-kogo__lista to hairline listy, linki mają 20px paddingu"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "artykuly/strona-dla-studia-fitness.html"
+        ],
+        "createdAt": "2026-10-22T16:40:00.000Z",
+        "reason": "Udokumentowana zazieleniona poswiata na H1 (text-shadow, DESIGN.md Typography), ten sam wspoldzielony styl co kazda inna strona - pierwsze przeskanowanie na nowym pliku artykulu."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "artykuly/strona-dla-studia-fitness.html"
+        ],
+        "createdAt": "2026-10-22T16:40:00.000Z",
+        "reason": "Udokumentowana 'Flat Canvas Rule' w DESIGN.md, ten sam kremowy #F7F3EA co kazda inna strona serwisu od poczatku projektu."
       }
     ]
   }

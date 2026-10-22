@@ -585,6 +585,18 @@ dodatkowo `FAQPage` w JSON-LD. Linki w treści tylko z tekstu klienta
 się linkiem do konsultacji, a tekstu nie wolno było zmieniać. Na głównej
 wypadła karta „Strona czy Booksy”.
 
+**Dwunasty artykuł (22.10.2026):** `strona-dla-studia-fitness`, z
+`artykul-strona-dla-studia-fitness-DRAFT.md` (plik roboczy usunięty po
+publikacji na prośbę klienta). Ten sam szablon co `strona-dla-dietetyka`:
+FAQ jako `<details>` + `FAQPage`, `Article` + `BreadcrumbList`. Linki w
+treści dokładnie jak w szkicu; „Zobacz też” → `strona-dla-dietetyka`.
+Zdjęcie w tle: Pexels 18136885 (reformer w studiu pilatesu, bez logo
+marki), źródło `tlodoartykulu-studio-fitness.jpg` w korzeniu, ten sam
+blur co przy dietetyku (kadr 16:9, 1600x900, GaussianBlur 6), scrim 0.65
+daje min. 4.90:1. `artykuly/pexels-alexy-almond-3758028.jpg` od klienta
+okazał się identyczny (md5) z tłem dietetyka, więc go nie użyto. Na
+głównej wypadła karta „Pracujesz w siłowni sieciowej?”.
+
 **Porządki SEO po Search Console (10.10.2026).** `strona-czy-booksy` i
 `trening-online-strona` mają teraz po 3 linki przychodzące w treści.
 Booksy: z `instagram-czy-strona`, `ile-kosztuje-strona-dla-trenera` (przy
