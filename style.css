@@ -1286,7 +1286,7 @@ p.hero__title {
   font-size: 0.9rem;
   color: var(--text);
 }
-.artykul__related a { color: var(--accent-strong); text-decoration: none; }
+.artykul__related a { display: block; width: fit-content; padding: 4px 0; color: var(--accent-strong); text-decoration: none; }
 .artykul__related a:hover,
 .artykul__related a:focus-visible { text-decoration: underline; }
 
