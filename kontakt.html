@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=22">
+  <link rel="stylesheet" href="style.css?v=23">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="FitPage">
@@ -220,13 +220,48 @@
               <input type="text" id="silownia" name="nazwa_silowni_studia" maxlength="150">
             </div>
 
+            <!-- Dyscyplina: bez JS zwykłe pole z <datalist> (kilka po przecinku).
+                 script.js (6b) zamienia je w combobox z chipami (max 5) i ukrytym
+                 polem name="dyscyplina" z nazwami bez emotek, po przecinku. -->
+            <div class="form__row dyscyplina" data-dyscyplina>
+              <label for="dyscyplina" id="dyscyplina-label">W jakiej dyscyplinie trenujesz klientów? <span class="req">*</span></label>
+              <small class="form__hint" id="dyscyplina-hint">Wpisz albo wybierz z listy. Kilka oddziel przecinkami, do 5.</small>
+              <div class="dyscyplina__pole">
+                <input type="text" id="dyscyplina" name="dyscyplina" list="dyscypliny-lista" required maxlength="300" autocomplete="off" placeholder="np. bieganie, joga" aria-describedby="dyscyplina-hint dyscyplina-error">
+              </div>
+              <datalist id="dyscypliny-lista">
+                <option value="Trening siłowy / siłownia" data-emoji="🏋️">
+                <option value="Trening funkcjonalny / CrossFit" data-emoji="💪">
+                <option value="Trójbój / podnoszenie ciężarów" data-emoji="🏋️‍♀️">
+                <option value="Sporty sylwetkowe" data-emoji="🏆">
+                <option value="Bieganie" data-emoji="🏃">
+                <option value="Kolarstwo" data-emoji="🚴">
+                <option value="Pływanie" data-emoji="🏊">
+                <option value="Triathlon" data-emoji="🥇">
+                <option value="Boks / kickboxing / MMA" data-emoji="🥊">
+                <option value="BJJ / judo / karate" data-emoji="🥋">
+                <option value="Joga" data-emoji="🧘">
+                <option value="Pilates" data-emoji="🤸">
+                <option value="Stretching / mobility" data-emoji="🙆">
+                <option value="Taniec / zumba" data-emoji="💃">
+                <option value="Pole dance / akrobatyka powietrzna" data-emoji="💫">
+                <option value="Wspinaczka" data-emoji="🧗">
+                <option value="Nordic walking" data-emoji="🚶">
+                <option value="Przygotowanie motoryczne w sportach drużynowych" data-emoji="⚽">
+                <option value="Tenis / padel" data-emoji="🎾">
+                <option value="Narciarstwo / snowboard" data-emoji="⛷️">
+                <option value="Dietetyka / żywienie" data-emoji="🥗">
+              </datalist>
+              <small class="form__error" id="dyscyplina-error" aria-live="polite"></small>
+            </div>
+
             <fieldset class="form__radio-group" aria-describedby="specjalizacja-error" data-required-group>
               <legend>Specjalizacja <span class="req">*</span></legend>
               <small class="form__hint">Zaznacz wszystko, co pasuje.</small>
               <label class="form__radio-option">
-                <input type="checkbox" name="specjalizacja" value="Trening siłowy">
+                <input type="checkbox" name="specjalizacja" value="Budowa masy i siły">
                 <span class="form__check-box" aria-hidden="true"></span>
-                <span class="form__radio-text">Trening siłowy</span>
+                <span class="form__radio-text">Budowa masy i siły</span>
               </label>
               <label class="form__radio-option">
                 <input type="checkbox" name="specjalizacja" value="Redukcja masy ciała">
@@ -234,14 +269,14 @@
                 <span class="form__radio-text">Redukcja masy ciała</span>
               </label>
               <label class="form__radio-option">
-                <input type="checkbox" name="specjalizacja" value="Dietetyka">
+                <input type="checkbox" name="specjalizacja" value="Poprawa sprawności i zdrowia">
                 <span class="form__check-box" aria-hidden="true"></span>
-                <span class="form__radio-text">Dietetyka</span>
+                <span class="form__radio-text">Poprawa sprawności i zdrowia</span>
               </label>
               <label class="form__radio-option">
-                <input type="checkbox" name="specjalizacja" value="Przygotowanie motoryczne">
+                <input type="checkbox" name="specjalizacja" value="Przygotowanie do zawodów / startów">
                 <span class="form__check-box" aria-hidden="true"></span>
-                <span class="form__radio-text">Przygotowanie motoryczne</span>
+                <span class="form__radio-text">Przygotowanie do zawodów / startów</span>
               </label>
               <label class="form__radio-option">
                 <input type="checkbox" name="specjalizacja" value="Trening medyczny">
@@ -596,6 +631,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

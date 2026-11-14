@@ -362,6 +362,7 @@
     'telefon': 'Podaj numer telefonu.',
     'miasto': 'Podaj miasto, w którym pracujesz.',
     'forma_zajec': 'Zaznacz przynajmniej jedną formę zajęć.',
+    'dyscyplina': 'Wybierz przynajmniej jedną dyscyplinę.',
     'specjalizacja': 'Zaznacz przynajmniej jedną specjalizację.',
     'specjalizacja-inne': 'Wpisz, jaka to specjalizacja.',
     'grupa-docelowa': 'Napisz, z kim najczęściej pracujesz.',
@@ -447,6 +448,309 @@
         });
       });
     });
+
+    /* ---- 6b. Dyscyplina: combobox wielokrotnego wyboru (kontakt.html) ----
+       Wzorzec ARIA combobox + listbox (APG "list autocomplete"): fokus
+       zostaje w polu, aktywna opcja przez aria-activedescendant. Wybrane
+       pozycje to chipy pod polem (max 5) i trafiają do ukrytego pola
+       name="dyscyplina" jako nazwy bez emotek, po przecinku. Widoczne pole
+       traci name/list/required: o poprawności decyduje setCustomValidity
+       (min. 1 chip), więc działa zwykłe validateField/validateWithin. */
+    var dyscWrap = form.querySelector('[data-dyscyplina]');
+    if (dyscWrap) {
+      (function () {
+        var MAX = 5;
+        var input = dyscWrap.querySelector('#dyscyplina');
+        var pole = dyscWrap.querySelector('.dyscyplina__pole');
+        var datalist = dyscWrap.querySelector('datalist');
+        var hint = dyscWrap.querySelector('#dyscyplina-hint');
+        var options = Array.prototype.map.call(datalist.options, function (o) {
+          return { name: o.value, emoji: o.dataset.emoji || '' };
+        });
+        datalist.remove();
+
+        function norm(s) {
+          return s.toLocaleLowerCase('pl').replace(/ł/g, 'l').normalize('NFD')
+            .replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim();
+        }
+        options.forEach(function (o) { o.key = norm(o.name); });
+
+        var hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'dyscyplina';
+        pole.after(hidden);
+
+        input.removeAttribute('name');
+        input.removeAttribute('list');
+        input.required = false;
+        input.maxLength = 60;
+        input.setAttribute('role', 'combobox');
+        input.setAttribute('aria-autocomplete', 'list');
+        input.setAttribute('aria-expanded', 'false');
+        input.setAttribute('aria-controls', 'dyscyplina-lista');
+        hint.textContent = 'Wpisz albo wybierz z listy (strzałki i Enter). Możesz dodać kilka, do 5.';
+
+        var listbox = document.createElement('ul');
+        listbox.id = 'dyscyplina-lista';
+        listbox.className = 'dyscyplina__lista';
+        listbox.setAttribute('role', 'listbox');
+        listbox.setAttribute('aria-labelledby', 'dyscyplina-label');
+        listbox.hidden = true;
+        pole.appendChild(listbox);
+
+        var chips = document.createElement('ul');
+        chips.className = 'dyscyplina__chipy';
+        chips.setAttribute('aria-label', 'Wybrane dyscypliny');
+        chips.hidden = true;
+        hidden.after(chips);
+
+        var live = document.createElement('p');
+        live.className = 'visually-hidden';
+        live.setAttribute('aria-live', 'polite');
+        chips.after(live);
+
+        var selected = []; // { name, emoji, key }
+        var current = [];  // opcje widoczne w liście: { name, emoji, key, inna? }
+        var active = -1;
+
+        function announce(text) {
+          live.textContent = '';
+          setTimeout(function () { live.textContent = text; }, 30);
+        }
+
+        function sync() {
+          hidden.value = selected.map(function (s) { return s.name; }).join(', ');
+          input.setCustomValidity(selected.length ? '' : 'min-1');
+          if (input.classList.contains('is-touched')) { validateField(input); }
+          chips.hidden = !selected.length;
+        }
+
+        function renderChips() {
+          chips.textContent = '';
+          selected.forEach(function (s) {
+            var li = document.createElement('li');
+            li.className = 'dyscyplina__chip';
+            var em = document.createElement('span');
+            em.className = 'dyscyplina__emoji';
+            em.setAttribute('aria-hidden', 'true');
+            em.textContent = s.emoji;
+            var txt = document.createElement('span');
+            txt.className = 'dyscyplina__chip-nazwa';
+            txt.textContent = s.name;
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'dyscyplina__usun';
+            btn.setAttribute('aria-label', 'Usuń: ' + s.name);
+            btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+            btn.addEventListener('click', function () { remove(s, true); });
+            li.appendChild(em);
+            li.appendChild(txt);
+            li.appendChild(btn);
+            chips.appendChild(li);
+          });
+        }
+
+        function isOpen() { return !listbox.hidden; }
+
+        function setActive(i) {
+          var items = listbox.querySelectorAll('[role="option"]');
+          active = i;
+          Array.prototype.forEach.call(items, function (el, idx) {
+            el.classList.toggle('is-active', idx === i);
+          });
+          if (i > -1 && items[i]) {
+            input.setAttribute('aria-activedescendant', items[i].id);
+            var el = items[i];
+            if (el.offsetTop < listbox.scrollTop) {
+              listbox.scrollTop = el.offsetTop;
+            } else if (el.offsetTop + el.offsetHeight > listbox.scrollTop + listbox.clientHeight) {
+              listbox.scrollTop = el.offsetTop + el.offsetHeight - listbox.clientHeight;
+            }
+          } else {
+            input.removeAttribute('aria-activedescendant');
+          }
+        }
+
+        function fitToViewport() {
+          // Lista mieści się pod polem: wysokość wg miejsca do dołu ekranu
+          // (z klawiaturą ekranową liczy visualViewport), min. 3 opcje.
+          var vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+          var below = vh - input.getBoundingClientRect().bottom - 12;
+          listbox.style.maxHeight = Math.max(156, Math.min(320, below)) + 'px';
+          var rect = listbox.getBoundingClientRect();
+          if (rect.bottom > vh) {
+            window.scrollBy({ top: rect.bottom - vh + 12, behavior: 'instant' });
+          }
+        }
+
+        function render() {
+          var q = norm(input.value);
+          var chosen = selected.map(function (s) { return s.key; });
+          listbox.textContent = '';
+          current = [];
+
+          if (selected.length >= MAX) {
+            var full = document.createElement('li');
+            full.className = 'dyscyplina__info';
+            full.setAttribute('role', 'presentation');
+            full.textContent = 'Wybrano już 5 dyscyplin. Usuń jedną, żeby dodać inną.';
+            listbox.appendChild(full);
+          } else {
+            current = options.filter(function (o) {
+              return chosen.indexOf(o.key) === -1 && (!q || o.key.indexOf(q) > -1);
+            });
+            // "Inna" tylko gdy nic z listy nie pasuje (i nie jest to już wybrana pozycja).
+            if (q && !current.length && chosen.indexOf(q) === -1) {
+              var wpis = input.value.trim().replace(/\s+/g, ' ');
+              current.push({ name: wpis.charAt(0).toLocaleUpperCase('pl') + wpis.slice(1), emoji: '✏️', key: q, inna: true });
+            }
+            current.forEach(function (o, i) {
+              var li = document.createElement('li');
+              li.id = 'dyscyplina-opcja-' + i;
+              li.className = 'dyscyplina__opcja' + (o.inna ? ' dyscyplina__opcja--inna' : '');
+              li.setAttribute('role', 'option');
+              li.setAttribute('aria-selected', 'false');
+              var em = document.createElement('span');
+              em.className = 'dyscyplina__emoji';
+              em.setAttribute('aria-hidden', 'true');
+              em.textContent = o.emoji;
+              var txt = document.createElement('span');
+              txt.textContent = o.inna ? 'Inna: ' + o.name : o.name;
+              li.appendChild(em);
+              li.appendChild(txt);
+              li.addEventListener('click', function () { choose(o); });
+              listbox.appendChild(li);
+            });
+            if (!current.length) {
+              var none = document.createElement('li');
+              none.className = 'dyscyplina__info';
+              none.setAttribute('role', 'presentation');
+              none.textContent = q ? 'Ta dyscyplina jest już wybrana.' : 'Wszystkie dyscypliny z listy są już wybrane. Wpisz własną.';
+              listbox.appendChild(none);
+            }
+          }
+          // Przy wpisywaniu pierwsza pasująca opcja jest od razu aktywna (Enter ją wybiera).
+          setActive(q && current.length ? 0 : -1);
+        }
+
+        function open() {
+          render();
+          if (!isOpen()) {
+            listbox.hidden = false;
+            input.setAttribute('aria-expanded', 'true');
+          }
+          fitToViewport();
+        }
+
+        function close() {
+          if (!isOpen()) { return; }
+          listbox.hidden = true;
+          input.setAttribute('aria-expanded', 'false');
+          setActive(-1);
+        }
+
+        function choose(o) {
+          if (selected.length >= MAX) { return; }
+          if (o.inna) {
+            var known = options.filter(function (x) { return x.key === o.key; })[0];
+            if (known) { o = known; }
+          }
+          if (!o.name || selected.some(function (s) { return s.key === o.key; })) { return; }
+          selected.push({ name: o.name, emoji: o.emoji, key: o.key });
+          input.value = '';
+          renderChips();
+          sync();
+          announce('Dodano: ' + o.name + '. Wybrano ' + selected.length + ' z ' + MAX + '.');
+          input.focus();
+          if (isOpen()) { render(); fitToViewport(); }
+        }
+
+        function remove(s, fromButton) {
+          var idx = selected.indexOf(s);
+          if (idx === -1) { return; }
+          selected.splice(idx, 1);
+          renderChips();
+          sync();
+          announce('Usunięto: ' + s.name + '. Wybrano ' + selected.length + ' z ' + MAX + '.');
+          if (isOpen()) { render(); }
+          if (fromButton) {
+            var btns = chips.querySelectorAll('.dyscyplina__usun');
+            var next = btns[Math.min(idx, btns.length - 1)];
+            (next || input).focus();
+          }
+        }
+
+        input.addEventListener('input', function () { open(); });
+        input.addEventListener('click', function () { if (!isOpen()) { open(); } });
+
+        input.addEventListener('keydown', function (e) {
+          var n = current.length;
+          switch (e.key) {
+            case 'ArrowDown':
+              e.preventDefault();
+              if (!isOpen()) { open(); }
+              if (n) { setActive(active < n - 1 ? active + 1 : 0); }
+              break;
+            case 'ArrowUp':
+              e.preventDefault();
+              if (!isOpen()) { open(); }
+              if (n) { setActive(active > 0 ? active - 1 : n - 1); }
+              break;
+            case 'Home':
+            case 'End':
+              if (isOpen() && n && active > -1) {
+                e.preventDefault();
+                setActive(e.key === 'Home' ? 0 : n - 1);
+              }
+              break;
+            case 'Enter':
+              if (isOpen() && active > -1 && current[active]) {
+                e.preventDefault();
+                choose(current[active]);
+              } else if (input.value.trim()) {
+                // Wpisany tekst bez aktywnej opcji: nie wysyłaj kroku, pokaż listę.
+                e.preventDefault();
+                open();
+              }
+              break;
+            case 'Escape':
+              if (isOpen()) { e.preventDefault(); close(); }
+              else if (input.value) { e.preventDefault(); input.value = ''; }
+              break;
+            case 'Backspace':
+              if (!input.value && selected.length) {
+                e.preventDefault();
+                remove(selected[selected.length - 1], false);
+              }
+              break;
+            case 'Tab':
+              close();
+              break;
+          }
+        });
+
+        // Klik w listę nie zabiera fokusu z pola (inaczej blur zamknąłby listę przed click).
+        listbox.addEventListener('mousedown', function (e) { e.preventDefault(); });
+        document.addEventListener('pointerdown', function (e) {
+          if (isOpen() && !pole.contains(e.target)) { close(); }
+        });
+        input.addEventListener('blur', function () {
+          setTimeout(function () {
+            if (!pole.contains(document.activeElement)) { close(); }
+          }, 0);
+        });
+        window.addEventListener('resize', function () { if (isOpen()) { fitToViewport(); } });
+
+        form.addEventListener('reset', function () {
+          selected = [];
+          renderChips();
+          close();
+          setTimeout(sync, 0);
+        });
+
+        sync();
+      })();
+    }
 
     // Pola pokazywane po zaznaczeniu opcji (np. "Inne", "Domenę").
     // Ukryte pole jest wyłączone, więc nie trafia ani do walidacji, ani do wysyłki.

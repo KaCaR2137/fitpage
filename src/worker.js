@@ -51,6 +51,7 @@ const BRIEF_SECTIONS = [
       { key: 'miasto', label: 'Miasto', max: 100 },
       { key: 'forma_zajec', label: 'Forma zajęć', max: 300 },
       { key: 'nazwa_silowni_studia', label: 'Siłownia lub studio', max: 150 },
+      { key: 'dyscyplina', label: 'Dyscyplina', max: 400 },
       { key: 'specjalizacja', label: 'Specjalizacja', max: 500 },
       { key: 'specjalizacja_inne', label: 'Inna specjalizacja', max: 200 },
       { key: 'grupa_docelowa', label: 'Z kim najczęściej pracuje (grupa docelowa)', max: 2000 },

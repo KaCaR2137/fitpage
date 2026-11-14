@@ -714,6 +714,16 @@ hero + sekcja kontakt na index) prowadzą tutaj.
   linki-inspiracje — mają już własne, dedykowane pola, więc zostawienie
   starego tekstu dublowałoby je).
 
+**Dyscyplina (10.11.2026)** — krok 2, nad „Specjalizacją”, wymagane,
+max 5. Bez JS: `<input name="dyscyplina" list>` + `<datalist>` (opcje z
+`data-emoji`, to jedyne źródło listy). Z JS (`script.js` 6b): combobox ARIA
+(listbox, `aria-activedescendant`, filtr bez wielkości liter i polskich
+znaków), chipy z przyciskiem „Usuń: nazwa”, „✏️ Inna: …” tylko gdy nic nie
+pasuje, ukryte `name="dyscyplina"` (nazwy bez emotek, po przecinku).
+Walidacja przez `setCustomValidity` na widocznym polu, komunikat w
+`fieldMessages.dyscyplina`. Pole jest też w `BRIEF_SECTIONS` w
+`src/worker.js`. Style `.dyscyplina__*`. `style.css?v=23`, `script.js?v=8`.
+
 `.form__radio-group` — wzorzec dla grupy radio z tekstowymi opcjami (nie
 ocena gwiazdkowa jak `.form__rating-group`). Pierwsza wersja (17.09.2026)
 używała widocznego natywnego radio + `accent-color`; **zmienione

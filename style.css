@@ -1830,6 +1830,101 @@ p.hero__title {
   .form__radio-option > input:checked ~ .form__check-box { animation: none; }
 }
 
+/* --- Dyscyplina (brief): combobox z listą i chipami, logika w script.js 6b.
+   Bez JS to zwykłe pole z <datalist>. Lista leży pod polem (absolute w
+   .dyscyplina__pole), szerokość = szerokość pola, wysokość liczona w JS
+   z miejsca do dołu ekranu, więc nie wychodzi poza ekran ani w bok. --- */
+.dyscyplina__pole { position: relative; min-width: 0; }
+.dyscyplina__pole input { min-height: 48px; }
+.dyscyplina__lista {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+.dyscyplina__opcja {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.dyscyplina__opcja:hover { background: var(--bg); }
+.dyscyplina__opcja.is-active {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.dyscyplina__opcja--inna { border-top: 1px solid var(--border); border-radius: 0 0 8px 8px; }
+.dyscyplina__opcja--inna:first-child { border-top: 0; border-radius: 8px; }
+.dyscyplina__emoji {
+  flex-shrink: 0;
+  width: 1.5em;
+  font-size: 1.1rem;
+  line-height: 1;
+  text-align: center;
+}
+.dyscyplina__info {
+  padding: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.dyscyplina__chipy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.dyscyplina__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 46px; /* 44px przycisku usuwania + 2px ramki */
+  padding: 0 0 0 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+.dyscyplina__chip .dyscyplina__emoji { width: auto; font-size: 1rem; }
+.dyscyplina__chip-nazwa { min-width: 0; overflow-wrap: anywhere; }
+.dyscyplina__usun {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.dyscyplina__usun:hover { color: var(--error); }
+.dyscyplina__usun:focus-visible { outline-offset: -4px; }
+
 /* --- Formularz krokowy (brief). Bez JS kroki stoją jeden pod drugim. --- */
 .form [hidden] { display: none !important; }
 .brief__intro {
