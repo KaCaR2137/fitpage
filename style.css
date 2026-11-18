@@ -1190,6 +1190,9 @@ p.hero__title {
 .artykul__body ul,
 .artykul__body ol { margin-bottom: 1em; padding-left: 1.25em; }
 .artykul__body li { margin-bottom: 0.4em; }
+.artykul__body blockquote { margin: 0 0 1em; padding: 18px 22px; background: var(--bg); border-radius: var(--radius); }
+.artykul__body blockquote p { margin: 0 0 .6em; color: var(--text); }
+.artykul__body blockquote p:last-child { margin-bottom: 0; }
 
 /* Tabela porównawcza w treści artykułu (pierwsza: strona-czy-booksy).
    Płaska, tylko hairline między wierszami (Flat Canvas Rule), bez tła.
