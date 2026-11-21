@@ -315,7 +315,7 @@
   // Styl wybrany na szablony.html (?styl=mocny z przycisków "Chcę w tym stylu").
   var stylSelect = document.getElementById('wybrany-styl');
   if (stylSelect) {
-    var style = { mocny: 'Mocny', jasny: 'Jasny', dynamiczny: 'Dynamiczny', minimalny: 'Minimalny' };
+    var style = { mocny: 'Mocny', jasny: 'Jasny', dynamiczny: 'Dynamiczny', minimalny: 'Minimalny', naturalny: 'Naturalny' };
     var stylZAdresu = new URLSearchParams(window.location.search).get('styl');
     if (stylZAdresu && Object.prototype.hasOwnProperty.call(style, stylZAdresu)) {
       stylSelect.value = style[stylZAdresu];

@@ -923,12 +923,12 @@ covers (`images/artykuly`), all `aria-hidden`:
   barbell or plate right, the real button in the lens.
 
 ### Exception: the sample templates in `szablony/`
-`szablony/mocny.html`, `jasny.html`, `dynamiczny.html` and `minimalny.html`
-are **deliberately outside this design system**. Each one is a fictional
-brand (Atlas, Lumi, Puls, Rytm) whose job is to look unlike FitPage and
+`szablony/mocny.html`, `jasny.html`, `dynamiczny.html`, `minimalny.html` and
+`naturalny.html` are **deliberately outside this design system**. Each one is a
+fictional brand (Atlas, Lumi, Puls, Rytm, Nurt) whose job is to look unlike FitPage and
 unlike each other, so a client can pick a direction before the brief. Their
-palettes, fonts (Oswald, Nunito, Archivo, Cormorant Garamond, self-hosted
-in `szablony/fonty/`), radii and type ramps live in each file's own `:root`
+palettes, fonts (Oswald, Nunito, Archivo, Cormorant Garamond, Newsreader,
+Hanken Grotesk, self-hosted in `szablony/fonty/`), radii and type ramps live in each file's own `:root`
 and are not drift. Rules that still apply to them: WCAG AA contrast, `44px`
 touch targets, no horizontal scroll from `320px`, headings that scale with
 the viewport (`min(vw, rem)`) so 200% text never pushes them off screen,
@@ -936,8 +936,12 @@ motion only under `prefers-reduced-motion: no-preference`, the thin
 in-flow "Przykładowy projekt FitPage · marka fikcyjna" bar at the very top
 (never `position: fixed`), a different hero headline per template, and no
 profession or discipline named in the copy. Design-system detector findings
-(`design-system-color`, `design-system-font-size`, `design-system-radius`)
-on these four files are expected and not to be "fixed" toward FitPage.
+(`design-system-color`, `design-system-font`, `design-system-font-size`,
+`design-system-radius`) on these five files are expected and not to be
+"fixed" toward FitPage. `naturalny.html` is the only template with
+photographs: licensed stand-ins (CC BY 2.0, Wikimedia Commons, no
+recognisable faces) in `szablony/zdjecia/`, credited in its footer, and its
+reviews carry a visible "Przykładowe opinie" label on top of the fictional-brand bar.
 
 ## Do's and Don'ts
 

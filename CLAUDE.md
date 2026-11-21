@@ -847,21 +847,21 @@ wokół linii na środku. Sekcja „Co przygotować” (lista z hairline'ami) i 
 `.cta-closing` z przyciskami do kontaktu i cennika. Te same 5 etapów w
 pasku „Jak pracuję” na stronie głównej. Wejście: „Proces” w nav i stopce.
 
-**`szablony.html` (od 19.10.2026)** — „Wybierz styl swojej strony”, 4 karty
+**`szablony.html` (od 19.10.2026)** — „Wybierz styl swojej strony”, 5 kart (piąta od 20.11.2026)
 (miniatura WebP/JPG z `images/szablony/<slug>-400|800`, nazwa, opis,
 „Podgląd” i „Chcę w tym stylu” → `kontakt.html?styl=<slug>`). „Podgląd”
 to link do szablonu; z JS otwiera `<dialog class="podglad">` z iframe,
 przełącznikiem Telefon (390px) / Komputer (1440px, skalowane), Esc/X/klik
 w tło, pętla Tab (strażnik za iframe), fokus wraca na przycisk (script.js,
 ostatnia sekcja). Szablony w `szablony/` (mocny = Atlas, jasny = Lumi,
-dynamiczny = Puls, minimalny = Rytm): samodzielne pliki z CSS w środku,
+dynamiczny = Puls, minimalny = Rytm, naturalny = Nurt): samodzielne pliki z CSS w środku,
 `noindex`, linki `href="#"` blokowane skryptem, cienki pasek
 „Przykładowy projekt FitPage · marka fikcyjna” na samej górze, w zwykłym
 przepływie (nie fixed, jedna linia od 360px), w kolorach szablonu. Każdy
 szablon ma inny nagłówek hero, a opisy na `szablony.html` mówią o
 charakterze stylu, bez zawodów i dyscyplin. Fonty w `szablony/fonty/` (Oswald,
-Nunito, Archivo, Cormorant Garamond; fontTools: Latin + Latin Ext-A,
-przycięte osie, licencje OFL obok). Miniatury = zrzut 1440x900 z
+Nunito, Archivo, Cormorant Garamond, Newsreader, Hanken Grotesk; fontTools:
+Latin + Latin Ext-A, przycięte osie, licencje OFL obok). Miniatury = zrzut 1440x900 z
 headless Chrome, bez plakietki. Zmiana szablonu = nowy zrzut miniatury.
 Na `index.html` pasek „Zobacz przykładowe style” po „Co dostajesz” (na
 telefonie przewijany w bok, ok. 280px) i link pod cennikiem (też na
@@ -872,7 +872,49 @@ i dopisuje notkę w `.brief__pakiet`. Nagłówki szablonów mają
 poza ekran; wyjątek szablonów od systemu opisany w DESIGN.md.
 Link „Przykładowe style” w stopce wszystkich stron, wpis w sitemap.xml,
 `_redirects`, `llms.txt`, `!szablony/**` w `.assetsignore`. Wersje plików:
-`style.css?v=10`, `script.js?v=6`.
+`style.css?v=10`, `script.js?v=6` (stan z 19.10; obecnie `style.css?v=24`,
+`script.js?v=9`).
+
+**Piąty styl: Naturalny / Nurt (20.11.2026, `szablony/naturalny.html`).**
+Zbudowany skillem taste-skill (design-taste-frontend) jako jeden samodzielny
+plik, jak pozostałe (bez kitu skilla, decyzja klienta). Rozdanie: hero photo,
+nav-split, footer-visit (dzielnica i godziny), close-type (słowo „Nurt” w
+stopce), rytm surface-pairs, przyciski tonal, znak ring; moment
+picture-develops w „Plan, który powstaje po rozmowie” (zdjęcie wywołuje się
+raz, 1,6 s, nic przy reduced motion). Paleta: piasek `#EDE3D1`, powierzchnia
+`#E2D5BD`, tekst `#2A2A1E`, ciemna oliwka `#4B5124` (przyciski, linki),
+terakota `#8F4A2B` tylko w drobnych akcentach (numery, znak, etykieta), żeby
+nie zlewała się z Lumi (`#B4503A` na przyciskach). Kroje: Newsreader
+(statyczna instancja 400, opsz 48) + Hanken Grotesk 400–600. Tekst główny w
+kolorze tekstu (min. 7:1), szary tylko na podpisy.
+- **Zdjęcia** (`szablony/zdjecia/nurt-*`, WebP + JPG, tylko kadr, skala i
+  kompresja): wyłącznie wolne licencje, bez rozpoznawalnych twarzy i bez
+  cudzych logo, każde obejrzane w pełnym rozmiarze, amatorskie odrzucone.
+  Pięć zdjęć z Wikimedia Commons, CC BY 2.0: tablica z planem (hero),
+  dłoń na sztandze, dłoń w rękawiczce na maszynie (moment), dłonie przy
+  krojeniu (kontakt), wszystkie Shixart1985; makro żeliwnego obciążenia
+  (pas zdjęciowy, osobny pionowy kadr na telefon), JH Moyer. Lista z
+  linkami do plików i licencji w zwijanej linii w stopce szablonu. Las
+  świadomie odpadł (decyzja klienta: „Naturalny” to paleta i spokój, nie
+  przyroda; odbiorcą są też trenerzy z siłowni).
+- **Opinie** są przykładowe: nad sekcją widoczny napis „Przykładowe opinie”
+  (oprócz paska „marka fikcyjna”), świadomy wyjątek od zasady skilla.
+- **Kontakt** tylko `kontakt@nurt.example` w `mailto:` (na stronie napis
+  „Napisz e-mail”), bez telefonu, adres to sama dzielnica (Poznań, Jeżyce),
+  godziny przykładowe (`data-assumed`). Formularz niczego nie wysyła i mówi
+  to po kliknięciu.
+- **Pasek „marka fikcyjna”** to tu `<aside>` (landmark, axe `region`).
+- **Integracja:** karta na `szablony.html` (miniatura
+  `images/szablony/naturalny-400|800`, zrzut 1440x900 bez plakietki), opcja
+  „Naturalny” w `wybrany_styl` na `kontakt.html`, `naturalny` w mapie `?styl=`
+  w `script.js` (`script.js?v=9` na wszystkich stronach), opisy meta
+  `szablony.html` i `llms.txt` mówią o pięciu stylach. Pasek stylów na
+  `index.html` i miniatury na podstronach ofertowych nadal pokazują 4 style.
+- **Bramka taste-skill:** `GATE: OPEN` (41 otwartych uwag po 3 rundach), 5
+  wyjątków w `.taste-skill/waivers.json` (poza repo, `.taste-skill/` w
+  `.gitignore`). Otwarte uwagi to głównie reguły pod kit skilla (sekcje
+  liczone od górnej krawędzi bez paska „marka fikcyjna”, linie siatki kitu,
+  sekcje dokładnie po jeden ekran także na telefonie).
 
 ## Paleta — motyw jasny
 Świadomy wybór (nie domyślny jasny/ciemny wariant) — patrz `DESIGN.md`,

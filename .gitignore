@@ -12,3 +12,6 @@ node_modules/
 
 # grafiki na Instagram, tylko lokalnie
 iggrafiki/
+
+# taste-skill (bramka i historia losowań, tylko lokalnie)
+.taste-skill/
